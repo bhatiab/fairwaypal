@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(node scripts/generate-sitemap.js)",
+      "Bash(node scripts/generate-sitemap.mjs)",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}

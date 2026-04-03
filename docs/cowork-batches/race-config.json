@@ -1,0 +1,122 @@
+{
+  "races": [
+    {
+      "slug": "spa",
+      "name": "Belgian Grand Prix",
+      "circuit": "Circuit de Spa-Francorchamps",
+      "city": "Spa",
+      "country": "Belgium",
+      "month": "July",
+      "build": "full"
+    },
+    {
+      "slug": "austria",
+      "name": "Austrian Grand Prix",
+      "circuit": "Red Bull Ring",
+      "city": "Spielberg",
+      "country": "Austria",
+      "month": "June",
+      "build": "full"
+    },
+    {
+      "slug": "monza",
+      "name": "Italian Grand Prix",
+      "circuit": "Autodromo Nazionale Monza",
+      "city": "Monza",
+      "country": "Italy",
+      "month": "September",
+      "build": "full"
+    },
+    {
+      "slug": "singapore",
+      "name": "Singapore Grand Prix",
+      "circuit": "Marina Bay Street Circuit",
+      "city": "Singapore",
+      "country": "Singapore",
+      "month": "October",
+      "build": "full"
+    },
+    {
+      "slug": "austin",
+      "name": "United States Grand Prix",
+      "circuit": "Circuit of the Americas",
+      "city": "Austin",
+      "country": "USA",
+      "month": "October",
+      "build": "full"
+    },
+    {
+      "slug": "abu-dhabi",
+      "name": "Abu Dhabi Grand Prix",
+      "circuit": "Yas Marina Circuit",
+      "city": "Abu Dhabi",
+      "country": "UAE",
+      "month": "December",
+      "build": "full"
+    },
+    {
+      "slug": "hungary",
+      "name": "Hungarian Grand Prix",
+      "circuit": "Hungaroring",
+      "city": "Budapest",
+      "country": "Hungary",
+      "month": "July",
+      "build": "partial"
+    },
+    {
+      "slug": "zandvoort",
+      "name": "Dutch Grand Prix",
+      "circuit": "Circuit Zandvoort",
+      "city": "Zandvoort",
+      "country": "Netherlands",
+      "month": "August",
+      "build": "partial"
+    },
+    {
+      "slug": "brazil",
+      "name": "São Paulo Grand Prix",
+      "circuit": "Autodromo Jose Carlos Pace",
+      "city": "São Paulo",
+      "country": "Brazil",
+      "month": "November",
+      "build": "partial"
+    },
+    {
+      "slug": "qatar",
+      "name": "Qatar Grand Prix",
+      "circuit": "Lusail International Circuit",
+      "city": "Lusail",
+      "country": "Qatar",
+      "month": "November",
+      "build": "partial"
+    },
+    {
+      "slug": "mexico",
+      "name": "Mexico City Grand Prix",
+      "circuit": "Autodromo Hermanos Rodriguez",
+      "city": "Mexico City",
+      "country": "Mexico",
+      "month": "October",
+      "build": "partial"
+    },
+    {
+      "slug": "baku",
+      "name": "Azerbaijan Grand Prix",
+      "circuit": "Baku City Circuit",
+      "city": "Baku",
+      "country": "Azerbaijan",
+      "month": "September",
+      "build": "partial"
+    },
+    {
+      "slug": "madrid",
+      "name": "Spanish Grand Prix Madrid",
+      "circuit": "Madrid Street Circuit",
+      "city": "Madrid",
+      "country": "Spain",
+      "month": "September",
+      "build": "partial",
+      "note": "New circuit in 2026 — limited info available"
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+/**
+ * Circuit ratings for MotoGP 2026 venues.
+ * Scale: 1–5 (5 = best).
+ * Ratings are based on fan experience, logistics, and value — not race action.
+ * Researched April 2026.
+ */
+
+export interface CircuitRating {
+  raceSlug: string;
+  accessibility: number;        // 1–5 (how easy to reach by public transport / flight connections)
+  atmosphere: number;           // 1–5
+  valueForMoney: number;        // 1–5
+  beginnerFriendly: number;     // 1–5
+  weatherReliability: number;   // 1–5
+  weatherDescription: string;   // Short description of expected race-week weather
+  bestFor: string[];            // Positive selling points
+  avoidIf: string[];            // Honest caveats
+  oneLineVerdict: string;       // 1 sentence — what makes this race unique
+}
+
+export const circuitRatings: CircuitRating[] = [
+  {
+    raceSlug: "jerez",
+    accessibility: 4,
+    atmosphere: 5,
+    valueForMoney: 4,
+    beginnerFriendly: 5,
+    weatherReliability: 4,
+    weatherDescription: "Hot and sunny, 22–28°C. Occasional spring showers — pack a light layer.",
+    bestFor: ["First-timers", "Budget travellers", "Sunshine seekers", "Easy shuttle logistics"],
+    avoidIf: ["You hate heat", "You need big-city nightlife nearby"],
+    oneLineVerdict: "The most beginner-friendly circuit on the calendar — cheap, sunny, well-organised, and loud.",
+  },
+  {
+    raceSlug: "le-mans",
+    accessibility: 4,
+    atmosphere: 4,
+    valueForMoney: 5,
+    beginnerFriendly: 4,
+    weatherReliability: 2,
+    weatherDescription: "Unpredictable May weather — expect anything from 12°C rain to 24°C sunshine. Pack layers and waterproofs.",
+    bestFor: ["Budget travellers (camping included in ticket)", "Families (under-16s free)", "Train travellers from Paris"],
+    avoidIf: ["You hate camping or mud", "You need guaranteed good weather"],
+    oneLineVerdict: "One of MotoGP's best value weekends — camping is free with your ticket and the atmosphere is electric.",
+  },
+  {
+    raceSlug: "catalunya",
+    accessibility: 5,
+    atmosphere: 4,
+    valueForMoney: 3,
+    beginnerFriendly: 5,
+    weatherReliability: 4,
+    weatherDescription: "Warm Mediterranean, 22–28°C. Very reliable sunshine in June.",
+    bestFor: ["First-timers", "City trip combo (Barcelona)", "Easy public transport"],
+    avoidIf: ["Budget travellers (Barcelona is expensive)", "You want a remote race-only experience"],
+    oneLineVerdict: "Barcelona is a world-class city base — the easiest race to combine with a proper holiday.",
+  },
+  {
+    raceSlug: "mugello",
+    accessibility: 3,
+    atmosphere: 5,
+    valueForMoney: 2,
+    beginnerFriendly: 3,
+    weatherReliability: 4,
+    weatherDescription: "Hot Tuscan summer, 25–32°C. Thunderstorms possible. Shade is limited.",
+    bestFor: ["Party atmosphere seekers", "Italian motorsport culture", "Camping fans"],
+    avoidIf: ["Budget travellers (one of the priciest European rounds)", "You need good public transport"],
+    oneLineVerdict: "The cathedral of Italian motorsport — atmosphere, passion, and Tuscan scenery, but it'll cost you.",
+  },
+  {
+    raceSlug: "hungary",
+    accessibility: 3,
+    atmosphere: 3,
+    valueForMoney: 4,
+    beginnerFriendly: 3,
+    weatherReliability: 3,
+    weatherDescription: "Warm Central European summer, 22–30°C. Thunderstorms possible. Variable.",
+    bestFor: ["Budapest city break", "Eastern Europe explorers", "Early adopters (brand-new venue)"],
+    avoidIf: ["You need a proven race experience", "You rely on public transport to the circuit"],
+    oneLineVerdict: "A brand-new MotoGP venue — Budapest is excellent but expect some first-year organisation hiccups.",
+  },
+  {
+    raceSlug: "brno",
+    accessibility: 3,
+    atmosphere: 4,
+    valueForMoney: 5,
+    beginnerFriendly: 4,
+    weatherReliability: 3,
+    weatherDescription: "Central European summer, 20–27°C. Can be hot or wet. Come prepared for both.",
+    bestFor: ["Budget travellers", "Beer lovers", "Central European city explorers"],
+    avoidIf: ["You need direct flights from the UK", "You dislike driving"],
+    oneLineVerdict: "One of MotoGP's best kept secrets — cheap, well-run, and Brno city punches well above its weight.",
+  },
+  {
+    raceSlug: "assen",
+    accessibility: 4,
+    atmosphere: 5,
+    valueForMoney: 3,
+    beginnerFriendly: 4,
+    weatherReliability: 2,
+    weatherDescription: "Dutch summer — anything from 15°C and rainy to 28°C sunshine. Don't trust the forecast.",
+    bestFor: ["Atmosphere addicts", "Motorcycle culture fans", "Embankment GA experience"],
+    avoidIf: ["You hate rain", "You're booking last minute (hotels sell out months ahead)"],
+    oneLineVerdict: "The Cathedral — packed, passionate, and the most revered circuit name in motorcycle racing.",
+  },
+  {
+    raceSlug: "sachsenring",
+    accessibility: 3,
+    atmosphere: 4,
+    valueForMoney: 4,
+    beginnerFriendly: 4,
+    weatherReliability: 3,
+    weatherDescription: "Warm German summer, 18–26°C. Rain is possible. Generally comfortable.",
+    bestFor: ["Compact venue fans", "Great natural sightlines everywhere", "ADAC members (discount tickets)"],
+    avoidIf: ["You want a buzzing host city nearby", "You need many direct flights"],
+    oneLineVerdict: "A compact, spectator-friendly circuit where every seat has a view — underrated on the calendar.",
+  },
+  {
+    raceSlug: "silverstone",
+    accessibility: 4,
+    atmosphere: 4,
+    valueForMoney: 3,
+    beginnerFriendly: 4,
+    weatherReliability: 2,
+    weatherDescription: "English summer — warm but very changeable. 15–25°C, rain always possible. Wellies optional but wise.",
+    bestFor: ["UK fans (no flights needed)", "Motorsport heritage lovers", "Camping fans"],
+    avoidIf: ["You hate traffic (A43 queues are notorious)", "Budget travellers (UK prices are high)"],
+    oneLineVerdict: "Silverstone carries immense motorsport heritage — the UK's MotoGP round delivers, rain or shine.",
+  },
+  {
+    raceSlug: "aragon",
+    accessibility: 3,
+    atmosphere: 3,
+    valueForMoney: 5,
+    beginnerFriendly: 4,
+    weatherReliability: 4,
+    weatherDescription: "Warm dry Aragonese autumn, 20–28°C. Very reliable weather in September.",
+    bestFor: ["Budget travellers", "Reliable weather", "No-fuss straightforward weekends"],
+    avoidIf: ["You want a vibrant host city", "You need public transport (Alcañiz is remote)"],
+    oneLineVerdict: "The most affordable full grandstand weekend in MotoGP — remote but reliable and well-priced.",
+  },
+  {
+    raceSlug: "misano",
+    accessibility: 4,
+    atmosphere: 4,
+    valueForMoney: 3,
+    beginnerFriendly: 4,
+    weatherReliability: 4,
+    weatherDescription: "Warm Adriatic autumn, 22–28°C. Very pleasant in September. Sea breeze keeps it comfortable.",
+    bestFor: ["Beach holiday combo", "Italian food lovers", "Marco Simoncelli tribute atmosphere"],
+    avoidIf: ["Budget travellers (Rimini Riviera rates are high in summer)"],
+    oneLineVerdict: "Rimini Riviera delivers sun, seafood, and one of MotoGP's most emotionally charged atmospheres.",
+  },
+  {
+    raceSlug: "austria",
+    accessibility: 3,
+    atmosphere: 4,
+    valueForMoney: 3,
+    beginnerFriendly: 3,
+    weatherReliability: 3,
+    weatherDescription: "Alpine autumn, 14–22°C. Can be cold at altitude, especially at night. Rain is possible.",
+    bestFor: ["Scenic alpine setting", "Start-Ziel grandstand views", "Graz city break"],
+    avoidIf: ["Budget travellers", "You hate driving (public transport is limited)"],
+    oneLineVerdict: "Red Bull Ring's alpine backdrop is stunning — Graz is a fantastic underrated base city.",
+  },
+  {
+    raceSlug: "portimao",
+    accessibility: 4,
+    atmosphere: 4,
+    valueForMoney: 3,
+    beginnerFriendly: 4,
+    weatherReliability: 4,
+    weatherDescription: "Mild Algarve autumn, 18–24°C. Warm and reliable in November. Evenings cool down.",
+    bestFor: ["Algarve holiday combo", "Dramatic circuit layout fans", "Season finale double-header"],
+    avoidIf: ["Late planners (tickets sell out almost instantly)"],
+    oneLineVerdict: "Portimão's rollercoaster layout and Algarve setting make it one of MotoGP's most spectacular venues.",
+  },
+  {
+    raceSlug: "valencia",
+    accessibility: 5,
+    atmosphere: 5,
+    valueForMoney: 4,
+    beginnerFriendly: 5,
+    weatherReliability: 4,
+    weatherDescription: "Warm Mediterranean late autumn, 18–24°C. Very reliable sunshine. Evenings mild.",
+    bestFor: ["Season finale atmosphere", "First-timers", "City trip combo (Valencia)", "Easy tram access"],
+    avoidIf: ["You want a remote race experience"],
+    oneLineVerdict: "The season finale's party atmosphere is unmatched — riders celebrate in the paddock after the final race.",
+  },
+  {
+    raceSlug: "austin",
+    accessibility: 3,
+    atmosphere: 4,
+    valueForMoney: 2,
+    beginnerFriendly: 3,
+    weatherReliability: 3,
+    weatherDescription: "Warm Texas spring, 18–28°C. Can be very hot or unseasonably cold. Thunderstorms possible.",
+    bestFor: ["North American fans", "Music and BBQ lovers", "COTA's world-class venue"],
+    avoidIf: ["Budget travellers (most expensive European-equivalent on the calendar)", "Anyone needing affordable hotels"],
+    oneLineVerdict: "COTA is a premium experience — Austin's food and music scene makes it worth it if your budget allows.",
+  },
+];
+
+export const getRatingBySlug = (slug: string): CircuitRating | undefined =>
+  circuitRatings.find((r) => r.raceSlug === slug);

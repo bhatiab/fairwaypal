@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 180" width="840" height="540">
+  <rect width="280" height="180" fill="#1a1a2e" />
+
+  <!-- Circuit outline: Miami International Autodrome (OSM-traced) -->
+  <path d="
+    M 82 52
+    C 100 49, 130 54, 152 64
+    C 160 70, 165 77, 168 84
+    C 170 90, 170 96, 168 102
+    C 165 110, 160 118, 154 124
+    C 148 130, 138 130, 125 125
+    C 112 118, 100 112, 88 107
+    C 76 103, 65 106, 55 109
+    C 45 112, 36 107, 28 103
+    C 22 100, 18 105, 16 112
+    C 15 118, 16 123, 20 125
+    C 26 127, 42 126, 62 128
+    C 82 129, 105 128, 125 133
+    C 145 137, 160 140, 178 136
+    C 198 130, 218 120, 235 108
+    C 246 100, 254 90, 259 80
+    C 263 72, 265 64, 265 56
+    C 264 49, 256 46, 240 45
+    C 210 43, 160 42, 120 42
+    C 90 42, 62 42, 50 43
+    C 42 43, 40 48, 46 52
+    C 52 55, 62 54, 72 52
+    Z
+  " fill="none" stroke="#E10600" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+
+  <!-- Start/Finish line -->
+  <line x1="105" y1="48" x2="135" y2="48" stroke="#fff" stroke-width="2" />
+  <text x="120" y="40" fill="#fff" font-size="6" text-anchor="middle" font-family="sans-serif">S/F</text>
+
+  <!-- Turn labels -->
+  <text x="165" y="72" fill="#888" font-size="6" font-family="sans-serif">T1</text>
+  <text x="172" y="100" fill="#888" font-size="6" font-family="sans-serif">T2-3</text>
+  <text x="156" y="130" fill="#888" font-size="6" font-family="sans-serif">T7</text>
+  <text x="80" y="115" fill="#888" font-size="6" font-family="sans-serif">T8-10</text>
+  <text x="8" y="118" fill="#888" font-size="6" font-family="sans-serif">T11</text>
+  <text x="140" y="147" fill="#888" font-size="6" font-family="sans-serif">T12-14</text>
+  <text x="245" y="98" fill="#888" font-size="6" font-family="sans-serif">T15-16</text>
+  <text x="44" y="60" fill="#888" font-size="6" font-family="sans-serif">T17</text>
+  <text x="268" y="54" fill="#888" font-size="6" font-family="sans-serif">Back</text>
+  <text x="268" y="62" fill="#888" font-size="6" font-family="sans-serif">Str.</text>
+
+  <!-- Grandstand dots -->
+  <!-- mia-main: Marina Club (Pit Straight) -->
+  <circle cx="125" cy="55" r="5" fill="#E10600" stroke="#fff" stroke-width="1" />
+  <text x="133" y="58" fill="#FFD700" font-size="7" font-weight="bold" font-family="sans-serif">MARINA</text>
+
+  <!-- mia-t1: Turn 1 -->
+  <circle cx="160" cy="74" r="5" fill="#FF6B00" stroke="#fff" stroke-width="1" />
+  <text x="136" y="76" fill="#FFD700" font-size="7" font-weight="bold" font-family="sans-serif">T1</text>
+
+  <!-- mia-stadium: Stadium (T11-16) -->
+  <circle cx="100" cy="128" r="5" fill="#0066CC" stroke="#fff" stroke-width="1" />
+  <text x="108" y="131" fill="#FFD700" font-size="7" font-weight="bold" font-family="sans-serif">STADIUM</text>
+
+  <!-- Direction arrow (anti-clockwise) -->
+  <text x="110" y="62" fill="#555" font-size="5" font-family="sans-serif">→ main straight →</text>
+
+  <!-- Circuit name -->
+  <text x="140" y="90" fill="#ccc" font-size="9" text-anchor="middle" font-weight="bold" font-family="sans-serif">Miami International Autodrome</text>
+  <text x="140" y="100" fill="#888" font-size="7" text-anchor="middle" font-family="sans-serif">OSM-traced • 5.412 km • 19 turns</text>
+
+  <!-- Hard Rock Stadium indicator (center of circuit) -->
+  <rect x="105" y="70" width="40" height="25" rx="3" fill="none" stroke="#444" stroke-width="0.5" stroke-dasharray="2,2" />
+  <text x="125" y="85" fill="#555" font-size="5" text-anchor="middle" font-family="sans-serif">Hard Rock</text>
+</svg>
