@@ -4,7 +4,6 @@ import tailwindcssAnimate from "tailwindcss-animate";
 export default {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
@@ -20,12 +19,45 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["var(--font-display)", "sans-serif"],
+        display: ["var(--font-display)", "serif"],
         body: ["var(--font-body)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
       colors: {
-        border: "hsl(var(--border))",
+        // FairwayPal design system
+        bg: {
+          DEFAULT: "#0a0a08",
+          2: "#111110",
+          3: "#1a1a17",
+          4: "#222220",
+        },
+        gold: {
+          DEFAULT: "#c9a84c",
+          dim: "rgba(201,168,76,0.12)",
+          border: "rgba(201,168,76,0.25)",
+        },
+        fairway: {
+          DEFAULT: "#2a6b3c",
+          text: "#4daa6a",
+          dim: "rgba(42,107,60,0.18)",
+        },
+        partner: {
+          DEFAULT: "#a0456e",
+          text: "#d4709a",
+          dim: "rgba(160,69,110,0.18)",
+        },
+        ink: {
+          DEFAULT: "#f0ede6",
+          2: "#c8c4bc",
+          muted: "#5a5a52",
+          dim: "#3a3a35",
+        },
+        border: {
+          DEFAULT: "rgba(255,255,255,0.07)",
+          2: "rgba(255,255,255,0.13)",
+        },
+
+        // shadcn-ui semantic tokens (mapped to FairwayPal palette)
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
@@ -58,20 +90,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        racing: {
-          red: "hsl(var(--racing-red))",
-          glow: "hsl(var(--racing-red-glow))",
-        },
-        carbon: {
-          DEFAULT: "hsl(var(--carbon))",
-          light: "hsl(var(--carbon-light))",
-        },
-        champagne: "hsl(var(--champagne))",
-        audi: "hsl(var(--audi))",
-        cadillac: "hsl(var(--cadillac))",
-        "neon-cyan": "hsl(var(--neon-cyan))",
-        "neon-green": "hsl(var(--neon-green))",
-        "neon-gold": "hsl(var(--neon-gold))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -97,37 +115,18 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "pulse-glow": {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.6" },
-        },
-        "charge": {
-          "0%": { width: "0%" },
-          "100%": { width: "var(--charge-target)" },
-        },
-        "screen-shake": {
-          "0%, 100%": { transform: "translateX(0)" },
-          "10%": { transform: "translateX(-4px)" },
-          "20%": { transform: "translateX(4px)" },
-          "30%": { transform: "translateX(-3px)" },
-          "40%": { transform: "translateX(3px)" },
-          "50%": { transform: "translateX(-2px)" },
-          "60%": { transform: "translateX(2px)" },
-          "70%": { transform: "translateX(-1px)" },
-          "80%": { transform: "translateX(1px)" },
-          "90%": { transform: "translateX(0)" },
-        },
         "gold-pulse": {
-          "0%": { boxShadow: "0 0 5px hsl(42 100% 55% / 0.3)" },
-          "50%": { boxShadow: "0 0 30px hsl(42 100% 55% / 0.6), 0 0 60px hsl(42 100% 55% / 0.2)" },
-          "100%": { boxShadow: "0 0 5px hsl(42 100% 55% / 0.3)" },
+          "0%": { boxShadow: "0 0 5px rgba(201,168,76,0.3)" },
+          "50%": {
+            boxShadow:
+              "0 0 30px rgba(201,168,76,0.6), 0 0 60px rgba(201,168,76,0.2)",
+          },
+          "100%": { boxShadow: "0 0 5px rgba(201,168,76,0.3)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
-        "screen-shake": "screen-shake 0.4s ease-in-out",
         "gold-pulse": "gold-pulse 2s ease-in-out infinite",
       },
     },
