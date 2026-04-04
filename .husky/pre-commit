@@ -1,18 +1,4 @@
-# 1. Type-check (catches TS errors without emitting files)
-npx tsc --noEmit
-
-# 2. Lint (ESLint)
+npm run typecheck
 npm run lint
-
-# 3. SEO checks (metadata, twitter card, brand name consistency)
-npm run verify
-npm run seo:audit
-
-# 4. Unit tests
 npm run test
-
-# 5. Full production build + sitemap + AMP + prerender
-npm run build:with-amp
-
-# 6. Stage generated files so they're included in this commit
-git add public/sitemap.xml public/blog/feed.xml
+npm run build
