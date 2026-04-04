@@ -1,6 +1,20 @@
 import '../src/index.css'
 import { Analytics } from '@vercel/analytics/next'
 import { PHProvider } from './providers'
+import { Cormorant_Garamond, Outfit } from 'next/font/google'
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-display',
+})
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-body',
+})
 
 export const metadata: import('next').Metadata = {
   metadataBase: new URL('https://fairwaypal.com'),
@@ -8,7 +22,8 @@ export const metadata: import('next').Metadata = {
     default: 'FairwayPal',
     template: '%s | FairwayPal',
   },
-  description: 'FairwayPal helps golf groups shape a trip fast, with one intake flow, a clearer shared plan, and space for partner-friendly scheduling from the start.',
+  description:
+    'FairwayPal helps golf groups shape a trip fast, with one intake flow, a clearer shared plan, and space for partner-friendly scheduling from the start.',
   openGraph: {
     siteName: 'FairwayPal',
     type: 'website',
@@ -33,8 +48,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={`${cormorant.variable} ${outfit.variable}`}>
+      <body className="bg-bg font-body text-ink antialiased">
         <PHProvider>{children}</PHProvider>
         <Analytics />
       </body>
