@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'About GP Moto Pal — Independent MotoGP Fan Hub',
-  description: 'GP Moto Pal is an independent MotoGP companion built for fans who want context, not noise. Race guides and experiences.',
+  title: 'About FairwayPal',
+  description: 'What FairwayPal is building, how the planning flow works, and what the current product surface is designed to do.',
 }
 export default function Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>

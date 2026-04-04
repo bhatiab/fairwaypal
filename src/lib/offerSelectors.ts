@@ -4,15 +4,15 @@ export function getOffer(key: string): Offer | undefined {
   return OFFERS[key];
 }
 
-export function getOffersByRace(raceSlug: string): Offer[] {
+export function getOffersByPage(pageSlug: string): Offer[] {
   return Object.values(OFFERS)
-    .filter((o) => o.raceSlug === raceSlug || o.raceSlug === null)
+    .filter((o) => o.pageSlug === pageSlug || o.pageSlug === null)
     .sort((a, b) => b.priority - a.priority);
 }
 
 export function getOffersBySection(
-  raceSlug: string,
+  pageSlug: string,
   section: Offer["section"]
 ): Offer[] {
-  return getOffersByRace(raceSlug).filter((o) => o.section === section);
+  return getOffersByPage(pageSlug).filter((o) => o.section === section);
 }

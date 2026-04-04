@@ -3,19 +3,19 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'About GP Moto Pal',
-  description: 'GP Moto Pal is an independent MotoGP race companion built from real fan experience — practical transport, packing, and first-timer guides for every round.',
-  alternates: { canonical: 'https://gpmotopal.com/about' },
+  title: 'About FairwayPal',
+  description: 'How FairwayPal approaches golf-trip planning for organisers, golfers, and partners.',
+  alternates: { canonical: 'https://fairwaypal.com/about' },
   openGraph: {
-    title: 'About GP Moto Pal',
-    description: 'Independent MotoGP race companion built from real fan experience.',
-    url: 'https://gpmotopal.com/about',
+    title: 'About FairwayPal',
+    description: 'How FairwayPal approaches golf-trip planning for organisers, golfers, and partners.',
+    url: 'https://fairwaypal.com/about',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About GP Moto Pal',
-    description: 'Independent MotoGP race companion built from real fan experience.',
+    title: 'About FairwayPal',
+    description: 'How FairwayPal approaches golf-trip planning for organisers, golfers, and partners.',
   },
 }
 
@@ -23,83 +23,76 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gpmotopal.com/" },
-    { "@type": "ListItem", "position": 2, "name": "About", "item": "https://gpmotopal.com/about" }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://fairwaypal.com/" },
+    { "@type": "ListItem", "position": 2, "name": "About", "item": "https://fairwaypal.com/about" }
   ]
 }
 
 const About = () => {
   return (
-          <div className="min-h-screen bg-background text-foreground">
+      <div className="min-h-screen bg-background text-foreground">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
         <Navbar />
         <main className="max-w-3xl mx-auto px-5 pt-28 pb-16">
-          {/* Hero */}
           <section className="mb-14">
             <h1
-              className="text-3xl md:text-4xl font-bold tracking-wide mb-4"
+              className="text-3xl md:text-4xl font-light italic tracking-wide mb-4"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Built for Fans Who Want Context, Not Noise.
+              FairwayPal is built for the person who always ends up planning the golf trip.
             </h1>
             <p className="text-foreground/70 text-base leading-relaxed max-w-2xl">
-              GP Moto Pal is an independent MotoGP race companion designed to help fans navigate each race weekend with clarity.
+              The product focuses on one practical job: turn a messy golf-weekend conversation into a plan people can react to quickly, including the part of the trip that matters to non-golfing partners.
             </p>
           </section>
 
-          {/* Why It Exists */}
           <section className="mb-12">
             <h2 className="text-lg font-semibold mb-3 text-foreground/90" style={{ fontFamily: "var(--font-display)" }}>
-              Why It Exists
+              What the product is trying to solve
             </h2>
             <div className="space-y-3 text-sm text-foreground/70 leading-relaxed">
               <p>
-                MotoGP coverage is fragmented. Race schedules, fan experiences, track context, and planning information are scattered across dozens of sources — most of them cluttered with ads or paywalled.
+                Most group golf trips break down in the same place: one organiser carries the logistics, the group reacts late, and partner plans get treated as an afterthought.
               </p>
               <p>
-                GP Moto Pal brings structured, practical race-week information together in one place, so fans can spend less time searching and more time enjoying the racing.
+                FairwayPal is meant to reduce that admin load by structuring the trip early, showing golf and partner plans side by side, and making review simpler before anyone starts booking.
               </p>
             </div>
           </section>
 
-          {/* What You'll Find Here */}
           <section className="mb-12">
             <h2 className="text-lg font-semibold mb-3 text-foreground/90" style={{ fontFamily: "var(--font-display)" }}>
-              What You'll Find Here
+              What is live right now
             </h2>
             <ul className="list-disc list-inside space-y-2 text-sm text-foreground/70 leading-relaxed">
-              <li>Race countdowns and session timing</li>
-              <li>Track-specific context</li>
-              <li>Curated fan experiences</li>
-              <li>Practical race-week essentials</li>
-              <li>Planning guidance for race cities</li>
+              <li>A public landing page that explains the product promise clearly</li>
+              <li>A five-step planning flow for destination, dates, group size, budget, and vibe</li>
+              <li>Metadata routes and deployment wiring for a production Next.js app</li>
+              <li>Reusable affiliate surfaces that can later support hotels, flights, and partner activities</li>
             </ul>
           </section>
 
-          {/* Independence & Transparency */}
           <section className="mb-12">
             <h2 className="text-lg font-semibold mb-3 text-foreground/90" style={{ fontFamily: "var(--font-display)" }}>
-              Independence & Transparency
+              What comes next
             </h2>
             <ul className="list-disc list-inside space-y-2 text-sm text-foreground/70 leading-relaxed">
-              <li>Not affiliated with MotoGP™ or Dorna Sports.</li>
-              <li>Independently operated.</li>
-              <li>Some links may earn a commission at no extra cost to users.</li>
-              <li>Affiliate partnerships do not dictate recommendations.</li>
+              <li>Generate a real itinerary from the planner input instead of ending at a structured brief</li>
+              <li>Persist trips so organisers can return, share, and revise</li>
+              <li>Add voting, comments, and conflict resolution for the group</li>
+              <li>Layer in live partner and booking recommendations once destination data is ready</li>
             </ul>
           </section>
 
-          {/* Trademark Notice */}
           <section className="mb-12">
             <p className="text-xs text-foreground/40 leading-relaxed">
-              MotoGP™ and related marks are trademarks of Dorna Sports. GP Moto Pal is not affiliated with or endorsed by Dorna Sports.
+              The current site is the first public product surface, not a generic starter. It explains the offer, captures the planning inputs, and sets up the next stage of itinerary generation.
             </p>
           </section>
 
-          {/* Closing */}
           <section>
             <p className="text-sm text-foreground/70 leading-relaxed">
-              GP Moto Pal is built to grow with the season. As the calendar evolves, so will this site. Feedback is always welcome — if something is missing or could be better, get in touch.
+              FairwayPal is being shaped as a practical planning layer first. The point is not to publish generic travel content; the point is to help a real organiser get a group aligned faster.
             </p>
           </section>
         </main>

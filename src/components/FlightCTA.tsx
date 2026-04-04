@@ -1,20 +1,28 @@
-import { raceFlights } from '@/data/raceFlights'
 import { Plane } from 'lucide-react'
 
-interface Props {
-  raceSlug: string
+interface FlightCTAProps {
+  destination: string
+  airport?: string
+  dateLabel?: string
+  href: string
+  ctaLabel?: string
 }
 
-export function FlightCTA({ raceSlug }: Props) {
-  const flight = raceFlights[raceSlug]
-  if (!flight) return null
+export function FlightCTA({
+  destination,
+  airport,
+  dateLabel,
+  href,
+  ctaLabel = 'Search',
+}: FlightCTAProps) {
+  if (!href || href.includes('[')) return null
 
-  const { destination, airport, raceDates, expediaFlightUrl } = flight
-  if (!expediaFlightUrl || expediaFlightUrl.includes('[')) return null
+  const locationLabel = airport ? `${destination} (${airport})` : destination
+  const supportingText = dateLabel ? `${dateLabel} · Search on Expedia` : 'Search on Expedia'
 
   return (
     <a
-      href={expediaFlightUrl}
+      href={href}
       target="_blank"
       rel="noopener noreferrer sponsored"
       className="flex items-center justify-between gap-4 rounded-2xl border border-primary/30 bg-primary/5 hover:bg-primary/10 transition-colors px-5 py-4"
@@ -24,11 +32,11 @@ export function FlightCTA({ raceSlug }: Props) {
           <Plane className="w-4 h-4" />
         </div>
         <div className="min-w-0">
-          <p className="text-sm font-semibold leading-snug">Flights to {destination} ({airport})</p>
-          <p className="text-xs text-muted-foreground mt-0.5">{raceDates} · Search on Expedia</p>
+          <p className="text-sm font-semibold leading-snug">Flights to {locationLabel}</p>
+          <p className="text-xs text-muted-foreground mt-0.5">{supportingText}</p>
         </div>
       </div>
-      <span className="text-xs font-semibold text-primary shrink-0">Search →</span>
+      <span className="text-xs font-semibold text-primary shrink-0">{ctaLabel} →</span>
     </a>
   )
 }

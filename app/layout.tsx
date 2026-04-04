@@ -3,23 +3,27 @@ import { Analytics } from '@vercel/analytics/next'
 import { PHProvider } from './providers'
 
 export const metadata: import('next').Metadata = {
-  metadataBase: new URL('https://gpmotopal.com'),
+  metadataBase: new URL('https://fairwaypal.com'),
   title: {
-    default: 'GP Moto Pal — MotoGP Race Guides & Trip Planners',
-    template: '%s | GP Moto Pal',
+    default: 'FairwayPal',
+    template: '%s | FairwayPal',
   },
-  description: 'Race guides, trip planners and local experiences for every MotoGP weekend. Built from real fan experience.',
+  description: 'FairwayPal helps golf groups shape a trip fast, with one intake flow, a clearer shared plan, and space for partner-friendly scheduling from the start.',
   openGraph: {
-    siteName: 'GP Moto Pal',
+    siteName: 'FairwayPal',
     type: 'website',
     images: [
       {
-        url: '/images/og/homepage.jpg',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'GP Moto Pal — MotoGP Race Guides & Trip Planners',
+        alt: 'FairwayPal golf trip planner',
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/twitter-image'],
   },
 }
 

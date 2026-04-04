@@ -15,7 +15,7 @@ export type Outbound = GygOutbound;
 
 export interface Offer {
   key: string;
-  raceSlug: string | null;
+  pageSlug: string | null;
   section: 'experiences' | 'transport' | 'accommodation' | 'general';
   priority: number;
   outbound: Outbound;

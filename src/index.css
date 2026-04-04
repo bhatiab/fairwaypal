@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,50 +6,50 @@
 
 @layer base {
   :root {
-    --background: 0 0% 7%;
-    --foreground: 0 0% 95%;
+    --background: 40 22% 6%;
+    --foreground: 46 38% 92%;
 
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 95%;
+    --card: 40 18% 9%;
+    --card-foreground: 46 38% 92%;
 
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 40 18% 9%;
+    --popover-foreground: 46 38% 92%;
 
-    --primary: 0 85% 50%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 143 42% 39%;
+    --primary-foreground: 46 38% 96%;
 
-    --secondary: 0 0% 14%;
-    --secondary-foreground: 0 0% 90%;
+    --secondary: 36 15% 14%;
+    --secondary-foreground: 46 30% 90%;
 
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 55%;
+    --muted: 35 12% 14%;
+    --muted-foreground: 42 14% 66%;
 
-    --accent: 0 0% 16%;
-    --accent-foreground: 0 0% 95%;
+    --accent: 45 39% 16%;
+    --accent-foreground: 46 38% 92%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 16%;
-    --input: 0 0% 16%;
-    --ring: 0 85% 50%;
+    --border: 35 13% 20%;
+    --input: 35 13% 20%;
+    --ring: 143 42% 39%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --racing-red: 0 85% 50%;
-    --racing-red-glow: 0 90% 60%;
-    --carbon: 0 0% 8%;
-    --carbon-light: 0 0% 14%;
-    --champagne: 45 80% 70%;
+    --racing-red: 143 42% 39%;
+    --racing-red-glow: 46 62% 60%;
+    --carbon: 40 18% 9%;
+    --carbon-light: 35 12% 14%;
+    --champagne: 46 62% 60%;
 
-    --sidebar-background: 0 0% 6%;
-    --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 0 85% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 14%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 0 0% 16%;
-    --sidebar-ring: 0 85% 50%;
+    --sidebar-background: 40 22% 6%;
+    --sidebar-foreground: 46 30% 90%;
+    --sidebar-primary: 143 42% 39%;
+    --sidebar-primary-foreground: 46 38% 96%;
+    --sidebar-accent: 35 12% 14%;
+    --sidebar-accent-foreground: 46 30% 90%;
+    --sidebar-border: 35 13% 20%;
+    --sidebar-ring: 143 42% 39%;
 
     --audi: 0 85% 50%;
     --cadillac: 210 100% 55%;
@@ -58,9 +58,9 @@
     --neon-green: 145 100% 50%;
     --neon-gold: 42 100% 55%;
 
-    --font-display: 'Rajdhani', 'Oswald', sans-serif;
-    --font-hero: 'Orbitron', sans-serif;
-    --font-body: 'Space Grotesk', 'Inter', sans-serif;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-hero: 'Cormorant Garamond', serif;
+    --font-body: 'Outfit', sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   }
 }
@@ -77,56 +77,43 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    text-transform: uppercase;
     letter-spacing: 0.02em;
+  }
+
+  a {
+    @apply transition-colors;
   }
 }
 
 @layer utilities {
-  .text-gradient-racing {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(0 85% 50%), hsl(0 90% 65%), hsl(45 80% 70%));
+  .page-shell {
+    @apply mx-auto max-w-6xl px-5;
   }
 
-  .bg-gradient-hero {
-    background: linear-gradient(180deg, transparent 0%, hsl(0 0% 5% / 0.4) 40%, hsl(0 0% 5% / 0.95) 100%);
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.28em] text-primary;
   }
 
-  .bg-gradient-card {
-    background: linear-gradient(135deg, hsl(0 0% 10%), hsl(0 0% 7%));
+  .primary-link {
+    @apply inline-flex items-center justify-center rounded-2xl border border-primary bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground;
   }
 
-  .glow-red {
-    box-shadow: 0 0 30px hsl(0 85% 50% / 0.3), 0 0 60px hsl(0 85% 50% / 0.1);
+  .secondary-link {
+    @apply inline-flex items-center justify-center rounded-2xl border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground;
   }
 
-  .border-glow {
-    border: 1px solid hsl(0 85% 50% / 0.3);
+  .nav-link {
+    @apply rounded-2xl px-4 py-2 text-sm text-muted-foreground hover:bg-card hover:text-foreground;
   }
 
-  .text-gradient-silver {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(0 0% 70%), hsl(0 0% 95%), hsl(0 0% 60%));
+  .nav-link-active {
+    @apply bg-card text-foreground;
   }
 
-  .glass-card {
-    background: hsl(0 0% 8% / 0.6);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-  }
-
-  .racing-stripe {
-    position: relative;
-  }
-  .racing-stripe::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, hsl(0 85% 50%), hsl(0 90% 65%));
-    border-radius: 4px;
+  .hero-glow {
+    background:
+      radial-gradient(circle at top, hsl(46 62% 60% / 0.16), transparent 30%),
+      radial-gradient(circle at 80% 20%, hsl(143 42% 39% / 0.18), transparent 28%);
   }
 }
 
@@ -139,19 +126,10 @@
     display: none;
   }
 
-  .bg-circuit-board {
+  .ambient-grid {
     background-image:
-      linear-gradient(hsl(0 0% 15% / 0.3) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(0 0% 15% / 0.3) 1px, transparent 1px),
-      linear-gradient(hsl(0 0% 15% / 0.15) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(0 0% 15% / 0.15) 1px, transparent 1px);
-    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
-  }
-
-  .countdown-digit {
-    @apply flex items-center justify-center rounded-md border border-primary/40 bg-zinc-900/80 font-mono text-3xl font-bold text-foreground;
-    min-width: 3rem;
-    min-height: 3.5rem;
-    box-shadow: 0 0 12px hsl(0 85% 50% / 0.15);
+      linear-gradient(hsl(35 13% 20% / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(35 13% 20% / 0.3) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
 }
