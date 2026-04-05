@@ -18,8 +18,8 @@ function ActivityCard({
     side === 'golf'
       ? 'border-l-primary'
       : side === 'partner'
-        ? 'border-l-[hsl(var(--partner))]'
-        : 'border-l-champagne'
+        ? 'border-l-partner'
+        : 'border-l-gold'
 
   return (
     <div
@@ -80,9 +80,9 @@ function DaySection({ day }: { day: GeneratedDay }) {
           {day.sharedActivities.map((a, i) => (
             <div
               key={i}
-              className="rounded-xl border border-champagne/30 bg-champagne/5 p-4"
+              className="rounded-xl border border-gold/30 bg-gold/5 p-4"
             >
-              <p className="text-xs uppercase tracking-[0.12em] text-champagne">
+              <p className="text-xs uppercase tracking-[0.12em] text-gold">
                 Shared · {a.timeOfDay}
               </p>
               <p className="mt-1 text-base font-semibold text-foreground">
@@ -91,7 +91,7 @@ function DaySection({ day }: { day: GeneratedDay }) {
               <p className="mt-1 text-sm leading-6 text-muted-foreground">
                 {a.detail}
               </p>
-              <p className="mt-2 text-sm text-champagne">
+              <p className="mt-2 text-sm text-gold">
                 ~${a.estimatedPrice}{' '}
                 <span className="text-muted-foreground">{a.priceUnit}</span>
               </p>
@@ -115,7 +115,7 @@ function DaySection({ day }: { day: GeneratedDay }) {
         {/* Partner column */}
         {hasPartner && (
           <div className="space-y-3">
-            <p className="text-xs uppercase tracking-[0.12em] text-[hsl(var(--partner))]">
+            <p className="text-xs uppercase tracking-[0.12em] text-partner">
               Partners
             </p>
             {day.partnerActivities.map((a, i) => (
