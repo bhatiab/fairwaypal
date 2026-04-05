@@ -45,6 +45,8 @@
     --sidebar-border: 0 0% 100% / 0.07;
     --sidebar-ring: 43 48% 54%;
 
+    --partner: 334 40% 45%;
+
     /* Font stacks (set by next/font variables) */
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Outfit', sans-serif;

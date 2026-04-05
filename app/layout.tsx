@@ -1,5 +1,6 @@
 import '../src/index.css'
 import { Analytics } from '@vercel/analytics/next'
+import { Toaster } from 'sonner'
 import { PHProvider } from './providers'
 import { Cormorant_Garamond, Outfit } from 'next/font/google'
 
@@ -51,6 +52,7 @@ export default function RootLayout({
     <html lang="en" className={`${cormorant.variable} ${outfit.variable}`}>
       <body className="bg-bg font-body text-ink antialiased">
         <PHProvider>{children}</PHProvider>
+        <Toaster theme="dark" position="top-center" />
         <Analytics />
       </body>
     </html>
