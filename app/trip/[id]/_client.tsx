@@ -1,7 +1,9 @@
 'use client'
 
 import { useEffect, useMemo, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
+import { Settings } from 'lucide-react'
 import type {
   TripRow,
   ActivityRow,
@@ -200,8 +202,16 @@ function TripContent({
   initialActivities: ActivityRow[]
   initialParticipants: ParticipantRow[]
 }) {
+  const router = useRouter()
   const { participant, isOrganiser } = useTripParticipant()
   const { data: liveData } = useTripPolling(trip.id, participant?.id ?? null)
+
+  // Redirect to confirmed view if trip is locked
+  useEffect(() => {
+    if (trip.status === 'locked' || trip.status === 'completed') {
+      router.replace(`/trip/${trip.id}/confirmed`)
+    }
+  }, [trip.status, trip.id, router])
 
   const activities = liveData?.activities ?? initialActivities
   const participants = liveData?.participants ?? initialParticipants
@@ -275,7 +285,18 @@ function TripContent({
       {/* Controls bar */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <ParticipantStrip participants={participants} />
-        {isOrganiser && <ShareButton trip={trip} />}
+        {isOrganiser && (
+          <div className="flex items-center gap-2">
+            <a
+              href={`/organiser/${trip.id}`}
+              className="btn-ghost flex items-center gap-2"
+            >
+              <Settings className="h-4 w-4" />
+              Dashboard
+            </a>
+            <ShareButton trip={trip} />
+          </div>
+        )}
       </div>
 
       {/* Hero strip */}

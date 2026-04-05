@@ -97,6 +97,9 @@ export type TripRow = {
   organiser_email: string | null
   itinerary: GeneratedItinerary
   intake_data: IntakeData
+  budget_per_golfer: number | null
+  budget_per_partner: number | null
+  locked_at: string | null
   created_at: string
 }
 
@@ -115,6 +118,11 @@ export type ActivityRow = {
   price_unit: string | null
   tags: string[]
   ai_rationale: string | null
+  booking_url: string | null
+  booking_ref: string | null
+  affiliate_source: string | null
+  booked_at: string | null
+  confirmed_at: string | null
   created_at: string
 }
 
