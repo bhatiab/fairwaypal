@@ -3,6 +3,7 @@ import Anthropic from '@anthropic-ai/sdk'
 import { generateRequestSchema, generatedItinerarySchema } from '@/types/trip'
 import { createServerSupabase } from '@/lib/supabase'
 import { toHotelSlug } from '@/lib/slugify'
+import { AVATAR_COLORS } from '@/lib/participant'
 
 export const maxDuration = 60
 export const dynamic = 'force-dynamic'
@@ -223,6 +224,18 @@ export async function POST(request: Request) {
         { status: 500 },
       )
     }
+
+    // Create organiser participant row
+    await supabase.from('participants').insert({
+      trip_id: trip.id,
+      name: 'Organiser',
+      initial: 'O',
+      color: AVATAR_COLORS[0],
+      role: 'organiser',
+      device_uuid: organiserUuid,
+      opened_link: true,
+      last_seen: new Date().toISOString(),
+    })
 
     // Flatten activities into the activities table
     const activityRows = itinerary.days.flatMap((day) => {

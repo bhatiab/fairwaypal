@@ -1,133 +1,24 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { toast } from 'sonner'
-import { ChevronDown } from 'lucide-react'
-import type { TripRow, GeneratedDay, Activity } from '@/types/trip'
+import type {
+  TripRow,
+  ActivityRow,
+  ParticipantRow,
+  VoteCounts,
+  CommentRow,
+} from '@/types/trip'
+import { useTripPolling } from '@/hooks/useTripPolling'
+import TripParticipantProvider, {
+  useTripParticipant,
+} from './_components/TripParticipantProvider'
+import NameGate from './_components/NameGate'
+import ShareButton from './_components/ShareButton'
+import ParticipantStrip from './_components/ParticipantStrip'
+import ActivityCard from './_components/ActivityCard'
 
-function ActivityCard({
-  activity,
-  side,
-}: {
-  activity: Activity
-  side: 'golf' | 'partner' | 'shared'
-}) {
-  const [showRationale, setShowRationale] = useState(false)
-
-  const accentClass =
-    side === 'golf'
-      ? 'border-l-primary'
-      : side === 'partner'
-        ? 'border-l-partner'
-        : 'border-l-gold'
-
-  return (
-    <div
-      className={`rounded-xl border border-border bg-card/60 p-4 border-l-2 ${accentClass}`}
-    >
-      <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
-        {activity.timeOfDay}
-      </p>
-      <p className="mt-1 text-base font-semibold text-foreground">
-        {activity.name}
-      </p>
-      <p className="mt-1 text-sm leading-6 text-muted-foreground">
-        {activity.detail}
-      </p>
-      <div className="mt-2 flex items-center justify-between">
-        <p className="text-sm text-primary">
-          ~${activity.estimatedPrice}{' '}
-          <span className="text-muted-foreground">{activity.priceUnit}</span>
-        </p>
-        {activity.aiRationale && (
-          <button
-            type="button"
-            onClick={() => setShowRationale(!showRationale)}
-            className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
-          >
-            Why this pick
-            <ChevronDown
-              className={`h-3 w-3 transition-transform ${showRationale ? 'rotate-180' : ''}`}
-            />
-          </button>
-        )}
-      </div>
-      {showRationale && (
-        <p className="mt-2 text-xs italic text-muted-foreground">
-          {activity.aiRationale}
-        </p>
-      )}
-    </div>
-  )
-}
-
-function DaySection({ day }: { day: GeneratedDay }) {
-  const hasPartner = day.partnerActivities.length > 0
-  const hasShared = day.sharedActivities.length > 0
-
-  return (
-    <div className="space-y-4">
-      <div className="border-b border-border pb-2">
-        <p className="text-lg font-display font-light text-foreground">
-          {day.dayLabel}
-        </p>
-        <p className="text-sm text-muted-foreground">{day.dateLabel}</p>
-      </div>
-
-      {/* Shared activities banner */}
-      {hasShared && (
-        <div className="space-y-3">
-          {day.sharedActivities.map((a, i) => (
-            <div
-              key={i}
-              className="rounded-xl border border-gold/30 bg-gold/5 p-4"
-            >
-              <p className="text-xs uppercase tracking-[0.12em] text-gold">
-                Shared · {a.timeOfDay}
-              </p>
-              <p className="mt-1 text-base font-semibold text-foreground">
-                {a.name}
-              </p>
-              <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                {a.detail}
-              </p>
-              <p className="mt-2 text-sm text-gold">
-                ~${a.estimatedPrice}{' '}
-                <span className="text-muted-foreground">{a.priceUnit}</span>
-              </p>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Split view */}
-      <div className={`grid gap-4 ${hasPartner ? 'md:grid-cols-2' : ''}`}>
-        {/* Golf column */}
-        <div className="space-y-3">
-          <p className="text-xs uppercase tracking-[0.12em] text-primary">
-            Golf
-          </p>
-          {day.golfActivities.map((a, i) => (
-            <ActivityCard key={i} activity={a} side="golf" />
-          ))}
-        </div>
-
-        {/* Partner column */}
-        {hasPartner && (
-          <div className="space-y-3">
-            <p className="text-xs uppercase tracking-[0.12em] text-partner">
-              Partners
-            </p>
-            {day.partnerActivities.map((a, i) => (
-              <ActivityCard key={i} activity={a} side="partner" />
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  )
-}
-
+// --- Email Capture (preserved from original) ---
 function EmailCapture({ tripId }: { tripId: string }) {
   const [visible, setVisible] = useState(false)
   const [email, setEmail] = useState('')
@@ -173,8 +64,8 @@ function EmailCapture({ tripId }: { tripId: string }) {
   if (!visible) return null
 
   return (
-    <div className="mt-12 rounded-xl border border-primary/30 bg-primary/5 p-6">
-      <p className="text-sm font-semibold text-foreground">
+    <div className="mt-12 rounded-sm border border-gold-border bg-gold-dim p-6">
+      <p className="text-sm font-semibold text-ink">
         Get a daily summary of votes and conflicts.
       </p>
       <div className="mt-3 flex gap-3">
@@ -183,21 +74,21 @@ function EmailCapture({ tripId }: { tripId: string }) {
           placeholder="your@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="h-10 flex-1 rounded-lg border border-border bg-background/70 px-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
+          className="h-10 flex-1 rounded-sm border border-border bg-bg-3 px-3 text-sm text-ink placeholder:text-ink-muted focus:border-gold focus:outline-none"
         />
         <button
           type="button"
           onClick={handleSave}
           disabled={saving || !email.includes('@')}
-          className="primary-link h-10 px-4 text-xs disabled:opacity-40"
+          className="btn-primary h-10 px-4 disabled:opacity-40"
         >
-          {saving ? 'Saving…' : 'Save'}
+          {saving ? 'Saving...' : 'Save'}
         </button>
       </div>
       <button
         type="button"
         onClick={dismiss}
-        className="mt-2 text-xs text-muted-foreground hover:text-foreground"
+        className="mt-2 text-xs text-ink-muted hover:text-ink"
       >
         Not now
       </button>
@@ -205,13 +96,190 @@ function EmailCapture({ tripId }: { tripId: string }) {
   )
 }
 
-export default function TripClient({ trip }: { trip: TripRow }) {
-  const itinerary = trip.itinerary
+// --- Day Section ---
+function DaySection({
+  dayLabel,
+  dateLabel,
+  golfActivities,
+  partnerActivities,
+  sharedActivities,
+  voteMap,
+  commentMap,
+  onVoteChange,
+}: {
+  dayLabel: string
+  dateLabel: string
+  golfActivities: ActivityRow[]
+  partnerActivities: ActivityRow[]
+  sharedActivities: ActivityRow[]
+  voteMap: Map<string, VoteCounts>
+  commentMap: Map<string, CommentRow[]>
+  onVoteChange: (counts: VoteCounts) => void
+}) {
+  const hasPartner = partnerActivities.length > 0
 
   return (
-    <div className="mt-8 space-y-12">
+    <div className="space-y-4">
+      <div className="border-b border-border pb-2">
+        <p className="text-lg font-display font-light text-ink">{dayLabel}</p>
+        <p className="text-sm text-ink-muted">{dateLabel}</p>
+      </div>
+
+      {/* Shared activities */}
+      {sharedActivities.map((a) => (
+        <div key={a.id} className="rounded-sm border border-gold-border bg-gold-dim p-4">
+          <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-gold">
+            Shared · {a.time_of_day}
+          </p>
+          <p className="mt-1 text-sm font-semibold text-ink">{a.name}</p>
+          {a.detail && (
+            <p className="mt-1 text-sm leading-6 text-ink-2">{a.detail}</p>
+          )}
+        </div>
+      ))}
+
+      {/* Split view */}
+      <div className={`grid gap-4 ${hasPartner ? 'md:grid-cols-2' : ''}`}>
+        <div className="space-y-3">
+          <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-fairway-text">
+            Golf
+          </p>
+          {golfActivities.map((a) => (
+            <ActivityCard
+              key={a.id}
+              activity={a}
+              voteCounts={
+                voteMap.get(a.id) ?? {
+                  activityId: a.id,
+                  up: 0,
+                  down: 0,
+                  myVote: null,
+                }
+              }
+              comments={commentMap.get(a.id) ?? []}
+              onVoteChange={onVoteChange}
+            />
+          ))}
+        </div>
+
+        {hasPartner && (
+          <div className="space-y-3">
+            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-partner-text">
+              Partners
+            </p>
+            {partnerActivities.map((a) => (
+              <ActivityCard
+                key={a.id}
+                activity={a}
+                voteCounts={
+                  voteMap.get(a.id) ?? {
+                    activityId: a.id,
+                    up: 0,
+                    down: 0,
+                    myVote: null,
+                  }
+                }
+                comments={commentMap.get(a.id) ?? []}
+                onVoteChange={onVoteChange}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// --- Trip Content (inside participant provider) ---
+function TripContent({
+  trip,
+  initialActivities,
+  initialParticipants,
+}: {
+  trip: TripRow
+  initialActivities: ActivityRow[]
+  initialParticipants: ParticipantRow[]
+}) {
+  const { participant, isOrganiser } = useTripParticipant()
+  const { data: liveData } = useTripPolling(trip.id, participant?.id ?? null)
+
+  const activities = liveData?.activities ?? initialActivities
+  const participants = liveData?.participants ?? initialParticipants
+
+  // Build vote and comment maps
+  const voteMap = useMemo(() => {
+    const map = new Map<string, VoteCounts>()
+    for (const v of liveData?.votes ?? []) {
+      map.set(v.activityId, v)
+    }
+    return map
+  }, [liveData?.votes])
+
+  const commentMap = useMemo(() => {
+    const map = new Map<string, CommentRow[]>()
+    for (const c of liveData?.comments ?? []) {
+      const list = map.get(c.activity_id) ?? []
+      list.push(c)
+      map.set(c.activity_id, list)
+    }
+    return map
+  }, [liveData?.comments])
+
+  // Group activities by day
+  const days = useMemo(() => {
+    const dayMap = new Map<
+      number,
+      {
+        dayLabel: string
+        dateLabel: string
+        golf: ActivityRow[]
+        partner: ActivityRow[]
+        shared: ActivityRow[]
+      }
+    >()
+
+    for (const a of activities) {
+      if (!dayMap.has(a.day_index)) {
+        dayMap.set(a.day_index, {
+          dayLabel: a.day ?? `Day ${a.day_index + 1}`,
+          dateLabel: '',
+          golf: [],
+          partner: [],
+          shared: [],
+        })
+      }
+      const day = dayMap.get(a.day_index)!
+      if (a.side === 'golf') day.golf.push(a)
+      else if (a.side === 'partner') day.partner.push(a)
+      else day.shared.push(a)
+    }
+
+    // Fill date labels from itinerary if available
+    for (const itDay of trip.itinerary.days) {
+      const day = dayMap.get(itDay.dayIndex)
+      if (day) day.dateLabel = itDay.dateLabel
+    }
+
+    return [...dayMap.entries()]
+      .sort(([a], [b]) => a - b)
+      .map(([, v]) => v)
+  }, [activities, trip.itinerary.days])
+
+  function handleVoteChange(counts: VoteCounts) {
+    // The ActivityCard handles its own optimistic state.
+    // The polling will pick up the server state on next tick.
+  }
+
+  return (
+    <div className="mt-8 space-y-10">
+      {/* Controls bar */}
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <ParticipantStrip participants={participants} />
+        {isOrganiser && <ShareButton trip={trip} />}
+      </div>
+
       {/* Hero strip */}
-      <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
+      <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-muted">
         <span>{trip.destination}</span>
         <span>
           {trip.dates_start} → {trip.dates_end}
@@ -226,35 +294,63 @@ export default function TripClient({ trip }: { trip: TripRow }) {
 
       {/* Day-by-day itinerary */}
       <div className="space-y-10">
-        {itinerary.days.map((day) => (
-          <DaySection key={day.dayIndex} day={day} />
+        {days.map((day, i) => (
+          <DaySection
+            key={i}
+            dayLabel={day.dayLabel}
+            dateLabel={day.dateLabel}
+            golfActivities={day.golf}
+            partnerActivities={day.partner}
+            sharedActivities={day.shared}
+            voteMap={voteMap}
+            commentMap={commentMap}
+            onVoteChange={handleVoteChange}
+          />
         ))}
       </div>
 
       {/* Budget summary */}
       <div className="grid gap-4 sm:grid-cols-2">
-        <div className="rounded-xl border border-border bg-card/60 p-5">
-          <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
-            Estimated per golfer
-          </p>
-          <p className="mt-2 text-3xl font-display font-light text-foreground">
-            ${itinerary.estimatedBudgetPerGolfer}
+        <div className="rounded-sm border border-border bg-bg-2 p-5">
+          <p className="eyebrow">Estimated per golfer</p>
+          <p className="mt-2 text-3xl font-display font-light text-ink">
+            ${trip.itinerary.estimatedBudgetPerGolfer}
           </p>
         </div>
         {trip.partners_count > 0 && (
-          <div className="rounded-xl border border-border bg-card/60 p-5">
-            <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
-              Estimated per partner
-            </p>
-            <p className="mt-2 text-3xl font-display font-light text-foreground">
-              ${itinerary.estimatedBudgetPerPartner}
+          <div className="rounded-sm border border-border bg-bg-2 p-5">
+            <p className="eyebrow">Estimated per partner</p>
+            <p className="mt-2 text-3xl font-display font-light text-ink">
+              ${trip.itinerary.estimatedBudgetPerPartner}
             </p>
           </div>
         )}
       </div>
 
       {/* Email capture */}
-      <EmailCapture tripId={trip.id} />
+      {isOrganiser && <EmailCapture tripId={trip.id} />}
     </div>
+  )
+}
+
+// --- Top-level export ---
+export default function TripClient({
+  trip,
+  initialActivities,
+  initialParticipants,
+}: {
+  trip: TripRow
+  initialActivities: ActivityRow[]
+  initialParticipants: ParticipantRow[]
+}) {
+  return (
+    <TripParticipantProvider trip={trip}>
+      <NameGate trip={trip} />
+      <TripContent
+        trip={trip}
+        initialActivities={initialActivities}
+        initialParticipants={initialParticipants}
+      />
+    </TripParticipantProvider>
   )
 }

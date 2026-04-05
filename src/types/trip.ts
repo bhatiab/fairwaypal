@@ -118,6 +118,85 @@ export type ActivityRow = {
   created_at: string
 }
 
+// --- Participant, Vote, Comment row types ---
+export type ParticipantRole = 'organiser' | 'golfer' | 'partner'
+
+export type ParticipantRow = {
+  id: string
+  trip_id: string
+  name: string
+  initial: string
+  color: string
+  role: ParticipantRole
+  device_uuid: string | null
+  email: string | null
+  has_voted: boolean
+  opened_link: boolean
+  last_seen: string | null
+  created_at: string
+}
+
+export type VoteRow = {
+  id: string
+  activity_id: string
+  trip_id: string
+  participant_id: string
+  direction: 'up' | 'down'
+  created_at: string
+}
+
+export type CommentRow = {
+  id: string
+  activity_id: string
+  trip_id: string
+  participant_id: string
+  text: string
+  sentiment: 'up' | 'down' | null
+  ai_summary: string | null
+  created_at: string
+  // Joined fields for display
+  participant_name?: string
+  participant_initial?: string
+  participant_color?: string
+}
+
+export type VoteCounts = {
+  activityId: string
+  up: number
+  down: number
+  myVote: 'up' | 'down' | null
+}
+
+// --- Zod schemas for voting/comments ---
+export const voteRequestSchema = z.object({
+  activityId: z.string().uuid(),
+  tripId: z.string().uuid(),
+  direction: z.enum(['up', 'down']),
+  participantId: z.string().uuid(),
+})
+
+export const commentRequestSchema = z.object({
+  activityId: z.string().uuid(),
+  tripId: z.string().uuid(),
+  participantId: z.string().uuid(),
+  text: z.string().min(1).max(500),
+  sentiment: z.enum(['up', 'down']).nullable().optional(),
+})
+
+export const nameGateSchema = z.object({
+  tripId: z.string().uuid(),
+  name: z.string().min(1).max(50),
+  deviceUuid: z.string().uuid(),
+})
+
+// --- Live polling response ---
+export type TripLiveData = {
+  activities: ActivityRow[]
+  votes: VoteCounts[]
+  comments: CommentRow[]
+  participants: ParticipantRow[]
+}
+
 // --- Helpers ---
 export function calculateNights(start: string, end: string): number {
   if (!start || !end) return 0
