@@ -1,5 +1,6 @@
 import '../src/index.css'
 import { Analytics } from '@vercel/analytics/next'
+import { Toaster } from 'sonner'
 import { PHProvider } from './providers'
 
 export const metadata: import('next').Metadata = {
@@ -36,6 +37,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <PHProvider>{children}</PHProvider>
+        <Toaster theme="dark" position="top-center" />
         <Analytics />
       </body>
     </html>

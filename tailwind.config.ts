@@ -67,6 +67,7 @@ export default {
           light: "hsl(var(--carbon-light))",
         },
         champagne: "hsl(var(--champagne))",
+        partner: "hsl(var(--partner))",
         audi: "hsl(var(--audi))",
         cadillac: "hsl(var(--cadillac))",
         "neon-cyan": "hsl(var(--neon-cyan))",
