@@ -10,11 +10,13 @@ export default function ConflictQueue({
   votesByActivity,
   onConfirm,
   onRemove,
+  onSwap,
 }: {
   activities: ActivityRow[]
   votesByActivity: Map<string, { up: number; down: number }>
   onConfirm: (id: string) => void
   onRemove: (id: string) => void
+  onSwap: (activity: ActivityRow) => void
 }) {
   // Find activities with at least 1 downvote, sorted by most contentious
   const conflicts: ConflictActivity[] = activities
@@ -70,6 +72,13 @@ export default function ConflictQueue({
                 className="btn-ghost h-7 px-3 text-[9px]"
               >
                 Confirm anyway
+              </button>
+              <button
+                type="button"
+                onClick={() => onSwap(a)}
+                className="btn-ghost h-7 px-3 text-[9px] text-gold"
+              >
+                Swap
               </button>
               <button
                 type="button"

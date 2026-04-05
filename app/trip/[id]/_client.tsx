@@ -19,6 +19,8 @@ import NameGate from './_components/NameGate'
 import ShareButton from './_components/ShareButton'
 import ParticipantStrip from './_components/ParticipantStrip'
 import ActivityCard from './_components/ActivityCard'
+import SwapPanel from './_components/SwapPanel'
+import EditActivityDialog from './_components/EditActivityDialog'
 
 // --- Email Capture (preserved from original) ---
 function EmailCapture({ tripId }: { tripId: string }) {
@@ -108,6 +110,9 @@ function DaySection({
   voteMap,
   commentMap,
   onVoteChange,
+  onEdit,
+  onSwap,
+  onDiscuss,
 }: {
   dayLabel: string
   dateLabel: string
@@ -117,6 +122,9 @@ function DaySection({
   voteMap: Map<string, VoteCounts>
   commentMap: Map<string, CommentRow[]>
   onVoteChange: (counts: VoteCounts) => void
+  onEdit?: (activity: ActivityRow) => void
+  onSwap?: (activity: ActivityRow) => void
+  onDiscuss?: (activity: ActivityRow) => void
 }) {
   const hasPartner = partnerActivities.length > 0
 
@@ -160,6 +168,9 @@ function DaySection({
               }
               comments={commentMap.get(a.id) ?? []}
               onVoteChange={onVoteChange}
+              onEdit={onEdit}
+              onSwap={onSwap}
+              onDiscuss={onDiscuss}
             />
           ))}
         </div>
@@ -183,6 +194,9 @@ function DaySection({
                 }
                 comments={commentMap.get(a.id) ?? []}
                 onVoteChange={onVoteChange}
+                onEdit={onEdit}
+                onSwap={onSwap}
+                onDiscuss={onDiscuss}
               />
             ))}
           </div>
@@ -215,6 +229,8 @@ function TripContent({
 
   const activities = liveData?.activities ?? initialActivities
   const participants = liveData?.participants ?? initialParticipants
+  const [editActivity, setEditActivity] = useState<ActivityRow | null>(null)
+  const [swapActivity, setSwapActivity] = useState<ActivityRow | null>(null)
 
   // Build vote and comment maps
   const voteMap = useMemo(() => {
@@ -280,6 +296,33 @@ function TripContent({
     // The polling will pick up the server state on next tick.
   }
 
+  async function handleDiscuss(activity: ActivityRow) {
+    const message = prompt('Add a message to start the discussion:')
+    if (!message) return
+
+    const organiserUuid = localStorage.getItem('fairwaypal_organiser_uuid')
+    if (!organiserUuid) return
+
+    try {
+      await fetch(`/api/trip/${trip.id}/activity/${activity.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'discuss',
+          organiserUuid,
+          discussMessage: message,
+        }),
+      })
+      toast.success('Marked for discussion')
+    } catch {
+      toast.error('Could not start discussion.')
+    }
+  }
+
+  const organiserUuid = typeof window !== 'undefined'
+    ? localStorage.getItem('fairwaypal_organiser_uuid') ?? ''
+    : ''
+
   return (
     <div className="mt-8 space-y-10">
       {/* Controls bar */}
@@ -326,9 +369,32 @@ function TripContent({
             voteMap={voteMap}
             commentMap={commentMap}
             onVoteChange={handleVoteChange}
+            onEdit={isOrganiser ? setEditActivity : undefined}
+            onSwap={isOrganiser ? setSwapActivity : undefined}
+            onDiscuss={isOrganiser ? handleDiscuss : undefined}
           />
         ))}
       </div>
+
+      {/* Organiser modals */}
+      {editActivity && (
+        <EditActivityDialog
+          activity={editActivity}
+          tripId={trip.id}
+          organiserUuid={organiserUuid}
+          onSaved={() => {}}
+          onClose={() => setEditActivity(null)}
+        />
+      )}
+      {swapActivity && (
+        <SwapPanel
+          activity={swapActivity}
+          tripId={trip.id}
+          organiserUuid={organiserUuid}
+          onSwapped={() => {}}
+          onClose={() => setSwapActivity(null)}
+        />
+      )}
 
       {/* Budget summary */}
       <div className="grid gap-4 sm:grid-cols-2">

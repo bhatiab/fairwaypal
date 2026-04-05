@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { voteRequestSchema } from '@/types/trip'
 import { createServerSupabase } from '@/lib/supabase'
+import { sendAllVotedEmail } from '@/lib/email'
 
 export async function POST(request: Request) {
   const body = await request.json()
@@ -38,9 +39,60 @@ export async function POST(request: Request) {
     .update({ has_voted: true })
     .eq('id', participantId)
 
+  // Check if all participants have now voted → trigger all-voted email
+  checkAllVoted(supabase, tripId).catch(() => {})
+
   // Get updated counts
   const counts = await getVoteCounts(supabase, activityId, participantId)
   return NextResponse.json(counts)
+}
+
+async function checkAllVoted(
+  supabase: ReturnType<typeof createServerSupabase>,
+  tripId: string,
+) {
+  const { data: participants } = await supabase
+    .from('participants')
+    .select('has_voted')
+    .eq('trip_id', tripId)
+
+  if (!participants || participants.length === 0) return
+  const allVoted = participants.every((p) => p.has_voted)
+  if (!allVoted) return
+
+  // Check if we already sent this email
+  const { data: existingLog } = await supabase
+    .from('email_logs')
+    .select('id')
+    .eq('trip_id', tripId)
+    .eq('type', 'all-voted')
+    .limit(1)
+
+  if (existingLog && existingLog.length > 0) return
+
+  // Get trip + organiser email
+  const { data: trip } = await supabase
+    .from('trips')
+    .select('name, organiser_email, status')
+    .eq('id', tripId)
+    .single()
+
+  if (!trip?.organiser_email || trip.status !== 'voting') return
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://fairwaypal.com'
+
+  await sendAllVotedEmail({
+    to: trip.organiser_email,
+    tripName: trip.name,
+    tripUrl: `${siteUrl}/organiser/${tripId}`,
+  })
+
+  await supabase.from('email_logs').insert({
+    trip_id: tripId,
+    type: 'all-voted',
+    subject: `${trip.name} · everyone's in · ready to lock`,
+    status: 'sent',
+  })
 }
 
 export async function DELETE(request: Request) {

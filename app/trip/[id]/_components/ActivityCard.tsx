@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { toast } from 'sonner'
-import { ThumbsUp, ThumbsDown, MessageSquare, ChevronDown } from 'lucide-react'
+import { ThumbsUp, ThumbsDown, MessageSquare, ChevronDown, Pencil, ArrowRightLeft, MessageCircle } from 'lucide-react'
 import type { ActivityRow, CommentRow, VoteCounts } from '@/types/trip'
 import { useTripParticipant } from './TripParticipantProvider'
 import VoteTally from './VoteTally'
@@ -13,13 +13,19 @@ export default function ActivityCard({
   voteCounts,
   comments: initialComments,
   onVoteChange,
+  onEdit,
+  onSwap,
+  onDiscuss,
 }: {
   activity: ActivityRow
   voteCounts: VoteCounts
   comments: CommentRow[]
   onVoteChange: (counts: VoteCounts) => void
+  onEdit?: (activity: ActivityRow) => void
+  onSwap?: (activity: ActivityRow) => void
+  onDiscuss?: (activity: ActivityRow) => void
 }) {
-  const { participant } = useTripParticipant()
+  const { participant, isOrganiser } = useTripParticipant()
   const [localVotes, setLocalVotes] = useState(voteCounts)
   const [comments, setComments] = useState(initialComments)
   const [showComments, setShowComments] = useState(false)
@@ -142,6 +148,46 @@ export default function ActivityCard({
         <p className="mt-2 text-xs italic text-ink-muted">
           {activity.ai_rationale}
         </p>
+      )}
+
+      {/* In-discussion indicator */}
+      {activity.status === 'in-discussion' && (
+        <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.1em] text-[#d4a017]">
+          In discussion
+        </p>
+      )}
+
+      {/* Organiser controls */}
+      {isOrganiser && (onEdit || onSwap || onDiscuss) && (
+        <div className="mt-2 flex gap-2 border-t border-border pt-2">
+          {onEdit && (
+            <button
+              type="button"
+              onClick={() => onEdit(activity)}
+              className="flex items-center gap-1 text-[10px] text-ink-muted hover:text-ink"
+            >
+              <Pencil className="h-3 w-3" /> Edit
+            </button>
+          )}
+          {onSwap && (
+            <button
+              type="button"
+              onClick={() => onSwap(activity)}
+              className="flex items-center gap-1 text-[10px] text-ink-muted hover:text-gold"
+            >
+              <ArrowRightLeft className="h-3 w-3" /> Swap
+            </button>
+          )}
+          {onDiscuss && activity.status !== 'in-discussion' && (
+            <button
+              type="button"
+              onClick={() => onDiscuss(activity)}
+              className="flex items-center gap-1 text-[10px] text-ink-muted hover:text-[#d4a017]"
+            >
+              <MessageCircle className="h-3 w-3" /> Discuss
+            </button>
+          )}
+        </div>
       )}
 
       {/* Vote bar */}

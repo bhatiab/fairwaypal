@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
 import type { ActivityRow, ParticipantRow, TripRow, VoteRow } from '@/types/trip'
 import { getOrganiserUuid } from '@/lib/participant'
+import SwapPanel from '../../trip/[id]/_components/SwapPanel'
 import ParticipantTracker from './_components/ParticipantTracker'
 import ConflictQueue from './_components/ConflictQueue'
 import BookingChecklist from './_components/BookingChecklist'
@@ -25,6 +26,7 @@ export default function OrgClient({
   const router = useRouter()
   const [activities, setActivities] = useState(initialActivities)
   const [participants] = useState(initialParticipants)
+  const [swapActivity, setSwapActivity] = useState<ActivityRow | null>(null)
   const [organiserUuid] = useState(() => {
     if (typeof window === 'undefined') return ''
     return getOrganiserUuid() ?? ''
@@ -119,12 +121,13 @@ export default function OrgClient({
 
       {/* Dashboard grid */}
       <div className="grid gap-6 lg:grid-cols-2">
-        <ParticipantTracker participants={participants} />
+        <ParticipantTracker participants={participants} tripId={trip.id} />
         <ConflictQueue
           activities={activities}
           votesByActivity={votesByActivity}
           onConfirm={handleConfirm}
           onRemove={handleRemove}
+          onSwap={setSwapActivity}
         />
         <BookingChecklist
           activities={activities}
@@ -133,6 +136,20 @@ export default function OrgClient({
         />
         <BudgetTracker trip={trip} activities={activities} />
       </div>
+
+      {swapActivity && (
+        <SwapPanel
+          activity={swapActivity}
+          tripId={trip.id}
+          organiserUuid={organiserUuid}
+          onSwapped={(updated) => {
+            setActivities((prev) =>
+              prev.map((a) => (a.id === updated.id ? updated : a)),
+            )
+          }}
+          onClose={() => setSwapActivity(null)}
+        />
+      )}
     </div>
   )
 }

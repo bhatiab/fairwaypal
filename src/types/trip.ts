@@ -197,6 +197,49 @@ export const nameGateSchema = z.object({
   deviceUuid: z.string().uuid(),
 })
 
+// --- Activity Swap types ---
+export type SwapAlternative = {
+  name: string
+  detail: string
+  estimatedPrice: number
+  priceUnit: string
+  aiRationale: string
+}
+
+export type ActivitySwapRow = {
+  id: string
+  original_activity_id: string
+  trip_id: string
+  constraint_reason: string
+  alternatives: SwapAlternative[]
+  status: 'pending' | 'selected' | 'dismissed'
+  selected_alternative_index: number | null
+  created_at: string
+}
+
+export type EmailLogRow = {
+  id: string
+  trip_id: string
+  type: 'daily-summary' | 'all-voted' | 'reengagement'
+  subject: string
+  sent_at: string
+  status: 'sent' | 'failed'
+}
+
+// --- Swap/Edit schemas ---
+export const swapRequestSchema = z.object({
+  activityId: z.string().uuid(),
+  tripId: z.string().uuid(),
+  constraintReason: z.enum(['too-expensive', 'wrong-time', 'wrong-day', 'not-right']),
+})
+
+export const editActivitySchema = z.object({
+  timeOfDay: z.string().optional(),
+  day: z.string().optional(),
+  price: z.number().optional(),
+  detail: z.string().optional(),
+})
+
 // --- Live polling response ---
 export type TripLiveData = {
   activities: ActivityRow[]
