@@ -93,6 +93,11 @@ body::before {
   }
 }
 
+@keyframes activity-appear {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 @layer utilities {
   /* Layout */
   .page-shell {
@@ -122,6 +127,11 @@ body::before {
     background:
       radial-gradient(circle at top, rgba(201,168,76,0.14), transparent 30%),
       radial-gradient(circle at 80% 20%, rgba(42,107,60,0.16), transparent 28%);
+  }
+
+  /* Activity card stream-in animation */
+  .activity-appear {
+    animation: activity-appear 0.35s ease-out;
   }
 
   /* Scrollbar hide */
