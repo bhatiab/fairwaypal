@@ -193,7 +193,7 @@ export default function Page() {
                   A real plan. Not an afterthought.
                 </h3>
                 <ul className="mt-6 space-y-3 text-sm leading-7 text-muted-foreground">
-                  <li>Activities scheduled around golf — when they're on the course, you have a plan</li>
+                  <li>Activities scheduled around golf — when they&rsquo;re on the course, you have a plan</li>
                   <li>Spa, dining, tours, and experiences curated for the destination</li>
                   <li>Your own column on the itinerary — equal billing, not a footnote</li>
                   <li>Vote on what you actually want to do</li>
