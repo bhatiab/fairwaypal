@@ -2,9 +2,11 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { cache } from 'react'
 import { createServerSupabase } from '@/lib/supabase'
-import type { TripRow } from '@/types/trip'
+import type { TripRow, ActivityRow } from '@/types/trip'
 import Navbar from '../../../src/components/Navbar'
 import TripClient from './_client'
+import { TripProvider } from './components/TripContext'
+import NameGate from './components/NameGate'
 
 const getTrip = cache(async (id: string): Promise<TripRow | null> => {
   const supabase = createServerSupabase()
@@ -14,6 +16,17 @@ const getTrip = cache(async (id: string): Promise<TripRow | null> => {
     .eq('id', id)
     .single()
   return data as TripRow | null
+})
+
+const getActivities = cache(async (tripId: string): Promise<ActivityRow[]> => {
+  const supabase = createServerSupabase()
+  const { data } = await supabase
+    .from('activities')
+    .select('*')
+    .eq('trip_id', tripId)
+    .order('day_index', { ascending: true })
+    .order('sort_order', { ascending: true })
+  return (data as ActivityRow[]) ?? []
 })
 
 export async function generateMetadata({
@@ -44,6 +57,8 @@ export default async function TripPage({
   const trip = await getTrip(id)
   if (!trip) notFound()
 
+  const activities = await getActivities(trip.id)
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -51,7 +66,14 @@ export default async function TripPage({
         <h1 className="text-5xl font-display font-light italic leading-tight text-foreground sm:text-6xl">
           {trip.name}
         </h1>
-        <TripClient trip={trip} />
+        <TripProvider
+          tripId={trip.id}
+          organiserUuid={trip.organiser_uuid}
+          initialActivities={activities.map((a) => ({ id: a.id }))}
+        >
+          <NameGate />
+          <TripClient trip={trip} activities={activities} />
+        </TripProvider>
       </main>
     </div>
   )
