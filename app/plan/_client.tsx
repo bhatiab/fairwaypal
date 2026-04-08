@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { ChevronLeft } from 'lucide-react'
 import type { IntakeData, Vibe } from '@/types/trip'
@@ -29,9 +29,15 @@ const defaultState: WizardState = {
 
 export default function PlanClient() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const prefillDestination = searchParams.get('destination') ?? ''
+
   const [step, setStep] = useState(0)
   const [isGenerating, setIsGenerating] = useState(false)
-  const [state, setState] = useState<WizardState>(defaultState)
+  const [state, setState] = useState<WizardState>({
+    ...defaultState,
+    destination: prefillDestination,
+  })
 
   const nights = useMemo(
     () => calculateNights(state.datesStart, state.datesEnd),
