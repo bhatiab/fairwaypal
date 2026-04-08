@@ -115,6 +115,10 @@ export type ActivityRow = {
   price_unit: string | null
   tags: string[]
   ai_rationale: string | null
+  booking_url: string | null
+  booking_ref: string | null
+  confirmed_at: string | null
+  booked_at: string | null
   created_at: string
 }
 
