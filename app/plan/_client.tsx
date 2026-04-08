@@ -1,8 +1,10 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Input } from '@/components/ui/input'
 import { Slider } from '@/components/ui/slider'
+import type { ActivityPayload, StreamEvent } from '@/types/trip'
 
 type Vibe = 'serious-golf' | 'full-send' | 'mixed'
 
@@ -62,11 +64,31 @@ function calculateNights(start: string, end: string) {
   return Math.round(diff / (1000 * 60 * 60 * 24))
 }
 
+function getOrCreateOrganiserId(): string {
+  try {
+    const stored = localStorage.getItem('fairwaypal_organiser_uuid')
+    if (stored) return stored
+    const id = crypto.randomUUID()
+    localStorage.setItem('fairwaypal_organiser_uuid', id)
+    return id
+  } catch {
+    return crypto.randomUUID()
+  }
+}
+
 export default function PlanClient() {
+  const router = useRouter()
   const [step, setStep] = useState(0)
   const [isGenerating, setIsGenerating] = useState(false)
-  const [showSummary, setShowSummary] = useState(false)
   const [state, setState] = useState<IntakeState>(defaultState)
+  const [streamingActivities, setStreamingActivities] = useState<ActivityPayload[]>([])
+  const [error, setError] = useState<string | null>(null)
+  const organiserIdRef = useRef<string>('')
+  const abortRef = useRef<AbortController | null>(null)
+
+  useEffect(() => {
+    organiserIdRef.current = getOrCreateOrganiserId()
+  }, [])
 
   const nights = useMemo(
     () => calculateNights(state.datesStart, state.datesEnd),
@@ -107,26 +129,98 @@ export default function PlanClient() {
     })
   }
 
+  async function generateTrip() {
+    setIsGenerating(true)
+    setStreamingActivities([])
+    setError(null)
+
+    const controller = new AbortController()
+    abortRef.current = controller
+
+    // 90s timeout
+    const timeoutId = window.setTimeout(() => controller.abort(), 90_000)
+
+    try {
+      const response = await fetch('/api/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Organiser-UUID': organiserIdRef.current,
+        },
+        body: JSON.stringify(state),
+        signal: controller.signal,
+      })
+
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}))
+        throw new Error(body.error || `Request failed (${response.status})`)
+      }
+
+      if (!response.body) throw new Error('No response body')
+
+      const reader = response.body.getReader()
+      const decoder = new TextDecoder()
+      let partial = ''
+
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+
+        partial += decoder.decode(value, { stream: true })
+
+        // SSE events are separated by \n\n
+        const parts = partial.split('\n\n')
+        partial = parts.pop() ?? ''
+
+        for (const part of parts) {
+          const line = part.trim()
+          if (!line.startsWith('data: ')) continue
+          let event: StreamEvent
+          try {
+            event = JSON.parse(line.slice(6))
+          } catch {
+            continue
+          }
+
+          if (event.type === 'activity') {
+            setStreamingActivities((prev) => [...prev, event.data])
+          } else if (event.type === 'done') {
+            clearTimeout(timeoutId)
+            router.push(`/trip/${event.data.trip_id}`)
+            return
+          } else if (event.type === 'error') {
+            throw new Error(event.data.message)
+          }
+        }
+      }
+    } catch (err) {
+      clearTimeout(timeoutId)
+      if (err instanceof Error && err.name === 'AbortError') {
+        setError('Generation timed out. Please try again.')
+      } else {
+        setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+      }
+      setIsGenerating(false)
+    }
+  }
+
   function nextStep() {
     if (!stepValid) return
     if (step === 4) {
-      setIsGenerating(true)
-      window.setTimeout(() => {
-        setIsGenerating(false)
-        setShowSummary(true)
-      }, 1400)
+      generateTrip()
       return
     }
     setStep((current) => current + 1)
   }
 
   function prevStep() {
-    if (showSummary) {
-      setShowSummary(false)
-      setStep(4)
-      return
-    }
     setStep((current) => Math.max(0, current - 1))
+  }
+
+  function retryGeneration() {
+    setError(null)
+    setStreamingActivities([])
+    generateTrip()
   }
 
   return (
@@ -164,59 +258,57 @@ export default function PlanClient() {
       </aside>
 
       <section className="rounded-[2rem] border border-border bg-card/70 p-6 sm:p-8">
-        {showSummary ? (
+        {isGenerating ? (
           <div className="space-y-6">
-            <p className="eyebrow">Trip Brief</p>
-            <h2 className="text-4xl font-display font-light italic text-foreground">Your trip frame is ready for itinerary generation.</h2>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-3xl border border-border/80 bg-background/60 p-5">
-                <p className="text-sm font-semibold text-foreground">Trip Inputs</p>
-                <dl className="mt-4 space-y-3 text-sm text-muted-foreground">
-                  <div>
-                    <dt className="text-foreground">Destination</dt>
-                    <dd>{state.destination}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-foreground">Dates</dt>
-                    <dd>{state.datesStart} to {state.datesEnd} · {nights} nights</dd>
-                  </div>
-                  <div>
-                    <dt className="text-foreground">Group</dt>
-                    <dd>{state.golfers} golfers and {state.partners} partners</dd>
-                  </div>
-                  <div>
-                    <dt className="text-foreground">Budget</dt>
-                    <dd>${state.budgetPerRound} per round · {formatBudgetLabel(state.budgetPerRound)}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-foreground">Vibe</dt>
-                    <dd>{vibes.find((v) => v.value === state.vibe)?.label}</dd>
-                  </div>
-                </dl>
-              </div>
-              <div className="rounded-3xl border border-primary/30 bg-primary/10 p-5">
-                <p className="text-sm font-semibold text-foreground">What this enables next</p>
-                <ul className="mt-4 space-y-3 text-sm leading-7 text-muted-foreground">
-                  <li>POST the intake to `/api/generate`</li>
-                  <li>Stream itinerary construction back into the UI</li>
-                  <li>Persist a draft trip before sharing</li>
-                  <li>Prompt for organiser email after the itinerary lands</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        ) : isGenerating ? (
-          <div className="space-y-6 py-12 text-center">
             <p className="eyebrow">Building</p>
-            <h2 className="text-4xl font-display font-light italic text-foreground">Building your trip...</h2>
-            <div className="mx-auto flex w-fit items-center gap-2">
-              <span className="h-3 w-3 animate-bounce rounded-full bg-primary [animation-delay:-0.2s]" />
-              <span className="h-3 w-3 animate-bounce rounded-full bg-primary [animation-delay:-0.1s]" />
-              <span className="h-3 w-3 animate-bounce rounded-full bg-primary" />
-            </div>
-            <p className="mx-auto max-w-xl text-sm leading-7 text-muted-foreground">
-              The planner is framing the trip the same way the full product will: intake first, itinerary construction next, then review and sharing.
-            </p>
+            <h2 className="text-4xl font-display font-light italic text-foreground">
+              Building your trip...
+            </h2>
+
+            {streamingActivities.length === 0 ? (
+              <div className="flex flex-col items-center gap-4 py-8">
+                <div className="flex items-center gap-2">
+                  <span className="h-3 w-3 animate-bounce rounded-full bg-primary [animation-delay:-0.2s]" />
+                  <span className="h-3 w-3 animate-bounce rounded-full bg-primary [animation-delay:-0.1s]" />
+                  <span className="h-3 w-3 animate-bounce rounded-full bg-primary" />
+                </div>
+                <p className="text-sm text-muted-foreground">Generating itinerary for {state.destination}...</p>
+              </div>
+            ) : (
+              <div className="space-y-2 max-h-72 overflow-y-auto">
+                {streamingActivities.map((activity, i) => (
+                  <div
+                    key={i}
+                    className="activity-appear flex items-center gap-3 rounded-xl border border-border/60 bg-background/60 px-4 py-2.5"
+                  >
+                    <span
+                      className="text-[10px] font-bold uppercase tracking-[0.12em] px-1.5 py-0.5 rounded-sm shrink-0"
+                      style={{
+                        color: activity.side === 'golf' ? '#4daa6a' : activity.side === 'shared' ? '#c9a84c' : '#d4709a',
+                        background: activity.side === 'golf' ? 'rgba(42,107,60,0.18)' : activity.side === 'shared' ? 'rgba(201,168,76,0.12)' : 'rgba(160,69,110,0.18)',
+                      }}
+                    >
+                      {activity.side === 'golf' ? 'Golf' : activity.side === 'shared' ? 'Together' : 'Partners'}
+                    </span>
+                    <span className="text-sm text-foreground font-medium">{activity.name}</span>
+                    <span className="ml-auto text-xs text-muted-foreground shrink-0">{activity.day}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {error && (
+              <div className="rounded-2xl border border-destructive/40 bg-destructive/10 p-4 space-y-3">
+                <p className="text-sm text-foreground">{error}</p>
+                <button
+                  type="button"
+                  onClick={retryGeneration}
+                  className="primary-link"
+                >
+                  Try again
+                </button>
+              </div>
+            )}
           </div>
         ) : (
           <div className="space-y-8">
@@ -397,7 +489,7 @@ export default function PlanClient() {
                 disabled={!stepValid}
                 className="primary-link disabled:pointer-events-none disabled:opacity-40"
               >
-                {step === 4 ? 'Build Trip Brief' : 'Continue'}
+                {step === 4 ? 'Build My Trip' : 'Continue'}
               </button>
             </div>
           </div>

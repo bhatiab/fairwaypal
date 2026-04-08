@@ -72,6 +72,21 @@ export default {
         "neon-cyan": "hsl(var(--neon-cyan))",
         "neon-green": "hsl(var(--neon-green))",
         "neon-gold": "hsl(var(--neon-gold))",
+        fairway: {
+          DEFAULT: "#2a6b3c",
+          text: "#4daa6a",
+          dim: "rgba(42,107,60,0.18)",
+        },
+        partner: {
+          DEFAULT: "#a0456e",
+          text: "#d4709a",
+          dim: "rgba(160,69,110,0.18)",
+        },
+        gold: {
+          DEFAULT: "#c9a84c",
+          dim: "rgba(201,168,76,0.12)",
+          border: "rgba(201,168,76,0.25)",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
