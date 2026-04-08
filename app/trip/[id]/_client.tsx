@@ -20,6 +20,7 @@ import type {
   VoteDirection,
 } from '@/types/trip'
 import { useTripContext } from './components/TripContext'
+import OrgDashboard, { ActivityActions } from './components/OrgDashboard'
 
 /* ------------------------------------------------------------------ */
 /*  Vote Tally Bar                                                     */
@@ -220,12 +221,16 @@ function ActivityCard({
   activity,
   activityRow,
   side,
+  onActivityUpdate,
 }: {
   activity: Activity
   activityRow?: ActivityRow
   side: 'golf' | 'partner' | 'shared'
+  onActivityUpdate?: (updated: ActivityRow) => void
 }) {
   const [showRationale, setShowRationale] = useState(false)
+
+  const isCancelled = activityRow?.status === 'cancelled' || activityRow?.status === 'removed'
 
   const accentClass =
     side === 'golf'
@@ -236,12 +241,12 @@ function ActivityCard({
 
   return (
     <div
-      className={`rounded-xl border border-border bg-card/60 p-4 border-l-2 ${accentClass}`}
+      className={`rounded-xl border border-border bg-card/60 p-4 border-l-2 ${accentClass} ${isCancelled ? 'opacity-40' : ''}`}
     >
       <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
         {activity.timeOfDay}
       </p>
-      <p className="mt-1 text-base font-semibold text-foreground">
+      <p className={`mt-1 text-base font-semibold text-foreground ${isCancelled ? 'line-through' : ''}`}>
         {activity.name}
       </p>
       <p className="mt-1 text-sm leading-6 text-muted-foreground">
@@ -271,13 +276,18 @@ function ActivityCard({
         </p>
       )}
 
-      {/* Vote buttons + tally (only if we have a DB row) */}
-      {activityRow && (
+      {/* Vote buttons + tally (only if we have a DB row and not cancelled) */}
+      {activityRow && !isCancelled && (
         <>
           <VoteButtons activityId={activityRow.id} />
           <VoteTallyBar activityId={activityRow.id} />
           <CommentThread activityId={activityRow.id} />
         </>
+      )}
+
+      {/* Organiser actions */}
+      {activityRow && onActivityUpdate && !isCancelled && (
+        <ActivityActions activityRow={activityRow} onUpdate={onActivityUpdate} />
       )}
     </div>
   )
@@ -362,9 +372,11 @@ function ShareButton({ tripId, tripName }: { tripId: string; tripName: string })
 function DaySection({
   day,
   activityRows,
+  onActivityUpdate,
 }: {
   day: GeneratedDay
   activityRows: ActivityRow[]
+  onActivityUpdate: (updated: ActivityRow) => void
 }) {
   const hasPartner = day.partnerActivities.length > 0
   const hasShared = day.sharedActivities.length > 0
@@ -397,6 +409,7 @@ function DaySection({
               activity={a}
               activityRow={findRow(a.name, 'shared')}
               side="shared"
+              onActivityUpdate={onActivityUpdate}
             />
           ))}
         </div>
@@ -415,6 +428,7 @@ function DaySection({
               activity={a}
               activityRow={findRow(a.name, 'golf')}
               side="golf"
+              onActivityUpdate={onActivityUpdate}
             />
           ))}
         </div>
@@ -431,6 +445,7 @@ function DaySection({
                 activity={a}
                 activityRow={findRow(a.name, 'partner')}
                 side="partner"
+                onActivityUpdate={onActivityUpdate}
               />
             ))}
           </div>
@@ -529,12 +544,19 @@ function EmailCapture({ tripId }: { tripId: string }) {
 
 export default function TripClient({
   trip,
-  activities,
+  activities: initialActivities,
 }: {
   trip: TripRow
   activities: ActivityRow[]
 }) {
   const itinerary = trip.itinerary
+  const [activities, setActivities] = useState(initialActivities)
+
+  const handleActivityUpdate = useCallback((updated: ActivityRow) => {
+    setActivities((prev) =>
+      prev.map((a) => (a.id === updated.id ? updated : a)),
+    )
+  }, [])
 
   return (
     <div className="mt-8 space-y-12">
@@ -558,6 +580,9 @@ export default function TripClient({
       {/* Crew strip */}
       <CrewStrip />
 
+      {/* Organiser Dashboard */}
+      <OrgDashboard activities={activities} />
+
       {/* Day-by-day itinerary */}
       <div className="space-y-10">
         {itinerary.days.map((day) => (
@@ -565,6 +590,7 @@ export default function TripClient({
             key={day.dayIndex}
             day={day}
             activityRows={activities}
+            onActivityUpdate={handleActivityUpdate}
           />
         ))}
       </div>
