@@ -13,9 +13,11 @@ import {
   EyeOff,
   CheckCircle2,
   X,
+  RefreshCw,
 } from 'lucide-react'
 import type { ActivityRow, VoteRow, ParticipantRow } from '@/types/trip'
 import { useTripContext } from './TripContext'
+import SwapPanel from './SwapPanel'
 
 /* ------------------------------------------------------------------ */
 /*  Participant Tracker                                                */
@@ -261,6 +263,7 @@ export function ActivityActions({
   const { tripId, isOrganiser } = useTripContext()
   const [loading, setLoading] = useState<string | null>(null)
   const [editMode, setEditMode] = useState(false)
+  const [showSwap, setShowSwap] = useState(false)
   const [bookingRef, setBookingRef] = useState('')
 
   if (!isOrganiser) return null
@@ -291,7 +294,8 @@ export function ActivityActions({
   const status = activityRow.status
 
   return (
-    <div className="mt-3 flex flex-wrap items-center gap-2">
+    <div className="mt-3">
+    <div className="flex flex-wrap items-center gap-2">
       {/* Status badge */}
       <StatusBadge status={status} />
 
@@ -304,6 +308,13 @@ export function ActivityActions({
             icon={<CheckCircle2 className="h-3 w-3" />}
             label="Confirm"
             variant="green"
+          />
+          <OrgButton
+            onClick={() => setShowSwap(!showSwap)}
+            loading={false}
+            icon={<RefreshCw className="h-3 w-3" />}
+            label="Swap"
+            variant="amber"
           />
           <OrgButton
             onClick={() => doAction('discuss')}
@@ -362,6 +373,17 @@ export function ActivityActions({
         <span className="text-xs text-emerald-400">
           Ref: {activityRow.booking_ref}
         </span>
+      )}
+
+    </div>
+
+      {/* Swap panel */}
+      {showSwap && (
+        <SwapPanel
+          activityRow={activityRow}
+          onSwap={onUpdate}
+          onClose={() => setShowSwap(false)}
+        />
       )}
     </div>
   )
@@ -488,6 +510,44 @@ function LockTripButton() {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Regenerate Button                                                  */
+/* ------------------------------------------------------------------ */
+
+function RegenerateButton() {
+  const { tripId } = useTripContext()
+  const [regenerating, setRegenerating] = useState(false)
+
+  async function handleRegenerate() {
+    setRegenerating(true)
+    try {
+      const res = await fetch(`/api/trip/${tripId}/regenerate`, { method: 'POST' })
+      if (res.ok) {
+        toast.success('Trip regenerated based on votes! Reloading...')
+        window.location.reload()
+      } else {
+        toast.error('Failed to regenerate. Try again.')
+      }
+    } catch {
+      toast.error('Failed to regenerate. Try again.')
+    } finally {
+      setRegenerating(false)
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleRegenerate}
+      disabled={regenerating}
+      className="flex items-center gap-2 rounded-sm border border-border px-4 py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted-foreground hover:border-gold hover:text-gold disabled:opacity-40"
+    >
+      <RefreshCw className={`h-3.5 w-3.5 ${regenerating ? 'animate-spin' : ''}`} />
+      {regenerating ? 'Regenerating...' : 'Regenerate'}
+    </button>
+  )
+}
+
+/* ------------------------------------------------------------------ */
 /*  Main Organiser Dashboard                                           */
 /* ------------------------------------------------------------------ */
 
@@ -509,7 +569,10 @@ export default function OrgDashboard({
             Only you can see this section.
           </p>
         </div>
-        <LockTripButton />
+        <div className="flex items-center gap-2">
+          <RegenerateButton />
+          <LockTripButton />
+        </div>
       </div>
 
       <ParticipantTracker activities={activities} />
