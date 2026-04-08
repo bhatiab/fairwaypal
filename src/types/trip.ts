@@ -118,6 +118,55 @@ export type ActivityRow = {
   created_at: string
 }
 
+// --- Participant colors (assigned on creation) ---
+export const PARTICIPANT_COLORS = [
+  '#c9a84c', '#4daa6a', '#d4709a', '#5b9bd5', '#e6854a',
+  '#8b6cc1', '#47b8a0', '#d4556b',
+] as const
+
+export type ParticipantRole = 'organiser' | 'golfer' | 'partner'
+export type VoteDirection = 'up' | 'down'
+
+export type ParticipantRow = {
+  id: string
+  trip_id: string
+  name: string
+  initial: string
+  color: string
+  role: ParticipantRole
+  device_uuid: string | null
+  has_voted: boolean
+  opened_link: boolean
+  last_seen: string | null
+  created_at: string
+}
+
+export type VoteRow = {
+  id: string
+  activity_id: string
+  trip_id: string
+  participant_id: string
+  direction: VoteDirection
+  created_at: string
+}
+
+export type CommentRow = {
+  id: string
+  activity_id: string
+  trip_id: string
+  participant_id: string
+  text: string
+  sentiment: VoteDirection | null
+  created_at: string
+}
+
+// Vote tally per activity (computed client-side)
+export type VoteTally = {
+  up: number
+  down: number
+  myVote: VoteDirection | null
+}
+
 // --- Helpers ---
 export function calculateNights(start: string, end: string): number {
   if (!start || !end) return 0

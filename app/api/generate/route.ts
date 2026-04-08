@@ -147,9 +147,10 @@ export async function POST(request: Request) {
     const { organiserUuid, destination, datesStart, datesEnd, golfers, partners, budgetPerRound, vibe } = parsed.data
     const intake = { destination, datesStart, datesEnd, golfers, partners, budgetPerRound, vibe }
 
-    // Call Claude with tool_use
     const anthropic = new Anthropic()
-    const message = await anthropic.messages.create({
+
+    // Use streaming for faster perceived response
+    const stream = anthropic.messages.stream({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 4096,
       system: buildSystemPrompt(),
@@ -164,151 +165,190 @@ export async function POST(request: Request) {
       messages: [{ role: 'user', content: buildUserPrompt(intake) }],
     })
 
-    // Extract the tool use result
-    const toolBlock = message.content.find((b) => b.type === 'tool_use')
-    if (!toolBlock || toolBlock.type !== 'tool_use') {
-      return NextResponse.json(
-        { error: 'generation_failed', detail: 'No tool use in response' },
-        { status: 502 },
-      )
-    }
-
-    const itineraryResult = generatedItinerarySchema.safeParse(toolBlock.input)
-    if (!itineraryResult.success) {
-      console.error('Itinerary validation failed:', itineraryResult.error)
-      return NextResponse.json(
-        { error: 'generation_failed', detail: 'Invalid itinerary structure' },
-        { status: 502 },
-      )
-    }
-
-    const itinerary = itineraryResult.data
-    const nights = Math.round(
-      (new Date(intake.datesEnd).getTime() -
-        new Date(intake.datesStart).getTime()) /
-        (1000 * 60 * 60 * 24),
-    )
-
-    // Generate slug
-    const suffix = Math.random().toString(16).slice(2, 6)
-    const slug = `${toHotelSlug(itinerary.tripName)}-${suffix}`
-
-    // Insert trip into Supabase
-    const supabase = createServerSupabase()
-    const { data: trip, error: tripError } = await supabase
-      .from('trips')
-      .insert({
-        slug,
-        name: itinerary.tripName,
-        destination: intake.destination,
-        dates_start: intake.datesStart,
-        dates_end: intake.datesEnd,
-        nights,
-        golfers_count: intake.golfers,
-        partners_count: intake.partners,
-        budget_per_round: intake.budgetPerRound,
-        vibe: intake.vibe,
-        status: 'draft',
-        organiser_uuid: organiserUuid,
-        itinerary,
-        intake_data: intake,
-      })
-      .select('id')
-      .single()
-
-    if (tripError || !trip) {
-      console.error('Trip insert failed:', tripError)
-      return NextResponse.json(
-        { error: 'save_failed' },
-        { status: 500 },
-      )
-    }
-
-    // Flatten activities into the activities table
-    const activityRows = itinerary.days.flatMap((day) => {
-      const rows: Array<{
-        trip_id: string
-        name: string
-        detail: string
-        time_of_day: string
-        day: string
-        day_index: number
-        sort_order: number
-        side: string
-        price: number
-        price_unit: string
-        tags: string[]
-        ai_rationale: string
-      }> = []
-
-      let sortOrder = 0
-
-      for (const a of day.golfActivities) {
-        rows.push({
-          trip_id: trip.id,
-          name: a.name,
-          detail: a.detail,
-          time_of_day: a.timeOfDay,
-          day: day.dayLabel,
-          day_index: day.dayIndex,
-          sort_order: sortOrder++,
-          side: 'golf',
-          price: Math.round(a.estimatedPrice * 100),
-          price_unit: a.priceUnit,
-          tags: a.tags,
-          ai_rationale: a.aiRationale,
+    // Stream partial JSON to the client via SSE
+    const encoder = new TextEncoder()
+    const readable = new ReadableStream({
+      async start(controller) {
+        stream.on('inputJson', (partialJson) => {
+          // Send partial JSON chunk to client
+          controller.enqueue(
+            encoder.encode(`data: ${JSON.stringify({ type: 'partial', json: partialJson })}\n\n`),
+          )
         })
-      }
 
-      for (const a of day.partnerActivities) {
-        rows.push({
-          trip_id: trip.id,
-          name: a.name,
-          detail: a.detail,
-          time_of_day: a.timeOfDay,
-          day: day.dayLabel,
-          day_index: day.dayIndex,
-          sort_order: sortOrder++,
-          side: 'partner',
-          price: Math.round(a.estimatedPrice * 100),
-          price_unit: a.priceUnit,
-          tags: a.tags,
-          ai_rationale: a.aiRationale,
-        })
-      }
+        try {
+          const finalMessage = await stream.finalMessage()
 
-      for (const a of day.sharedActivities) {
-        rows.push({
-          trip_id: trip.id,
-          name: a.name,
-          detail: a.detail,
-          time_of_day: a.timeOfDay,
-          day: day.dayLabel,
-          day_index: day.dayIndex,
-          sort_order: sortOrder++,
-          side: 'shared',
-          price: Math.round(a.estimatedPrice * 100),
-          price_unit: a.priceUnit,
-          tags: a.tags,
-          ai_rationale: a.aiRationale,
-        })
-      }
+          // Extract the tool use result
+          const toolBlock = finalMessage.content.find((b) => b.type === 'tool_use')
+          if (!toolBlock || toolBlock.type !== 'tool_use') {
+            controller.enqueue(
+              encoder.encode(`data: ${JSON.stringify({ type: 'error', error: 'No tool use in response' })}\n\n`),
+            )
+            controller.close()
+            return
+          }
 
-      return rows
+          const itineraryResult = generatedItinerarySchema.safeParse(toolBlock.input)
+          if (!itineraryResult.success) {
+            console.error('Itinerary validation failed:', itineraryResult.error)
+            controller.enqueue(
+              encoder.encode(`data: ${JSON.stringify({ type: 'error', error: 'Invalid itinerary structure' })}\n\n`),
+            )
+            controller.close()
+            return
+          }
+
+          const itinerary = itineraryResult.data
+          const nights = Math.round(
+            (new Date(intake.datesEnd).getTime() -
+              new Date(intake.datesStart).getTime()) /
+              (1000 * 60 * 60 * 24),
+          )
+
+          // Generate slug
+          const suffix = Math.random().toString(16).slice(2, 6)
+          const slug = `${toHotelSlug(itinerary.tripName)}-${suffix}`
+
+          // Insert trip into Supabase
+          const supabase = createServerSupabase()
+          const { data: trip, error: tripError } = await supabase
+            .from('trips')
+            .insert({
+              slug,
+              name: itinerary.tripName,
+              destination: intake.destination,
+              dates_start: intake.datesStart,
+              dates_end: intake.datesEnd,
+              nights,
+              golfers_count: intake.golfers,
+              partners_count: intake.partners,
+              budget_per_round: intake.budgetPerRound,
+              vibe: intake.vibe,
+              status: 'draft',
+              organiser_uuid: organiserUuid,
+              itinerary,
+              intake_data: intake,
+            })
+            .select('id')
+            .single()
+
+          if (tripError || !trip) {
+            console.error('Trip insert failed:', tripError)
+            controller.enqueue(
+              encoder.encode(`data: ${JSON.stringify({ type: 'error', error: 'save_failed' })}\n\n`),
+            )
+            controller.close()
+            return
+          }
+
+          // Flatten activities into the activities table
+          const activityRows = itinerary.days.flatMap((day) => {
+            const rows: Array<{
+              trip_id: string
+              name: string
+              detail: string
+              time_of_day: string
+              day: string
+              day_index: number
+              sort_order: number
+              side: string
+              price: number
+              price_unit: string
+              tags: string[]
+              ai_rationale: string
+            }> = []
+
+            let sortOrder = 0
+
+            for (const a of day.golfActivities) {
+              rows.push({
+                trip_id: trip.id,
+                name: a.name,
+                detail: a.detail,
+                time_of_day: a.timeOfDay,
+                day: day.dayLabel,
+                day_index: day.dayIndex,
+                sort_order: sortOrder++,
+                side: 'golf',
+                price: Math.round(a.estimatedPrice * 100),
+                price_unit: a.priceUnit,
+                tags: a.tags,
+                ai_rationale: a.aiRationale,
+              })
+            }
+
+            for (const a of day.partnerActivities) {
+              rows.push({
+                trip_id: trip.id,
+                name: a.name,
+                detail: a.detail,
+                time_of_day: a.timeOfDay,
+                day: day.dayLabel,
+                day_index: day.dayIndex,
+                sort_order: sortOrder++,
+                side: 'partner',
+                price: Math.round(a.estimatedPrice * 100),
+                price_unit: a.priceUnit,
+                tags: a.tags,
+                ai_rationale: a.aiRationale,
+              })
+            }
+
+            for (const a of day.sharedActivities) {
+              rows.push({
+                trip_id: trip.id,
+                name: a.name,
+                detail: a.detail,
+                time_of_day: a.timeOfDay,
+                day: day.dayLabel,
+                day_index: day.dayIndex,
+                sort_order: sortOrder++,
+                side: 'shared',
+                price: Math.round(a.estimatedPrice * 100),
+                price_unit: a.priceUnit,
+                tags: a.tags,
+                ai_rationale: a.aiRationale,
+              })
+            }
+
+            return rows
+          })
+
+          if (activityRows.length > 0) {
+            const { error: actError } = await supabase
+              .from('activities')
+              .insert(activityRows)
+
+            if (actError) {
+              console.error('Activity insert failed:', actError)
+            }
+          }
+
+          // Send final result
+          controller.enqueue(
+            encoder.encode(
+              `data: ${JSON.stringify({ type: 'done', tripId: trip.id, slug })}\n\n`,
+            ),
+          )
+          controller.close()
+        } catch (err) {
+          console.error('Stream processing error:', err)
+          controller.enqueue(
+            encoder.encode(`data: ${JSON.stringify({ type: 'error', error: 'generation_failed' })}\n\n`),
+          )
+          controller.close()
+        }
+      },
     })
 
-    if (activityRows.length > 0) {
-      const { error: actError } = await supabase
-        .from('activities')
-        .insert(activityRows)
-
-      if (actError) {
-        console.error('Activity insert failed:', actError)
-        // Non-fatal: trip still exists with itinerary JSON
-      }
-    }
-
-    return NextResponse.json({ tripId: trip.id, slug })
+    return new Response(readable, {
+      headers: {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        Connection: 'keep-alive',
+      },
+    })
   } catch (err) {
     console.error('Generate endpoint error:', err)
     return NextResponse.json(

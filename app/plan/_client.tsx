@@ -80,6 +80,9 @@ export default function PlanClient() {
       localStorage.getItem('fairwaypal_organiser_uuid') ?? crypto.randomUUID()
     localStorage.setItem('fairwaypal_organiser_uuid', organiserUuid)
 
+    // Also store as device UUID for name gate auto-connect
+    localStorage.setItem('fairwaypal_device_uuid', organiserUuid)
+
     try {
       const res = await fetch('/api/generate', {
         method: 'POST',
@@ -92,8 +95,37 @@ export default function PlanClient() {
         throw new Error(data.error || 'Generation failed')
       }
 
-      const { tripId } = await res.json()
-      router.push(`/trip/${tripId}`)
+      // Read SSE stream
+      const reader = res.body?.getReader()
+      if (!reader) throw new Error('No response stream')
+
+      const decoder = new TextDecoder()
+      let buffer = ''
+
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+
+        buffer += decoder.decode(value, { stream: true })
+        const lines = buffer.split('\n')
+        buffer = lines.pop() ?? ''
+
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue
+          const payload = JSON.parse(line.slice(6))
+
+          if (payload.type === 'done') {
+            router.push(`/trip/${payload.tripId}`)
+            return
+          }
+          if (payload.type === 'error') {
+            throw new Error(payload.error || 'Generation failed')
+          }
+          // payload.type === 'partial' — streaming progress (animation handles UX)
+        }
+      }
+
+      throw new Error('Stream ended without result')
     } catch (err) {
       toast.error(
         err instanceof Error ? err.message : 'Something went wrong. Try again.',
