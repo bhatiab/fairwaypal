@@ -249,7 +249,7 @@ function Countdown({ datesStart }: { datesStart: string }) {
 /*  Bottom Actions                                                     */
 /* ------------------------------------------------------------------ */
 
-function BottomActions({ tripId, tripName }: { tripId: string; tripName: string }) {
+function BottomActions({ tripId, tripName, destination }: { tripId: string; tripName: string; destination: string }) {
   const [copied, setCopied] = useState(false)
   const shareUrl = typeof window !== 'undefined'
     ? `${window.location.origin}/trip/${tripId}/confirmed`
@@ -285,7 +285,15 @@ function BottomActions({ tripId, tripName }: { tripId: string; tripName: string 
         {copied ? 'Copied' : 'Share with group'}
       </button>
       <a
-        href="/plan"
+        href={`/api/trip/${tripId}/calendar`}
+        download
+        className="flex items-center gap-2 rounded-sm border border-border px-4 py-2 text-xs font-medium uppercase tracking-[0.08em] text-muted-foreground hover:border-gold hover:text-gold"
+      >
+        <Calendar className="h-4 w-4" />
+        Add to calendar
+      </a>
+      <a
+        href={`/plan?destination=${encodeURIComponent(destination)}`}
         className="flex items-center gap-2 rounded-sm border border-gold bg-gold/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.08em] text-gold hover:bg-gold/20"
       >
         Plan the next one <ArrowRight className="h-3.5 w-3.5" />
@@ -340,7 +348,7 @@ export default function ConfirmedClient({
       </div>
 
       {/* Bottom actions */}
-      <BottomActions tripId={trip.id} tripName={trip.name} />
+      <BottomActions tripId={trip.id} tripName={trip.name} destination={trip.destination} />
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import Navbar from '../../src/components/Navbar'
 import PlanClient from './_client'
 
@@ -30,7 +31,9 @@ export default function PlanPage() {
       <Navbar />
       <h1 className="sr-only">Plan Your Golf Trip</h1>
       <main className="pt-20">
-        <PlanClient />
+        <Suspense>
+          <PlanClient />
+        </Suspense>
       </main>
     </div>
   )
