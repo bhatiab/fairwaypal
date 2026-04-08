@@ -1,49 +1,86 @@
-export type Vibe = 'serious-golf' | 'full-send' | 'mixed'
-export type ActivitySide = 'golf' | 'partner' | 'shared'
-export type ActivityStatus =
-  | 'proposed'
-  | 'in-discussion'
-  | 'confirmed'
-  | 'booked'
-  | 'cancelled'
-  | 'removed'
-export type TripStatus = 'draft' | 'voting' | 'locked' | 'completed'
+import { z } from 'zod'
 
-// Raw intake from the wizard — matches IntakeState in app/plan/_client.tsx
-export interface TripIntake {
-  destination: string
-  datesStart: string // "YYYY-MM-DD"
-  datesEnd: string
-  golfers: number
-  partners: number
-  budgetPerRound: number
-  vibe: Vibe
-}
+// --- Vibe ---
+export const vibeValues = ['serious-golf', 'full-send', 'mixed'] as const
+export type Vibe = (typeof vibeValues)[number]
 
-// What Claude returns for a single activity
-export interface ActivityPayload {
+// --- Intake ---
+export const intakeSchema = z.object({
+  destination: z.string().min(2),
+  datesStart: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  datesEnd: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  golfers: z.number().int().min(2),
+  partners: z.number().int().min(0),
+  budgetPerRound: z.number().int().min(50).max(500),
+  vibe: z.enum(vibeValues),
+})
+
+export type IntakeData = z.infer<typeof intakeSchema>
+
+export const generateRequestSchema = intakeSchema.extend({
+  organiserUuid: z.string().uuid(),
+})
+
+export type GenerateRequest = z.infer<typeof generateRequestSchema>
+
+// --- Generated itinerary (Claude tool_use output) ---
+export type Activity = {
   name: string
   detail: string
-  time_of_day: string
-  day: string
-  day_index: number
-  sort_order: number
-  side: ActivitySide
-  price: number // USD cents
+  timeOfDay: string
+  estimatedPrice: number
+  priceUnit: 'per-person' | 'per-round' | 'per-night'
   tags: string[]
-  booking_url: string
-  ai_rationale: string
+  aiRationale: string
+  bookingSearchQuery?: string
 }
 
-// Claude's full JSON response shape
-export interface GeneratedItinerary {
-  trip_name: string
-  slug: string
-  activities: ActivityPayload[]
+export type GeneratedDay = {
+  dayIndex: number
+  dayLabel: string
+  dateLabel: string
+  golfActivities: Activity[]
+  partnerActivities: Activity[]
+  sharedActivities: Activity[]
 }
 
-// Database row — trips table
-export interface Trip {
+export type GeneratedItinerary = {
+  tripName: string
+  days: GeneratedDay[]
+  estimatedBudgetPerGolfer: number
+  estimatedBudgetPerPartner: number
+}
+
+// Zod schema for validating Claude's tool output
+export const activitySchema = z.object({
+  name: z.string(),
+  detail: z.string(),
+  timeOfDay: z.string(),
+  estimatedPrice: z.number(),
+  priceUnit: z.enum(['per-person', 'per-round', 'per-night']),
+  tags: z.array(z.string()),
+  aiRationale: z.string(),
+  bookingSearchQuery: z.string().optional(),
+})
+
+export const generatedDaySchema = z.object({
+  dayIndex: z.number(),
+  dayLabel: z.string(),
+  dateLabel: z.string(),
+  golfActivities: z.array(activitySchema),
+  partnerActivities: z.array(activitySchema),
+  sharedActivities: z.array(activitySchema),
+})
+
+export const generatedItinerarySchema = z.object({
+  tripName: z.string(),
+  days: z.array(generatedDaySchema),
+  estimatedBudgetPerGolfer: z.number(),
+  estimatedBudgetPerPartner: z.number(),
+})
+
+// --- Database row types ---
+export type TripRow = {
   id: string
   slug: string
   name: string
@@ -55,39 +92,45 @@ export interface Trip {
   partners_count: number
   budget_per_round: number
   vibe: Vibe
-  status: TripStatus
+  status: 'draft' | 'voting' | 'locked' | 'completed'
   organiser_uuid: string
-  intake_data: TripIntake
+  organiser_email: string | null
+  itinerary: GeneratedItinerary
+  intake_data: IntakeData
   created_at: string
 }
 
-// Database row — activities table
-export interface Activity {
+export type ActivityRow = {
   id: string
   trip_id: string
   name: string
-  detail: string
-  time_of_day: string
-  day: string
+  detail: string | null
+  time_of_day: string | null
+  day: string | null
   day_index: number
   sort_order: number
-  side: ActivitySide
-  status: ActivityStatus
-  price: number // USD cents
+  side: 'golf' | 'partner' | 'shared'
+  status: 'proposed' | 'in-discussion' | 'confirmed' | 'booked' | 'cancelled' | 'removed'
+  price: number | null
+  price_unit: string | null
   tags: string[]
-  booking_url: string
-  ai_rationale: string
+  ai_rationale: string | null
   created_at: string
 }
 
-// For the trip view — trip + its activities joined
-export interface TripWithActivities extends Trip {
-  activities: Activity[]
+// --- Helpers ---
+export function calculateNights(start: string, end: string): number {
+  if (!start || !end) return 0
+  const s = new Date(start)
+  const e = new Date(end)
+  const diff = e.getTime() - s.getTime()
+  if (Number.isNaN(diff) || diff <= 0) return 0
+  return Math.round(diff / (1000 * 60 * 60 * 24))
 }
 
-// SSE event shapes streamed from /api/generate
-export type StreamEvent =
-  | { type: 'activity'; data: ActivityPayload }
-  | { type: 'trip_meta'; data: { trip_name: string; slug: string } }
-  | { type: 'done'; data: { trip_id: string } }
-  | { type: 'error'; data: { message: string } }
+export function formatBudgetLabel(value: number): string {
+  if (value <= 100) return 'Budget'
+  if (value <= 200) return 'Mid-range'
+  if (value <= 300) return 'Premium'
+  return 'Bucket list'
+}

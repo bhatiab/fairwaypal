@@ -1,407 +1,319 @@
+import { NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
-import { getSupabaseServer } from '../../../src/lib/supabase'
-import type { TripIntake, ActivityPayload, GeneratedItinerary } from '../../../src/types/trip'
+import { generateRequestSchema, generatedItinerarySchema } from '@/types/trip'
+import { createServerSupabase } from '@/lib/supabase'
+import { toHotelSlug } from '@/lib/slugify'
 
-export const runtime = 'nodejs'
 export const maxDuration = 60
+export const dynamic = 'force-dynamic'
 
-const SYSTEM_PROMPT = `You are FairwayPal's trip planning AI. Return ONLY valid JSON. No prose, no markdown code fences, no explanation.
-
-STRICT RULES:
-1. Return a single JSON object matching the schema exactly.
-2. Generate activities for BOTH the golf side AND the partner side (unless partners === 0).
-3. When golfers are on the course, partners must have a plan — activities slot into schedule gaps.
-4. Include EXACTLY ONE shared activity (side: "shared") — typically Saturday evening dinner at a real local restaurant.
-5. Use REAL venue and course names appropriate for the destination.
-6. Price all activities consistent with budget_per_round: $50-150 = public courses and casual dining; $150-250 = resort/semi-private; $250+ = private/bucket-list courses and upscale dining.
-7. Generate 8-16 total activities depending on trip length (more nights = more activities).
-8. day_index is 0-based from the start date (first day = 0).
-9. sort_order is the sequence within a day starting at 1.
-10. price is in USD cents (e.g. $150 green fee = 15000).
-11. booking_url must always be an empty string "".
-12. tags are 1-3 short lowercase descriptors: ["golf", "morning"], ["spa", "wellness"], ["dinner", "shared"].
-
-RETURN SCHEMA (exact — no deviations, no extra fields):
-{
-  "trip_name": "string — fun specific name for this trip (e.g. Jake's Last Swing)",
-  "slug": "string — URL-safe kebab-case of trip_name (e.g. jakes-last-swing)",
-  "activities": [
-    {
-      "name": "string",
-      "detail": "string — 1-2 sentences describing the activity and why it fits",
-      "time_of_day": "string — e.g. 7:10 AM, 1:30 PM, Evening",
-      "day": "string — e.g. Friday, Saturday, Sunday",
-      "day_index": 0,
-      "sort_order": 1,
-      "side": "golf | partner | shared",
-      "price": 0,
-      "tags": [],
-      "booking_url": "",
-      "ai_rationale": "string — one sentence on why this was chosen for this group"
-    }
-  ]
-}`
-
-function buildUserMessage(intake: TripIntake, nights: number): string {
-  const vibeNote = {
-    'serious-golf': 'Priority: early tee times, minimal evening drift, schedule protects the rounds.',
-    'full-send': 'Priority: golf matters but nightlife and big shared group moments get real weight.',
-    'mixed': 'Priority: strong golf itinerary with breathing room and intentional shared plans.',
-  }[intake.vibe]
-
-  const partnerNote = intake.partners === 0
-    ? 'This is a golf-only trip. Do NOT generate any partner-side activities (side: "partner"). All activities should have side: "golf" except the one shared activity.'
-    : `${intake.partners} partner(s) are joining. Generate a full partner itinerary that fills gaps in the golf schedule.`
-
-  return `Generate a golf trip itinerary for:
-
-Destination: ${intake.destination}
-Dates: ${intake.datesStart} to ${intake.datesEnd} (${nights} nights)
-Golfers: ${intake.golfers}
-Partners joining: ${intake.partners}
-Budget per round: $${intake.budgetPerRound}
-Vibe: ${intake.vibe}
-
-${vibeNote}
-${partnerNote}`
+const itineraryToolSchema = {
+  type: 'object' as const,
+  required: [
+    'tripName',
+    'days',
+    'estimatedBudgetPerGolfer',
+    'estimatedBudgetPerPartner',
+  ],
+  properties: {
+    tripName: { type: 'string' as const, description: 'A creative, memorable name for this trip' },
+    days: {
+      type: 'array' as const,
+      items: {
+        type: 'object' as const,
+        required: [
+          'dayIndex',
+          'dayLabel',
+          'dateLabel',
+          'golfActivities',
+          'partnerActivities',
+          'sharedActivities',
+        ],
+        properties: {
+          dayIndex: { type: 'number' as const },
+          dayLabel: { type: 'string' as const, description: 'e.g. "Friday"' },
+          dateLabel: { type: 'string' as const, description: 'e.g. "Apr 18"' },
+          golfActivities: {
+            type: 'array' as const,
+            items: {
+              type: 'object' as const,
+              required: ['name', 'detail', 'timeOfDay', 'estimatedPrice', 'priceUnit', 'tags', 'aiRationale'],
+              properties: {
+                name: { type: 'string' as const },
+                detail: { type: 'string' as const },
+                timeOfDay: { type: 'string' as const, description: 'e.g. "7:00 AM"' },
+                estimatedPrice: { type: 'number' as const, description: 'USD' },
+                priceUnit: { type: 'string' as const, enum: ['per-person', 'per-round', 'per-night'] },
+                tags: { type: 'array' as const, items: { type: 'string' as const } },
+                aiRationale: { type: 'string' as const, description: 'One line explaining why this was chosen' },
+                bookingSearchQuery: { type: 'string' as const },
+              },
+            },
+          },
+          partnerActivities: {
+            type: 'array' as const,
+            items: {
+              type: 'object' as const,
+              required: ['name', 'detail', 'timeOfDay', 'estimatedPrice', 'priceUnit', 'tags', 'aiRationale'],
+              properties: {
+                name: { type: 'string' as const },
+                detail: { type: 'string' as const },
+                timeOfDay: { type: 'string' as const },
+                estimatedPrice: { type: 'number' as const },
+                priceUnit: { type: 'string' as const, enum: ['per-person', 'per-round', 'per-night'] },
+                tags: { type: 'array' as const, items: { type: 'string' as const } },
+                aiRationale: { type: 'string' as const },
+                bookingSearchQuery: { type: 'string' as const },
+              },
+            },
+          },
+          sharedActivities: {
+            type: 'array' as const,
+            items: {
+              type: 'object' as const,
+              required: ['name', 'detail', 'timeOfDay', 'estimatedPrice', 'priceUnit', 'tags', 'aiRationale'],
+              properties: {
+                name: { type: 'string' as const },
+                detail: { type: 'string' as const },
+                timeOfDay: { type: 'string' as const },
+                estimatedPrice: { type: 'number' as const },
+                priceUnit: { type: 'string' as const, enum: ['per-person', 'per-round', 'per-night'] },
+                tags: { type: 'array' as const, items: { type: 'string' as const } },
+                aiRationale: { type: 'string' as const },
+                bookingSearchQuery: { type: 'string' as const },
+              },
+            },
+          },
+        },
+      },
+    },
+    estimatedBudgetPerGolfer: { type: 'number' as const, description: 'Total estimated cost per golfer in USD' },
+    estimatedBudgetPerPartner: { type: 'number' as const, description: 'Total estimated cost per partner in USD' },
+  },
 }
 
-function calculateNights(start: string, end: string): number {
-  const startMs = new Date(start).getTime()
-  const endMs = new Date(end).getTime()
-  return Math.round((endMs - startMs) / (1000 * 60 * 60 * 24))
+function buildSystemPrompt() {
+  return `You are FairwayPal, an expert golf trip planner. You generate complete day-by-day dual itineraries for golf groups.
+
+Rules:
+- Generate BOTH a golf itinerary AND a parallel partner itinerary (if partners > 0)
+- Partner activities must slot into gaps in the golf schedule — when golfers are on the course, partners have a plan
+- Always include at least one shared activity per trip (typically a group dinner)
+- Use real venue names appropriate to the destination
+- Match activity price levels to the stated budget per round
+- If partners = 0, return empty partnerActivities arrays
+- Be creative with the trip name — make it memorable
+- Keep aiRationale to one short sentence explaining the pick
+- Prices should be realistic for the destination and budget tier`
 }
 
-// Extract complete JSON objects from a streaming buffer using brace-depth tracking.
-// Returns { objects: string[], remainingBuffer: string }
-function extractCompleteObjects(
-  buffer: string,
-  inActivitiesArray: boolean,
-): { objects: string[]; remainingBuffer: string; nowInArray: boolean } {
-  const objects: string[] = []
-  let nowInArray = inActivitiesArray
-  let i = 0
+function buildUserPrompt(data: {
+  destination: string
+  datesStart: string
+  datesEnd: string
+  golfers: number
+  partners: number
+  budgetPerRound: number
+  vibe: string
+}) {
+  const nights = Math.round(
+    (new Date(data.datesEnd).getTime() - new Date(data.datesStart).getTime()) /
+      (1000 * 60 * 60 * 24),
+  )
 
-  // Find the start of the activities array if not already in it
-  if (!nowInArray) {
-    const marker = '"activities"'
-    const markerIdx = buffer.indexOf(marker)
-    if (markerIdx === -1) return { objects, remainingBuffer: buffer, nowInArray }
-    const bracketIdx = buffer.indexOf('[', markerIdx)
-    if (bracketIdx === -1) return { objects, remainingBuffer: buffer, nowInArray }
-    nowInArray = true
-    i = bracketIdx + 1
-  }
+  return `Generate a golf trip itinerary:
 
-  // Scan for complete objects
-  while (i < buffer.length) {
-    if (buffer[i] === '{') {
-      // Found start of an object — track depth to find its end
-      let depth = 0
-      let inString = false
-      let escaped = false
-      let j = i
+Destination: ${data.destination}
+Dates: ${data.datesStart} to ${data.datesEnd} (${nights} nights)
+Group: ${data.golfers} golfers, ${data.partners} partners
+Budget per round: $${data.budgetPerRound}
+Vibe: ${data.vibe}
 
-      while (j < buffer.length) {
-        const ch = buffer[j]
-        if (escaped) {
-          escaped = false
-        } else if (ch === '\\' && inString) {
-          escaped = true
-        } else if (ch === '"') {
-          inString = !inString
-        } else if (!inString) {
-          if (ch === '{') depth++
-          else if (ch === '}') {
-            depth--
-            if (depth === 0) {
-              // Complete object found
-              objects.push(buffer.slice(i, j + 1))
-              i = j + 1
-              break
-            }
-          }
-        }
-        j++
-      }
-
-      if (depth > 0) {
-        // Incomplete object — stop and keep remainder in buffer
-        break
-      }
-    } else {
-      i++
-    }
-  }
-
-  return { objects, remainingBuffer: buffer.slice(i), nowInArray }
+Use the generate_itinerary tool to return the structured itinerary.`
 }
 
-function parseActivitySafe(raw: string): ActivityPayload | null {
+export async function POST(request: Request) {
   try {
-    const obj = JSON.parse(raw)
-    if (!obj.name || !obj.side) return null
-    return obj as ActivityPayload
-  } catch {
-    return null
-  }
-}
+    const body = await request.json()
+    const parsed = generateRequestSchema.safeParse(body)
 
-function sseEvent(payload: object): string {
-  return `data: ${JSON.stringify(payload)}\n\n`
-}
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: 'validation', fields: parsed.error.flatten().fieldErrors },
+        { status: 400 },
+      )
+    }
 
-export async function POST(request: Request): Promise<Response> {
-  // Validate API key before opening a stream
-  if (!process.env.ANTHROPIC_API_KEY) {
-    return new Response(JSON.stringify({ error: 'Generation service not configured' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
+    const { organiserUuid, destination, datesStart, datesEnd, golfers, partners, budgetPerRound, vibe } = parsed.data
+    const intake = { destination, datesStart, datesEnd, golfers, partners, budgetPerRound, vibe }
+
+    // Call Claude with tool_use
+    const anthropic = new Anthropic()
+    const message = await anthropic.messages.create({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 4096,
+      system: buildSystemPrompt(),
+      tools: [
+        {
+          name: 'generate_itinerary',
+          description: 'Generate a structured golf trip itinerary with activities for each day',
+          input_schema: itineraryToolSchema,
+        },
+      ],
+      tool_choice: { type: 'tool', name: 'generate_itinerary' },
+      messages: [{ role: 'user', content: buildUserPrompt(intake) }],
     })
-  }
 
-  let intake: TripIntake
-  try {
-    intake = await request.json()
-  } catch {
-    return new Response(JSON.stringify({ error: 'Invalid request body' }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' },
-    })
-  }
+    // Extract the tool use result
+    const toolBlock = message.content.find((b) => b.type === 'tool_use')
+    if (!toolBlock || toolBlock.type !== 'tool_use') {
+      return NextResponse.json(
+        { error: 'generation_failed', detail: 'No tool use in response' },
+        { status: 502 },
+      )
+    }
 
-  // Basic validation
-  if (!intake.destination?.trim()) {
-    return new Response(JSON.stringify({ error: 'Destination is required' }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' },
-    })
-  }
-  if (!intake.datesStart || !intake.datesEnd) {
-    return new Response(JSON.stringify({ error: 'Trip dates are required' }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' },
-    })
-  }
-  if ((intake.golfers ?? 0) < 2) {
-    return new Response(JSON.stringify({ error: 'At least 2 golfers required' }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' },
-    })
-  }
+    const itineraryResult = generatedItinerarySchema.safeParse(toolBlock.input)
+    if (!itineraryResult.success) {
+      console.error('Itinerary validation failed:', itineraryResult.error)
+      return NextResponse.json(
+        { error: 'generation_failed', detail: 'Invalid itinerary structure' },
+        { status: 502 },
+      )
+    }
 
-  const nights = calculateNights(intake.datesStart, intake.datesEnd)
-  if (nights <= 0) {
-    return new Response(JSON.stringify({ error: 'End date must be after start date' }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' },
-    })
-  }
+    const itinerary = itineraryResult.data
+    const nights = Math.round(
+      (new Date(intake.datesEnd).getTime() -
+        new Date(intake.datesStart).getTime()) /
+        (1000 * 60 * 60 * 24),
+    )
 
-  const organiserUuid =
-    request.headers.get('X-Organiser-UUID') ||
-    crypto.randomUUID()
+    // Generate slug
+    const suffix = Math.random().toString(16).slice(2, 6)
+    const slug = `${toHotelSlug(itinerary.tripName)}-${suffix}`
 
-  const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+    // Insert trip into Supabase
+    const supabase = createServerSupabase()
+    const { data: trip, error: tripError } = await supabase
+      .from('trips')
+      .insert({
+        slug,
+        name: itinerary.tripName,
+        destination: intake.destination,
+        dates_start: intake.datesStart,
+        dates_end: intake.datesEnd,
+        nights,
+        golfers_count: intake.golfers,
+        partners_count: intake.partners,
+        budget_per_round: intake.budgetPerRound,
+        vibe: intake.vibe,
+        status: 'draft',
+        organiser_uuid: organiserUuid,
+        itinerary,
+        intake_data: intake,
+      })
+      .select('id')
+      .single()
 
-  const encoder = new TextEncoder()
-  let fullBuffer = ''
-  let inActivitiesArray = false
+    if (tripError || !trip) {
+      console.error('Trip insert failed:', tripError)
+      return NextResponse.json(
+        { error: 'save_failed' },
+        { status: 500 },
+      )
+    }
 
-  const stream = new ReadableStream({
-    async start(controller) {
-      try {
-        const anthropicStream = await anthropic.messages.stream({
-          model: 'claude-opus-4-5',
-          max_tokens: 4096,
-          system: SYSTEM_PROMPT,
-          messages: [{ role: 'user', content: buildUserMessage(intake, nights) }],
-        })
+    // Flatten activities into the activities table
+    const activityRows = itinerary.days.flatMap((day) => {
+      const rows: Array<{
+        trip_id: string
+        name: string
+        detail: string
+        time_of_day: string
+        day: string
+        day_index: number
+        sort_order: number
+        side: string
+        price: number
+        price_unit: string
+        tags: string[]
+        ai_rationale: string
+      }> = []
 
-        for await (const event of anthropicStream) {
-          if (
-            event.type === 'content_block_delta' &&
-            event.delta.type === 'text_delta'
-          ) {
-            const chunk = event.delta.text
-            fullBuffer += chunk
+      let sortOrder = 0
 
-            // Try to extract complete activity objects from the stream
-            const result = extractCompleteObjects(fullBuffer, inActivitiesArray)
-            inActivitiesArray = result.nowInArray
-            fullBuffer = result.remainingBuffer
-
-            for (const rawObj of result.objects) {
-              const activity = parseActivitySafe(rawObj)
-              if (activity) {
-                controller.enqueue(
-                  encoder.encode(
-                    sseEvent({ type: 'activity', data: activity }),
-                  ),
-                )
-              }
-            }
-          }
-        }
-
-        // Get the final complete message and parse it properly
-        const finalMessage = await anthropicStream.finalMessage()
-        const fullText = finalMessage.content
-          .filter((c) => c.type === 'text')
-          .map((c) => (c as { type: 'text'; text: string }).text)
-          .join('')
-
-        // Strip markdown fences if present (defensive)
-        const cleaned = fullText
-          .replace(/^```json?\s*/i, '')
-          .replace(/```\s*$/, '')
-          .trim()
-
-        let itinerary: GeneratedItinerary
-        try {
-          itinerary = JSON.parse(cleaned)
-        } catch {
-          controller.enqueue(
-            encoder.encode(
-              sseEvent({ type: 'error', data: { message: 'Failed to parse generated itinerary. Please try again.' } }),
-            ),
-          )
-          controller.close()
-          return
-        }
-
-        // Validate
-        if (!Array.isArray(itinerary.activities) || itinerary.activities.length === 0) {
-          controller.enqueue(
-            encoder.encode(
-              sseEvent({ type: 'error', data: { message: 'No activities were generated. Please try again.' } }),
-            ),
-          )
-          controller.close()
-          return
-        }
-
-        const hasGolf = itinerary.activities.some((a) => a.side === 'golf')
-        if (!hasGolf) {
-          controller.enqueue(
-            encoder.encode(
-              sseEvent({ type: 'error', data: { message: 'Generation produced an invalid itinerary. Please try again.' } }),
-            ),
-          )
-          controller.close()
-          return
-        }
-
-        // Emit trip meta
-        controller.enqueue(
-          encoder.encode(
-            sseEvent({
-              type: 'trip_meta',
-              data: { trip_name: itinerary.trip_name, slug: itinerary.slug },
-            }),
-          ),
-        )
-
-        // Save to Supabase
-        const supabase = getSupabaseServer()
-
-        // Ensure slug is unique — append random suffix if needed
-        let slug = itinerary.slug || 'golf-trip'
-        const { data: existing } = await supabase
-          .from('trips')
-          .select('id')
-          .eq('slug', slug)
-          .maybeSingle()
-        if (existing) {
-          slug = `${slug}-${Math.random().toString(36).slice(2, 7)}`
-        }
-
-        const { data: tripRow, error: tripError } = await supabase
-          .from('trips')
-          .insert({
-            slug,
-            name: itinerary.trip_name,
-            destination: intake.destination,
-            dates_start: intake.datesStart,
-            dates_end: intake.datesEnd,
-            nights,
-            golfers_count: intake.golfers,
-            partners_count: intake.partners,
-            budget_per_round: intake.budgetPerRound,
-            vibe: intake.vibe,
-            status: 'draft',
-            organiser_uuid: organiserUuid,
-            intake_data: intake,
-          })
-          .select('id')
-          .single()
-
-        if (tripError || !tripRow) {
-          console.error('Supabase trip insert error:', tripError)
-          controller.enqueue(
-            encoder.encode(
-              sseEvent({ type: 'error', data: { message: 'Failed to save trip. Please try again.' } }),
-            ),
-          )
-          controller.close()
-          return
-        }
-
-        const tripId = tripRow.id
-
-        // Bulk insert activities
-        const activitiesToInsert = itinerary.activities.map((a) => ({
-          trip_id: tripId,
+      for (const a of day.golfActivities) {
+        rows.push({
+          trip_id: trip.id,
           name: a.name,
           detail: a.detail,
-          time_of_day: a.time_of_day,
-          day: a.day,
-          day_index: a.day_index,
-          sort_order: a.sort_order,
-          side: a.side,
-          status: 'proposed',
-          price: a.price ?? 0,
-          tags: a.tags ?? [],
-          booking_url: a.booking_url ?? '',
-          ai_rationale: a.ai_rationale,
-        }))
-
-        const { error: activitiesError } = await supabase
-          .from('activities')
-          .insert(activitiesToInsert)
-
-        if (activitiesError) {
-          console.error('Supabase activities insert error:', activitiesError)
-          // Trip row was created — emit done anyway so the user can still see their trip
-          // (it will have no activities, which the trip page handles gracefully)
-        }
-
-        controller.enqueue(
-          encoder.encode(sseEvent({ type: 'done', data: { trip_id: tripId } })),
-        )
-        controller.close()
-      } catch (err) {
-        console.error('Generation error:', err)
-        const message =
-          err instanceof Error ? err.message : 'Unexpected error during generation'
-        try {
-          controller.enqueue(
-            encoder.encode(sseEvent({ type: 'error', data: { message } })),
-          )
-        } catch {
-          // Controller may already be closed
-        }
-        controller.close()
+          time_of_day: a.timeOfDay,
+          day: day.dayLabel,
+          day_index: day.dayIndex,
+          sort_order: sortOrder++,
+          side: 'golf',
+          price: Math.round(a.estimatedPrice * 100),
+          price_unit: a.priceUnit,
+          tags: a.tags,
+          ai_rationale: a.aiRationale,
+        })
       }
-    },
-  })
 
-  return new Response(stream, {
-    headers: {
-      'Content-Type': 'text/event-stream',
-      'Cache-Control': 'no-cache, no-transform',
-      Connection: 'keep-alive',
-      'X-Accel-Buffering': 'no',
-    },
-  })
+      for (const a of day.partnerActivities) {
+        rows.push({
+          trip_id: trip.id,
+          name: a.name,
+          detail: a.detail,
+          time_of_day: a.timeOfDay,
+          day: day.dayLabel,
+          day_index: day.dayIndex,
+          sort_order: sortOrder++,
+          side: 'partner',
+          price: Math.round(a.estimatedPrice * 100),
+          price_unit: a.priceUnit,
+          tags: a.tags,
+          ai_rationale: a.aiRationale,
+        })
+      }
+
+      for (const a of day.sharedActivities) {
+        rows.push({
+          trip_id: trip.id,
+          name: a.name,
+          detail: a.detail,
+          time_of_day: a.timeOfDay,
+          day: day.dayLabel,
+          day_index: day.dayIndex,
+          sort_order: sortOrder++,
+          side: 'shared',
+          price: Math.round(a.estimatedPrice * 100),
+          price_unit: a.priceUnit,
+          tags: a.tags,
+          ai_rationale: a.aiRationale,
+        })
+      }
+
+      return rows
+    })
+
+    if (activityRows.length > 0) {
+      const { error: actError } = await supabase
+        .from('activities')
+        .insert(activityRows)
+
+      if (actError) {
+        console.error('Activity insert failed:', actError)
+        // Non-fatal: trip still exists with itinerary JSON
+      }
+    }
+
+    return NextResponse.json({ tripId: trip.id, slug })
+  } catch (err) {
+    console.error('Generate endpoint error:', err)
+    return NextResponse.json(
+      { error: 'generation_failed' },
+      { status: 502 },
+    )
+  }
 }

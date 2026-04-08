@@ -1,22 +1,22 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-
-// Browser singleton — safe to import in client components
-let browserClient: ReturnType<typeof createClient> | null = null
-
-export function getSupabaseBrowser() {
-  if (!browserClient) {
-    browserClient = createClient(supabaseUrl, supabaseAnonKey)
+// Server-side client — uses service role key for full DB access.
+// Only import this in API routes / server components.
+export function createServerSupabase() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY
+  if (!url || !key) {
+    throw new Error('Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY')
   }
-  return browserClient
+  return createClient(url, key)
 }
 
-// Server client — use in Route Handlers and Server Components
-// Uses service role key to bypass RLS for trusted server-side writes
-export function getSupabaseServer() {
-  return createClient(supabaseUrl, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
-    auth: { persistSession: false },
-  })
+// Browser-side client — uses the anon key (read-only public access).
+export function createBrowserSupabase() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  if (!url || !key) {
+    throw new Error('Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY')
+  }
+  return createClient(url, key)
 }
