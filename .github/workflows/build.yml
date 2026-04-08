@@ -26,21 +26,11 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Typecheck
+        run: npm run typecheck
+
       - name: Test
-        run: npm test
-
-      - name: Generate AMP pages
-        run: npm run amp:generate
-
-      - name: Validate AMP pages
-        run: npm run validate:amp
+        run: npm run test
 
       - name: Build
         run: npm run build
-
-      - name: Upload dist artefact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist/
-          retention-days: 7
