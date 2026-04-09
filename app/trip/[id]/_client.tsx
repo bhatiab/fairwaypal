@@ -21,6 +21,7 @@ import type {
 } from '@/types/trip'
 import { useTripContext } from './components/TripContext'
 import OrgDashboard, { ActivityActions } from './components/OrgDashboard'
+import PushOptIn from './components/PushOptIn'
 
 /* ------------------------------------------------------------------ */
 /*  Vote Tally Bar                                                     */
@@ -650,7 +651,10 @@ export default function TripClient({
           )}
           <span className="capitalize">{trip.vibe}</span>
         </div>
-        <ShareButton tripId={trip.id} tripName={trip.name} />
+        <div className="flex items-center gap-2">
+          <PushOptIn />
+          <ShareButton tripId={trip.id} tripName={trip.name} />
+        </div>
       </div>
 
       {/* Crew strip */}

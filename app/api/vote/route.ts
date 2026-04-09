@@ -1,6 +1,59 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
 import { createServerSupabase } from '@/lib/supabase'
+import type { SupabaseClient } from '@supabase/supabase-js'
+
+async function checkAllVoted(tripId: string, supabase: SupabaseClient) {
+  // Count participants and participants who have at least one vote
+  const { data: participants } = await supabase
+    .from('participants')
+    .select('id')
+    .eq('trip_id', tripId)
+
+  if (!participants || participants.length < 2) return
+
+  const { data: voterRows } = await supabase
+    .from('votes')
+    .select('participant_id')
+    .eq('trip_id', tripId)
+
+  const uniqueVoters = new Set((voterRows ?? []).map((v) => v.participant_id))
+
+  if (uniqueVoters.size >= participants.length) {
+    // All voted — get organiser to notify
+    const { data: organiser } = await supabase
+      .from('participants')
+      .select('id')
+      .eq('trip_id', tripId)
+      .eq('role', 'organiser')
+      .single()
+
+    if (organiser) {
+      // Fire push notification to organiser
+      const { data: trip } = await supabase
+        .from('trips')
+        .select('name')
+        .eq('id', tripId)
+        .single()
+
+      const tripName = trip?.name || 'Your trip'
+      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+
+      fetch(`${baseUrl}/api/push/send`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tripId,
+          title: `${tripName} — everyone's voted!`,
+          body: 'All participants have voted. Ready to lock the trip?',
+          url: `/trip/${tripId}`,
+          tag: 'all-voted',
+          participantIds: [organiser.id],
+        }),
+      }).catch(() => {})
+    }
+  }
+}
 
 const voteSchema = z.object({
   activityId: z.string().uuid(),
@@ -71,6 +124,9 @@ export async function POST(request: Request) {
       up: votes?.filter((v) => v.direction === 'up').length ?? 0,
       down: votes?.filter((v) => v.direction === 'down').length ?? 0,
     }
+
+    // Check if all participants have voted — notify organiser
+    checkAllVoted(tripId, supabase).catch(() => {})
 
     return NextResponse.json({ vote, tally })
   } catch (err) {
