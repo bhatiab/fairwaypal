@@ -7,13 +7,13 @@ const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
 
 export const metadata: Metadata = {
-  title: 'Pinehurst Golf Trip Guide — FairwayPal',
+  title: 'Scotland Golf Trip Guide — FairwayPal',
   description:
-    'Everything you need for a Pinehurst golf trip: best courses, partner activities, hotels near the courses, and a packing guide. Plan it in 5 minutes with FairwayPal.',
-  alternates: { canonical: 'https://fairwaypal.com/destinations/pinehurst' },
+    'Everything you need for a Scotland golf trip: best links courses, partner activities, hotels near St Andrews, and a packing guide. Plan it in 5 minutes with FairwayPal.',
+  alternates: { canonical: 'https://fairwaypal.com/destinations/scotland' },
   openGraph: {
-    title: 'Pinehurst Golf Trip Guide — FairwayPal',
-    description: 'Best courses, partner activities, hotels, and packing guide for your Pinehurst golf weekend.',
+    title: 'Scotland Golf Trip Guide — FairwayPal',
+    description: 'Best links courses, partner activities, hotels, and packing guide for your Scotland golf trip.',
   },
 }
 
@@ -22,18 +22,18 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://fairwaypal.com/destinations/pinehurst' },
-    { '@type': 'ListItem', position: 3, name: 'Pinehurst', item: 'https://fairwaypal.com/destinations/pinehurst' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://fairwaypal.com/destinations/scotland' },
+    { '@type': 'ListItem', position: 3, name: 'Scotland', item: 'https://fairwaypal.com/destinations/scotland' },
   ],
 }
 
 const destinationSchema = {
   '@context': 'https://schema.org',
   '@type': 'TouristDestination',
-  name: 'Pinehurst, North Carolina',
+  name: 'Scotland',
   description:
-    'The cradle of American golf. Historic resort courses, a walkable village, and a partner scene built around Southern hospitality.',
-  url: 'https://fairwaypal.com/destinations/pinehurst',
+    'The birthplace of golf. St Andrews, links courses along the coast, whisky distilleries, and castles. Scotland is the bucket-list golf trip.',
+  url: 'https://fairwaypal.com/destinations/scotland',
   touristType: ['Golf', 'Couples', 'Groups'],
 }
 
@@ -43,54 +43,54 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'How much does a golf trip to Pinehurst cost?',
+      name: 'How much does a golf trip to Scotland cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'A Pinehurst golf trip typically costs $1,500–$3,000 per person for 3 nights, including resort accommodation, 2–3 rounds, and meals. Green fees range from $100 at public courses to $500+ for Pinehurst No. 2. Stay-and-play packages through the resort offer the best value and include preferred tee times.',
+        text: 'A Scotland golf trip typically costs $2,500–$5,000 per person for 5–7 nights, including flights from the US, accommodation, 4–5 rounds, and meals. Budget trips staying in B&Bs and playing lesser-known links can come in under $2,000. Playing the Old Course at St Andrews adds $250–$300 for the green fee alone.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What is the best time of year to golf in Pinehurst?',
+      name: 'What is the best time of year to golf in Scotland?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'March through May and September through November offer ideal conditions with temperatures between 60–80°F. Spring azalea blooms make the courses stunning. Summer is playable but hot and humid (85–95°F). Winter rounds are possible with temperatures around 45–60°F, and green fees drop significantly.',
+        text: 'May through September offers the best weather, with June and July providing the longest daylight hours (up to 18 hours). Late May and early September offer slightly lower prices with still-good conditions. Avoid November through March when many courses have limited hours and weather is harsh.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Is Pinehurst No. 2 worth the price?',
+      name: 'Can you play the Old Course at St Andrews?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'For serious golfers, absolutely. Pinehurst No. 2 is one of the most historically significant courses in the world, hosting multiple US Opens. The Donald Ross design features famously tricky crowned greens. Green fees are $500+ but include a caddie and a once-in-a-lifetime experience. Book through a resort package for better rates.',
+        text: 'Yes, but access requires planning. You can enter the daily ballot (lottery) the day before, book through an authorised tour operator, or secure a tee time through the St Andrews Links Trust website when they open bookings. Having a handicap certificate is required. The ballot is free to enter and results are posted by 4pm.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What do non-golfers do in Pinehurst?',
+      name: 'What do non-golfers do in Scotland?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Pinehurst Village is charming and walkable with boutique shops, art galleries, and restaurants. Partners enjoy the resort spa, tennis and pickleball courts, croquet lawns, the Tufts Archives (golf history museum), horseback riding, and nearby Seagrove for pottery shopping. The village has a relaxed Southern hospitality vibe.',
+        text: 'Scotland offers whisky distillery tours (Speyside and Islay are famous regions), Edinburgh Castle and the Royal Mile, coastal walks along the Fife Coastal Path, spa days at resort hotels, St Andrews town exploration with shops and restaurants, and Highland day trips to see castles and dramatic scenery.',
       },
     },
     {
       '@type': 'Question',
-      name: 'How many courses does Pinehurst Resort have?',
+      name: 'How many days do you need for a Scotland golf trip?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Pinehurst Resort has nine courses numbered 1 through 9, plus The Cradle (a 9-hole short course). No. 2 is the crown jewel and a US Open venue. No. 4 (Gil Hanse redesign) is excellent and more affordable. No. 8 is the newest full course. Most groups play No. 2 plus one or two others. The Cradle is a fun evening round.',
+        text: 'Most groups do 5–7 nights. A focused St Andrews trip works in 5 nights with 3–4 rounds. To include Edinburgh, the Highlands, or courses like Turnberry and Royal Dornoch, plan for 7–10 nights. Factor in jet lag recovery on day one if flying from the US.',
       },
     },
   ],
 }
 
 const OTHER_DESTINATIONS = [
-  { name: 'Scottsdale', href: '/destinations/scottsdale', tagline: '200+ courses, year-round sun' },
-  { name: 'Scotland', href: '/destinations/scotland', tagline: 'The birthplace of golf' },
   { name: 'Ireland', href: '/destinations/ireland', tagline: 'Links golf and craic' },
+  { name: 'Scottsdale', href: '/destinations/scottsdale', tagline: '200+ courses, year-round sun' },
+  { name: 'Pinehurst', href: '/destinations/pinehurst', tagline: 'Cradle of American golf' },
 ]
 
-export default function PinehurstPage() {
+export default function ScotlandPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <script
@@ -102,13 +102,13 @@ export default function PinehurstPage() {
         {/* Hero */}
         <p className="eyebrow">Destination Guide</p>
         <h1 className="mt-3 text-5xl font-display font-light italic leading-tight text-foreground sm:text-6xl">
-          Pinehurst, North Carolina
+          Scotland
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
-          The cradle of American golf. Nine resort courses on one property, a charming village that&rsquo;s walkable in 20 minutes, and a pace of play that feels like a different era. Pinehurst is bucket-list territory done right.
+          The birthplace of golf. St Andrews, links courses along the coast, whisky distilleries, and castles. Scotland is the bucket-list golf trip that every group talks about for years.
         </p>
         <p className="mt-2 text-sm text-ink-2">
-          Best time to visit: <span className="text-gold">March — May, September — November</span> (mild temps, ideal conditions)
+          Best time to visit: <span className="text-gold">May — September</span> (longest days, mildest weather)
         </p>
 
         <div className="mt-12 space-y-16">
@@ -122,46 +122,46 @@ export default function PinehurstPage() {
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               <CourseCard
-                name="Pinehurst No. 2"
-                detail="Donald Ross&rsquo;s masterpiece. Two US Opens and counting. The turtleback greens will humble your best putter."
-                price="$350–500/round"
+                name="St Andrews — Old Course"
+                detail="The home of golf. The Swilcan Bridge, the Road Hole, the Valley of Sin. Apply for the daily ballot or book through a tour operator."
+                price="$250–300/round"
                 tier="Bucket list"
-                link="https://www.golfnow.com/course/pinehurst-no-2"
+                link="https://www.golfnow.com/course/st-andrews-links-old-course-23916"
               />
               <CourseCard
-                name="Pinehurst No. 4"
-                detail="Gil Hanse redesign opened 2018. Fast, firm, and unforgiving — a modern counterpart to No. 2."
-                price="$200–350/round"
+                name="Kingsbarns Golf Links"
+                detail="Modern links masterpiece just south of St Andrews. Ocean views on nearly every hole. Walking only."
+                price="$200–280/round"
+                tier="Bucket list"
+                link="https://www.golfnow.com/course/kingsbarns-golf-links-23917"
+              />
+              <CourseCard
+                name="Carnoustie Golf Links — Championship"
+                detail="Host of The Open. Arguably the toughest links in Scotland. The closing stretch is legendary."
+                price="$180–230/round"
                 tier="Premium"
-                link="https://www.golfnow.com/course/pinehurst-no-4"
+                link="https://www.golfnow.com/course/carnoustie-golf-links-championship-23918"
               />
               <CourseCard
-                name="Pinehurst No. 8"
-                detail="Tom Fazio design with dramatic elevation changes. Wide landing areas reward the bold."
-                price="$150–250/round"
+                name="Royal Dornoch — Championship"
+                detail="Tom Watson called it the most fun he ever had on a golf course. Remote, stunning, world-class."
+                price="$150–200/round"
                 tier="Premium"
-                link="https://www.golfnow.com/course/pinehurst-no-8"
+                link="https://www.golfnow.com/course/royal-dornoch-golf-club-championship-23919"
               />
               <CourseCard
-                name="Pine Needles Lodge &amp; Golf Club"
-                detail="Donald Ross gem next door. Host of three US Women&rsquo;s Opens. Friendlier than No. 2, equally memorable."
-                price="$100–200/round"
+                name="North Berwick — West Links"
+                detail="Quirky, historic, and endlessly fun. The Redan hole (par-3 15th) inspired courses worldwide."
+                price="$80–130/round"
                 tier="Mid-range"
-                link="https://www.golfnow.com/course/pine-needles-lodge-golf-club"
+                link="https://www.golfnow.com/course/north-berwick-golf-club-west-links-23920"
               />
               <CourseCard
-                name="Mid Pines Inn &amp; Golf Club"
-                detail="Sister course to Pine Needles. Classic Ross layout, outstanding value, throwback atmosphere."
-                price="$80–150/round"
+                name="Castle Course — St Andrews"
+                detail="Modern links with dramatic clifftop views. More accessible than the Old Course, equally memorable."
+                price="$100–160/round"
                 tier="Mid-range"
-                link="https://www.golfnow.com/course/mid-pines-inn-golf-club"
-              />
-              <CourseCard
-                name="Tobacco Road Golf Club"
-                detail="Mike Strantz&rsquo;s wildest design. Blind shots, massive waste areas, and zero forgettable holes."
-                price="$70–120/round"
-                tier="Budget"
-                link="https://www.golfnow.com/course/tobacco-road-golf-club"
+                link="https://www.golfnow.com/course/st-andrews-links-castle-course-23921"
               />
             </div>
           </section>
@@ -172,44 +172,44 @@ export default function PinehurstPage() {
           <section>
             <p className="eyebrow text-partner-text">Partner Activities</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">
-              What non-golfers do in Pinehurst
+              What non-golfers do in Scotland
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               <PartnerCard
-                name="Village of Pinehurst Shops &amp; Cafes"
-                detail="Charming walkable village with boutiques, galleries, and coffee shops. Half a morning gone, pleasantly."
+                name="Whisky Distillery Tour"
+                detail="Visit a working distillery in Speyside or Fife. Tastings, barrel rooms, and the history behind single malts."
+                price="$30–80/person"
+                link={`https://www.getyourguide.com/scotland-l439/?partner_id=${GYG_PARTNER}`}
+              />
+              <PartnerCard
+                name="Edinburgh Castle & Royal Mile"
+                detail="Scotland's capital in a day. The castle, Holyrood Palace, and the best fish and chips you'll find."
+                price="$20–40/person"
+                link={`https://www.getyourguide.com/edinburgh-l44/?partner_id=${GYG_PARTNER}`}
+              />
+              <PartnerCard
+                name="St Andrews Town Exploration"
+                detail="Boutique shops, the university, the cathedral ruins, and afternoon tea. Walkable in a few hours."
+                price="Free–$30/person"
+                link={`https://www.getyourguide.com/st-andrews-l32242/?partner_id=${GYG_PARTNER}`}
+              />
+              <PartnerCard
+                name="Fife Coastal Path Walk"
+                detail="Scenic coastal walk between fishing villages. Do the Elie to Anstruther stretch for the best views and a fish supper at the end."
                 price="Free"
-                link={`https://www.getyourguide.com/pinehurst-l97775/?partner_id=${GYG_PARTNER}`}
+                link={`https://www.getyourguide.com/scotland-l439/?partner_id=${GYG_PARTNER}`}
               />
               <PartnerCard
-                name="Sandhills Horticultural Gardens"
-                detail="15 acres of themed gardens at Sandhills Community College. Peak bloom in spring. Completely free."
-                price="Free"
-                link={`https://www.getyourguide.com/pinehurst-l97775/?partner_id=${GYG_PARTNER}`}
+                name="Highland Day Trip"
+                detail="Glencoe, Loch Ness, or the Trossachs. Dramatic scenery, castle stops, and roadside pubs."
+                price="$60–120/person"
+                link={`https://www.getyourguide.com/scottish-highlands-l956/?partner_id=${GYG_PARTNER}`}
               />
               <PartnerCard
-                name="Weymouth Woods Nature Preserve Hiking"
-                detail="Old-growth longleaf pine forest with easy to moderate trails. Wildlife spotting and real quiet."
-                price="$5/person"
-                link={`https://www.getyourguide.com/pinehurst-l97775/?partner_id=${GYG_PARTNER}`}
-              />
-              <PartnerCard
-                name="Spa at Pinehurst Resort"
-                detail="Full-service resort spa with golf-recovery treatments. Book the half-day package for best value."
-                price="$150–300/person"
-                link={`https://www.getyourguide.com/pinehurst-l97775/?partner_id=${GYG_PARTNER}`}
-              />
-              <PartnerCard
-                name="Wine Tasting at Cypress Bend Vineyards"
-                detail="Small family winery 30 minutes out. Guided tasting in a relaxed setting. No pretension."
-                price="$15/person"
-                link={`https://www.getyourguide.com/pinehurst-l97775/?partner_id=${GYG_PARTNER}`}
-              />
-              <PartnerCard
-                name="Historic Carthage Walking Tour"
-                detail="Moore County&rsquo;s charming courthouse town, 15 minutes away. Antique shops and a proper Main Street."
-                price="Free"
-                link={`https://www.getyourguide.com/pinehurst-l97775/?partner_id=${GYG_PARTNER}`}
+                name="Spa Day at Old Course Hotel"
+                detail="The Kohler Waters Spa at the Old Course Hotel. Views of the 17th hole from the rooftop terrace."
+                price="$150–250/person"
+                link={`https://www.getyourguide.com/st-andrews-l32242/?partner_id=${GYG_PARTNER}`}
               />
             </div>
           </section>
@@ -224,22 +224,22 @@ export default function PinehurstPage() {
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               <HotelCard
-                name="The Carolina at Pinehurst Resort"
-                detail="The grande dame of Southern resort hotels. On-property access to all nine courses. Groups love it."
-                price="$300–600/night"
-                link="https://www.expedia.com/Pinehurst-Hotels.d6142613.Travel-Guide-Hotels"
+                name="Old Course Hotel — St Andrews"
+                detail="Iconic views of the Road Hole. Rooftop spa, fine dining, and you can walk to the first tee."
+                price="$350–600/night"
+                link="https://www.expedia.com/St-Andrews-Hotels.d6053283.Travel-Guide-Hotels"
               />
               <HotelCard
-                name="Pine Needles Lodge"
-                detail="Stay where the pros played. Classic lodge rooms, package rates include rounds. Excellent for groups."
-                price="$150–280/night"
-                link="https://www.expedia.com/Pinehurst-Hotels.d6142613.Travel-Guide-Hotels"
+                name="Rusacks St Andrews"
+                detail="Boutique hotel overlooking the 18th green of the Old Course. Recently renovated, rooftop bar."
+                price="$280–450/night"
+                link="https://www.expedia.com/St-Andrews-Hotels.d6053283.Travel-Guide-Hotels"
               />
               <HotelCard
-                name="Hampton Inn &amp; Suites Pinehurst"
-                detail="Solid, predictable, half the price. Good for groups spending the budget on the courses not the pillows."
-                price="$100–180/night"
-                link="https://www.expedia.com/Pinehurst-Hotels.d6142613.Travel-Guide-Hotels"
+                name="The Inn at Lathones"
+                detail="Country inn 10 minutes from St Andrews. Budget-friendly for groups, charming rooms, great restaurant."
+                price="$120–200/night"
+                link="https://www.expedia.com/St-Andrews-Hotels.d6053283.Travel-Guide-Hotels"
               />
             </div>
           </section>
@@ -250,17 +250,17 @@ export default function PinehurstPage() {
           <section>
             <p className="eyebrow">Packing Guide</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">
-              What to bring to Pinehurst
+              What to bring to Scotland
             </h2>
             <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <PackingItem name="Waterproof Golf Jacket" tag={AMAZON_TAG} />
               <PackingItem name="Golf Travel Bag" tag={AMAZON_TAG} />
               <PackingItem name="Rangefinder" tag={AMAZON_TAG} />
-              <PackingItem name="Cooling Towel" tag={AMAZON_TAG} />
-              <PackingItem name="Packable Rain Jacket" tag={AMAZON_TAG} />
-              <PackingItem name="Golf Shoe Bag" tag={AMAZON_TAG} />
-              <PackingItem name="Comfort Insoles" tag={AMAZON_TAG} />
+              <PackingItem name="Waterproof Golf Shoes" tag={AMAZON_TAG} />
+              <PackingItem name="Packable Rain Pants" tag={AMAZON_TAG} />
+              <PackingItem name="Golf Umbrella" tag={AMAZON_TAG} />
               <PackingItem name="Power Bank" tag={AMAZON_TAG} />
-              <PackingItem name="Crossbody Bag" tag={AMAZON_TAG} />
+              <PackingItem name="Travel Adapter UK" tag={AMAZON_TAG} />
             </div>
             <p className="mt-4 text-xs text-ink-muted">
               Links may earn FairwayPal a commission at no extra cost to you.{' '}
@@ -276,28 +276,28 @@ export default function PinehurstPage() {
           <section>
             <p className="eyebrow text-gold">Frequently Asked Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">
-              Pinehurst golf trip FAQ
+              Scotland golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
               <FaqItem
-                question="How much does a golf trip to Pinehurst cost?"
-                answer="A Pinehurst golf trip typically costs $1,500–$3,000 per person for 3 nights, including resort accommodation, 2–3 rounds, and meals. Green fees range from $100 at public courses to $500+ for Pinehurst No. 2. Stay-and-play packages through the resort offer the best value and include preferred tee times."
+                question="How much does a golf trip to Scotland cost?"
+                answer="A Scotland golf trip typically costs $2,500–$5,000 per person for 5–7 nights, including flights from the US, accommodation, 4–5 rounds, and meals. Budget trips staying in B&Bs and playing lesser-known links can come in under $2,000. Playing the Old Course at St Andrews adds $250–$300 for the green fee alone."
               />
               <FaqItem
-                question="What is the best time of year to golf in Pinehurst?"
-                answer="March through May and September through November offer ideal conditions with temperatures between 60–80°F. Spring azalea blooms make the courses stunning. Summer is playable but hot and humid (85–95°F). Winter rounds are possible with temperatures around 45–60°F, and green fees drop significantly."
+                question="What is the best time of year to golf in Scotland?"
+                answer="May through September offers the best weather, with June and July providing the longest daylight hours (up to 18 hours). Late May and early September offer slightly lower prices with still-good conditions. Avoid November through March when many courses have limited hours and weather is harsh."
               />
               <FaqItem
-                question="Is Pinehurst No. 2 worth the price?"
-                answer="For serious golfers, absolutely. Pinehurst No. 2 is one of the most historically significant courses in the world, hosting multiple US Opens. The Donald Ross design features famously tricky crowned greens. Green fees are $500+ but include a caddie and a once-in-a-lifetime experience. Book through a resort package for better rates."
+                question="Can you play the Old Course at St Andrews?"
+                answer="Yes, but access requires planning. You can enter the daily ballot (lottery) the day before, book through an authorised tour operator, or secure a tee time through the St Andrews Links Trust website when they open bookings. Having a handicap certificate is required. The ballot is free to enter and results are posted by 4pm."
               />
               <FaqItem
-                question="What do non-golfers do in Pinehurst?"
-                answer="Pinehurst Village is charming and walkable with boutique shops, art galleries, and restaurants. Partners enjoy the resort spa, tennis and pickleball courts, croquet lawns, the Tufts Archives (golf history museum), horseback riding, and nearby Seagrove for pottery shopping. The village has a relaxed Southern hospitality vibe."
+                question="What do non-golfers do in Scotland?"
+                answer="Scotland offers whisky distillery tours (Speyside and Islay are famous regions), Edinburgh Castle and the Royal Mile, coastal walks along the Fife Coastal Path, spa days at resort hotels, St Andrews town exploration with shops and restaurants, and Highland day trips to see castles and dramatic scenery."
               />
               <FaqItem
-                question="How many courses does Pinehurst Resort have?"
-                answer="Pinehurst Resort has nine courses numbered 1 through 9, plus The Cradle (a 9-hole short course). No. 2 is the crown jewel and a US Open venue. No. 4 (Gil Hanse redesign) is excellent and more affordable. No. 8 is the newest full course. Most groups play No. 2 plus one or two others. The Cradle is a fun evening round."
+                question="How many days do you need for a Scotland golf trip?"
+                answer="Most groups do 5–7 nights. A focused St Andrews trip works in 5 nights with 3–4 rounds. To include Edinburgh, the Highlands, or courses like Turnberry and Royal Dornoch, plan for 7–10 nights. Factor in jet lag recovery on day one if flying from the US."
               />
             </div>
           </section>
@@ -307,7 +307,7 @@ export default function PinehurstPage() {
           {/* -------------------------------------------------------- */}
           <section className="rounded-2xl border border-gold/20 bg-gold/5 p-8 text-center">
             <h2 className="text-3xl font-display font-light italic text-foreground sm:text-4xl">
-              Plan your Pinehurst trip
+              Plan your Scotland trip
             </h2>
             <p className="mt-3 text-base text-muted-foreground">
               5 questions, dual itinerary, one shareable link.
@@ -323,7 +323,7 @@ export default function PinehurstPage() {
           {/*  Other Destinations                                       */}
           {/* -------------------------------------------------------- */}
           <section>
-            <p className="eyebrow">Not sure about Pinehurst?</p>
+            <p className="eyebrow">Not sure about Scotland?</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">
               Explore other destinations
             </h2>

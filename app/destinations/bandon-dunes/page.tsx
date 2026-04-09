@@ -37,9 +37,56 @@ const destinationSchema = {
   touristType: ['Golf', 'Groups'],
 }
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does a golf trip to Bandon Dunes cost?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A Bandon Dunes golf trip typically costs $2,000–$3,500 per person for 3–4 nights, including resort accommodation, 3–4 rounds, caddie fees, and meals. Green fees are $125–$375 depending on the course and season. Caddie fees add $100–$130 per round (strongly recommended). Flights to North Bend/Coos Bay plus a shuttle or rental car add $300–$600.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the best time of year to visit Bandon Dunes?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'June through September offers the driest weather and warmest temperatures (55–65°F). July and August are peak season with the longest days. May and October are shoulder season with lower rates but more rain. The resort is open year-round, and winter rounds are possible but expect wind and rain.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you need a caddie at Bandon Dunes?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Caddies are not required but strongly recommended, especially for first-time visitors. They know the blind shots, wind patterns, and hidden slopes that make links golf challenging. Caddie fees are $100–$130 per bag per round plus tip (typically 20–30%). Walking is required on all courses — no golf carts.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What do non-golfers do at Bandon Dunes?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Bandon Dunes is primarily a golf destination, but partners can enjoy beach walks along the Oregon coast, the Bandon Marsh wildlife refuge, exploring the town of Bandon (galleries, shops, cranberry bogs), hiking at Bullards Beach State Park, the resort spa, and excellent dining at the resort restaurants. It is a quieter, nature-focused experience.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How many courses are at Bandon Dunes?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Bandon Dunes Resort has six courses: Bandon Dunes (the original), Pacific Dunes (consistently ranked #1), Bandon Trails (woodland links), Old Macdonald (template holes), Sheep Ranch (clifftop, newest), and the Preserve (par-3 course). Most groups play 3–4 of the full courses plus the Preserve. Pacific Dunes and Sheep Ranch are the most requested.',
+      },
+    },
+  ],
+}
+
 const OTHER_DESTINATIONS = [
-  { name: 'Scottsdale', href: '/destinations/scottsdale', tagline: '200+ courses, year-round sun' },
-  { name: 'Myrtle Beach', href: '/destinations/myrtle-beach', tagline: '100+ courses, boardwalk vibes' },
+  { name: 'Scotland', href: '/destinations/scotland', tagline: 'The birthplace of golf' },
+  { name: 'Ireland', href: '/destinations/ireland', tagline: 'Links golf and craic' },
   { name: 'Pinehurst', href: '/destinations/pinehurst', tagline: 'Cradle of American golf' },
 ]
 
@@ -48,7 +95,7 @@ export default function BandonDunesPage() {
     <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema]) }}
       />
       <Navbar />
       <main className="page-shell pt-28 pb-20">
@@ -224,6 +271,38 @@ export default function BandonDunesPage() {
           </section>
 
           {/* -------------------------------------------------------- */}
+          {/*  FAQ                                                      */}
+          {/* -------------------------------------------------------- */}
+          <section>
+            <p className="eyebrow text-gold">Frequently Asked Questions</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              Bandon Dunes golf trip FAQ
+            </h2>
+            <div className="mt-6 space-y-4">
+              <FaqItem
+                question="How much does a golf trip to Bandon Dunes cost?"
+                answer="A Bandon Dunes golf trip typically costs $2,000–$3,500 per person for 3–4 nights, including resort accommodation, 3–4 rounds, caddie fees, and meals. Green fees are $125–$375 depending on the course and season. Caddie fees add $100–$130 per round (strongly recommended). Flights to North Bend/Coos Bay plus a shuttle or rental car add $300–$600."
+              />
+              <FaqItem
+                question="What is the best time of year to visit Bandon Dunes?"
+                answer="June through September offers the driest weather and warmest temperatures (55–65°F). July and August are peak season with the longest days. May and October are shoulder season with lower rates but more rain. The resort is open year-round, and winter rounds are possible but expect wind and rain."
+              />
+              <FaqItem
+                question="Do you need a caddie at Bandon Dunes?"
+                answer="Caddies are not required but strongly recommended, especially for first-time visitors. They know the blind shots, wind patterns, and hidden slopes that make links golf challenging. Caddie fees are $100–$130 per bag per round plus tip (typically 20–30%). Walking is required on all courses — no golf carts."
+              />
+              <FaqItem
+                question="What do non-golfers do at Bandon Dunes?"
+                answer="Bandon Dunes is primarily a golf destination, but partners can enjoy beach walks along the Oregon coast, the Bandon Marsh wildlife refuge, exploring the town of Bandon (galleries, shops, cranberry bogs), hiking at Bullards Beach State Park, the resort spa, and excellent dining at the resort restaurants. It is a quieter, nature-focused experience."
+              />
+              <FaqItem
+                question="How many courses are at Bandon Dunes?"
+                answer="Bandon Dunes Resort has six courses: Bandon Dunes (the original), Pacific Dunes (consistently ranked #1), Bandon Trails (woodland links), Old Macdonald (template holes), Sheep Ranch (clifftop, newest), and the Preserve (par-3 course). Most groups play 3–4 of the full courses plus the Preserve. Pacific Dunes and Sheep Ranch are the most requested."
+              />
+            </div>
+          </section>
+
+          {/* -------------------------------------------------------- */}
           {/*  CTA                                                      */}
           {/* -------------------------------------------------------- */}
           <section className="rounded-2xl border border-gold/20 bg-gold/5 p-8 text-center">
@@ -348,5 +427,19 @@ function PackingItem({ name, tag }: { name: string; tag: string }) {
       </span>
       {name}
     </a>
+  )
+}
+
+function FaqItem({ question, answer }: { question: string; answer: string }) {
+  return (
+    <details className="group rounded-xl border border-border bg-card/60">
+      <summary className="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-foreground">
+        {question}
+        <span className="ml-2 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">+</span>
+      </summary>
+      <div className="border-t border-border px-5 py-4 text-sm leading-7 text-muted-foreground">
+        {answer}
+      </div>
+    </details>
   )
 }

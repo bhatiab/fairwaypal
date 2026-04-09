@@ -7,13 +7,13 @@ const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
 
 export const metadata: Metadata = {
-  title: 'Pinehurst Golf Trip Guide — FairwayPal',
+  title: 'Ireland Golf Trip Guide — FairwayPal',
   description:
-    'Everything you need for a Pinehurst golf trip: best courses, partner activities, hotels near the courses, and a packing guide. Plan it in 5 minutes with FairwayPal.',
-  alternates: { canonical: 'https://fairwaypal.com/destinations/pinehurst' },
+    'Everything you need for an Ireland golf trip: best links courses, partner activities, hotels near the courses, and a packing guide. Plan it in 5 minutes with FairwayPal.',
+  alternates: { canonical: 'https://fairwaypal.com/destinations/ireland' },
   openGraph: {
-    title: 'Pinehurst Golf Trip Guide — FairwayPal',
-    description: 'Best courses, partner activities, hotels, and packing guide for your Pinehurst golf weekend.',
+    title: 'Ireland Golf Trip Guide — FairwayPal',
+    description: 'Best links courses, partner activities, hotels, and packing guide for your Ireland golf trip.',
   },
 }
 
@@ -22,18 +22,18 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://fairwaypal.com/destinations/pinehurst' },
-    { '@type': 'ListItem', position: 3, name: 'Pinehurst', item: 'https://fairwaypal.com/destinations/pinehurst' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://fairwaypal.com/destinations/ireland' },
+    { '@type': 'ListItem', position: 3, name: 'Ireland', item: 'https://fairwaypal.com/destinations/ireland' },
   ],
 }
 
 const destinationSchema = {
   '@context': 'https://schema.org',
   '@type': 'TouristDestination',
-  name: 'Pinehurst, North Carolina',
+  name: 'Ireland',
   description:
-    'The cradle of American golf. Historic resort courses, a walkable village, and a partner scene built around Southern hospitality.',
-  url: 'https://fairwaypal.com/destinations/pinehurst',
+    'Wild links courses on dramatic coastlines, pubs with live music, and some of the friendliest people in golf. Ireland is the group trip that bonds a crew for life.',
+  url: 'https://fairwaypal.com/destinations/ireland',
   touristType: ['Golf', 'Couples', 'Groups'],
 }
 
@@ -43,54 +43,54 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'How much does a golf trip to Pinehurst cost?',
+      name: 'How much does a golf trip to Ireland cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'A Pinehurst golf trip typically costs $1,500–$3,000 per person for 3 nights, including resort accommodation, 2–3 rounds, and meals. Green fees range from $100 at public courses to $500+ for Pinehurst No. 2. Stay-and-play packages through the resort offer the best value and include preferred tee times.',
+        text: 'An Ireland golf trip typically costs $2,000–$4,500 per person for 5–7 nights, including flights from the US East Coast, accommodation, 4–5 rounds, car hire, and meals. Southwest Ireland (Kerry/Clare) tends to be slightly cheaper than the northern routes. Green fees range from $80 at hidden gems to $350+ at top championship links.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What is the best time of year to golf in Pinehurst?',
+      name: 'What is the best time of year to golf in Ireland?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'March through May and September through November offer ideal conditions with temperatures between 60–80°F. Spring azalea blooms make the courses stunning. Summer is playable but hot and humid (85–95°F). Winter rounds are possible with temperatures around 45–60°F, and green fees drop significantly.',
+        text: 'May through September is the best window, with July and August offering the warmest temperatures (55–65°F). May and June have the longest daylight hours. Rain is possible year-round, so waterproofs are essential regardless of when you go. Shoulder months (April and October) offer lower prices but shorter days.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Is Pinehurst No. 2 worth the price?',
+      name: 'Should I rent a car for an Ireland golf trip?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'For serious golfers, absolutely. Pinehurst No. 2 is one of the most historically significant courses in the world, hosting multiple US Opens. The Donald Ross design features famously tricky crowned greens. Green fees are $500+ but include a caddie and a once-in-a-lifetime experience. Book through a resort package for better rates.',
+        text: 'Yes, a rental car is strongly recommended. Many of the best courses (Ballybunion, Lahinch, Waterville) are in rural areas without public transport. Drive on the left side. Book an automatic if you prefer — manuals are the default in Ireland. Budget $40–$60/day for a mid-size car. One designated driver per day keeps things simple.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What do non-golfers do in Pinehurst?',
+      name: 'What do non-golfers do in Ireland?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Pinehurst Village is charming and walkable with boutique shops, art galleries, and restaurants. Partners enjoy the resort spa, tennis and pickleball courts, croquet lawns, the Tufts Archives (golf history museum), horseback riding, and nearby Seagrove for pottery shopping. The village has a relaxed Southern hospitality vibe.',
+        text: 'Ireland has plenty for partners: the Cliffs of Moher, Ring of Kerry scenic drive, Killarney National Park, pub crawls in Galway and Dublin, spa days at resort hotels, Dingle Peninsula exploration, traditional music sessions, whiskey distillery tours (Jameson, Midleton), and shopping in Kinsale — Ireland\'s gourmet capital.',
       },
     },
     {
       '@type': 'Question',
-      name: 'How many courses does Pinehurst Resort have?',
+      name: 'What are the must-play courses in Ireland?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Pinehurst Resort has nine courses numbered 1 through 9, plus The Cradle (a 9-hole short course). No. 2 is the crown jewel and a US Open venue. No. 4 (Gil Hanse redesign) is excellent and more affordable. No. 8 is the newest full course. Most groups play No. 2 plus one or two others. The Cradle is a fun evening round.',
+        text: 'The top courses most groups include are: Ballybunion Old Course (wild Kerry links), Lahinch (next to the Cliffs of Moher), Old Head of Kinsale (clifftop drama), Waterville (remote and spectacular), and Tralee (Arnold Palmer design with ocean views). For Northern Ireland, Royal County Down and Royal Portrush are bucket-list courses.',
       },
     },
   ],
 }
 
 const OTHER_DESTINATIONS = [
-  { name: 'Scottsdale', href: '/destinations/scottsdale', tagline: '200+ courses, year-round sun' },
   { name: 'Scotland', href: '/destinations/scotland', tagline: 'The birthplace of golf' },
-  { name: 'Ireland', href: '/destinations/ireland', tagline: 'Links golf and craic' },
+  { name: 'Scottsdale', href: '/destinations/scottsdale', tagline: '200+ courses, year-round sun' },
+  { name: 'Myrtle Beach', href: '/destinations/myrtle-beach', tagline: '100+ courses, boardwalk vibes' },
 ]
 
-export default function PinehurstPage() {
+export default function IrelandPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <script
@@ -102,13 +102,13 @@ export default function PinehurstPage() {
         {/* Hero */}
         <p className="eyebrow">Destination Guide</p>
         <h1 className="mt-3 text-5xl font-display font-light italic leading-tight text-foreground sm:text-6xl">
-          Pinehurst, North Carolina
+          Ireland
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
-          The cradle of American golf. Nine resort courses on one property, a charming village that&rsquo;s walkable in 20 minutes, and a pace of play that feels like a different era. Pinehurst is bucket-list territory done right.
+          Wild links courses on dramatic coastlines, pubs with live music, and some of the friendliest people in golf. Ireland is the group trip that bonds a crew for life.
         </p>
         <p className="mt-2 text-sm text-ink-2">
-          Best time to visit: <span className="text-gold">March — May, September — November</span> (mild temps, ideal conditions)
+          Best time to visit: <span className="text-gold">May — September</span> (warmest, longest days)
         </p>
 
         <div className="mt-12 space-y-16">
@@ -122,46 +122,46 @@ export default function PinehurstPage() {
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               <CourseCard
-                name="Pinehurst No. 2"
-                detail="Donald Ross&rsquo;s masterpiece. Two US Opens and counting. The turtleback greens will humble your best putter."
-                price="$350–500/round"
+                name="Ballybunion — Old Course"
+                detail="Raw, wild, Atlantic links. Towering dunes, blind shots, and the most natural routing in golf. A top-10 course in the world."
+                price="$200–280/round"
                 tier="Bucket list"
-                link="https://www.golfnow.com/course/pinehurst-no-2"
+                link="https://www.golfnow.com/course/ballybunion-golf-club-old-course-23930"
               />
               <CourseCard
-                name="Pinehurst No. 4"
-                detail="Gil Hanse redesign opened 2018. Fast, firm, and unforgiving — a modern counterpart to No. 2."
-                price="$200–350/round"
+                name="Lahinch Golf Club"
+                detail="Right next to the Cliffs of Moher. Classic links with goats that predict the weather. The Dell hole is unforgettable."
+                price="$150–220/round"
                 tier="Premium"
-                link="https://www.golfnow.com/course/pinehurst-no-4"
+                link="https://www.golfnow.com/course/lahinch-golf-club-23931"
               />
               <CourseCard
-                name="Pinehurst No. 8"
-                detail="Tom Fazio design with dramatic elevation changes. Wide landing areas reward the bold."
-                price="$150–250/round"
+                name="Old Head of Kinsale"
+                detail="Golf on a rocky headland 300 feet above the Atlantic. Dramatic, photogenic, and unlike anything else."
+                price="$250–350/round"
+                tier="Bucket list"
+                link="https://www.golfnow.com/course/old-head-golf-links-23932"
+              />
+              <CourseCard
+                name="Waterville Golf Links"
+                detail="Remote Kerry links that Tiger and Payne Stewart loved. Challenging, beautiful, and wonderfully uncrowded."
+                price="$150–220/round"
                 tier="Premium"
-                link="https://www.golfnow.com/course/pinehurst-no-8"
+                link="https://www.golfnow.com/course/waterville-golf-links-23933"
               />
               <CourseCard
-                name="Pine Needles Lodge &amp; Golf Club"
-                detail="Donald Ross gem next door. Host of three US Women&rsquo;s Opens. Friendlier than No. 2, equally memorable."
-                price="$100–200/round"
-                tier="Mid-range"
-                link="https://www.golfnow.com/course/pine-needles-lodge-golf-club"
+                name="Tralee Golf Club"
+                detail="Arnold Palmer design on the Dingle Peninsula. Ocean holes that rival anywhere in the world. Worth the drive."
+                price="$130–200/round"
+                tier="Premium"
+                link="https://www.golfnow.com/course/tralee-golf-club-23934"
               />
               <CourseCard
-                name="Mid Pines Inn &amp; Golf Club"
-                detail="Sister course to Pine Needles. Classic Ross layout, outstanding value, throwback atmosphere."
-                price="$80–150/round"
-                tier="Mid-range"
-                link="https://www.golfnow.com/course/mid-pines-inn-golf-club"
-              />
-              <CourseCard
-                name="Tobacco Road Golf Club"
-                detail="Mike Strantz&rsquo;s wildest design. Blind shots, massive waste areas, and zero forgettable holes."
-                price="$70–120/round"
+                name="Dooks Golf Links"
+                detail="Hidden gem on the Ring of Kerry. Traditional links, affordable, and no pretension. Locals play here."
+                price="$60–100/round"
                 tier="Budget"
-                link="https://www.golfnow.com/course/tobacco-road-golf-club"
+                link="https://www.golfnow.com/course/dooks-golf-links-23935"
               />
             </div>
           </section>
@@ -172,44 +172,44 @@ export default function PinehurstPage() {
           <section>
             <p className="eyebrow text-partner-text">Partner Activities</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">
-              What non-golfers do in Pinehurst
+              What non-golfers do in Ireland
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               <PartnerCard
-                name="Village of Pinehurst Shops &amp; Cafes"
-                detail="Charming walkable village with boutiques, galleries, and coffee shops. Half a morning gone, pleasantly."
-                price="Free"
-                link={`https://www.getyourguide.com/pinehurst-l97775/?partner_id=${GYG_PARTNER}`}
+                name="Cliffs of Moher"
+                detail="700-foot sea cliffs on the Atlantic coast. One of Ireland's most visited sites. Go early to beat the crowds."
+                price="$8/person"
+                link={`https://www.getyourguide.com/cliffs-of-moher-l2684/?partner_id=${GYG_PARTNER}`}
               />
               <PartnerCard
-                name="Sandhills Horticultural Gardens"
-                detail="15 acres of themed gardens at Sandhills Community College. Peak bloom in spring. Completely free."
-                price="Free"
-                link={`https://www.getyourguide.com/pinehurst-l97775/?partner_id=${GYG_PARTNER}`}
+                name="Ring of Kerry Drive"
+                detail="120-mile scenic loop through mountains, lakes, and coastal villages. Stop at Moll's Gap and Ladies View."
+                price="Free (car hire)"
+                link={`https://www.getyourguide.com/killarney-l597/?partner_id=${GYG_PARTNER}`}
               />
               <PartnerCard
-                name="Weymouth Woods Nature Preserve Hiking"
-                detail="Old-growth longleaf pine forest with easy to moderate trails. Wildlife spotting and real quiet."
-                price="$5/person"
-                link={`https://www.getyourguide.com/pinehurst-l97775/?partner_id=${GYG_PARTNER}`}
+                name="Killarney National Park"
+                detail="Lakes, waterfalls, and Muckross House. Rent bikes or take a jaunting car (horse-drawn carriage)."
+                price="Free–$30/person"
+                link={`https://www.getyourguide.com/killarney-l597/?partner_id=${GYG_PARTNER}`}
               />
               <PartnerCard
-                name="Spa at Pinehurst Resort"
-                detail="Full-service resort spa with golf-recovery treatments. Book the half-day package for best value."
-                price="$150–300/person"
-                link={`https://www.getyourguide.com/pinehurst-l97775/?partner_id=${GYG_PARTNER}`}
+                name="Galway City & Pub Crawl"
+                detail="Colourful streets, live traditional music in every pub, and the best seafood chowder in Ireland. The craic is mighty."
+                price="$30–60/person"
+                link={`https://www.getyourguide.com/galway-l551/?partner_id=${GYG_PARTNER}`}
               />
               <PartnerCard
-                name="Wine Tasting at Cypress Bend Vineyards"
-                detail="Small family winery 30 minutes out. Guided tasting in a relaxed setting. No pretension."
-                price="$15/person"
-                link={`https://www.getyourguide.com/pinehurst-l97775/?partner_id=${GYG_PARTNER}`}
+                name="Dingle Peninsula Day Trip"
+                detail="Beehive huts, Slea Head Drive, and Fungie the dolphin. Stop at a pub for live music on the way back."
+                price="$40–80/person"
+                link={`https://www.getyourguide.com/dingle-l32244/?partner_id=${GYG_PARTNER}`}
               />
               <PartnerCard
-                name="Historic Carthage Walking Tour"
-                detail="Moore County&rsquo;s charming courthouse town, 15 minutes away. Antique shops and a proper Main Street."
-                price="Free"
-                link={`https://www.getyourguide.com/pinehurst-l97775/?partner_id=${GYG_PARTNER}`}
+                name="Spa Day at Killarney Park Hotel"
+                detail="Five-star spa in the heart of Killarney. Pool, thermal suite, and treatments while the group is on the course."
+                price="$100–200/person"
+                link={`https://www.getyourguide.com/killarney-l597/?partner_id=${GYG_PARTNER}`}
               />
             </div>
           </section>
@@ -224,22 +224,22 @@ export default function PinehurstPage() {
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               <HotelCard
-                name="The Carolina at Pinehurst Resort"
-                detail="The grande dame of Southern resort hotels. On-property access to all nine courses. Groups love it."
-                price="$300–600/night"
-                link="https://www.expedia.com/Pinehurst-Hotels.d6142613.Travel-Guide-Hotels"
+                name="The Killarney Park Hotel"
+                detail="Five-star in the centre of Killarney. Walking distance to pubs, restaurants, and the national park entrance."
+                price="$200–380/night"
+                link="https://www.expedia.com/Killarney-Hotels.d1044.Travel-Guide-Hotels"
               />
               <HotelCard
-                name="Pine Needles Lodge"
-                detail="Stay where the pros played. Classic lodge rooms, package rates include rounds. Excellent for groups."
-                price="$150–280/night"
-                link="https://www.expedia.com/Pinehurst-Hotels.d6142613.Travel-Guide-Hotels"
+                name="The Lodge at Doonbeg"
+                detail="Luxury resort on the Clare coast with its own links course. Ideal base for Lahinch and the Cliffs of Moher."
+                price="$300–500/night"
+                link="https://www.expedia.com/Doonbeg-Hotels.d6054123.Travel-Guide-Hotels"
               />
               <HotelCard
-                name="Hampton Inn &amp; Suites Pinehurst"
-                detail="Solid, predictable, half the price. Good for groups spending the budget on the courses not the pillows."
-                price="$100–180/night"
-                link="https://www.expedia.com/Pinehurst-Hotels.d6142613.Travel-Guide-Hotels"
+                name="Randles Hotel — Killarney"
+                detail="Family-run four-star with character. Great restaurant, cosy bar, and central location. Solid group rates."
+                price="$130–220/night"
+                link="https://www.expedia.com/Killarney-Hotels.d1044.Travel-Guide-Hotels"
               />
             </div>
           </section>
@@ -250,17 +250,17 @@ export default function PinehurstPage() {
           <section>
             <p className="eyebrow">Packing Guide</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">
-              What to bring to Pinehurst
+              What to bring to Ireland
             </h2>
             <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <PackingItem name="Waterproof Golf Jacket" tag={AMAZON_TAG} />
               <PackingItem name="Golf Travel Bag" tag={AMAZON_TAG} />
+              <PackingItem name="Waterproof Golf Shoes" tag={AMAZON_TAG} />
+              <PackingItem name="Packable Rain Pants" tag={AMAZON_TAG} />
+              <PackingItem name="Golf Umbrella" tag={AMAZON_TAG} />
               <PackingItem name="Rangefinder" tag={AMAZON_TAG} />
-              <PackingItem name="Cooling Towel" tag={AMAZON_TAG} />
-              <PackingItem name="Packable Rain Jacket" tag={AMAZON_TAG} />
-              <PackingItem name="Golf Shoe Bag" tag={AMAZON_TAG} />
-              <PackingItem name="Comfort Insoles" tag={AMAZON_TAG} />
               <PackingItem name="Power Bank" tag={AMAZON_TAG} />
-              <PackingItem name="Crossbody Bag" tag={AMAZON_TAG} />
+              <PackingItem name="Travel Adapter UK" tag={AMAZON_TAG} />
             </div>
             <p className="mt-4 text-xs text-ink-muted">
               Links may earn FairwayPal a commission at no extra cost to you.{' '}
@@ -276,28 +276,28 @@ export default function PinehurstPage() {
           <section>
             <p className="eyebrow text-gold">Frequently Asked Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">
-              Pinehurst golf trip FAQ
+              Ireland golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
               <FaqItem
-                question="How much does a golf trip to Pinehurst cost?"
-                answer="A Pinehurst golf trip typically costs $1,500–$3,000 per person for 3 nights, including resort accommodation, 2–3 rounds, and meals. Green fees range from $100 at public courses to $500+ for Pinehurst No. 2. Stay-and-play packages through the resort offer the best value and include preferred tee times."
+                question="How much does a golf trip to Ireland cost?"
+                answer="An Ireland golf trip typically costs $2,000–$4,500 per person for 5–7 nights, including flights from the US East Coast, accommodation, 4–5 rounds, car hire, and meals. Southwest Ireland (Kerry/Clare) tends to be slightly cheaper than the northern routes. Green fees range from $80 at hidden gems to $350+ at top championship links."
               />
               <FaqItem
-                question="What is the best time of year to golf in Pinehurst?"
-                answer="March through May and September through November offer ideal conditions with temperatures between 60–80°F. Spring azalea blooms make the courses stunning. Summer is playable but hot and humid (85–95°F). Winter rounds are possible with temperatures around 45–60°F, and green fees drop significantly."
+                question="What is the best time of year to golf in Ireland?"
+                answer="May through September is the best window, with July and August offering the warmest temperatures (55–65°F). May and June have the longest daylight hours. Rain is possible year-round, so waterproofs are essential regardless of when you go. Shoulder months (April and October) offer lower prices but shorter days."
               />
               <FaqItem
-                question="Is Pinehurst No. 2 worth the price?"
-                answer="For serious golfers, absolutely. Pinehurst No. 2 is one of the most historically significant courses in the world, hosting multiple US Opens. The Donald Ross design features famously tricky crowned greens. Green fees are $500+ but include a caddie and a once-in-a-lifetime experience. Book through a resort package for better rates."
+                question="Should I rent a car for an Ireland golf trip?"
+                answer="Yes, a rental car is strongly recommended. Many of the best courses (Ballybunion, Lahinch, Waterville) are in rural areas without public transport. Drive on the left side. Book an automatic if you prefer — manuals are the default in Ireland. Budget $40–$60/day for a mid-size car. One designated driver per day keeps things simple."
               />
               <FaqItem
-                question="What do non-golfers do in Pinehurst?"
-                answer="Pinehurst Village is charming and walkable with boutique shops, art galleries, and restaurants. Partners enjoy the resort spa, tennis and pickleball courts, croquet lawns, the Tufts Archives (golf history museum), horseback riding, and nearby Seagrove for pottery shopping. The village has a relaxed Southern hospitality vibe."
+                question="What do non-golfers do in Ireland?"
+                answer="Ireland has plenty for partners: the Cliffs of Moher, Ring of Kerry scenic drive, Killarney National Park, pub crawls in Galway and Dublin, spa days at resort hotels, Dingle Peninsula exploration, traditional music sessions, whiskey distillery tours (Jameson, Midleton), and shopping in Kinsale — Ireland's gourmet capital."
               />
               <FaqItem
-                question="How many courses does Pinehurst Resort have?"
-                answer="Pinehurst Resort has nine courses numbered 1 through 9, plus The Cradle (a 9-hole short course). No. 2 is the crown jewel and a US Open venue. No. 4 (Gil Hanse redesign) is excellent and more affordable. No. 8 is the newest full course. Most groups play No. 2 plus one or two others. The Cradle is a fun evening round."
+                question="What are the must-play courses in Ireland?"
+                answer="The top courses most groups include are: Ballybunion Old Course (wild Kerry links), Lahinch (next to the Cliffs of Moher), Old Head of Kinsale (clifftop drama), Waterville (remote and spectacular), and Tralee (Arnold Palmer design with ocean views). For Northern Ireland, Royal County Down and Royal Portrush are bucket-list courses."
               />
             </div>
           </section>
@@ -307,7 +307,7 @@ export default function PinehurstPage() {
           {/* -------------------------------------------------------- */}
           <section className="rounded-2xl border border-gold/20 bg-gold/5 p-8 text-center">
             <h2 className="text-3xl font-display font-light italic text-foreground sm:text-4xl">
-              Plan your Pinehurst trip
+              Plan your Ireland trip
             </h2>
             <p className="mt-3 text-base text-muted-foreground">
               5 questions, dual itinerary, one shareable link.
@@ -323,7 +323,7 @@ export default function PinehurstPage() {
           {/*  Other Destinations                                       */}
           {/* -------------------------------------------------------- */}
           <section>
-            <p className="eyebrow">Not sure about Pinehurst?</p>
+            <p className="eyebrow">Not sure about Ireland?</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">
               Explore other destinations
             </h2>
