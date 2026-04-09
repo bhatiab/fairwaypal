@@ -43,6 +43,31 @@ export const metadata: import('next').Metadata = {
   },
 }
 
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'FairwayPal',
+  url: 'https://fairwaypal.com',
+  logo: 'https://fairwaypal.com/icon.png',
+  description:
+    'AI-powered golf trip planner that generates dual itineraries for golfers and partners. Plan, vote, and lock your group golf trip in under 5 minutes.',
+  sameAs: [],
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'FairwayPal',
+  url: 'https://fairwaypal.com',
+  description:
+    'Golf trip sorted. Partners happy. Answer 5 questions, get a dual itinerary, share one link, everyone votes.',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://fairwaypal.com/destinations/{search_term_string}',
+    'query-input': 'required name=search_term_string',
+  },
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -50,6 +75,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${outfit.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([organizationSchema, websiteSchema]),
+          }}
+        />
+      </head>
       <body className="bg-bg font-body text-ink antialiased">
         <PHProvider>{children}</PHProvider>
         <Toaster theme="dark" position="top-center" />

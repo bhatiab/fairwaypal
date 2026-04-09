@@ -729,6 +729,46 @@ PackingGuide          Amazon Associates affiliate links
 [ ] Extract reusable coordination layer into shared package if it proves useful
 ```
 
+### Sprint 5 — Marketing & SEO
+```
+Technical SEO
+[x] Optimize icon.png (6.4MB → compressed, <100KB)
+[x] Add Organization JSON-LD schema to layout.tsx
+[x] Add BreadcrumbList + TouristDestination JSON-LD to all destination pages
+[x] Add BreadcrumbList JSON-LD to homepage
+[x] Fix missing canonical URL on /status page
+[x] Add cross-links between destination pages ("Not sure? Try Pinehurst →")
+[ ] Implement next/image for all images across the site
+[ ] Add alt text to all images
+[ ] Set up Google Analytics 4 (GA4)
+[ ] Register and configure Google Search Console
+[ ] Submit sitemap to Google Search Console
+[ ] Monitor Core Web Vitals via Vercel Speed Insights
+[ ] Add hreflang tags when international destination pages are built
+[ ] Code-split large client components (trip/_client.tsx at 685 lines)
+
+Content & SEO
+[ ] Build /destinations/scotland destination guide page
+[ ] Build /destinations/ireland destination guide page
+[ ] Build /blog infrastructure (index + individual post pages)
+[ ] Write blog post: "How to plan a golf trip with non-golfers"
+[ ] Write blog post: "Best bachelor party golf destinations 2026"
+[ ] Write blog post: "Golf trip budget calculator"
+[ ] Write blog post: "What do partners do during a golf trip"
+[ ] Write blog post: "Golf trip packing list"
+[ ] Write blog post: "Scottsdale vs Myrtle Beach golf trip"
+[ ] Add FAQ sections with FAQPage schema to all destination guides
+[ ] Add social proof to landing page (trips planned count, testimonials)
+
+Marketing Channels
+[ ] Reddit community strategy — r/golf, r/golftravel, r/bachelor (value-first posts)
+[ ] Create lead magnet: "Golf Trip Planning Checklist" PDF for email list building
+[ ] Explore GolfNow / course partnerships for backlinks and credibility
+[ ] Explore golf podcast sponsorship opportunities
+[ ] Set up Pinterest presence with destination visuals
+[ ] Track organic keyword rankings and search impressions weekly
+```
+
 ---
 
 ## 10. Design Decisions Log

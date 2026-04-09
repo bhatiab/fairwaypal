@@ -17,9 +17,39 @@ export const metadata: Metadata = {
   },
 }
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://fairwaypal.com/destinations/bandon-dunes' },
+    { '@type': 'ListItem', position: 3, name: 'Bandon Dunes', item: 'https://fairwaypal.com/destinations/bandon-dunes' },
+  ],
+}
+
+const destinationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristDestination',
+  name: 'Bandon Dunes, Oregon',
+  description:
+    'A true links golf pilgrimage on the rugged Oregon coast. World-class courses, no carts, pure golf.',
+  url: 'https://fairwaypal.com/destinations/bandon-dunes',
+  touristType: ['Golf', 'Groups'],
+}
+
+const OTHER_DESTINATIONS = [
+  { name: 'Scottsdale', href: '/destinations/scottsdale', tagline: '200+ courses, year-round sun' },
+  { name: 'Myrtle Beach', href: '/destinations/myrtle-beach', tagline: '100+ courses, boardwalk vibes' },
+  { name: 'Pinehurst', href: '/destinations/pinehurst', tagline: 'Cradle of American golf' },
+]
+
 export default function BandonDunesPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema]) }}
+      />
       <Navbar />
       <main className="page-shell pt-28 pb-20">
         {/* Hero */}
@@ -207,6 +237,28 @@ export default function BandonDunesPage() {
               <Link className="primary-link" href="/plan">
                 Start Planning
               </Link>
+            </div>
+          </section>
+
+          {/* -------------------------------------------------------- */}
+          {/*  Other Destinations                                       */}
+          {/* -------------------------------------------------------- */}
+          <section>
+            <p className="eyebrow">Not sure about Bandon Dunes?</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              Explore other destinations
+            </h2>
+            <div className="mt-6 grid gap-4 sm:grid-cols-3">
+              {OTHER_DESTINATIONS.map((dest) => (
+                <Link
+                  key={dest.href}
+                  href={dest.href}
+                  className="rounded-xl border border-border bg-card/60 p-5 transition-colors hover:border-gold/30"
+                >
+                  <h3 className="text-base font-semibold text-foreground">{dest.name}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{dest.tagline}</p>
+                </Link>
+              ))}
             </div>
           </section>
         </div>
