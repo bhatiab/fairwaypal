@@ -92,6 +92,31 @@ export async function PATCH(
       return NextResponse.json({ error: 'update_failed' }, { status: 500 })
     }
 
+    // Send push notification for confirm/book actions
+    if (action === 'confirm' || action === 'book') {
+      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+      const { data: trip } = await supabase
+        .from('trips')
+        .select('name')
+        .eq('id', tripId)
+        .single()
+
+      const tripName = trip?.name || 'Your trip'
+      const label = action === 'confirm' ? 'confirmed' : 'booked'
+
+      fetch(`${baseUrl}/api/push/send`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tripId,
+          title: `${tripName} — activity ${label}`,
+          body: `"${updated.name}" has been ${label}.`,
+          url: `/trip/${tripId}`,
+          tag: `activity-${action}`,
+        }),
+      }).catch(() => {})
+    }
+
     return NextResponse.json({ activity: updated })
   } catch (err) {
     console.error('Activities endpoint error:', err)
