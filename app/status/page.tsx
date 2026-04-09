@@ -6,6 +6,7 @@ import Footer from '../../src/components/Footer'
 export const metadata: Metadata = {
   title: 'Status & Navigation — FairwayPal',
   description: 'Application status, feature inventory, and navigation map for FairwayPal.',
+  alternates: { canonical: 'https://fairwaypal.com/status' },
 }
 
 type FeatureStatus = 'live' | 'beta' | 'planned'
