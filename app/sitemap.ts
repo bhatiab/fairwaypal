@@ -3,7 +3,17 @@ import type { MetadataRoute } from 'next'
 const BASE_URL = 'https://fairwaypal.com'
 const NOW = new Date()
 
-const STATIC_PAGES = ['/', '/plan', '/about', '/affiliate-disclosure', '/destinations/scottsdale'] as const
+const STATIC_PAGES = [
+  '/',
+  '/plan',
+  '/about',
+  '/status',
+  '/affiliate-disclosure',
+  '/destinations/scottsdale',
+  '/destinations/myrtle-beach',
+  '/destinations/bandon-dunes',
+  '/destinations/pinehurst',
+] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = STATIC_PAGES.map((path) => ({
