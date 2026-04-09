@@ -37,10 +37,57 @@ const destinationSchema = {
   touristType: ['Golf', 'Couples', 'Groups'],
 }
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does a golf trip to Myrtle Beach cost?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A Myrtle Beach golf trip typically costs $800–$1,800 per person for a 3-night weekend, including flights, hotel, 3–4 rounds, and meals. Myrtle Beach is one of the most affordable golf destinations in the US with green fees from $30 at public courses to $180 at top clubs like Caledonia. Package deals through golf groups can save 20–30%.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the best time of year to golf in Myrtle Beach?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'March through May and September through November are ideal, with temperatures between 65–80°F. Spring is peak season with the best course conditions. Summer is hot and humid but offers the lowest green fees. Winter rounds are possible but temperatures can dip to 45–55°F.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How many golf courses are in Myrtle Beach?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The Grand Strand has over 100 golf courses within a 60-mile stretch, making it the highest concentration of golf courses in the US. Courses range from budget-friendly municipal layouts to championship designs by Fazio, Dye, and Nicklaus. Most are within 30 minutes of each other.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What do non-golfers do in Myrtle Beach?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Partners love the Myrtle Beach Boardwalk and SkyWheel, outlet shopping at Tanger Outlets, Brookgreen Gardens (sculpture and wildlife), spa days at resort hotels, beach time (60 miles of coastline), dinner at The Marshwalk in Murrells Inlet, and Barefoot Landing for entertainment and dining.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Myrtle Beach good for a group golf trip?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Myrtle Beach is arguably the best value group golf destination in the US. Most courses offer group rates for 8+ players. Condo rentals near the courses sleep 4–8 and are cheaper than hotels. The mix of 100+ courses means every budget and skill level is covered. Book package deals through local operators for the best rates.',
+      },
+    },
+  ],
+}
+
 const OTHER_DESTINATIONS = [
   { name: 'Scottsdale', href: '/destinations/scottsdale', tagline: '200+ courses, year-round sun' },
-  { name: 'Bandon Dunes', href: '/destinations/bandon-dunes', tagline: 'Links golf pilgrimage' },
-  { name: 'Pinehurst', href: '/destinations/pinehurst', tagline: 'Cradle of American golf' },
+  { name: 'Scotland', href: '/destinations/scotland', tagline: 'The birthplace of golf' },
+  { name: 'Ireland', href: '/destinations/ireland', tagline: 'Links golf and craic' },
 ]
 
 export default function MyrtleBeachPage() {
@@ -48,7 +95,7 @@ export default function MyrtleBeachPage() {
     <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema]) }}
       />
       <Navbar />
       <main className="page-shell pt-28 pb-20">
@@ -224,6 +271,38 @@ export default function MyrtleBeachPage() {
           </section>
 
           {/* -------------------------------------------------------- */}
+          {/*  FAQ                                                      */}
+          {/* -------------------------------------------------------- */}
+          <section>
+            <p className="eyebrow text-gold">Frequently Asked Questions</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              Myrtle Beach golf trip FAQ
+            </h2>
+            <div className="mt-6 space-y-4">
+              <FaqItem
+                question="How much does a golf trip to Myrtle Beach cost?"
+                answer="A Myrtle Beach golf trip typically costs $800–$1,800 per person for a 3-night weekend, including flights, hotel, 3–4 rounds, and meals. Myrtle Beach is one of the most affordable golf destinations in the US with green fees from $30 at public courses to $180 at top clubs like Caledonia. Package deals through golf groups can save 20–30%."
+              />
+              <FaqItem
+                question="What is the best time of year to golf in Myrtle Beach?"
+                answer="March through May and September through November are ideal, with temperatures between 65–80°F. Spring is peak season with the best course conditions. Summer is hot and humid but offers the lowest green fees. Winter rounds are possible but temperatures can dip to 45–55°F."
+              />
+              <FaqItem
+                question="How many golf courses are in Myrtle Beach?"
+                answer="The Grand Strand has over 100 golf courses within a 60-mile stretch, making it the highest concentration of golf courses in the US. Courses range from budget-friendly municipal layouts to championship designs by Fazio, Dye, and Nicklaus. Most are within 30 minutes of each other."
+              />
+              <FaqItem
+                question="What do non-golfers do in Myrtle Beach?"
+                answer="Partners love the Myrtle Beach Boardwalk and SkyWheel, outlet shopping at Tanger Outlets, Brookgreen Gardens (sculpture and wildlife), spa days at resort hotels, beach time (60 miles of coastline), dinner at The Marshwalk in Murrells Inlet, and Barefoot Landing for entertainment and dining."
+              />
+              <FaqItem
+                question="Is Myrtle Beach good for a group golf trip?"
+                answer="Myrtle Beach is arguably the best value group golf destination in the US. Most courses offer group rates for 8+ players. Condo rentals near the courses sleep 4–8 and are cheaper than hotels. The mix of 100+ courses means every budget and skill level is covered. Book package deals through local operators for the best rates."
+              />
+            </div>
+          </section>
+
+          {/* -------------------------------------------------------- */}
           {/*  CTA                                                      */}
           {/* -------------------------------------------------------- */}
           <section className="rounded-2xl border border-gold/20 bg-gold/5 p-8 text-center">
@@ -348,5 +427,19 @@ function PackingItem({ name, tag }: { name: string; tag: string }) {
       </span>
       {name}
     </a>
+  )
+}
+
+function FaqItem({ question, answer }: { question: string; answer: string }) {
+  return (
+    <details className="group rounded-xl border border-border bg-card/60">
+      <summary className="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-foreground">
+        {question}
+        <span className="ml-2 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">+</span>
+      </summary>
+      <div className="border-t border-border px-5 py-4 text-sm leading-7 text-muted-foreground">
+        {answer}
+      </div>
+    </details>
   )
 }

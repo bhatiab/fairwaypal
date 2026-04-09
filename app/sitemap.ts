@@ -13,6 +13,8 @@ const STATIC_PAGES = [
   '/destinations/myrtle-beach',
   '/destinations/bandon-dunes',
   '/destinations/pinehurst',
+  '/destinations/scotland',
+  '/destinations/ireland',
 ] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {

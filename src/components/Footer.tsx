@@ -13,6 +13,8 @@ const destinationLinks = [
   { label: 'Myrtle Beach', href: '/destinations/myrtle-beach' },
   { label: 'Bandon Dunes', href: '/destinations/bandon-dunes' },
   { label: 'Pinehurst', href: '/destinations/pinehurst' },
+  { label: 'Scotland', href: '/destinations/scotland' },
+  { label: 'Ireland', href: '/destinations/ireland' },
 ]
 
 const Footer = () => (

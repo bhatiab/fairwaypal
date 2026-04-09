@@ -748,8 +748,8 @@ Technical SEO
 [ ] Code-split large client components (trip/_client.tsx at 685 lines)
 
 Content & SEO
-[ ] Build /destinations/scotland destination guide page
-[ ] Build /destinations/ireland destination guide page
+[x] Build /destinations/scotland destination guide page
+[x] Build /destinations/ireland destination guide page
 [ ] Build /blog infrastructure (index + individual post pages)
 [ ] Write blog post: "How to plan a golf trip with non-golfers"
 [ ] Write blog post: "Best bachelor party golf destinations 2026"
@@ -757,7 +757,7 @@ Content & SEO
 [ ] Write blog post: "What do partners do during a golf trip"
 [ ] Write blog post: "Golf trip packing list"
 [ ] Write blog post: "Scottsdale vs Myrtle Beach golf trip"
-[ ] Add FAQ sections with FAQPage schema to all destination guides
+[x] Add FAQ sections with FAQPage schema to all destination guides
 [ ] Add social proof to landing page (trips planned count, testimonials)
 
 Marketing Channels

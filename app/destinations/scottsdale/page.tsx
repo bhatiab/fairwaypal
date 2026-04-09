@@ -37,10 +37,57 @@ const destinationSchema = {
   touristType: ['Golf', 'Couples', 'Groups'],
 }
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does a golf trip to Scottsdale cost?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A Scottsdale golf trip typically costs $1,200–$2,500 per person for a 3-night weekend, including flights, hotel, 2–3 rounds, and meals. Green fees range from $45 at municipal courses to $350+ at TPC Scottsdale. Group house rentals can cut accommodation costs significantly.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the best time of year to golf in Scottsdale?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'October through April is peak golf season with temperatures between 65–85°F. January and February are the busiest (and most expensive) months due to the Waste Management Open. November and March offer the best balance of weather and pricing. Avoid June through September when temperatures exceed 110°F.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What do non-golfers do in Scottsdale?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Scottsdale has a strong partner scene: Old Town shopping and galleries, spa days at world-class resorts (Joya Spa, Well & Being), Desert Botanical Garden, hot air balloon rides over the Sonoran Desert, the Scottsdale Wine Trail (15+ tasting rooms), Camelback Mountain hiking, and excellent dining throughout Old Town.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How many rounds can you fit in a Scottsdale weekend?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most groups play 2–3 rounds in a 3-night trip. A typical schedule: arrive Thursday, play Friday AM and Saturday AM, optional Sunday twilight round before flying home. Desert courses play faster than you expect (4–4.5 hours). Early tee times (7–8 AM) beat the heat and leave afternoons free.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Scottsdale good for a bachelor golf trip?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Scottsdale is the most popular bachelor golf destination in the US. The combination of 200+ courses, Old Town nightlife, pool scene at hotels like Hotel Valley Ho, and year-round sunshine makes it ideal for groups of 4–12. Book courses and restaurants well in advance during peak season.',
+      },
+    },
+  ],
+}
+
 const OTHER_DESTINATIONS = [
   { name: 'Myrtle Beach', href: '/destinations/myrtle-beach', tagline: '100+ courses, boardwalk vibes' },
-  { name: 'Bandon Dunes', href: '/destinations/bandon-dunes', tagline: 'Links golf pilgrimage' },
-  { name: 'Pinehurst', href: '/destinations/pinehurst', tagline: 'Cradle of American golf' },
+  { name: 'Scotland', href: '/destinations/scotland', tagline: 'The birthplace of golf' },
+  { name: 'Ireland', href: '/destinations/ireland', tagline: 'Links golf and craic' },
 ]
 
 export default function ScottsdalePage() {
@@ -48,7 +95,7 @@ export default function ScottsdalePage() {
     <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema]) }}
       />
       <Navbar />
       <main className="page-shell pt-28 pb-20">
@@ -224,6 +271,38 @@ export default function ScottsdalePage() {
           </section>
 
           {/* -------------------------------------------------------- */}
+          {/*  FAQ                                                      */}
+          {/* -------------------------------------------------------- */}
+          <section>
+            <p className="eyebrow text-gold">Frequently Asked Questions</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              Scottsdale golf trip FAQ
+            </h2>
+            <div className="mt-6 space-y-4">
+              <FaqItem
+                question="How much does a golf trip to Scottsdale cost?"
+                answer="A Scottsdale golf trip typically costs $1,200–$2,500 per person for a 3-night weekend, including flights, hotel, 2–3 rounds, and meals. Green fees range from $45 at municipal courses to $350+ at TPC Scottsdale. Group house rentals can cut accommodation costs significantly."
+              />
+              <FaqItem
+                question="What is the best time of year to golf in Scottsdale?"
+                answer="October through April is peak golf season with temperatures between 65–85°F. January and February are the busiest (and most expensive) months due to the Waste Management Open. November and March offer the best balance of weather and pricing. Avoid June through September when temperatures exceed 110°F."
+              />
+              <FaqItem
+                question="What do non-golfers do in Scottsdale?"
+                answer="Scottsdale has a strong partner scene: Old Town shopping and galleries, spa days at world-class resorts (Joya Spa, Well & Being), Desert Botanical Garden, hot air balloon rides over the Sonoran Desert, the Scottsdale Wine Trail (15+ tasting rooms), Camelback Mountain hiking, and excellent dining throughout Old Town."
+              />
+              <FaqItem
+                question="How many rounds can you fit in a Scottsdale weekend?"
+                answer="Most groups play 2–3 rounds in a 3-night trip. A typical schedule: arrive Thursday, play Friday AM and Saturday AM, optional Sunday twilight round before flying home. Desert courses play faster than you expect (4–4.5 hours). Early tee times (7–8 AM) beat the heat and leave afternoons free."
+              />
+              <FaqItem
+                question="Is Scottsdale good for a bachelor golf trip?"
+                answer="Scottsdale is the most popular bachelor golf destination in the US. The combination of 200+ courses, Old Town nightlife, pool scene at hotels like Hotel Valley Ho, and year-round sunshine makes it ideal for groups of 4–12. Book courses and restaurants well in advance during peak season."
+              />
+            </div>
+          </section>
+
+          {/* -------------------------------------------------------- */}
           {/*  CTA                                                      */}
           {/* -------------------------------------------------------- */}
           <section className="rounded-2xl border border-gold/20 bg-gold/5 p-8 text-center">
@@ -348,5 +427,19 @@ function PackingItem({ name, tag }: { name: string; tag: string }) {
       </span>
       {name}
     </a>
+  )
+}
+
+function FaqItem({ question, answer }: { question: string; answer: string }) {
+  return (
+    <details className="group rounded-xl border border-border bg-card/60">
+      <summary className="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-foreground">
+        {question}
+        <span className="ml-2 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">+</span>
+      </summary>
+      <div className="border-t border-border px-5 py-4 text-sm leading-7 text-muted-foreground">
+        {answer}
+      </div>
+    </details>
   )
 }
