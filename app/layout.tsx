@@ -41,6 +41,11 @@ export const metadata: import('next').Metadata = {
     card: 'summary_large_image',
     images: ['/twitter-image'],
   },
+  verification: {
+    other: {
+      'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFY ?? '',
+    },
+  },
 }
 
 const organizationSchema = {

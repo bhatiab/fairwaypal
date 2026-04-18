@@ -9,7 +9,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/plan', label: 'Plan' },
   { href: '/destinations/scottsdale', label: 'Destinations' },
-  { href: '/status', label: 'Status' },
+  { href: '/blog', label: 'Blog' },
   { href: '/about', label: 'About' },
 ]
 
