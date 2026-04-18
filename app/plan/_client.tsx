@@ -216,21 +216,23 @@ export default function PlanClient() {
         )}
       </div>
 
-      {/* Step content */}
-      <div className="mx-auto w-full max-w-xl flex-1 px-5">
+      {/* Step content — extra bottom padding on mobile to clear sticky button */}
+      <div className="mx-auto w-full max-w-xl flex-1 px-5 pb-28 md:pb-6">
         {renderStep()}
       </div>
 
-      {/* Continue button */}
-      <div className="mx-auto w-full max-w-xl px-5 pb-10 pt-6">
-        <button
-          type="button"
-          onClick={goNext}
-          disabled={!stepValid}
-          className="primary-link w-full justify-center disabled:pointer-events-none disabled:opacity-40"
-        >
-          {step === TOTAL_STEPS - 1 ? 'Build my trip' : 'Continue'}
-        </button>
+      {/* Continue button — sticky on mobile, normal flow on desktop */}
+      <div className="sticky bottom-0 z-10 border-t border-border/30 bg-background/95 backdrop-blur-sm md:static md:border-t-0 md:bg-transparent md:backdrop-blur-none">
+        <div className="mx-auto w-full max-w-xl px-5 py-4 md:pb-10 md:pt-6">
+          <button
+            type="button"
+            onClick={goNext}
+            disabled={!stepValid}
+            className="primary-link w-full justify-center disabled:pointer-events-none disabled:opacity-40"
+          >
+            {step === TOTAL_STEPS - 1 ? 'Build my trip' : 'Continue'}
+          </button>
+        </div>
       </div>
     </div>
   )
