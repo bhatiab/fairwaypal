@@ -17,10 +17,17 @@ const destinationLinks = [
   { label: 'Ireland', href: '/destinations/ireland' },
 ]
 
+const blogLinks = [
+  { label: 'How to Plan a Golf Trip', href: '/blog/golf-trip-with-non-golfers' },
+  { label: 'Golf Trip Budget Breakdown', href: '/blog/golf-trip-budget' },
+  { label: 'What Partners Do on Golf Trips', href: '/blog/what-to-do-on-golf-trip-non-golfer' },
+  { label: 'Best Bachelor Party Golf Destinations', href: '/blog/best-bachelor-party-golf-destinations' },
+]
+
 const Footer = () => (
   <footer className="w-full border-t border-border/80 mt-20 py-10 px-5">
     <div className="max-w-4xl mx-auto space-y-6">
-      <div className="grid gap-8 sm:grid-cols-2">
+      <div className="grid gap-8 sm:grid-cols-3">
         <div>
           <p className="text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground">
             FairwayPal
@@ -43,6 +50,22 @@ const Footer = () => (
           </p>
           <nav className="mt-3 flex flex-col gap-1">
             {destinationLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors w-fit"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+        <div>
+          <p className="text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            From the Blog
+          </p>
+          <nav className="mt-3 flex flex-col gap-1">
+            {blogLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}

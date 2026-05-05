@@ -10,7 +10,14 @@ export const metadata: Metadata = {
   title: 'Ireland Golf Trip Guide — FairwayPal',
   description:
     'Everything you need for an Ireland golf trip: best links courses, partner activities, hotels near the courses, and a packing guide. Plan it in 5 minutes with FairwayPal.',
-  alternates: { canonical: 'https://fairwaypal.com/destinations/ireland' },
+  alternates: {
+    canonical: 'https://fairwaypal.com/destinations/ireland',
+    languages: {
+      'en-IE': 'https://fairwaypal.com/destinations/ireland',
+      'en-US': 'https://fairwaypal.com/destinations/ireland',
+      'x-default': 'https://fairwaypal.com/destinations/ireland',
+    },
+  },
   openGraph: {
     title: 'Ireland Golf Trip Guide — FairwayPal',
     description: 'Best links courses, partner activities, hotels, and packing guide for your Ireland golf trip.',
@@ -316,6 +323,29 @@ export default function IrelandPage() {
               <Link className="primary-link" href="/plan">
                 Start Planning
               </Link>
+            </div>
+          </section>
+
+          {/* -------------------------------------------------------- */}
+          {/*  Further Reading                                          */}
+          {/* -------------------------------------------------------- */}
+          <section>
+            <p className="eyebrow">From the blog</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              Further reading
+            </h2>
+            <div className="mt-6 space-y-3">
+              {[
+                { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations (Ranked Honestly)', desc: 'How Ireland ranks for bachelor golf trips versus Scotland and the US options.' },
+                { href: '/blog/golf-trip-with-non-golfers', title: 'Golf Trip With Non-Golfers: How to Plan It', desc: 'Ireland is excellent for partners. Galway, the Cliffs of Moher, pubs. Here\'s the full guide.' },
+                { href: '/blog/golf-trip-packing-list', title: 'The Golf Trip Packing List', desc: 'What to pack for Ireland — waterproofs, layers, and the gear links courses demand.' },
+                { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Ireland vs Scotland cost comparison — and how Ireland often comes in cheaper.' },
+              ].map(({ href, title, desc }) => (
+                <Link key={href} href={href} className="block rounded-xl border border-border bg-card/60 p-5 transition-colors hover:border-gold/30">
+                  <p className="text-base font-semibold text-foreground">{title}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{desc}</p>
+                </Link>
+              ))}
             </div>
           </section>
 

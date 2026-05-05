@@ -3,6 +3,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import BlogByline from '../../../src/components/BlogByline'
+
+const LAST_UPDATED = 'May 5, 2026'
 
 export const metadata: Metadata = {
   title: 'Scottsdale vs Myrtle Beach for a Golf Trip: Which One Actually Wins? — FairwayPal',
@@ -24,7 +27,7 @@ const articleSchema = {
     "Two of the most popular US golf destinations. One budget. One decision. The honest comparison — courses, costs, weather, partner options, and a verdict.",
   url: 'https://fairwaypal.com/blog/scottsdale-vs-myrtle-beach-golf-trip',
   datePublished: '2025-04-17',
-  dateModified: '2025-04-17',
+  dateModified: '2026-05-05',
   author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
   publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
 }
@@ -110,6 +113,7 @@ export default function ScottsdaleVsMyrtleBeachPage() {
           <span>·</span>
           <span>9 min read</span>
         </div>
+        <BlogByline lastUpdated={LAST_UPDATED} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           The group has two camps. One wants Scottsdale — desert luxury, TPC, the whole thing. The other wants Myrtle Beach — 100 courses, cheap rounds, party atmosphere. Here's the honest comparison so you can stop arguing and start booking.
         </p>

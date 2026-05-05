@@ -320,6 +320,29 @@ export default function MyrtleBeachPage() {
           </section>
 
           {/* -------------------------------------------------------- */}
+          {/*  Further Reading                                          */}
+          {/* -------------------------------------------------------- */}
+          <section>
+            <p className="eyebrow">From the blog</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              Further reading
+            </h2>
+            <div className="mt-6 space-y-3">
+              {[
+                { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations (Ranked Honestly)', desc: 'How Myrtle Beach ranks against the other top US golf destinations.' },
+                { href: '/blog/scottsdale-vs-myrtle-beach-golf-trip', title: 'Scottsdale vs Myrtle Beach: Which One Actually Wins?', desc: 'The full head-to-head — courses, costs, weather, partner options, and a verdict.' },
+                { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Myrtle Beach is the most budget-friendly option. See how the numbers break down.' },
+                { href: '/blog/golf-trip-with-non-golfers', title: 'Golf Trip With Non-Golfers: How to Plan It', desc: 'How Myrtle Beach works for mixed groups — beach, Broadway at the Beach, watersports.' },
+              ].map(({ href, title, desc }) => (
+                <Link key={href} href={href} className="block rounded-xl border border-border bg-card/60 p-5 transition-colors hover:border-gold/30">
+                  <p className="text-base font-semibold text-foreground">{title}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{desc}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* -------------------------------------------------------- */}
           {/*  Other Destinations                                       */}
           {/* -------------------------------------------------------- */}
           <section>

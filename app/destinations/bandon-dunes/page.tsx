@@ -320,6 +320,29 @@ export default function BandonDunesPage() {
           </section>
 
           {/* -------------------------------------------------------- */}
+          {/*  Further Reading                                          */}
+          {/* -------------------------------------------------------- */}
+          <section>
+            <p className="eyebrow">From the blog</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              Further reading
+            </h2>
+            <div className="mt-6 space-y-3">
+              {[
+                { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations (Ranked Honestly)', desc: 'How Bandon Dunes ranks — and who it\'s best suited for.' },
+                { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Bandon Dunes cost breakdown compared to other destinations.' },
+                { href: '/blog/golf-trip-packing-list', title: 'The Golf Trip Packing List', desc: 'Oregon coast weather calls for specific gear. Full packing guide here.' },
+                { href: '/blog/golf-trip-with-non-golfers', title: 'Golf Trip With Non-Golfers: How to Plan It', desc: 'Bandon is remote — understand what partners are in for before booking.' },
+              ].map(({ href, title, desc }) => (
+                <Link key={href} href={href} className="block rounded-xl border border-border bg-card/60 p-5 transition-colors hover:border-gold/30">
+                  <p className="text-base font-semibold text-foreground">{title}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{desc}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* -------------------------------------------------------- */}
           {/*  Other Destinations                                       */}
           {/* -------------------------------------------------------- */}
           <section>

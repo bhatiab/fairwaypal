@@ -3,6 +3,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import BlogByline from '../../../src/components/BlogByline'
+
+const LAST_UPDATED = 'May 5, 2026'
 
 export const metadata: Metadata = {
   title: 'The 6 Best Bachelor Party Golf Destinations in the US (Ranked Honestly) — FairwayPal',
@@ -24,7 +27,7 @@ const articleSchema = {
     'Not a listicle. An actual ranking — with real prices, honest trade-offs, and a verdict on which destination is right for your group.',
   url: 'https://fairwaypal.com/blog/best-bachelor-party-golf-destinations',
   datePublished: '2025-04-17',
-  dateModified: '2025-04-17',
+  dateModified: '2026-05-05',
   author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
   publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
 }
@@ -184,6 +187,7 @@ export default function BestBachelorGolfDestinationsPage() {
           <span>·</span>
           <span>9 min read</span>
         </div>
+        <BlogByline lastUpdated={LAST_UPDATED} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           The groom wants golf. The group wants a weekend they'll still be talking about in 10 years. Here's where to go — ranked by what actually matters: course quality, experience, partner options, and honest pricing.
         </p>

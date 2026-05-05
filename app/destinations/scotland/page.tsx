@@ -10,7 +10,14 @@ export const metadata: Metadata = {
   title: 'Scotland Golf Trip Guide — FairwayPal',
   description:
     'Everything you need for a Scotland golf trip: best links courses, partner activities, hotels near St Andrews, and a packing guide. Plan it in 5 minutes with FairwayPal.',
-  alternates: { canonical: 'https://fairwaypal.com/destinations/scotland' },
+  alternates: {
+    canonical: 'https://fairwaypal.com/destinations/scotland',
+    languages: {
+      'en-GB': 'https://fairwaypal.com/destinations/scotland',
+      'en-US': 'https://fairwaypal.com/destinations/scotland',
+      'x-default': 'https://fairwaypal.com/destinations/scotland',
+    },
+  },
   openGraph: {
     title: 'Scotland Golf Trip Guide — FairwayPal',
     description: 'Best links courses, partner activities, hotels, and packing guide for your Scotland golf trip.',
@@ -316,6 +323,29 @@ export default function ScotlandPage() {
               <Link className="primary-link" href="/plan">
                 Start Planning
               </Link>
+            </div>
+          </section>
+
+          {/* -------------------------------------------------------- */}
+          {/*  Further Reading                                          */}
+          {/* -------------------------------------------------------- */}
+          <section>
+            <p className="eyebrow">From the blog</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              Further reading
+            </h2>
+            <div className="mt-6 space-y-3">
+              {[
+                { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations (Ranked Honestly)', desc: 'How Scotland ranks for bachelor golf trips versus the US alternatives.' },
+                { href: '/blog/golf-trip-with-non-golfers', title: 'Golf Trip With Non-Golfers: How to Plan It', desc: 'Scotland is excellent for partners — castles, whisky, coastal villages. Here\'s why.' },
+                { href: '/blog/golf-trip-packing-list', title: 'The Golf Trip Packing List', desc: 'Scotland requires waterproofs regardless of season. Full packing guide for links golf.' },
+                { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Scotland cost breakdown — what flights, accommodation, and green fees really add up to.' },
+              ].map(({ href, title, desc }) => (
+                <Link key={href} href={href} className="block rounded-xl border border-border bg-card/60 p-5 transition-colors hover:border-gold/30">
+                  <p className="text-base font-semibold text-foreground">{title}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{desc}</p>
+                </Link>
+              ))}
             </div>
           </section>
 

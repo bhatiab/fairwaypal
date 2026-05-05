@@ -25,12 +25,30 @@ const breadcrumbSchema = {
 
 const POSTS = [
   {
-    slug: 'golf-trip-with-non-golfers',
-    title: 'Golf Trip With Non-Golfers: How to Plan It Without Killing the Vibe',
+    slug: 'how-to-plan-a-golf-trip',
+    title: 'How to Plan a Golf Trip: The Complete Step-by-Step Guide',
     description:
-      "One person wants tee times. The other wants a spa. Here's how to plan a golf trip that actually works for both — without hours of negotiation.",
-    readMinutes: 7,
-    date: 'April 17, 2025',
+      'Destination, dates, group size, budget, tee times, accommodation — the right order to make decisions and the mistakes that cost groups money and sanity.',
+    readMinutes: 10,
+    date: 'May 5, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: 'golf-trip-weekend-schedule',
+    title: 'The 3-Night Golf Weekend Schedule Template',
+    description:
+      'A concrete day-by-day schedule for a golf weekend — tee times, meals, partner activities, and the timing rules that make it run smoothly.',
+    readMinutes: 9,
+    date: 'May 5, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: 'golf-trip-group-size',
+    title: 'Golf Trip Group Size: 4 vs 8 vs 12 Players — Which Works Best?',
+    description:
+      'Tee time mechanics, accommodation value, social dynamics, and formats at every group size. Verdict: 8 is the sweet spot.',
+    readMinutes: 8,
+    date: 'May 5, 2026',
     tag: 'Planning',
   },
   {
@@ -39,8 +57,53 @@ const POSTS = [
     description:
       'Not a listicle. An actual ranking — with real prices, honest trade-offs, and a verdict on which destination is right for your group.',
     readMinutes: 9,
-    date: 'April 17, 2025',
+    date: 'May 5, 2026',
     tag: 'Destinations',
+  },
+  {
+    slug: 'ireland-vs-scotland-golf-trip',
+    title: 'Ireland vs Scotland Golf Trip: Which One Should You Choose?',
+    description:
+      'A head-to-head comparison across courses, costs, logistics, partner experience, and weather. Verdict by group type — who should pick which.',
+    readMinutes: 10,
+    date: 'May 5, 2026',
+    tag: 'Destinations',
+  },
+  {
+    slug: 'pebble-beach-golf-trip',
+    title: 'Pebble Beach Golf Trip Planning Guide',
+    description:
+      "How to actually get tee times (it's not on GolfNow), what it really costs ($500–600/round), and the full Monterey Peninsula itinerary.",
+    readMinutes: 10,
+    date: 'May 5, 2026',
+    tag: 'Destinations',
+  },
+  {
+    slug: 'kiawah-island-golf-trip',
+    title: 'Kiawah Island Golf Trip: The Complete Planning Guide',
+    description:
+      'The Ocean Course, 4 resort alternatives, real costs, and the Charleston partner plan. Everything you need for a Kiawah Island golf trip.',
+    readMinutes: 10,
+    date: 'May 5, 2026',
+    tag: 'Destinations',
+  },
+  {
+    slug: 'golf-trip-with-non-golfers',
+    title: 'Golf Trip With Non-Golfers: How to Plan It Without Killing the Vibe',
+    description:
+      "One person wants tee times. The other wants a spa. Here's how to plan a golf trip that actually works for both — without hours of negotiation.",
+    readMinutes: 7,
+    date: 'May 5, 2026',
+    tag: 'Partners',
+  },
+  {
+    slug: 'what-to-do-on-golf-trip-non-golfer',
+    title: "What to Do on a Golf Trip If You Don't Golf (Actually Good Options)",
+    description:
+      "You're on a golf trip and you don't golf. Here's what to actually do — by destination — so you're not watching Netflix in the hotel room.",
+    readMinutes: 7,
+    date: 'May 5, 2026',
+    tag: 'Partners',
   },
   {
     slug: 'golf-trip-budget',
@@ -48,17 +111,8 @@ const POSTS = [
     description:
       "Green fees, hotels, flights, food, beer. We break down the real cost of a golf trip — by destination — so there are no surprises on the credit card statement.",
     readMinutes: 8,
-    date: 'April 17, 2025',
+    date: 'May 5, 2026',
     tag: 'Budget',
-  },
-  {
-    slug: 'what-to-do-on-golf-trip-non-golfer',
-    title: "What to Do on a Golf Trip If You Don't Golf (Actually Good Options)",
-    description:
-      "You're on a golf trip and you don't golf. Here's what to actually do — by destination — so you're not watching Netflix in the hotel room while everyone else is out.",
-    readMinutes: 7,
-    date: 'April 17, 2025',
-    tag: 'Partners',
   },
   {
     slug: 'golf-trip-packing-list',
@@ -66,7 +120,7 @@ const POSTS = [
     description:
       "Two packing lists in one — one for golfers, one for non-golfers. Cut the overpacking. Don't forget the one thing that ruins the whole trip.",
     readMinutes: 8,
-    date: 'April 17, 2025',
+    date: 'May 5, 2026',
     tag: 'Packing',
   },
   {
@@ -75,7 +129,7 @@ const POSTS = [
     description:
       'Two of the most popular US golf destinations. One budget. One decision. The honest comparison — courses, costs, weather, and a verdict.',
     readMinutes: 9,
-    date: 'April 17, 2025',
+    date: 'May 5, 2026',
     tag: 'Destinations',
   },
 ]

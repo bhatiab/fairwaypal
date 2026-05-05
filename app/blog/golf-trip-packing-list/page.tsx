@@ -3,7 +3,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import BlogByline from '../../../src/components/BlogByline'
 
+const LAST_UPDATED = 'May 5, 2026'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
 
 export const metadata: Metadata = {
@@ -26,7 +28,7 @@ const articleSchema = {
     "Two packing lists in one — one for golfers, one for non-golfers. Cut the overpacking. Don't forget the one thing that ruins a trip.",
   url: 'https://fairwaypal.com/blog/golf-trip-packing-list',
   datePublished: '2025-04-17',
-  dateModified: '2025-04-17',
+  dateModified: '2026-05-05',
   author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
   publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
 }
@@ -128,6 +130,7 @@ export default function GolfTripPackingListPage() {
           <span>·</span>
           <span>8 min read</span>
         </div>
+        <BlogByline lastUpdated={LAST_UPDATED} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           The thing nobody packs until they wish they had it: comfort insoles. 36 holes in two days is roughly 12–14 miles of walking. Your feet will know. Everything else on this list is optional by comparison.
         </p>
@@ -223,6 +226,8 @@ export default function GolfTripPackingListPage() {
               Destination-specific additions: Scotland and Ireland need a waterproof layer regardless of season. Scottsdale in summer needs a wide-brim hat and good sunscreen. Myrtle Beach needs beach bag, towel, and sunscreen. See individual destination guides for specifics:{' '}
               <Link href="/destinations/scottsdale" className="text-gold hover:underline">Scottsdale</Link>,{' '}
               <Link href="/destinations/myrtle-beach" className="text-gold hover:underline">Myrtle Beach</Link>,{' '}
+              <Link href="/destinations/bandon-dunes" className="text-gold hover:underline">Bandon Dunes</Link>,{' '}
+              <Link href="/destinations/pinehurst" className="text-gold hover:underline">Pinehurst</Link>,{' '}
               <Link href="/destinations/scotland" className="text-gold hover:underline">Scotland</Link>,{' '}
               <Link href="/destinations/ireland" className="text-gold hover:underline">Ireland</Link>.
             </p>
