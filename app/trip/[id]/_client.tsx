@@ -1,27 +1,29 @@
 'use client'
 
 import { useEffect, useState, useCallback } from 'react'
+import dynamic from 'next/dynamic'
 import { toast } from 'sonner'
 import {
   ChevronDown,
   ThumbsUp,
   ThumbsDown,
-  MessageCircle,
   Share2,
   Link2,
-  Send,
 } from 'lucide-react'
 import type {
   TripRow,
   GeneratedDay,
   Activity,
   ActivityRow,
-  CommentRow,
   VoteDirection,
 } from '@/types/trip'
 import { useTripContext } from './components/TripContext'
 import OrgDashboard, { ActivityActions } from './components/OrgDashboard'
 import PushOptIn from './components/PushOptIn'
+
+const CommentThread = dynamic(() => import('./components/CommentThread'), { ssr: false })
+const BudgetSummary = dynamic(() => import('./components/BudgetSummary'), { ssr: false })
+const EmailCapture = dynamic(() => import('./components/EmailCapture'), { ssr: false })
 
 /* ------------------------------------------------------------------ */
 /*  Vote Tally Bar                                                     */
@@ -95,126 +97,6 @@ function VoteButtons({ activityId }: { activityId: string }) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Comment Thread                                                     */
-/* ------------------------------------------------------------------ */
-
-type CommentWithParticipant = CommentRow & {
-  participant: { name: string; initial: string; color: string }
-}
-
-function CommentThread({ activityId }: { activityId: string }) {
-  const { tripId, participant } = useTripContext()
-  const [open, setOpen] = useState(false)
-  const [comments, setComments] = useState<CommentWithParticipant[]>([])
-  const [text, setText] = useState('')
-  const [sending, setSending] = useState(false)
-  const [loaded, setLoaded] = useState(false)
-
-  const loadComments = useCallback(async () => {
-    const res = await fetch(`/api/comments?activityId=${activityId}`)
-    if (res.ok) {
-      const { comments: c } = await res.json()
-      setComments(c)
-    }
-    setLoaded(true)
-  }, [activityId])
-
-  useEffect(() => {
-    if (open && !loaded) {
-      loadComments()
-    }
-  }, [open, loaded, loadComments])
-
-  async function handleSend(e: React.FormEvent) {
-    e.preventDefault()
-    if (!text.trim() || !participant) return
-
-    setSending(true)
-    try {
-      const res = await fetch('/api/comments', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          activityId,
-          tripId,
-          participantId: participant.id,
-          text: text.trim(),
-        }),
-      })
-      if (res.ok) {
-        const { comment } = await res.json()
-        setComments((prev) => [...prev, comment])
-        setText('')
-      }
-    } catch {
-      toast.error('Could not post comment.')
-    } finally {
-      setSending(false)
-    }
-  }
-
-  return (
-    <div className="mt-2">
-      <button
-        type="button"
-        onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
-      >
-        <MessageCircle className="h-3.5 w-3.5" />
-        {comments.length > 0 ? `${comments.length} comments` : 'Comment'}
-      </button>
-
-      {open && (
-        <div className="mt-3 space-y-3 rounded-lg border border-border bg-bg-3/50 p-3">
-          {/* Existing comments */}
-          {comments.map((c) => (
-            <div key={c.id} className="flex gap-2">
-              <div
-                className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold text-bg"
-                style={{ backgroundColor: c.participant.color }}
-              >
-                {c.participant.initial}
-              </div>
-              <div>
-                <p className="text-xs font-medium text-ink-2">
-                  {c.participant.name}
-                </p>
-                <p className="text-sm text-ink">{c.text}</p>
-              </div>
-            </div>
-          ))}
-
-          {loaded && comments.length === 0 && (
-            <p className="text-xs text-ink-muted">No comments yet.</p>
-          )}
-
-          {/* Comment input */}
-          {participant && (
-            <form onSubmit={handleSend} className="flex gap-2">
-              <input
-                type="text"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                placeholder="Add a comment…"
-                maxLength={500}
-                className="h-8 flex-1 rounded-sm border border-border bg-bg-3 px-3 text-sm text-ink placeholder:text-ink-muted focus:border-gold focus:outline-none"
-              />
-              <button
-                type="submit"
-                disabled={sending || !text.trim()}
-                className="flex h-8 w-8 items-center justify-center rounded-sm border border-border text-muted-foreground hover:border-gold hover:text-gold disabled:opacity-40"
-              >
-                <Send className="h-3.5 w-3.5" />
-              </button>
-            </form>
-          )}
-        </div>
-      )}
-    </div>
-  )
-}
-
-/* ------------------------------------------------------------------ */
 /*  Activity Card (with voting)                                        */
 /* ------------------------------------------------------------------ */
 
@@ -277,7 +159,6 @@ function ActivityCard({
         </p>
       )}
 
-      {/* Vote buttons + tally (only if we have a DB row and not cancelled) */}
       {activityRow && !isCancelled && (
         <>
           <VoteButtons activityId={activityRow.id} />
@@ -286,7 +167,6 @@ function ActivityCard({
         </>
       )}
 
-      {/* Organiser actions */}
       {activityRow && onActivityUpdate && !isCancelled && (
         <ActivityActions activityRow={activityRow} onUpdate={onActivityUpdate} />
       )}
@@ -382,7 +262,6 @@ function DaySection({
   const hasPartner = day.partnerActivities.length > 0
   const hasShared = day.sharedActivities.length > 0
 
-  // Match itinerary activities to DB rows by name + day
   function findRow(activityName: string, side: string): ActivityRow | undefined {
     return activityRows.find(
       (r) =>
@@ -401,7 +280,6 @@ function DaySection({
         <p className="text-sm text-muted-foreground">{day.dateLabel}</p>
       </div>
 
-      {/* Shared activities banner */}
       {hasShared && (
         <div className="space-y-3">
           {day.sharedActivities.map((a, i) => (
@@ -416,9 +294,7 @@ function DaySection({
         </div>
       )}
 
-      {/* Split view */}
       <div className={`grid gap-4 ${hasPartner ? 'md:grid-cols-2' : ''}`}>
-        {/* Golf column */}
         <div className="space-y-3">
           <p className="text-xs uppercase tracking-[0.12em] text-primary">
             Golf
@@ -434,7 +310,6 @@ function DaySection({
           ))}
         </div>
 
-        {/* Partner column */}
         {hasPartner && (
           <div className="space-y-3">
             <p className="text-xs uppercase tracking-[0.12em] text-partner">
@@ -452,165 +327,6 @@ function DaySection({
           </div>
         )}
       </div>
-    </div>
-  )
-}
-
-/* ------------------------------------------------------------------ */
-/*  Budget Summary (dynamic)                                           */
-/* ------------------------------------------------------------------ */
-
-function BudgetSummary({
-  activities,
-  trip,
-}: {
-  activities: ActivityRow[]
-  trip: TripRow
-}) {
-  // Only count active activities (not cancelled/removed)
-  const active = activities.filter(
-    (a) => a.status !== 'cancelled' && a.status !== 'removed',
-  )
-
-  const golfTotal = active
-    .filter((a) => a.side === 'golf' || a.side === 'shared')
-    .reduce((sum, a) => sum + (a.price ?? 0), 0) / 100
-
-  const partnerTotal = active
-    .filter((a) => a.side === 'partner' || a.side === 'shared')
-    .reduce((sum, a) => sum + (a.price ?? 0), 0) / 100
-
-  const perGolfer = trip.golfers_count > 0
-    ? Math.round(golfTotal / trip.golfers_count)
-    : 0
-  const perPartner = trip.partners_count > 0
-    ? Math.round(partnerTotal / trip.partners_count)
-    : 0
-
-  const confirmedCount = active.filter(
-    (a) => a.status === 'confirmed' || a.status === 'booked',
-  ).length
-  const bookedCount = active.filter((a) => a.status === 'booked').length
-
-  return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <div className="rounded-xl border border-border bg-card/60 p-5">
-        <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
-          Est. per golfer
-        </p>
-        <p className="mt-2 text-3xl font-display font-light text-foreground">
-          ${perGolfer}
-        </p>
-      </div>
-      {trip.partners_count > 0 && (
-        <div className="rounded-xl border border-border bg-card/60 p-5">
-          <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
-            Est. per partner
-          </p>
-          <p className="mt-2 text-3xl font-display font-light text-foreground">
-            ${perPartner}
-          </p>
-        </div>
-      )}
-      <div className="rounded-xl border border-border bg-card/60 p-5">
-        <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
-          Confirmed
-        </p>
-        <p className="mt-2 text-3xl font-display font-light text-foreground">
-          {confirmedCount} of {active.length}
-        </p>
-      </div>
-      <div className="rounded-xl border border-border bg-card/60 p-5">
-        <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
-          Booked
-        </p>
-        <p className="mt-2 text-3xl font-display font-light text-foreground">
-          {bookedCount} of {confirmedCount}
-        </p>
-      </div>
-    </div>
-  )
-}
-
-/* ------------------------------------------------------------------ */
-/*  Email Capture                                                      */
-/* ------------------------------------------------------------------ */
-
-function EmailCapture({ tripId }: { tripId: string }) {
-  const { isOrganiser } = useTripContext()
-  const [visible, setVisible] = useState(false)
-  const [email, setEmail] = useState('')
-  const [saving, setSaving] = useState(false)
-
-  useEffect(() => {
-    if (!isOrganiser) return
-    const dismissed = localStorage.getItem(`email-dismissed-${tripId}`)
-    const saved = localStorage.getItem(`email-saved-${tripId}`)
-    if (dismissed || saved) return
-
-    const timer = setTimeout(() => setVisible(true), 2000)
-    return () => clearTimeout(timer)
-  }, [tripId, isOrganiser])
-
-  async function handleSave() {
-    if (!email.includes('@')) return
-    setSaving(true)
-    try {
-      const res = await fetch(`/api/trip/${tripId}/email`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      })
-      if (res.ok) {
-        localStorage.setItem(`email-saved-${tripId}`, 'true')
-        toast.success('Email saved — you will get daily trip updates.')
-        setVisible(false)
-      } else {
-        toast.error('Could not save email. Try again.')
-      }
-    } catch {
-      toast.error('Could not save email. Try again.')
-    } finally {
-      setSaving(false)
-    }
-  }
-
-  function dismiss() {
-    localStorage.setItem(`email-dismissed-${tripId}`, 'true')
-    setVisible(false)
-  }
-
-  if (!visible) return null
-
-  return (
-    <div className="mt-12 rounded-xl border border-primary/30 bg-primary/5 p-6">
-      <p className="text-sm font-semibold text-foreground">
-        Get a daily summary of votes and conflicts.
-      </p>
-      <div className="mt-3 flex gap-3">
-        <input
-          type="email"
-          placeholder="your@email.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="h-10 flex-1 rounded-lg border border-border bg-background/70 px-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
-        />
-        <button
-          type="button"
-          onClick={handleSave}
-          disabled={saving || !email.includes('@')}
-          className="primary-link h-10 px-4 text-xs disabled:opacity-40"
-        >
-          {saving ? 'Saving…' : 'Save'}
-        </button>
-      </div>
-      <button
-        type="button"
-        onClick={dismiss}
-        className="mt-2 text-xs text-muted-foreground hover:text-foreground"
-      >
-        Not now
-      </button>
     </div>
   )
 }
@@ -675,10 +391,10 @@ export default function TripClient({
         ))}
       </div>
 
-      {/* Budget summary (dynamic) */}
+      {/* Budget summary (lazy-loaded — below fold) */}
       <BudgetSummary activities={activities} trip={trip} />
 
-      {/* Email capture (organiser only) */}
+      {/* Email capture (lazy-loaded — below fold, organiser only) */}
       <EmailCapture tripId={trip.id} />
     </div>
   )

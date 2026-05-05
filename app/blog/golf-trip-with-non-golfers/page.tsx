@@ -3,8 +3,10 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import BlogByline from '../../../src/components/BlogByline'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
+const LAST_UPDATED = 'May 5, 2026'
 
 export const metadata: Metadata = {
   title: 'Golf Trip With Non-Golfers: How to Plan It Without Killing the Vibe — FairwayPal',
@@ -26,7 +28,7 @@ const articleSchema = {
     "One person wants tee times. The other wants a spa. Here's how to plan a golf trip that actually works for both — without hours of negotiation.",
   url: 'https://fairwaypal.com/blog/golf-trip-with-non-golfers',
   datePublished: '2025-04-17',
-  dateModified: '2025-04-17',
+  dateModified: '2026-05-05',
   author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
   publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
 }
@@ -112,6 +114,7 @@ export default function GolfTripWithNonGolfersPage() {
           <span>·</span>
           <span>7 min read</span>
         </div>
+        <BlogByline lastUpdated={LAST_UPDATED} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           You've been planning this trip for three months. Six guys, Scottsdale, three rounds. The group chat is alive for the first time in a year. Then someone mentions their partner wants to come. Then another. Now you've got a mixed group, a complicated schedule, and a vibe that could go either way.
         </p>

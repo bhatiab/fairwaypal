@@ -320,6 +320,29 @@ export default function PinehurstPage() {
           </section>
 
           {/* -------------------------------------------------------- */}
+          {/*  Further Reading                                          */}
+          {/* -------------------------------------------------------- */}
+          <section>
+            <p className="eyebrow">From the blog</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              Further reading
+            </h2>
+            <div className="mt-6 space-y-3">
+              {[
+                { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations (Ranked Honestly)', desc: 'Where Pinehurst ranks for bachelor golf trips and who it\'s the right fit for.' },
+                { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Pinehurst sits in the mid-range. Full cost breakdown by destination here.' },
+                { href: '/blog/golf-trip-with-non-golfers', title: 'Golf Trip With Non-Golfers: How to Plan It', desc: 'Pinehurst Village is charming — here\'s what partners actually have to do.' },
+                { href: '/blog/what-to-do-on-golf-trip-non-golfer', title: 'What to Do on a Golf Trip If You Don\'t Golf', desc: 'Pinehurst activities for non-golfers, including the Village and Lake Tillery.' },
+              ].map(({ href, title, desc }) => (
+                <Link key={href} href={href} className="block rounded-xl border border-border bg-card/60 p-5 transition-colors hover:border-gold/30">
+                  <p className="text-base font-semibold text-foreground">{title}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{desc}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* -------------------------------------------------------- */}
           {/*  Other Destinations                                       */}
           {/* -------------------------------------------------------- */}
           <section>

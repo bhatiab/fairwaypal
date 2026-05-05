@@ -3,6 +3,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import BlogByline from '../../../src/components/BlogByline'
+
+const LAST_UPDATED = 'May 5, 2026'
 
 export const metadata: Metadata = {
   title: 'How Much Does a Golf Trip Cost? A Brutally Honest Budget Breakdown — FairwayPal',
@@ -24,7 +27,7 @@ const articleSchema = {
     "Green fees, hotels, flights, food, beer. We break down the real cost of a golf trip — by destination and group size — so there are no surprises.",
   url: 'https://fairwaypal.com/blog/golf-trip-budget',
   datePublished: '2025-04-17',
-  dateModified: '2025-04-17',
+  dateModified: '2026-05-05',
   author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
   publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
 }
@@ -118,6 +121,7 @@ export default function GolfTripBudgetPage() {
           <span>·</span>
           <span>8 min read</span>
         </div>
+        <BlogByline lastUpdated={LAST_UPDATED} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Someone in the group chat always asks. Everyone else immediately hedges. Here's the actual answer — broken down by destination, by cost bucket, and by spending tier — so the organiser has something concrete to share when the budget conversation comes up.
         </p>

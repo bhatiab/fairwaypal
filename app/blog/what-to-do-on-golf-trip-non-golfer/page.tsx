@@ -3,8 +3,10 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import BlogByline from '../../../src/components/BlogByline'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
+const LAST_UPDATED = 'May 5, 2026'
 
 export const metadata: Metadata = {
   title: "What to Do on a Golf Trip If You Don't Golf (Actually Good Options) — FairwayPal",
@@ -26,7 +28,7 @@ const articleSchema = {
     "You're on a golf trip and you don't golf. Here's what to actually do — by destination — so you're not watching Netflix in the hotel room.",
   url: 'https://fairwaypal.com/blog/what-to-do-on-golf-trip-non-golfer',
   datePublished: '2025-04-17',
-  dateModified: '2025-04-17',
+  dateModified: '2026-05-05',
   author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
   publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
 }
@@ -162,6 +164,7 @@ export default function WhatToDoNonGolferPage() {
           <span>·</span>
           <span>7 min read</span>
         </div>
+        <BlogByline lastUpdated={LAST_UPDATED} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           You've been invited on a golf trip. You don't golf. The instinct is to feel like a tagalong. Here's how to reframe it: you have the morning to yourself while everyone else gets up at 6am to stand in a field, then you have the whole group again by lunch. That's actually a pretty good deal.
         </p>

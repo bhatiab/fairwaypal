@@ -320,6 +320,29 @@ export default function ScottsdalePage() {
           </section>
 
           {/* -------------------------------------------------------- */}
+          {/*  Further Reading                                          */}
+          {/* -------------------------------------------------------- */}
+          <section>
+            <p className="eyebrow">From the blog</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              Further reading
+            </h2>
+            <div className="mt-6 space-y-3">
+              {[
+                { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations (Ranked Honestly)', desc: 'Scottsdale takes the #1 spot. Here\'s why, and how the others compare.' },
+                { href: '/blog/scottsdale-vs-myrtle-beach-golf-trip', title: 'Scottsdale vs Myrtle Beach: Which One Actually Wins?', desc: 'The full head-to-head comparison — courses, costs, partner options, and a verdict.' },
+                { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Real cost breakdown for a Scottsdale trip by group size and spending style.' },
+                { href: '/blog/golf-trip-packing-list', title: 'The Golf Trip Packing List', desc: 'What to bring to Scottsdale — golfer and partner lists, plus desert-specific additions.' },
+              ].map(({ href, title, desc }) => (
+                <Link key={href} href={href} className="block rounded-xl border border-border bg-card/60 p-5 transition-colors hover:border-gold/30">
+                  <p className="text-base font-semibold text-foreground">{title}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{desc}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* -------------------------------------------------------- */}
           {/*  Other Destinations                                       */}
           {/* -------------------------------------------------------- */}
           <section>
