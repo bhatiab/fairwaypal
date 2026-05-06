@@ -761,14 +761,19 @@ Content & SEO
 [x] Write blog post: "Bandon Dunes vs Pebble Beach golf trip"
 [x] Write blog post: "Algarve vs Scotland golf trip"
 [x] Write blog post: "Pinehurst vs Pebble Beach golf trip"
+[x] Write blog post: "Pinehurst vs Bandon Dunes golf trip"
 [x] Write blog post: "How to split costs on a golf trip without resentment"
 [x] Write blog post: "Tipping on a golf trip"
 [x] Write blog post: "Best golf trip apps and tools"
+[x] Write blog post: "Shipping clubs vs flying with clubs"
+[x] Write blog post: "Why your group keeps cancelling the golf trip"
 [x] Write partner guide: "Bandon Dunes for non-golfers"
 [x] Write partner guide: "Pebble Beach for non-golfers"
 [x] Write partner guide: "The Algarve for non-golfers"
 [x] Write partner guide: "Pinehurst for non-golfers"
 [x] Write partner guide: "Scotland for non-golfers"
+[x] Write partner guide: "Kiawah Island for non-golfers"
+[x] Write partner guide: "Scottsdale for non-golfers"
 [x] Add FAQ sections with FAQPage schema to all destination guides
 [x] Fix internal-link orphans (Florida, Algarve, weak destination + blog links)
 [ ] Add social proof to landing page (trips planned count, testimonials)
@@ -792,14 +797,14 @@ Marketing Channels
 
 ```
 Partner-by-destination series (continuation)
-[ ] Kiawah Island for Non-Golfers       Beach + Charleston nearby
+[x] Kiawah Island for Non-Golfers       Beach + Charleston nearby
 [ ] Myrtle Beach for Non-Golfers        Beach, boardwalk, family-friendly
-[ ] Scottsdale for Non-Golfers          Old Town, spa scene, hot air balloon
+[x] Scottsdale for Non-Golfers          Old Town, spa scene, hot air balloon
 [ ] Ireland for Non-Golfers             Galway, Cliffs of Moher, Dublin, pubs
 [ ] Florida for Non-Golfers             Beach + Disney + Everglades crossover
 
 Comparison posts (commercial intent, low-competition)
-[ ] Pinehurst vs Bandon Dunes           East vs West, tradition vs links
+[x] Pinehurst vs Bandon Dunes           East vs West, tradition vs links
 [ ] Myrtle Beach vs Pinehurst           Carolina value vs prestige
 [ ] Myrtle Beach vs Kiawah Island       SC neighbours, very different feel
 [ ] Scottsdale vs Pinehurst             Sun + courses vs heritage
@@ -818,7 +823,7 @@ Group-type / occasion posts (long-tail)
 [ ] Bachelorette + golf weekend         Rare destinations that work for both
 
 Money / logistics / how-to (high-volume evergreen)
-[ ] Shipping clubs vs flying with clubs Real numbers, real bag fees
+[x] Shipping clubs vs flying with clubs Real numbers, real bag fees
 [ ] Golf trip flights                    Bag fees, what saves money
 [ ] Golf trip formats                    Ryder Cup, Stableford, skins, when to use
 [ ] Handicapping your group              Fair stakes for a Nassau
@@ -849,7 +854,7 @@ Contrarian / shareable (social + Reddit fuel)
 [ ] Hidden costs nobody warns you about The pre-trip surprise list
 [ ] Why most bachelor golf trips suck   And how to fix yours
 [ ] Resort vs public vs private host    Which model fits your trip
-[ ] Why your group keeps cancelling     Direct product-positioning piece
+[x] Why your group keeps cancelling     Direct product-positioning piece
 
 Programmatic SEO (when you want scale)
 [ ] [city] + non-golfer wife/partner    Long-tail bucket, template + 15-20 cities

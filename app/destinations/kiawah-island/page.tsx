@@ -337,6 +337,7 @@ export default function KiawahIslandPage() {
             <div className="mt-6 space-y-3">
               {[
                 { href: '/blog/kiawah-island-golf-trip', title: 'Kiawah Island Golf Trip Planning Guide', desc: 'Tee time booking, cost breakdown, the 4-day itinerary, and what partners do.' },
+                { href: '/blog/kiawah-island-for-non-golfers', title: 'Kiawah Island for Non-Golfers: A Partner\'s Guide', desc: 'The full partner-side guide. Beach, spa, kayaking, biking, and Charleston.' },
                 { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'How a Kiawah Island trip compares to other premium US destinations in total cost.' },
                 { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations', desc: 'Is Kiawah the right pick for a bachelor trip? Honest answer by group type.' },
                 { href: '/blog/golf-trip-with-non-golfers', title: 'Planning a Golf Trip With Non-Golfers', desc: 'Why Kiawah Island is one of the best partner-friendly destinations in the US.' },
