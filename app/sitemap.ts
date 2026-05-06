@@ -59,6 +59,16 @@ const STATIC_PAGES = [
   '/blog/40th-50th-birthday-golf-trip',
   '/blog/golf-trip-formats',
   '/blog/best-golf-destinations-october',
+  '/blog/best-golf-destinations-march',
+  '/blog/best-golf-destinations-november',
+  '/blog/bandon-dunes-vs-scotland-golf-trip',
+  '/blog/algarve-vs-ireland-golf-trip',
+  '/blog/bandon-vs-pebble-vs-kiawah-golf-trip',
+  '/blog/hidden-costs-golf-trip',
+  '/blog/why-most-bachelor-golf-trips-suck',
+  '/blog/couples-golf-trip-both-play',
+  '/blog/first-ever-golf-trip',
+  '/blog/golf-trip-flights-bag-fees',
 ] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {
