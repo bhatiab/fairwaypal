@@ -391,6 +391,11 @@ export default function GolfTripBudgetPage() {
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Related guides</h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <RelatedPost
+                href="/blog/how-to-split-costs-golf-trip"
+                title="How to Split Costs Without Resentment"
+                description="The five practical methods, the apps, and the conversation that prevents most fights."
+              />
+              <RelatedPost
                 href="/blog/best-bachelor-party-golf-destinations"
                 title="Best Bachelor Golf Destinations"
                 description="All six destinations ranked — with honest cost trade-offs."

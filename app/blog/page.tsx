@@ -25,6 +25,15 @@ const breadcrumbSchema = {
 
 const POSTS = [
   {
+    slug: 'how-to-split-costs-golf-trip',
+    title: 'How to Split Costs on a Golf Trip Without Resentment',
+    description:
+      'Money is the most common reason golf trips quietly blow up. The five practical methods for splitting costs, the apps worth using, and the one conversation that prevents most fights.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Budget',
+  },
+  {
     slug: 'algarve-vs-scotland-golf-trip',
     title: 'Algarve vs Scotland for a Golf Trip: Which Should You Pick?',
     description:
