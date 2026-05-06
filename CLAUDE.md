@@ -762,6 +762,9 @@ Content & SEO
 [x] Write blog post: "Algarve vs Scotland golf trip"
 [x] Write blog post: "Pinehurst vs Pebble Beach golf trip"
 [x] Write blog post: "Pinehurst vs Bandon Dunes golf trip"
+[x] Write blog post: "Myrtle Beach vs Pinehurst golf trip"
+[x] Write blog post: "Myrtle Beach vs Kiawah Island golf trip"
+[x] Write blog post: "Scottsdale vs Pinehurst golf trip"
 [x] Write blog post: "How to split costs on a golf trip without resentment"
 [x] Write blog post: "Tipping on a golf trip"
 [x] Write blog post: "Best golf trip apps and tools"
@@ -774,6 +777,13 @@ Content & SEO
 [x] Write partner guide: "Scotland for non-golfers"
 [x] Write partner guide: "Kiawah Island for non-golfers"
 [x] Write partner guide: "Scottsdale for non-golfers"
+[x] Write partner guide: "Myrtle Beach for non-golfers"
+[x] Write partner guide: "Ireland for non-golfers"
+[x] Write partner guide: "Florida for non-golfers"
+[x] Write group-type guide: "Father-son golf trip"
+[x] Write group-type guide: "40th and 50th birthday golf trip"
+[x] Write evergreen guide: "Golf trip formats (Ryder Cup, Stableford, skins, Nassau)"
+[x] Write seasonal guide: "Best golf destinations in October"
 [x] Add FAQ sections with FAQPage schema to all destination guides
 [x] Fix internal-link orphans (Florida, Algarve, weak destination + blog links)
 [ ] Add social proof to landing page (trips planned count, testimonials)
@@ -798,24 +808,24 @@ Marketing Channels
 ```
 Partner-by-destination series (continuation)
 [x] Kiawah Island for Non-Golfers       Beach + Charleston nearby
-[ ] Myrtle Beach for Non-Golfers        Beach, boardwalk, family-friendly
+[x] Myrtle Beach for Non-Golfers        Beach, boardwalk, family-friendly
 [x] Scottsdale for Non-Golfers          Old Town, spa scene, hot air balloon
-[ ] Ireland for Non-Golfers             Galway, Cliffs of Moher, Dublin, pubs
-[ ] Florida for Non-Golfers             Beach + Disney + Everglades crossover
+[x] Ireland for Non-Golfers             Galway, Cliffs of Moher, Dublin, pubs
+[x] Florida for Non-Golfers             Beach + Disney + Everglades crossover
 
 Comparison posts (commercial intent, low-competition)
 [x] Pinehurst vs Bandon Dunes           East vs West, tradition vs links
-[ ] Myrtle Beach vs Pinehurst           Carolina value vs prestige
-[ ] Myrtle Beach vs Kiawah Island       SC neighbours, very different feel
-[ ] Scottsdale vs Pinehurst             Sun + courses vs heritage
+[x] Myrtle Beach vs Pinehurst           Carolina value vs prestige
+[x] Myrtle Beach vs Kiawah Island       SC neighbours, very different feel
+[x] Scottsdale vs Pinehurst             Sun + courses vs heritage
 [ ] Scottsdale vs Palm Springs          Winter desert decision
 [ ] Bandon Dunes vs Scotland            The "should we go links?" question
 [ ] Algarve vs Ireland                  Sun vs craic, both cheaper than Scotland
 [ ] Bandon vs Pebble vs Kiawah          West-coast-or-east premium triple
 
 Group-type / occasion posts (long-tail)
-[ ] 40th / 50th birthday golf trip      Itinerary archetype
-[ ] Father-son golf trip planning       Two-generation logistics
+[x] 40th / 50th birthday golf trip      Itinerary archetype
+[x] Father-son golf trip planning       Two-generation logistics
 [ ] Couples golf trip (both play)       Different dynamic from organiser/partner
 [ ] Small-group (4 players) golf trip   Best destinations for tight crews
 [ ] First-ever golf trip                What to expect, what to skip
@@ -825,7 +835,7 @@ Group-type / occasion posts (long-tail)
 Money / logistics / how-to (high-volume evergreen)
 [x] Shipping clubs vs flying with clubs Real numbers, real bag fees
 [ ] Golf trip flights                    Bag fees, what saves money
-[ ] Golf trip formats                    Ryder Cup, Stableford, skins, when to use
+[x] Golf trip formats                    Ryder Cup, Stableford, skins, when to use
 [ ] Handicapping your group              Fair stakes for a Nassau
 [ ] Golf trip insurance                  Do you actually need it?
 
@@ -835,7 +845,7 @@ Seasonal / when-to-go (recurring traffic)
 [ ] Best golf destinations in [Mar]
 [ ] Best golf destinations in [Apr]
 [ ] Best golf destinations in [Sep]
-[ ] Best golf destinations in [Oct]
+[x] Best golf destinations in [Oct]
 [ ] Best golf destinations in [Nov]
 [ ] Shoulder-season golf                Apr-May & Sep-Oct for half the price
 [ ] When to book a 2027 golf trip       Month-by-month booking calendar

@@ -25,6 +25,96 @@ const breadcrumbSchema = {
 
 const POSTS = [
   {
+    slug: 'best-golf-destinations-october',
+    title: 'The Best Golf Destinations in October (2026 Honest Guide)',
+    description:
+      'Honest ranking of the best golf trip destinations for October. Pinehurst, Pebble Beach, Algarve, Kiawah, Scottsdale, Bandon, plus the destinations to avoid.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: 'golf-trip-formats',
+    title: 'Golf Trip Formats: Ryder Cup, Stableford, Skins, Nassau (And When to Use Each)',
+    description:
+      'The rules, strategy, and which format fits which group. Plus side bets and the handicap question.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: '40th-50th-birthday-golf-trip',
+    title: 'The 40th and 50th Birthday Golf Trip: An Honest Planning Guide',
+    description:
+      'How to plan a milestone-birthday golf trip. Destination archetypes, group size, format options, and the touches that make it a celebration.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: 'father-son-golf-trip',
+    title: 'Father-Son Golf Trip Planning: The Honest Guide',
+    description:
+      'Picking the right destination by skill and age, the four destination archetypes, the conversations worth having, and the dynamics nobody warns you about.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: 'scottsdale-vs-pinehurst-golf-trip',
+    title: 'Scottsdale vs Pinehurst for a Golf Trip: Which Should You Pick?',
+    description:
+      'Sun and desert versus heritage and pine forest. Two of the great American golf trips compared honestly.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Destinations',
+  },
+  {
+    slug: 'myrtle-beach-vs-kiawah-island-golf-trip',
+    title: 'Myrtle Beach vs Kiawah Island for a Golf Trip: Which Should You Pick?',
+    description:
+      'Two South Carolina coast destinations, very different trips. Volume and value at Myrtle Beach versus the Ocean Course and Charleston.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Destinations',
+  },
+  {
+    slug: 'myrtle-beach-vs-pinehurst-golf-trip',
+    title: 'Myrtle Beach vs Pinehurst for a Golf Trip: Which Should You Pick?',
+    description:
+      'Carolina value versus Carolina prestige. Two of the great Southeast US golf trips compared honestly.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Destinations',
+  },
+  {
+    slug: 'florida-for-non-golfers',
+    title: 'Florida for Non-Golfers: A Partner\'s Guide',
+    description:
+      'Different golf bases give different partner experiences: Streamsong, TPC Sawgrass + St. Augustine, Innisbrook + Tampa, Orlando theme parks.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Partners',
+  },
+  {
+    slug: 'ireland-for-non-golfers',
+    title: 'Ireland for Non-Golfers: A Partner\'s Guide',
+    description:
+      'How an Ireland golf trip works for the partner. Cliffs of Moher, the Ring of Kerry, Killarney, Galway pubs, the Dingle Peninsula, Dublin, distilleries.',
+    readMinutes: 11,
+    date: 'May 6, 2026',
+    tag: 'Partners',
+  },
+  {
+    slug: 'myrtle-beach-for-non-golfers',
+    title: 'Myrtle Beach for Non-Golfers: A Partner\'s Guide',
+    description:
+      'How a Myrtle Beach golf trip works for the partner who is not teeing off. 60 miles of beach, the Boardwalk, Brookgreen Gardens, the Marshwalk, Tanger Outlets.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Partners',
+  },
+  {
     slug: 'why-your-group-keeps-cancelling-golf-trip',
     title: 'Why Your Group Keeps Cancelling the Golf Trip (and How to Fix It)',
     description:

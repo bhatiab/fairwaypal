@@ -49,6 +49,16 @@ const STATIC_PAGES = [
   '/blog/pinehurst-vs-bandon-dunes-golf-trip',
   '/blog/shipping-clubs-vs-flying-with-clubs',
   '/blog/why-your-group-keeps-cancelling-golf-trip',
+  '/blog/myrtle-beach-for-non-golfers',
+  '/blog/ireland-for-non-golfers',
+  '/blog/florida-for-non-golfers',
+  '/blog/myrtle-beach-vs-pinehurst-golf-trip',
+  '/blog/myrtle-beach-vs-kiawah-island-golf-trip',
+  '/blog/scottsdale-vs-pinehurst-golf-trip',
+  '/blog/father-son-golf-trip',
+  '/blog/40th-50th-birthday-golf-trip',
+  '/blog/golf-trip-formats',
+  '/blog/best-golf-destinations-october',
 ] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {
