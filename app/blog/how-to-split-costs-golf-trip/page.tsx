@@ -350,6 +350,16 @@ export default function HowToSplitCostsPage() {
             </h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <RelatedPost
+                href="/blog/golf-trip-tipping-guide"
+                title="Tipping on a Golf Trip"
+                description="The country-by-country tipping guide so you carry the right cash."
+              />
+              <RelatedPost
+                href="/blog/best-golf-trip-apps"
+                title="Best Golf Trip Apps"
+                description="Splitwise, Tricount, Settle Up, plus the rest of the trip-running stack."
+              />
+              <RelatedPost
                 href="/blog/golf-trip-budget"
                 title="Golf Trip Budget Breakdown"
                 description="What a golf trip actually costs by destination and group size."

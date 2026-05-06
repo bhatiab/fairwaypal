@@ -396,6 +396,11 @@ export default function GolfTripBudgetPage() {
                 description="The five practical methods, the apps, and the conversation that prevents most fights."
               />
               <RelatedPost
+                href="/blog/golf-trip-tipping-guide"
+                title="Tipping on a Golf Trip"
+                description="Caddies, bag drops, halfway-house, dinner servers. US to Portugal."
+              />
+              <RelatedPost
                 href="/blog/best-bachelor-party-golf-destinations"
                 title="Best Bachelor Golf Destinations"
                 description="All six destinations ranked — with honest cost trade-offs."

@@ -322,6 +322,16 @@ export default function GolfTripWithNonGolfersPage() {
                 description="The most partner-friendly international golf trip. Caves, beaches, food, wine."
               />
               <RelatedPost
+                href="/blog/scotland-for-non-golfers"
+                title="Scotland for Non-Golfers"
+                description="Edinburgh, Highlands, distilleries, the Fife Coastal Path."
+              />
+              <RelatedPost
+                href="/blog/pinehurst-for-non-golfers"
+                title="Pinehurst for Non-Golfers"
+                description="Walkable Southern village, the Tufts Archives, Seagrove pottery."
+              />
+              <RelatedPost
                 href="/blog/pebble-beach-for-non-golfers"
                 title="Pebble Beach for Non-Golfers"
                 description="The friendliest bucket-list resort for partners. Carmel, the Aquarium, Big Sur."

@@ -368,6 +368,11 @@ export default function BandonVsPebblePage() {
                 description="The two best East Coast golf resorts, compared honestly."
               />
               <RelatedPost
+                href="/blog/pinehurst-vs-pebble-beach-golf-trip"
+                title="Pinehurst vs Pebble Beach"
+                description="The East Coast versus West Coast bucket-list shootout."
+              />
+              <RelatedPost
                 href="/blog/golf-trip-with-non-golfers"
                 title="Golf Trips With Non-Golfers"
                 description="How to plan a trip that genuinely works for the whole group."

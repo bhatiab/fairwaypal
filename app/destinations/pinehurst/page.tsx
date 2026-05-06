@@ -331,6 +331,8 @@ export default function PinehurstPage() {
               {[
                 { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations (Ranked Honestly)', desc: 'Where Pinehurst ranks for bachelor golf trips and who it\'s the right fit for.' },
                 { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Pinehurst sits in the mid-range. Full cost breakdown by destination here.' },
+                { href: '/blog/pinehurst-for-non-golfers', title: 'Pinehurst for Non-Golfers: A Partner\'s Guide', desc: 'The full partner-side guide. Village walking, Tufts Archives, the spa, Seagrove pottery, Southern Pines.' },
+                { href: '/blog/pinehurst-vs-pebble-beach-golf-trip', title: 'Pinehurst vs Pebble Beach: Which Should You Pick?', desc: 'A friendly head-to-head with the West Coast bucket-list option.' },
                 { href: '/blog/golf-trip-with-non-golfers', title: 'Golf Trip With Non-Golfers: How to Plan It', desc: 'Pinehurst Village is charming — here\'s what partners actually have to do.' },
                 { href: '/blog/what-to-do-on-golf-trip-non-golfer', title: 'What to Do on a Golf Trip If You Don\'t Golf', desc: 'Pinehurst activities for non-golfers, including the Village and Lake Tillery.' },
               ].map(({ href, title, desc }) => (

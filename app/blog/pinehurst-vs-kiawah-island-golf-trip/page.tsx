@@ -360,6 +360,11 @@ export default function PinehurstVsKiawahPage() {
                 description="The Ocean Course, the four secondary courses, and a Charleston-paired partner plan."
               />
               <RelatedPost
+                href="/blog/pinehurst-vs-pebble-beach-golf-trip"
+                title="Pinehurst vs Pebble Beach"
+                description="The other big East Coast versus West Coast bucket-list debate."
+              />
+              <RelatedPost
                 href="/blog/scottsdale-vs-myrtle-beach-golf-trip"
                 title="Scottsdale vs Myrtle Beach"
                 description="Two more popular US destinations compared honestly."

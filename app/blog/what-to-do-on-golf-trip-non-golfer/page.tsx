@@ -340,6 +340,16 @@ export default function WhatToDoNonGolferPage() {
                 description="The most partner-friendly international golf destination. Caves, beaches, wine."
               />
               <RelatedPost
+                href="/blog/scotland-for-non-golfers"
+                title="Scotland for Non-Golfers"
+                description="Edinburgh, Highlands, distilleries, and the Fife Coastal Path."
+              />
+              <RelatedPost
+                href="/blog/pinehurst-for-non-golfers"
+                title="Pinehurst for Non-Golfers"
+                description="Walkable Southern village, the Tufts Archives, Seagrove pottery."
+              />
+              <RelatedPost
                 href="/blog/pebble-beach-for-non-golfers"
                 title="Pebble Beach for Non-Golfers"
                 description="The friendliest bucket-list golf resort for partners, in depth."

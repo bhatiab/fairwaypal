@@ -25,6 +25,51 @@ const breadcrumbSchema = {
 
 const POSTS = [
   {
+    slug: 'best-golf-trip-apps',
+    title: 'The Best Golf Trip Apps and Tools (2026 Honest Guide)',
+    description:
+      'The 12 apps that actually make a golf trip easier. Planning, group chat, expense splitting, GPS, weather, booking, and shot tracking. What is free, what is worth paying for.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: 'golf-trip-tipping-guide',
+    title: 'Tipping on a Golf Trip: The Complete Guide',
+    description:
+      'Caddies, bag drops, halfway-house, valet, and dinner servers. Country-by-country guidelines for the US, Scotland, Ireland, and Portugal. Real numbers, no awkwardness.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Budget',
+  },
+  {
+    slug: 'pinehurst-vs-pebble-beach-golf-trip',
+    title: 'Pinehurst vs Pebble Beach for a Golf Trip: Which Should You Pick?',
+    description:
+      'Two of the great American bucket-list golf trips. Heritage and walkability versus the iconic Pacific finishing hole. A friendly head-to-head with a clear verdict.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Destinations',
+  },
+  {
+    slug: 'scotland-for-non-golfers',
+    title: 'Scotland for Non-Golfers: A Partner\'s Guide',
+    description:
+      'How a Scotland golf trip works for the partner who is not teeing off. Edinburgh, Highlands, distilleries, the Fife Coastal Path, and a 5-day partner itinerary.',
+    readMinutes: 11,
+    date: 'May 6, 2026',
+    tag: 'Partners',
+  },
+  {
+    slug: 'pinehurst-for-non-golfers',
+    title: 'Pinehurst for Non-Golfers: A Partner\'s Guide',
+    description:
+      'How a Pinehurst golf trip works for the partner who is not teeing off. The walkable village, the Tufts Archives, the spa, Seagrove pottery, and Southern Pines.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Partners',
+  },
+  {
     slug: 'algarve-for-non-golfers',
     title: 'The Algarve for Non-Golfers: A Partner\'s Guide',
     description:

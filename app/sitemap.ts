@@ -39,6 +39,11 @@ const STATIC_PAGES = [
   '/blog/bandon-dunes-for-non-golfers',
   '/blog/pebble-beach-for-non-golfers',
   '/blog/algarve-for-non-golfers',
+  '/blog/pinehurst-for-non-golfers',
+  '/blog/scotland-for-non-golfers',
+  '/blog/pinehurst-vs-pebble-beach-golf-trip',
+  '/blog/golf-trip-tipping-guide',
+  '/blog/best-golf-trip-apps',
 ] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {

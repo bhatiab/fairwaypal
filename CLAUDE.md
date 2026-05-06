@@ -750,14 +750,27 @@ Technical SEO
 Content & SEO
 [x] Build /destinations/scotland destination guide page
 [x] Build /destinations/ireland destination guide page
-[ ] Build /blog infrastructure (index + individual post pages)
-[ ] Write blog post: "How to plan a golf trip with non-golfers"
-[ ] Write blog post: "Best bachelor party golf destinations 2026"
-[ ] Write blog post: "Golf trip budget calculator"
-[ ] Write blog post: "What do partners do during a golf trip"
-[ ] Write blog post: "Golf trip packing list"
-[ ] Write blog post: "Scottsdale vs Myrtle Beach golf trip"
+[x] Build /blog infrastructure (index + individual post pages)
+[x] Write blog post: "How to plan a golf trip with non-golfers"
+[x] Write blog post: "Best bachelor party golf destinations 2026"
+[x] Write blog post: "Golf trip budget breakdown"
+[x] Write blog post: "What do partners do during a golf trip"
+[x] Write blog post: "Golf trip packing list"
+[x] Write blog post: "Scottsdale vs Myrtle Beach golf trip"
+[x] Write blog post: "Pinehurst vs Kiawah Island golf trip"
+[x] Write blog post: "Bandon Dunes vs Pebble Beach golf trip"
+[x] Write blog post: "Algarve vs Scotland golf trip"
+[x] Write blog post: "Pinehurst vs Pebble Beach golf trip"
+[x] Write blog post: "How to split costs on a golf trip without resentment"
+[x] Write blog post: "Tipping on a golf trip"
+[x] Write blog post: "Best golf trip apps and tools"
+[x] Write partner guide: "Bandon Dunes for non-golfers"
+[x] Write partner guide: "Pebble Beach for non-golfers"
+[x] Write partner guide: "The Algarve for non-golfers"
+[x] Write partner guide: "Pinehurst for non-golfers"
+[x] Write partner guide: "Scotland for non-golfers"
 [x] Add FAQ sections with FAQPage schema to all destination guides
+[x] Fix internal-link orphans (Florida, Algarve, weak destination + blog links)
 [ ] Add social proof to landing page (trips planned count, testimonials)
 
 Marketing Channels
@@ -767,6 +780,81 @@ Marketing Channels
 [ ] Explore golf podcast sponsorship opportunities
 [ ] Set up Pinterest presence with destination visuals
 [ ] Track organic keyword rankings and search impressions weekly
+```
+
+### Sprint 6 — Content Backlog (Blog + Destination Expansion)
+
+> Articles ranked roughly by leverage. Same shipping rules as the existing
+> blog posts: warm and friendly tone, no em dashes, fact-checked, Article +
+> BreadcrumbList + FAQPage JSON-LD, canonical URL, OG metadata, registered
+> in `app/sitemap.ts` and `app/blog/page.tsx`, cross-linked from related
+> posts and destination pages.
+
+```
+Partner-by-destination series (continuation)
+[ ] Kiawah Island for Non-Golfers       Beach + Charleston nearby
+[ ] Myrtle Beach for Non-Golfers        Beach, boardwalk, family-friendly
+[ ] Scottsdale for Non-Golfers          Old Town, spa scene, hot air balloon
+[ ] Ireland for Non-Golfers             Galway, Cliffs of Moher, Dublin, pubs
+[ ] Florida for Non-Golfers             Beach + Disney + Everglades crossover
+
+Comparison posts (commercial intent, low-competition)
+[ ] Pinehurst vs Bandon Dunes           East vs West, tradition vs links
+[ ] Myrtle Beach vs Pinehurst           Carolina value vs prestige
+[ ] Myrtle Beach vs Kiawah Island       SC neighbours, very different feel
+[ ] Scottsdale vs Pinehurst             Sun + courses vs heritage
+[ ] Scottsdale vs Palm Springs          Winter desert decision
+[ ] Bandon Dunes vs Scotland            The "should we go links?" question
+[ ] Algarve vs Ireland                  Sun vs craic, both cheaper than Scotland
+[ ] Bandon vs Pebble vs Kiawah          West-coast-or-east premium triple
+
+Group-type / occasion posts (long-tail)
+[ ] 40th / 50th birthday golf trip      Itinerary archetype
+[ ] Father-son golf trip planning       Two-generation logistics
+[ ] Couples golf trip (both play)       Different dynamic from organiser/partner
+[ ] Small-group (4 players) golf trip   Best destinations for tight crews
+[ ] First-ever golf trip                What to expect, what to skip
+[ ] Beginner-friendly golf trips        Where to go when half can't break 100
+[ ] Bachelorette + golf weekend         Rare destinations that work for both
+
+Money / logistics / how-to (high-volume evergreen)
+[ ] Shipping clubs vs flying with clubs Real numbers, real bag fees
+[ ] Golf trip flights                    Bag fees, what saves money
+[ ] Golf trip formats                    Ryder Cup, Stableford, skins, when to use
+[ ] Handicapping your group              Fair stakes for a Nassau
+[ ] Golf trip insurance                  Do you actually need it?
+
+Seasonal / when-to-go (recurring traffic)
+[ ] Best golf destinations in [Jan]     Programmatic: 7 month-by-month posts
+[ ] Best golf destinations in [Feb]     (Jan, Feb, Mar, Apr, Sep, Oct, Nov)
+[ ] Best golf destinations in [Mar]
+[ ] Best golf destinations in [Apr]
+[ ] Best golf destinations in [Sep]
+[ ] Best golf destinations in [Oct]
+[ ] Best golf destinations in [Nov]
+[ ] Shoulder-season golf                Apr-May & Sep-Oct for half the price
+[ ] When to book a 2027 golf trip       Month-by-month booking calendar
+
+New destination guides (fill the map)
+[ ] /destinations/palm-springs          Coachella Valley, winter desert
+[ ] /destinations/hilton-head           Lowcountry, family-friendly
+[ ] /destinations/las-vegas             Golf + bachelor party crossover
+[ ] /destinations/cabo-san-lucas        Mexico premium, partner-friendly
+[ ] /destinations/st-andrews            Sub-page under Scotland
+[ ] /destinations/ballybunion           Southwest Ireland sub-page
+[ ] /destinations/punta-cana            Dominican Republic resort golf
+
+Contrarian / shareable (social + Reddit fuel)
+[ ] 5 destinations not worth the price  Honest call-outs, share-friendly
+[ ] Hidden costs nobody warns you about The pre-trip surprise list
+[ ] Why most bachelor golf trips suck   And how to fix yours
+[ ] Resort vs public vs private host    Which model fits your trip
+[ ] Why your group keeps cancelling     Direct product-positioning piece
+
+Programmatic SEO (when you want scale)
+[ ] [city] + non-golfer wife/partner    Long-tail bucket, template + 15-20 cities
+[ ] [destination] in [month]            Cost & weather, programmatic matrix
+[ ] [destination] for a group of [N]    e.g. "Bandon for 4", "Bandon for 8"
 ```
 
 ---
