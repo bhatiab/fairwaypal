@@ -355,6 +355,11 @@ export default function AlgarveVsScotlandPage() {
             </h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <RelatedPost
+                href="/blog/algarve-for-non-golfers"
+                title="The Algarve for Non-Golfers"
+                description="The full partner-side guide. Caves, beaches, food, wine, and a 4-day itinerary."
+              />
+              <RelatedPost
                 href="/blog/ireland-vs-scotland-golf-trip"
                 title="Ireland vs Scotland Golf Trip"
                 description="The other big European decision, compared honestly."

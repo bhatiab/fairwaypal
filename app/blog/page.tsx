@@ -25,6 +25,15 @@ const breadcrumbSchema = {
 
 const POSTS = [
   {
+    slug: 'algarve-for-non-golfers',
+    title: 'The Algarve for Non-Golfers: A Partner\'s Guide',
+    description:
+      'How to make a Portugal golf trip a real holiday for the partner who is not teeing off. Beaches, sea caves, Lagos and Tavira, the Benagil cave kayak tour, and Alentejo wine country.',
+    readMinutes: 11,
+    date: 'May 6, 2026',
+    tag: 'Partners',
+  },
+  {
     slug: 'pebble-beach-for-non-golfers',
     title: 'Pebble Beach for Non-Golfers: A Partner\'s Guide',
     description:
