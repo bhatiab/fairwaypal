@@ -85,9 +85,9 @@ const faqSchema = {
 }
 
 const OTHER_DESTINATIONS = [
+  { name: 'Pebble Beach', href: '/destinations/pebble-beach', tagline: 'The West Coast bucket list' },
   { name: 'Scotland', href: '/destinations/scotland', tagline: 'The birthplace of golf' },
   { name: 'Ireland', href: '/destinations/ireland', tagline: 'Links golf and craic' },
-  { name: 'Pinehurst', href: '/destinations/pinehurst', tagline: 'Cradle of American golf' },
 ]
 
 export default function BandonDunesPage() {

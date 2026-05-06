@@ -25,6 +25,15 @@ const breadcrumbSchema = {
 
 const POSTS = [
   {
+    slug: 'pinehurst-vs-kiawah-island-golf-trip',
+    title: 'Pinehurst vs Kiawah Island for a Golf Trip: Which Should You Pick?',
+    description:
+      'Two of the best golf resorts on the East Coast, compared honestly. Courses, costs, weather, partner experience, logistics, and a verdict by group type.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Destinations',
+  },
+  {
     slug: 'how-to-plan-a-golf-trip',
     title: 'How to Plan a Golf Trip: The Complete Step-by-Step Guide',
     description:

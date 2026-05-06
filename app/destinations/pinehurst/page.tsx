@@ -85,9 +85,9 @@ const faqSchema = {
 }
 
 const OTHER_DESTINATIONS = [
-  { name: 'Scottsdale', href: '/destinations/scottsdale', tagline: '200+ courses, year-round sun' },
+  { name: 'Kiawah Island', href: '/destinations/kiawah-island', tagline: 'The Ocean Course and Charleston' },
+  { name: 'Florida', href: '/destinations/florida-golf', tagline: 'Year-round Southeast sun' },
   { name: 'Scotland', href: '/destinations/scotland', tagline: 'The birthplace of golf' },
-  { name: 'Ireland', href: '/destinations/ireland', tagline: 'Links golf and craic' },
 ]
 
 export default function PinehurstPage() {

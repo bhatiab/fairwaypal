@@ -340,6 +340,21 @@ export default function BestBachelorGolfDestinationsPage() {
                 description="How to plan a trip that works for the whole group."
               />
               <RelatedPost
+                href="/blog/kiawah-island-golf-trip"
+                title="Kiawah Island Golf Trip Guide"
+                description="The Ocean Course, Charleston, and what a Kiawah weekend really costs."
+              />
+              <RelatedPost
+                href="/blog/pebble-beach-golf-trip"
+                title="Pebble Beach Golf Trip Guide"
+                description="How to actually get tee times at Pebble and what the Monterey weekend costs."
+              />
+              <RelatedPost
+                href="/blog/scottsdale-vs-myrtle-beach-golf-trip"
+                title="Scottsdale vs Myrtle Beach"
+                description="Two of the most popular US bachelor destinations, compared honestly."
+              />
+              <RelatedPost
                 href="/blog/golf-trip-packing-list"
                 title="Golf Trip Packing List"
                 description="Everything golfers and non-golfers actually need to pack."

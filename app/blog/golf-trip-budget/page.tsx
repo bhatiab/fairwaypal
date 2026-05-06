@@ -401,6 +401,21 @@ export default function GolfTripBudgetPage() {
                 description="Head-to-head comparison of the two most popular US destinations."
               />
               <RelatedPost
+                href="/blog/pebble-beach-golf-trip"
+                title="Pebble Beach Trip Guide"
+                description="The bucket-list spend, broken down round by round."
+              />
+              <RelatedPost
+                href="/blog/kiawah-island-golf-trip"
+                title="Kiawah Island Trip Guide"
+                description="What the Ocean Course and a Charleston weekend really cost."
+              />
+              <RelatedPost
+                href="/blog/ireland-vs-scotland-golf-trip"
+                title="Ireland vs Scotland"
+                description="Europe's two big options, costed and compared."
+              />
+              <RelatedPost
                 href="/blog/golf-trip-packing-list"
                 title="Golf Trip Packing List"
                 description="What to bring — and what you'll regret bringing."

@@ -32,6 +32,7 @@ const STATIC_PAGES = [
   '/blog/kiawah-island-golf-trip',
   '/blog/golf-trip-group-size',
   '/blog/golf-trip-weekend-schedule',
+  '/blog/pinehurst-vs-kiawah-island-golf-trip',
 ] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {
