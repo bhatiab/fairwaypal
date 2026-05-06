@@ -336,6 +336,7 @@ export default function ScotlandPage() {
             </h2>
             <div className="mt-6 space-y-3">
               {[
+                { href: '/blog/algarve-vs-scotland-golf-trip', title: 'Algarve vs Scotland: Which Should You Pick?', desc: 'A friendly head-to-head between Scotland and the value-and-sun option in Portugal.' },
                 { href: '/blog/ireland-vs-scotland-golf-trip', title: 'Ireland vs Scotland Golf Trip: Which Should You Choose?', desc: 'A head-to-head comparison across courses, costs, logistics, and partner experience.' },
                 { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations (Ranked Honestly)', desc: 'How Scotland ranks for bachelor golf trips versus the US alternatives.' },
                 { href: '/blog/golf-trip-with-non-golfers', title: 'Golf Trip With Non-Golfers: How to Plan It', desc: 'Scotland is excellent for partners — castles, whisky, coastal villages. Here\'s why.' },

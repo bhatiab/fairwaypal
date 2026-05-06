@@ -25,6 +25,15 @@ const breadcrumbSchema = {
 
 const POSTS = [
   {
+    slug: 'algarve-vs-scotland-golf-trip',
+    title: 'Algarve vs Scotland for a Golf Trip: Which Should You Pick?',
+    description:
+      'Europe\'s two big group-golf destinations, compared honestly. Sun and value in Portugal, or links and heritage in Scotland?',
+    readMinutes: 11,
+    date: 'May 6, 2026',
+    tag: 'Destinations',
+  },
+  {
     slug: 'bandon-dunes-vs-pebble-beach-golf-trip',
     title: 'Bandon Dunes vs Pebble Beach for a Golf Trip: Which Should You Pick?',
     description:

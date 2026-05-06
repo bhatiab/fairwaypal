@@ -336,6 +336,7 @@ export default function AlgarvePage() {
             </h2>
             <div className="mt-6 space-y-3">
               {[
+                { href: '/blog/algarve-vs-scotland-golf-trip', title: 'Algarve vs Scotland: Which Should You Pick?', desc: 'A friendly head-to-head between Europe\'s two big group-golf destinations.' },
                 { href: '/blog/ireland-vs-scotland-golf-trip', title: 'Ireland vs Scotland Golf Trip', desc: 'How the Algarve compares to the other major European golf destinations.' },
                 { href: '/blog/golf-trip-with-non-golfers', title: 'Planning a Golf Trip With Non-Golfers', desc: 'Why the Algarve is one of the best partner-friendly international destinations.' },
                 { href: '/blog/golf-trip-packing-list', title: 'The Golf Trip Packing List', desc: 'What to bring for an international golf trip — plus Portugal-specific additions.' },
