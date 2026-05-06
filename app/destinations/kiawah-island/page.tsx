@@ -92,7 +92,7 @@ const faqSchema = {
 
 const OTHER_DESTINATIONS = [
   { name: 'Pinehurst', href: '/destinations/pinehurst', tagline: 'The home of US golf' },
-  { name: 'Myrtle Beach', href: '/destinations/myrtle-beach', tagline: 'Best value for groups' },
+  { name: 'Florida', href: '/destinations/florida-golf', tagline: 'Year-round Southeast sun' },
   { name: 'Pebble Beach', href: '/destinations/pebble-beach', tagline: 'The West Coast bucket list' },
 ]
 
@@ -111,7 +111,7 @@ export default function KiawahIslandPage() {
           Kiawah Island, South Carolina
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
-          The best golf resort on the East Coast. Five courses on one island, headlined by the Ocean Course — host of three PGA Championships. Partners have 10 miles of Atlantic beach, a world-class spa, and Charleston 25 miles away. The whole group comes back happy.
+          The best golf resort on the East Coast. Five courses on one island, headlined by the Ocean Course — host of the 2012 and 2021 PGA Championships, with 2031 already awarded. Partners have 10 miles of Atlantic beach, a world-class spa, and Charleston 25 miles away. The whole group comes back happy.
         </p>
         <p className="mt-2 text-sm text-ink-2">
           Best time to visit: <span className="text-gold">March — May, September — November</span> (mild temps, low humidity)

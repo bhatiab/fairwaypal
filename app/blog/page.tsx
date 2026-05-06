@@ -25,6 +25,114 @@ const breadcrumbSchema = {
 
 const POSTS = [
   {
+    slug: 'best-golf-trip-apps',
+    title: 'The Best Golf Trip Apps and Tools (2026 Honest Guide)',
+    description:
+      'The 12 apps that actually make a golf trip easier. Planning, group chat, expense splitting, GPS, weather, booking, and shot tracking. What is free, what is worth paying for.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: 'golf-trip-tipping-guide',
+    title: 'Tipping on a Golf Trip: The Complete Guide',
+    description:
+      'Caddies, bag drops, halfway-house, valet, and dinner servers. Country-by-country guidelines for the US, Scotland, Ireland, and Portugal. Real numbers, no awkwardness.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Budget',
+  },
+  {
+    slug: 'pinehurst-vs-pebble-beach-golf-trip',
+    title: 'Pinehurst vs Pebble Beach for a Golf Trip: Which Should You Pick?',
+    description:
+      'Two of the great American bucket-list golf trips. Heritage and walkability versus the iconic Pacific finishing hole. A friendly head-to-head with a clear verdict.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Destinations',
+  },
+  {
+    slug: 'scotland-for-non-golfers',
+    title: 'Scotland for Non-Golfers: A Partner\'s Guide',
+    description:
+      'How a Scotland golf trip works for the partner who is not teeing off. Edinburgh, Highlands, distilleries, the Fife Coastal Path, and a 5-day partner itinerary.',
+    readMinutes: 11,
+    date: 'May 6, 2026',
+    tag: 'Partners',
+  },
+  {
+    slug: 'pinehurst-for-non-golfers',
+    title: 'Pinehurst for Non-Golfers: A Partner\'s Guide',
+    description:
+      'How a Pinehurst golf trip works for the partner who is not teeing off. The walkable village, the Tufts Archives, the spa, Seagrove pottery, and Southern Pines.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Partners',
+  },
+  {
+    slug: 'algarve-for-non-golfers',
+    title: 'The Algarve for Non-Golfers: A Partner\'s Guide',
+    description:
+      'How to make a Portugal golf trip a real holiday for the partner who is not teeing off. Beaches, sea caves, Lagos and Tavira, the Benagil cave kayak tour, and Alentejo wine country.',
+    readMinutes: 11,
+    date: 'May 6, 2026',
+    tag: 'Partners',
+  },
+  {
+    slug: 'pebble-beach-for-non-golfers',
+    title: 'Pebble Beach for Non-Golfers: A Partner\'s Guide',
+    description:
+      'Why Pebble Beach is the friendliest bucket-list golf trip for partners. Carmel-by-the-Sea, the Aquarium, the 17-Mile Drive, Big Sur, wine country, and a daily rhythm that works.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Partners',
+  },
+  {
+    slug: 'bandon-dunes-for-non-golfers',
+    title: 'Bandon Dunes for Non-Golfers: A Partner\'s Guide',
+    description:
+      'How to enjoy a Bandon Dunes golf trip when you are not the one teeing off. Beaches, state parks, the spa, Old Town Bandon, and a daily rhythm that works.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Partners',
+  },
+  {
+    slug: 'how-to-split-costs-golf-trip',
+    title: 'How to Split Costs on a Golf Trip Without Resentment',
+    description:
+      'Money is the most common reason golf trips quietly blow up. The five practical methods for splitting costs, the apps worth using, and the one conversation that prevents most fights.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Budget',
+  },
+  {
+    slug: 'algarve-vs-scotland-golf-trip',
+    title: 'Algarve vs Scotland for a Golf Trip: Which Should You Pick?',
+    description:
+      'Europe\'s two big group-golf destinations, compared honestly. Sun and value in Portugal, or links and heritage in Scotland?',
+    readMinutes: 11,
+    date: 'May 6, 2026',
+    tag: 'Destinations',
+  },
+  {
+    slug: 'bandon-dunes-vs-pebble-beach-golf-trip',
+    title: 'Bandon Dunes vs Pebble Beach for a Golf Trip: Which Should You Pick?',
+    description:
+      'Two of the great West Coast golf bucket-list trips, compared honestly. Courses, costs, weather, partner experience, and a verdict by group type.',
+    readMinutes: 11,
+    date: 'May 6, 2026',
+    tag: 'Destinations',
+  },
+  {
+    slug: 'pinehurst-vs-kiawah-island-golf-trip',
+    title: 'Pinehurst vs Kiawah Island for a Golf Trip: Which Should You Pick?',
+    description:
+      'Two of the best golf resorts on the East Coast, compared honestly. Courses, costs, weather, partner experience, logistics, and a verdict by group type.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Destinations',
+  },
+  {
     slug: 'how-to-plan-a-golf-trip',
     title: 'How to Plan a Golf Trip: The Complete Step-by-Step Guide',
     description:

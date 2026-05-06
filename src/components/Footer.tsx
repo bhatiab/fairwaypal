@@ -13,8 +13,12 @@ const destinationLinks = [
   { label: 'Myrtle Beach', href: '/destinations/myrtle-beach' },
   { label: 'Bandon Dunes', href: '/destinations/bandon-dunes' },
   { label: 'Pinehurst', href: '/destinations/pinehurst' },
+  { label: 'Pebble Beach', href: '/destinations/pebble-beach' },
+  { label: 'Kiawah Island', href: '/destinations/kiawah-island' },
+  { label: 'Florida', href: '/destinations/florida-golf' },
   { label: 'Scotland', href: '/destinations/scotland' },
   { label: 'Ireland', href: '/destinations/ireland' },
+  { label: 'Algarve', href: '/destinations/algarve' },
 ]
 
 const blogLinks = [

@@ -85,9 +85,9 @@ const faqSchema = {
 }
 
 const OTHER_DESTINATIONS = [
+  { name: 'Pebble Beach', href: '/destinations/pebble-beach', tagline: 'The West Coast bucket list' },
   { name: 'Scotland', href: '/destinations/scotland', tagline: 'The birthplace of golf' },
   { name: 'Ireland', href: '/destinations/ireland', tagline: 'Links golf and craic' },
-  { name: 'Pinehurst', href: '/destinations/pinehurst', tagline: 'Cradle of American golf' },
 ]
 
 export default function BandonDunesPage() {
@@ -329,6 +329,8 @@ export default function BandonDunesPage() {
             </h2>
             <div className="mt-6 space-y-3">
               {[
+                { href: '/blog/bandon-dunes-for-non-golfers', title: 'Bandon Dunes for Non-Golfers: A Partner\'s Guide', desc: 'The full partner-side guide: beaches, state parks, spa, Old Town, and a 3-day itinerary.' },
+                { href: '/blog/bandon-dunes-vs-pebble-beach-golf-trip', title: 'Bandon Dunes vs Pebble Beach: Which Should You Pick?', desc: 'A friendly head-to-head comparison of the two great West Coast golf trips.' },
                 { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations (Ranked Honestly)', desc: 'How Bandon Dunes ranks — and who it\'s best suited for.' },
                 { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Bandon Dunes cost breakdown compared to other destinations.' },
                 { href: '/blog/golf-trip-packing-list', title: 'The Golf Trip Packing List', desc: 'Oregon coast weather calls for specific gear. Full packing guide here.' },

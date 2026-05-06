@@ -321,6 +321,11 @@ export default function HowToPlanAGolfTripPage() {
             </h2>
             <div className="mt-6 space-y-3">
               {[
+                { href: '/blog/golf-trip-weekend-schedule', title: 'The 3-Night Golf Weekend Schedule Template', desc: 'A concrete day-by-day schedule for golf, meals, and partner activities.' },
+                { href: '/blog/golf-trip-group-size', title: 'Golf Trip Group Size: 4 vs 8 vs 12', desc: 'Tee time mechanics, accommodation value, and which group size actually works best.' },
+                { href: '/blog/how-to-split-costs-golf-trip', title: 'How to Split Costs Without Resentment', desc: 'The five practical methods, apps that help, and the one conversation that prevents most fights.' },
+                { href: '/blog/best-golf-trip-apps', title: 'The Best Golf Trip Apps and Tools', desc: 'The 12 apps that actually make a golf trip easier. What\'s free, what\'s worth paying for.' },
+                { href: '/blog/golf-trip-tipping-guide', title: 'Tipping on a Golf Trip', desc: 'Caddies, bag drops, halfway-house, valet. Country-by-country guidelines.' },
                 { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Real numbers by destination and group size.' },
                 { href: '/blog/golf-trip-with-non-golfers', title: 'Golf Trip With Non-Golfers', desc: 'How to plan the partner itinerary alongside the golf.' },
                 { href: '/blog/golf-trip-packing-list', title: 'The Golf Trip Packing List', desc: 'Golfer and partner lists — what to bring, what to leave.' },

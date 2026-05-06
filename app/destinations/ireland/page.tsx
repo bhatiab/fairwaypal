@@ -93,8 +93,8 @@ const faqSchema = {
 
 const OTHER_DESTINATIONS = [
   { name: 'Scotland', href: '/destinations/scotland', tagline: 'The birthplace of golf' },
+  { name: 'Algarve', href: '/destinations/algarve', tagline: 'Sun, links, and half the price of Scotland' },
   { name: 'Scottsdale', href: '/destinations/scottsdale', tagline: '200+ courses, year-round sun' },
-  { name: 'Myrtle Beach', href: '/destinations/myrtle-beach', tagline: '100+ courses, boardwalk vibes' },
 ]
 
 export default function IrelandPage() {
@@ -336,6 +336,7 @@ export default function IrelandPage() {
             </h2>
             <div className="mt-6 space-y-3">
               {[
+                { href: '/blog/ireland-vs-scotland-golf-trip', title: 'Ireland vs Scotland Golf Trip: Which Should You Choose?', desc: 'A head-to-head comparison across courses, costs, logistics, and partner experience.' },
                 { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations (Ranked Honestly)', desc: 'How Ireland ranks for bachelor golf trips versus Scotland and the US options.' },
                 { href: '/blog/golf-trip-with-non-golfers', title: 'Golf Trip With Non-Golfers: How to Plan It', desc: 'Ireland is excellent for partners. Galway, the Cliffs of Moher, pubs. Here\'s the full guide.' },
                 { href: '/blog/golf-trip-packing-list', title: 'The Golf Trip Packing List', desc: 'What to pack for Ireland — waterproofs, layers, and the gear links courses demand.' },

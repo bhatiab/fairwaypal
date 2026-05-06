@@ -335,6 +335,31 @@ export default function WhatToDoNonGolferPage() {
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Related guides</h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <RelatedPost
+                href="/blog/algarve-for-non-golfers"
+                title="The Algarve for Non-Golfers"
+                description="The most partner-friendly international golf destination. Caves, beaches, wine."
+              />
+              <RelatedPost
+                href="/blog/scotland-for-non-golfers"
+                title="Scotland for Non-Golfers"
+                description="Edinburgh, Highlands, distilleries, and the Fife Coastal Path."
+              />
+              <RelatedPost
+                href="/blog/pinehurst-for-non-golfers"
+                title="Pinehurst for Non-Golfers"
+                description="Walkable Southern village, the Tufts Archives, Seagrove pottery."
+              />
+              <RelatedPost
+                href="/blog/pebble-beach-for-non-golfers"
+                title="Pebble Beach for Non-Golfers"
+                description="The friendliest bucket-list golf resort for partners, in depth."
+              />
+              <RelatedPost
+                href="/blog/bandon-dunes-for-non-golfers"
+                title="Bandon Dunes for Non-Golfers"
+                description="The full partner-side guide for the most golf-focused destination on the West Coast."
+              />
+              <RelatedPost
                 href="/blog/golf-trip-with-non-golfers"
                 title="Golf Trips With Non-Golfers"
                 description="How the organiser plans a trip that works for the whole group."

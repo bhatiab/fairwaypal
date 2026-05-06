@@ -93,7 +93,7 @@ const faqSchema = {
 
 const OTHER_DESTINATIONS = [
   { name: 'Ireland', href: '/destinations/ireland', tagline: 'Links golf and craic' },
-  { name: 'Scottsdale', href: '/destinations/scottsdale', tagline: '200+ courses, year-round sun' },
+  { name: 'Algarve', href: '/destinations/algarve', tagline: 'Sun, links, and half the price' },
   { name: 'Pinehurst', href: '/destinations/pinehurst', tagline: 'Cradle of American golf' },
 ]
 
@@ -336,6 +336,9 @@ export default function ScotlandPage() {
             </h2>
             <div className="mt-6 space-y-3">
               {[
+                { href: '/blog/scotland-for-non-golfers', title: 'Scotland for Non-Golfers: A Partner\'s Guide', desc: 'The full partner-side guide. Edinburgh, Highlands, distilleries, the Fife Coastal Path.' },
+                { href: '/blog/algarve-vs-scotland-golf-trip', title: 'Algarve vs Scotland: Which Should You Pick?', desc: 'A friendly head-to-head between Scotland and the value-and-sun option in Portugal.' },
+                { href: '/blog/ireland-vs-scotland-golf-trip', title: 'Ireland vs Scotland Golf Trip: Which Should You Choose?', desc: 'A head-to-head comparison across courses, costs, logistics, and partner experience.' },
                 { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations (Ranked Honestly)', desc: 'How Scotland ranks for bachelor golf trips versus the US alternatives.' },
                 { href: '/blog/golf-trip-with-non-golfers', title: 'Golf Trip With Non-Golfers: How to Plan It', desc: 'Scotland is excellent for partners — castles, whisky, coastal villages. Here\'s why.' },
                 { href: '/blog/golf-trip-packing-list', title: 'The Golf Trip Packing List', desc: 'Scotland requires waterproofs regardless of season. Full packing guide for links golf.' },

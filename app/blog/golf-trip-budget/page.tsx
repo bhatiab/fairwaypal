@@ -391,6 +391,16 @@ export default function GolfTripBudgetPage() {
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Related guides</h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <RelatedPost
+                href="/blog/how-to-split-costs-golf-trip"
+                title="How to Split Costs Without Resentment"
+                description="The five practical methods, the apps, and the conversation that prevents most fights."
+              />
+              <RelatedPost
+                href="/blog/golf-trip-tipping-guide"
+                title="Tipping on a Golf Trip"
+                description="Caddies, bag drops, halfway-house, dinner servers. US to Portugal."
+              />
+              <RelatedPost
                 href="/blog/best-bachelor-party-golf-destinations"
                 title="Best Bachelor Golf Destinations"
                 description="All six destinations ranked — with honest cost trade-offs."
@@ -399,6 +409,21 @@ export default function GolfTripBudgetPage() {
                 href="/blog/scottsdale-vs-myrtle-beach-golf-trip"
                 title="Scottsdale vs Myrtle Beach"
                 description="Head-to-head comparison of the two most popular US destinations."
+              />
+              <RelatedPost
+                href="/blog/pebble-beach-golf-trip"
+                title="Pebble Beach Trip Guide"
+                description="The bucket-list spend, broken down round by round."
+              />
+              <RelatedPost
+                href="/blog/kiawah-island-golf-trip"
+                title="Kiawah Island Trip Guide"
+                description="What the Ocean Course and a Charleston weekend really cost."
+              />
+              <RelatedPost
+                href="/blog/ireland-vs-scotland-golf-trip"
+                title="Ireland vs Scotland"
+                description="Europe's two big options, costed and compared."
               />
               <RelatedPost
                 href="/blog/golf-trip-packing-list"

@@ -32,6 +32,18 @@ const STATIC_PAGES = [
   '/blog/kiawah-island-golf-trip',
   '/blog/golf-trip-group-size',
   '/blog/golf-trip-weekend-schedule',
+  '/blog/pinehurst-vs-kiawah-island-golf-trip',
+  '/blog/bandon-dunes-vs-pebble-beach-golf-trip',
+  '/blog/algarve-vs-scotland-golf-trip',
+  '/blog/how-to-split-costs-golf-trip',
+  '/blog/bandon-dunes-for-non-golfers',
+  '/blog/pebble-beach-for-non-golfers',
+  '/blog/algarve-for-non-golfers',
+  '/blog/pinehurst-for-non-golfers',
+  '/blog/scotland-for-non-golfers',
+  '/blog/pinehurst-vs-pebble-beach-golf-trip',
+  '/blog/golf-trip-tipping-guide',
+  '/blog/best-golf-trip-apps',
 ] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {
