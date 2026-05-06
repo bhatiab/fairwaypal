@@ -216,6 +216,72 @@ export default function Page() {
         </section>
 
         {/* ------------------------------------------------------------ */}
+        {/*  Latest from the Blog                                         */}
+        {/* ------------------------------------------------------------ */}
+        <section className="border-t border-border/60">
+          <div className="page-shell py-20">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p className="eyebrow">From the Blog</p>
+                <h2 className="mt-4 text-3xl font-display font-light italic text-foreground sm:text-4xl">
+                  Plan smarter. Travel better.
+                </h2>
+                <p className="mt-4 max-w-xl text-base text-muted-foreground">
+                  Honest guides for the organiser. Comparisons, budgets, partner-side detail, and the things nobody warns you about.
+                </p>
+              </div>
+              <Link className="secondary-link" href="/blog">
+                All Guides →
+              </Link>
+            </div>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <BlogCard
+                tag="Destinations"
+                tagColor="border-fairway/30 bg-fairway/10 text-fairway-text"
+                title="Scottsdale vs Myrtle Beach for a Golf Trip"
+                description="Two of the most popular US golf destinations, compared honestly. Courses, costs, weather, and a clear verdict."
+                href="/blog/scottsdale-vs-myrtle-beach-golf-trip"
+              />
+              <BlogCard
+                tag="Partners"
+                tagColor="border-partner/30 bg-partner/10 text-partner-text"
+                title="Pebble Beach for Non-Golfers: A Partner's Guide"
+                description="Carmel-by-the-Sea, the Aquarium, the 17-Mile Drive, Big Sur. Why Pebble is the friendliest bucket-list resort for partners."
+                href="/blog/pebble-beach-for-non-golfers"
+              />
+              <BlogCard
+                tag="Planning"
+                tagColor="border-gold/30 bg-gold/10 text-gold"
+                title="The Best Golf Destinations in October"
+                description="Honest ranking of where to go for a golf trip in October. Pinehurst, Pebble, Algarve at peak. Plus where to skip."
+                href="/blog/best-golf-destinations-october"
+              />
+              <BlogCard
+                tag="Budget"
+                tagColor="border-partner/30 bg-partner/10 text-partner-text"
+                title="The Hidden Costs of a Golf Trip Nobody Warns You About"
+                description="Resort fees, oversize bag charges, caddie tips, the upgrade trap. The $400-800 of unbudgeted cost that surprises every group."
+                href="/blog/hidden-costs-golf-trip"
+              />
+              <BlogCard
+                tag="Planning"
+                tagColor="border-gold/30 bg-gold/10 text-gold"
+                title="How to Plan a Golf Trip: The Complete Step-by-Step Guide"
+                description="Destination, dates, group size, budget, tee times, accommodation. The right order of decisions and the mistakes that cost money."
+                href="/blog/how-to-plan-a-golf-trip"
+              />
+              <BlogCard
+                tag="Destinations"
+                tagColor="border-fairway/30 bg-fairway/10 text-fairway-text"
+                title="Best Bachelor Party Golf Destinations"
+                description="Six US destinations ranked honestly. Real prices, real trade-offs, and a verdict on which one is right for your group."
+                href="/blog/best-bachelor-party-golf-destinations"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* ------------------------------------------------------------ */}
         {/*  Final CTA                                                    */}
         {/* ------------------------------------------------------------ */}
         <section className="border-t border-border/60">
@@ -285,5 +351,35 @@ function MiniActivity({ time, name, tag }: { time: string; name: string; tag: st
       </div>
       <span className="shrink-0 text-xs text-muted-foreground">{tag}</span>
     </div>
+  )
+}
+
+function BlogCard({
+  tag,
+  tagColor,
+  title,
+  description,
+  href,
+}: {
+  tag: string
+  tagColor: string
+  title: string
+  description: string
+  href: string
+}) {
+  return (
+    <Link
+      href={href}
+      className="group flex flex-col rounded-xl border border-border bg-card/60 p-6 transition-colors hover:border-gold/30"
+    >
+      <span className={`w-fit rounded-sm border px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] ${tagColor}`}>
+        {tag}
+      </span>
+      <h3 className="mt-4 text-lg font-semibold leading-snug text-foreground transition-colors group-hover:text-gold">
+        {title}
+      </h3>
+      <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{description}</p>
+      <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-gold">Read guide →</p>
+    </Link>
   )
 }
