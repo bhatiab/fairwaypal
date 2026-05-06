@@ -317,6 +317,16 @@ export default function GolfTripWithNonGolfersPage() {
             </h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <RelatedPost
+                href="/blog/kiawah-island-for-non-golfers"
+                title="Kiawah Island for Non-Golfers"
+                description="Beach, spa, and Charleston nearby. The complete Carolina partner trip."
+              />
+              <RelatedPost
+                href="/blog/scottsdale-for-non-golfers"
+                title="Scottsdale for Non-Golfers"
+                description="Old Town, world-class spas, hot air balloons, and hiking."
+              />
+              <RelatedPost
                 href="/blog/algarve-for-non-golfers"
                 title="The Algarve for Non-Golfers"
                 description="The most partner-friendly international golf trip. Caves, beaches, food, wine."

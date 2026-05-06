@@ -329,6 +329,7 @@ export default function ScottsdalePage() {
             </h2>
             <div className="mt-6 space-y-3">
               {[
+                { href: '/blog/scottsdale-for-non-golfers', title: 'Scottsdale for Non-Golfers: A Partner\'s Guide', desc: 'The full partner-side guide. Old Town, world-class spas, hot air balloons, hiking, wine trail.' },
                 { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations (Ranked Honestly)', desc: 'Scottsdale takes the #1 spot. Here\'s why, and how the others compare.' },
                 { href: '/blog/scottsdale-vs-myrtle-beach-golf-trip', title: 'Scottsdale vs Myrtle Beach: Which One Actually Wins?', desc: 'The full head-to-head comparison — courses, costs, partner options, and a verdict.' },
                 { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Real cost breakdown for a Scottsdale trip by group size and spending style.' },

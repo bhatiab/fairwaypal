@@ -401,6 +401,11 @@ export default function GolfTripBudgetPage() {
                 description="Caddies, bag drops, halfway-house, dinner servers. US to Portugal."
               />
               <RelatedPost
+                href="/blog/shipping-clubs-vs-flying-with-clubs"
+                title="Shipping Clubs vs Flying"
+                description="The honest 2026 numbers, by airline and by route."
+              />
+              <RelatedPost
                 href="/blog/best-bachelor-party-golf-destinations"
                 title="Best Bachelor Golf Destinations"
                 description="All six destinations ranked — with honest cost trade-offs."

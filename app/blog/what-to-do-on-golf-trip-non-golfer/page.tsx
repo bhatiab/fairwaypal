@@ -335,6 +335,16 @@ export default function WhatToDoNonGolferPage() {
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Related guides</h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <RelatedPost
+                href="/blog/kiawah-island-for-non-golfers"
+                title="Kiawah Island for Non-Golfers"
+                description="Beach, Sanctuary spa, and Charleston nearby."
+              />
+              <RelatedPost
+                href="/blog/scottsdale-for-non-golfers"
+                title="Scottsdale for Non-Golfers"
+                description="Old Town, world-class spas, hot air balloons, hiking."
+              />
+              <RelatedPost
                 href="/blog/algarve-for-non-golfers"
                 title="The Algarve for Non-Golfers"
                 description="The most partner-friendly international golf destination. Caves, beaches, wine."

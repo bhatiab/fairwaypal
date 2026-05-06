@@ -25,6 +25,51 @@ const breadcrumbSchema = {
 
 const POSTS = [
   {
+    slug: 'why-your-group-keeps-cancelling-golf-trip',
+    title: 'Why Your Group Keeps Cancelling the Golf Trip (and How to Fix It)',
+    description:
+      'An honest look at why most group golf trips quietly fall apart in the planning stage. The five real reasons, and the simple fixes that actually work.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: 'shipping-clubs-vs-flying-with-clubs',
+    title: 'Shipping Clubs vs Flying with Clubs: The Honest 2026 Numbers',
+    description:
+      'Real airline bag fees, Ship Sticks and Luggage Forward pricing, when each option wins, and the gotchas nobody warns you about.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Budget',
+  },
+  {
+    slug: 'pinehurst-vs-bandon-dunes-golf-trip',
+    title: 'Pinehurst vs Bandon Dunes for a Golf Trip: Which Should You Pick?',
+    description:
+      'East Coast tradition versus West Coast links. Two of the great American group-golf trips compared honestly, with a clear verdict by group type.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Destinations',
+  },
+  {
+    slug: 'scottsdale-for-non-golfers',
+    title: 'Scottsdale for Non-Golfers: A Partner\'s Guide',
+    description:
+      'How a Scottsdale golf trip works for the partner who is not teeing off. Old Town, world-class spas, hot air balloons, and Camelback hiking.',
+    readMinutes: 11,
+    date: 'May 6, 2026',
+    tag: 'Partners',
+  },
+  {
+    slug: 'kiawah-island-for-non-golfers',
+    title: 'Kiawah Island for Non-Golfers: A Partner\'s Guide',
+    description:
+      'How a Kiawah Island golf trip works for the partner who is not teeing off. The Sanctuary spa, 10 miles of Atlantic beach, kayaking, biking, and a Charleston day trip.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Partners',
+  },
+  {
     slug: 'best-golf-trip-apps',
     title: 'The Best Golf Trip Apps and Tools (2026 Honest Guide)',
     description:

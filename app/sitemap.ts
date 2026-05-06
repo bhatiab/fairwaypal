@@ -44,6 +44,11 @@ const STATIC_PAGES = [
   '/blog/pinehurst-vs-pebble-beach-golf-trip',
   '/blog/golf-trip-tipping-guide',
   '/blog/best-golf-trip-apps',
+  '/blog/kiawah-island-for-non-golfers',
+  '/blog/scottsdale-for-non-golfers',
+  '/blog/pinehurst-vs-bandon-dunes-golf-trip',
+  '/blog/shipping-clubs-vs-flying-with-clubs',
+  '/blog/why-your-group-keeps-cancelling-golf-trip',
 ] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {
