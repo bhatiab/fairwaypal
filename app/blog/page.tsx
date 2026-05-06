@@ -25,6 +25,15 @@ const breadcrumbSchema = {
 
 const POSTS = [
   {
+    slug: 'bandon-dunes-for-non-golfers',
+    title: 'Bandon Dunes for Non-Golfers: A Partner\'s Guide',
+    description:
+      'How to enjoy a Bandon Dunes golf trip when you are not the one teeing off. Beaches, state parks, the spa, Old Town Bandon, and a daily rhythm that works.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Partners',
+  },
+  {
     slug: 'how-to-split-costs-golf-trip',
     title: 'How to Split Costs on a Golf Trip Without Resentment',
     description:

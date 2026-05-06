@@ -36,6 +36,7 @@ const STATIC_PAGES = [
   '/blog/bandon-dunes-vs-pebble-beach-golf-trip',
   '/blog/algarve-vs-scotland-golf-trip',
   '/blog/how-to-split-costs-golf-trip',
+  '/blog/bandon-dunes-for-non-golfers',
 ] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {

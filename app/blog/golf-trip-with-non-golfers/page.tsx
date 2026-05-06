@@ -317,6 +317,11 @@ export default function GolfTripWithNonGolfersPage() {
             </h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <RelatedPost
+                href="/blog/bandon-dunes-for-non-golfers"
+                title="Bandon Dunes for Non-Golfers"
+                description="The full partner-side guide to making a remote Oregon trip work."
+              />
+              <RelatedPost
                 href="/blog/what-to-do-on-golf-trip-non-golfer"
                 title="What to Do If You Don't Golf"
                 description="Activity ideas by destination, from spa days to whisky tours."

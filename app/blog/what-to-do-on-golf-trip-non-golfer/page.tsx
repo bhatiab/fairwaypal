@@ -335,6 +335,11 @@ export default function WhatToDoNonGolferPage() {
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Related guides</h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <RelatedPost
+                href="/blog/bandon-dunes-for-non-golfers"
+                title="Bandon Dunes for Non-Golfers"
+                description="The full partner-side guide for the most golf-focused destination on the West Coast."
+              />
+              <RelatedPost
                 href="/blog/golf-trip-with-non-golfers"
                 title="Golf Trips With Non-Golfers"
                 description="How the organiser plans a trip that works for the whole group."
