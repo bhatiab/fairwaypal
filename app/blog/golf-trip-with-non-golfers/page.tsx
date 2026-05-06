@@ -317,6 +317,11 @@ export default function GolfTripWithNonGolfersPage() {
             </h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <RelatedPost
+                href="/blog/pebble-beach-for-non-golfers"
+                title="Pebble Beach for Non-Golfers"
+                description="The friendliest bucket-list resort for partners. Carmel, the Aquarium, Big Sur."
+              />
+              <RelatedPost
                 href="/blog/bandon-dunes-for-non-golfers"
                 title="Bandon Dunes for Non-Golfers"
                 description="The full partner-side guide to making a remote Oregon trip work."

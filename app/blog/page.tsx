@@ -25,6 +25,15 @@ const breadcrumbSchema = {
 
 const POSTS = [
   {
+    slug: 'pebble-beach-for-non-golfers',
+    title: 'Pebble Beach for Non-Golfers: A Partner\'s Guide',
+    description:
+      'Why Pebble Beach is the friendliest bucket-list golf trip for partners. Carmel-by-the-Sea, the Aquarium, the 17-Mile Drive, Big Sur, wine country, and a daily rhythm that works.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Partners',
+  },
+  {
     slug: 'bandon-dunes-for-non-golfers',
     title: 'Bandon Dunes for Non-Golfers: A Partner\'s Guide',
     description:

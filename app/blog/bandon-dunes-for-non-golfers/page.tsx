@@ -358,6 +358,11 @@ export default function BandonForNonGolfersPage() {
                 description="The full golf-side guide: courses, hotels, partner activities, and packing."
               />
               <RelatedPost
+                href="/blog/pebble-beach-for-non-golfers"
+                title="Pebble Beach for Non-Golfers"
+                description="The partner-side guide for the friendliest of the bucket-list resorts."
+              />
+              <RelatedPost
                 href="/blog/bandon-dunes-vs-pebble-beach-golf-trip"
                 title="Bandon Dunes vs Pebble Beach"
                 description="Honest head-to-head between the two great West Coast bucket-list trips."

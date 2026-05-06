@@ -335,6 +335,11 @@ export default function WhatToDoNonGolferPage() {
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Related guides</h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <RelatedPost
+                href="/blog/pebble-beach-for-non-golfers"
+                title="Pebble Beach for Non-Golfers"
+                description="The friendliest bucket-list golf resort for partners, in depth."
+              />
+              <RelatedPost
                 href="/blog/bandon-dunes-for-non-golfers"
                 title="Bandon Dunes for Non-Golfers"
                 description="The full partner-side guide for the most golf-focused destination on the West Coast."
