@@ -317,6 +317,21 @@ export default function GolfTripWithNonGolfersPage() {
             </h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <RelatedPost
+                href="/blog/myrtle-beach-for-non-golfers"
+                title="Myrtle Beach for Non-Golfers"
+                description="60 miles of beach, the Boardwalk, Brookgreen Gardens, the Marshwalk."
+              />
+              <RelatedPost
+                href="/blog/ireland-for-non-golfers"
+                title="Ireland for Non-Golfers"
+                description="Cliffs of Moher, Killarney, Galway pubs, the Dingle Peninsula."
+              />
+              <RelatedPost
+                href="/blog/florida-for-non-golfers"
+                title="Florida for Non-Golfers"
+                description="St. Augustine, Tampa, the Gulf, and the Atlantic. Pick the base."
+              />
+              <RelatedPost
                 href="/blog/kiawah-island-for-non-golfers"
                 title="Kiawah Island for Non-Golfers"
                 description="Beach, spa, and Charleston nearby. The complete Carolina partner trip."

@@ -335,6 +335,7 @@ export default function FloridaGolfPage() {
             </h2>
             <div className="mt-6 space-y-3">
               {[
+                { href: '/blog/florida-for-non-golfers', title: 'Florida for Non-Golfers: A Partner\'s Guide', desc: 'Different golf bases give different partner experiences. Streamsong, TPC Sawgrass, Innisbrook, Orlando.' },
                 { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'How Florida compares to Scottsdale and Myrtle Beach on total trip cost.' },
                 { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations', desc: 'Is Florida the right pick for a bachelor trip? Compared to the other top US destinations.' },
                 { href: '/blog/how-to-plan-a-golf-trip', title: 'How to Plan a Golf Trip', desc: 'Step-by-step planning guide — works for Florida as well as every other destination.' },

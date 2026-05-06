@@ -329,6 +329,9 @@ export default function MyrtleBeachPage() {
             </h2>
             <div className="mt-6 space-y-3">
               {[
+                { href: '/blog/myrtle-beach-for-non-golfers', title: 'Myrtle Beach for Non-Golfers: A Partner\'s Guide', desc: 'The full partner-side guide. Beach, Boardwalk, Brookgreen Gardens, the Marshwalk, Tanger Outlets.' },
+                { href: '/blog/myrtle-beach-vs-pinehurst-golf-trip', title: 'Myrtle Beach vs Pinehurst: Which Should You Pick?', desc: 'Carolina value vs Carolina prestige. The honest comparison.' },
+                { href: '/blog/myrtle-beach-vs-kiawah-island-golf-trip', title: 'Myrtle Beach vs Kiawah Island: Which Should You Pick?', desc: 'Volume and value vs the Ocean Course and Charleston.' },
                 { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations (Ranked Honestly)', desc: 'How Myrtle Beach ranks against the other top US golf destinations.' },
                 { href: '/blog/scottsdale-vs-myrtle-beach-golf-trip', title: 'Scottsdale vs Myrtle Beach: Which One Actually Wins?', desc: 'The full head-to-head — courses, costs, weather, partner options, and a verdict.' },
                 { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Myrtle Beach is the most budget-friendly option. See how the numbers break down.' },

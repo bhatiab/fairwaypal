@@ -336,6 +336,7 @@ export default function IrelandPage() {
             </h2>
             <div className="mt-6 space-y-3">
               {[
+                { href: '/blog/ireland-for-non-golfers', title: 'Ireland for Non-Golfers: A Partner\'s Guide', desc: 'The full partner-side guide. Cliffs of Moher, Killarney, Galway, Dingle, Dublin, distilleries.' },
                 { href: '/blog/ireland-vs-scotland-golf-trip', title: 'Ireland vs Scotland Golf Trip: Which Should You Choose?', desc: 'A head-to-head comparison across courses, costs, logistics, and partner experience.' },
                 { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations (Ranked Honestly)', desc: 'How Ireland ranks for bachelor golf trips versus Scotland and the US options.' },
                 { href: '/blog/golf-trip-with-non-golfers', title: 'Golf Trip With Non-Golfers: How to Plan It', desc: 'Ireland is excellent for partners. Galway, the Cliffs of Moher, pubs. Here\'s the full guide.' },
