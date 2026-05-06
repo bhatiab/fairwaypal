@@ -337,6 +337,7 @@ export default function PebbleBeachPage() {
             <div className="mt-6 space-y-3">
               {[
                 { href: '/blog/pebble-beach-golf-trip', title: 'Pebble Beach Golf Trip Planning Guide', desc: 'How to get tee times, what it really costs, and the full Monterey Peninsula itinerary.' },
+                { href: '/blog/bandon-dunes-vs-pebble-beach-golf-trip', title: 'Bandon Dunes vs Pebble Beach: Which Should You Pick?', desc: 'A friendly head-to-head with the other great West Coast golf trip.' },
                 { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Real cost breakdown by destination and group size — including Pebble Beach.' },
                 { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations', desc: 'How Pebble Beach compares to the other top US golf destinations.' },
                 { href: '/blog/golf-trip-packing-list', title: 'The Golf Trip Packing List', desc: 'What to bring for a coastal California golf trip — the windproof layer is non-negotiable.' },

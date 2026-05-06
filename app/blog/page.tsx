@@ -25,6 +25,15 @@ const breadcrumbSchema = {
 
 const POSTS = [
   {
+    slug: 'bandon-dunes-vs-pebble-beach-golf-trip',
+    title: 'Bandon Dunes vs Pebble Beach for a Golf Trip: Which Should You Pick?',
+    description:
+      'Two of the great West Coast golf bucket-list trips, compared honestly. Courses, costs, weather, partner experience, and a verdict by group type.',
+    readMinutes: 11,
+    date: 'May 6, 2026',
+    tag: 'Destinations',
+  },
+  {
     slug: 'pinehurst-vs-kiawah-island-golf-trip',
     title: 'Pinehurst vs Kiawah Island for a Golf Trip: Which Should You Pick?',
     description:
