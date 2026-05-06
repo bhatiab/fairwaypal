@@ -25,6 +25,96 @@ const breadcrumbSchema = {
 
 const POSTS = [
   {
+    slug: 'golf-trip-flights-bag-fees',
+    title: 'Golf Trip Flights: Bag Fees and What Saves Real Money (2026 Guide)',
+    description:
+      'Honest 2026 guide to airline bag fees. United pre-approval gotcha, when status saves money, the credit card cheat code, and what saves $200+ per player.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Budget',
+  },
+  {
+    slug: 'first-ever-golf-trip',
+    title: 'Your First-Ever Golf Trip: An Honest Guide for the Group',
+    description:
+      'What to expect, what to skip, picking the right destination, and the small mistakes nobody warns first-timers about.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: 'couples-golf-trip-both-play',
+    title: 'Planning a Couples Golf Trip Where Both Play',
+    description:
+      'How to plan a golf trip when you and your partner both play. Destination archetypes, the handicap question, the romance versus competition balance.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: 'why-most-bachelor-golf-trips-suck',
+    title: 'Why Most Bachelor Golf Trips Suck (And How to Fix Yours)',
+    description:
+      'The five honest reasons most bachelor party golf trips end up underwhelming, and the fixes that turn a forgettable weekend into a trip the groom remembers.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: 'hidden-costs-golf-trip',
+    title: 'The Hidden Costs of a Golf Trip Nobody Warns You About',
+    description:
+      'Resort fees, oversize bag charges, caddie tips, halfway house, forecaddie fees, the upgrade trap. The $400-800 of unbudgeted cost that surprises every trip.',
+    readMinutes: 9,
+    date: 'May 6, 2026',
+    tag: 'Budget',
+  },
+  {
+    slug: 'bandon-vs-pebble-vs-kiawah-golf-trip',
+    title: 'Bandon Dunes vs Pebble Beach vs Kiawah Island: The Premium Triple Compared',
+    description:
+      'Three of the most expensive golf trips in the United States, compared honestly. Pacific links versus iconic Pacific bucket-list versus East Coast Ocean Course.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Destinations',
+  },
+  {
+    slug: 'algarve-vs-ireland-golf-trip',
+    title: 'Algarve vs Ireland for a Golf Trip: Which Should You Pick?',
+    description:
+      'Sun and value versus craic and links. Two of the great affordable European golf trips compared honestly.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Destinations',
+  },
+  {
+    slug: 'bandon-dunes-vs-scotland-golf-trip',
+    title: 'Bandon Dunes vs Scotland for a Golf Trip: Which Should You Pick?',
+    description:
+      'The "should we go links?" question, settled. Oregon coast pilgrimage versus the home of the game.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Destinations',
+  },
+  {
+    slug: 'best-golf-destinations-november',
+    title: 'The Best Golf Destinations in November (2026 Honest Guide)',
+    description:
+      'Honest ranking of the best golf trip destinations for November. Scottsdale, Pinehurst, Algarve, Florida, Kiawah, plus where to skip.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: 'best-golf-destinations-march',
+    title: 'The Best Golf Destinations in March (2026 Honest Guide)',
+    description:
+      'Honest ranking of the best golf trip destinations for March. Scottsdale at peak, Pinehurst spring, the Algarve, Florida, Kiawah.',
+    readMinutes: 10,
+    date: 'May 6, 2026',
+    tag: 'Planning',
+  },
+  {
     slug: 'best-golf-destinations-october',
     title: 'The Best Golf Destinations in October (2026 Honest Guide)',
     description:

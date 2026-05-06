@@ -782,8 +782,18 @@ Content & SEO
 [x] Write partner guide: "Florida for non-golfers"
 [x] Write group-type guide: "Father-son golf trip"
 [x] Write group-type guide: "40th and 50th birthday golf trip"
+[x] Write group-type guide: "Couples golf trip (both play)"
+[x] Write group-type guide: "First-ever golf trip"
 [x] Write evergreen guide: "Golf trip formats (Ryder Cup, Stableford, skins, Nassau)"
+[x] Write evergreen guide: "Hidden costs of a golf trip"
+[x] Write evergreen guide: "Why most bachelor golf trips suck"
+[x] Write evergreen guide: "Golf trip flights and bag fees"
 [x] Write seasonal guide: "Best golf destinations in October"
+[x] Write seasonal guide: "Best golf destinations in March"
+[x] Write seasonal guide: "Best golf destinations in November"
+[x] Write blog post: "Bandon Dunes vs Scotland golf trip"
+[x] Write blog post: "Algarve vs Ireland golf trip"
+[x] Write blog post: "Bandon vs Pebble vs Kiawah golf trip"
 [x] Add FAQ sections with FAQPage schema to all destination guides
 [x] Fix internal-link orphans (Florida, Algarve, weak destination + blog links)
 [ ] Add social proof to landing page (trips planned count, testimonials)
@@ -819,22 +829,22 @@ Comparison posts (commercial intent, low-competition)
 [x] Myrtle Beach vs Kiawah Island       SC neighbours, very different feel
 [x] Scottsdale vs Pinehurst             Sun + courses vs heritage
 [ ] Scottsdale vs Palm Springs          Winter desert decision
-[ ] Bandon Dunes vs Scotland            The "should we go links?" question
-[ ] Algarve vs Ireland                  Sun vs craic, both cheaper than Scotland
-[ ] Bandon vs Pebble vs Kiawah          West-coast-or-east premium triple
+[x] Bandon Dunes vs Scotland            The "should we go links?" question
+[x] Algarve vs Ireland                  Sun vs craic, both cheaper than Scotland
+[x] Bandon vs Pebble vs Kiawah          West-coast-or-east premium triple
 
 Group-type / occasion posts (long-tail)
 [x] 40th / 50th birthday golf trip      Itinerary archetype
 [x] Father-son golf trip planning       Two-generation logistics
-[ ] Couples golf trip (both play)       Different dynamic from organiser/partner
+[x] Couples golf trip (both play)       Different dynamic from organiser/partner
 [ ] Small-group (4 players) golf trip   Best destinations for tight crews
-[ ] First-ever golf trip                What to expect, what to skip
+[x] First-ever golf trip                What to expect, what to skip
 [ ] Beginner-friendly golf trips        Where to go when half can't break 100
 [ ] Bachelorette + golf weekend         Rare destinations that work for both
 
 Money / logistics / how-to (high-volume evergreen)
 [x] Shipping clubs vs flying with clubs Real numbers, real bag fees
-[ ] Golf trip flights                    Bag fees, what saves money
+[x] Golf trip flights                    Bag fees, what saves money
 [x] Golf trip formats                    Ryder Cup, Stableford, skins, when to use
 [ ] Handicapping your group              Fair stakes for a Nassau
 [ ] Golf trip insurance                  Do you actually need it?
@@ -842,11 +852,11 @@ Money / logistics / how-to (high-volume evergreen)
 Seasonal / when-to-go (recurring traffic)
 [ ] Best golf destinations in [Jan]     Programmatic: 7 month-by-month posts
 [ ] Best golf destinations in [Feb]     (Jan, Feb, Mar, Apr, Sep, Oct, Nov)
-[ ] Best golf destinations in [Mar]
+[x] Best golf destinations in [Mar]
 [ ] Best golf destinations in [Apr]
 [ ] Best golf destinations in [Sep]
 [x] Best golf destinations in [Oct]
-[ ] Best golf destinations in [Nov]
+[x] Best golf destinations in [Nov]
 [ ] Shoulder-season golf                Apr-May & Sep-Oct for half the price
 [ ] When to book a 2027 golf trip       Month-by-month booking calendar
 
@@ -861,8 +871,8 @@ New destination guides (fill the map)
 
 Contrarian / shareable (social + Reddit fuel)
 [ ] 5 destinations not worth the price  Honest call-outs, share-friendly
-[ ] Hidden costs nobody warns you about The pre-trip surprise list
-[ ] Why most bachelor golf trips suck   And how to fix yours
+[x] Hidden costs nobody warns you about The pre-trip surprise list
+[x] Why most bachelor golf trips suck   And how to fix yours
 [ ] Resort vs public vs private host    Which model fits your trip
 [x] Why your group keeps cancelling     Direct product-positioning piece
 
