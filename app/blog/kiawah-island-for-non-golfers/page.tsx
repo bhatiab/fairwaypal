@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Kiawah Island for Non-Golfers: A Partner\'s Guide | FairwayPal',
   description:
     'A friendly, honest guide to Kiawah Island for the partner who is not playing. The Sanctuary spa, 10 miles of Atlantic beach, kayaking the tidal creeks, biking the maritime forest, and a Charleston day trip 25 miles away.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/kiawah-island-for-non-golfers' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/kiawah-island-for-non-golfers' },
   openGraph: {
     title: 'Kiawah Island for Non-Golfers: A Partner\'s Guide',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'Kiawah Island for Non-Golfers: A Partner\'s Guide',
   description:
     'A practical guide to Kiawah Island for non-golfing partners. The Sanctuary spa, beaches, kayaking, biking, the Charleston day trip, plantations, and a sample 3-day itinerary.',
-  url: 'https://fairwaypal.com/blog/kiawah-island-for-non-golfers',
+  url: 'https://www.fairwaypal.com/blog/kiawah-island-for-non-golfers',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Kiawah Island for Non-Golfers',
-      item: 'https://fairwaypal.com/blog/kiawah-island-for-non-golfers',
+      item: 'https://www.fairwaypal.com/blog/kiawah-island-for-non-golfers',
     },
   ],
 }

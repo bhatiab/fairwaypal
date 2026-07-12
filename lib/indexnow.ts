@@ -1,5 +1,5 @@
 const INDEXNOW_KEY = 'fp8a3c2e9b7d41f5a6c0e2b4d8f7a3e91'
-const SITE_URL = 'https://fairwaypal.com'
+const SITE_URL = 'https://www.fairwaypal.com'
 
 export const ALL_URLS = [
   '/',
@@ -24,7 +24,7 @@ export async function pingIndexNow(urls: string[] = ALL_URLS): Promise<void> {
     method: 'POST',
     headers: { 'Content-Type': 'application/json; charset=utf-8' },
     body: JSON.stringify({
-      host: 'fairwaypal.com',
+      host: 'www.fairwaypal.com',
       key: INDEXNOW_KEY,
       keyLocation: `${SITE_URL}/${INDEXNOW_KEY}.txt`,
       urlList: urls,

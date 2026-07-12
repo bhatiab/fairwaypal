@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Scottsdale vs Myrtle Beach for a Golf Trip: Which One Actually Wins? — FairwayPal',
   description:
     "Two of the most popular US golf destinations. One budget. One decision. The honest comparison — courses, costs, weather, partner options, and a verdict.",
-  alternates: { canonical: 'https://fairwaypal.com/blog/scottsdale-vs-myrtle-beach-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/scottsdale-vs-myrtle-beach-golf-trip' },
   openGraph: {
     title: 'Scottsdale vs Myrtle Beach for a Golf Trip: Which One Actually Wins?',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'Scottsdale vs Myrtle Beach for a Golf Trip: Which One Actually Wins?',
   description:
     "Two of the most popular US golf destinations. One budget. One decision. The honest comparison — courses, costs, weather, partner options, and a verdict.",
-  url: 'https://fairwaypal.com/blog/scottsdale-vs-myrtle-beach-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/scottsdale-vs-myrtle-beach-golf-trip',
   datePublished: '2025-04-17',
   dateModified: '2026-05-05',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Scottsdale vs Myrtle Beach',
-      item: 'https://fairwaypal.com/blog/scottsdale-vs-myrtle-beach-golf-trip',
+      item: 'https://www.fairwaypal.com/blog/scottsdale-vs-myrtle-beach-golf-trip',
     },
   ],
 }

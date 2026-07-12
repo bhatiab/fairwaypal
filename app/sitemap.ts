@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://fairwaypal.com'
+const BASE_URL = 'https://www.fairwaypal.com'
 const NOW = new Date()
 
 const STATIC_PAGES = [

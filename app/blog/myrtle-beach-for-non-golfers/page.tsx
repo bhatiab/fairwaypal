@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Myrtle Beach for Non-Golfers: A Partner\'s Guide | FairwayPal',
   description:
     'A friendly, honest guide to Myrtle Beach for the partner who is not playing. 60 miles of Atlantic beach, the boardwalk and SkyWheel, Brookgreen Gardens, the Murrells Inlet Marshwalk, and Tanger Outlets shopping.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/myrtle-beach-for-non-golfers' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/myrtle-beach-for-non-golfers' },
   openGraph: {
     title: 'Myrtle Beach for Non-Golfers: A Partner\'s Guide',
     description:
@@ -25,20 +25,20 @@ const articleSchema = {
   headline: 'Myrtle Beach for Non-Golfers: A Partner\'s Guide',
   description:
     'A practical guide to Myrtle Beach for non-golfing partners. The Boardwalk and SkyWheel, Brookgreen Gardens, the Murrells Inlet Marshwalk, Tanger Outlets, beach days, and a sample 3-day itinerary.',
-  url: 'https://fairwaypal.com/blog/myrtle-beach-for-non-golfers',
+  url: 'https://www.fairwaypal.com/blog/myrtle-beach-for-non-golfers',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Myrtle Beach for Non-Golfers', item: 'https://fairwaypal.com/blog/myrtle-beach-for-non-golfers' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Myrtle Beach for Non-Golfers', item: 'https://www.fairwaypal.com/blog/myrtle-beach-for-non-golfers' },
   ],
 }
 

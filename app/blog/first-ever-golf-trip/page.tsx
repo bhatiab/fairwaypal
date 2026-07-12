@@ -10,7 +10,7 @@ const LAST_UPDATED = 'May 6, 2026'
 export const metadata: Metadata = {
   title: 'Your First-Ever Golf Trip: An Honest Guide for the Group | FairwayPal',
   description: 'A friendly, honest guide for groups taking their first-ever golf trip together. What to expect, what to skip, picking the right destination, and the small mistakes nobody warns first-timers about.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/first-ever-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/first-ever-golf-trip' },
   openGraph: { title: 'Your First-Ever Golf Trip: An Honest Guide', description: 'What to expect, what to skip, what nobody warns first-timers about.' },
 }
 
@@ -18,18 +18,18 @@ const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: 'Your First-Ever Golf Trip: An Honest Guide for the Group',
   description: 'A practical guide for first-time golf trip groups. Picking the right destination, what to expect, what to skip, and the mistakes nobody warns you about.',
-  url: 'https://fairwaypal.com/blog/first-ever-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/first-ever-golf-trip',
   datePublished: '2026-05-06', dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Your First-Ever Golf Trip', item: 'https://fairwaypal.com/blog/first-ever-golf-trip' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Your First-Ever Golf Trip', item: 'https://www.fairwaypal.com/blog/first-ever-golf-trip' },
   ],
 }
 

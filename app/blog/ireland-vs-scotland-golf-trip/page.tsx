@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Ireland vs Scotland Golf Trip: Which One Should You Book? — FairwayPal',
   description:
     'You\'ve decided on an international golf trip. Now: Ireland or Scotland? Honest comparison of courses, cost, logistics, partner experience, and a verdict by group type.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/ireland-vs-scotland-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/ireland-vs-scotland-golf-trip' },
   openGraph: {
     title: 'Ireland vs Scotland Golf Trip: Which One Should You Book?',
     description:
@@ -24,24 +24,24 @@ const articleSchema = {
   headline: 'Ireland vs Scotland Golf Trip: Which One Should You Book?',
   description:
     'You\'ve decided on an international golf trip. Honest comparison of courses, cost, logistics, partner experience, weather, and a verdict by group type.',
-  url: 'https://fairwaypal.com/blog/ireland-vs-scotland-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/ireland-vs-scotland-golf-trip',
   datePublished: '2026-05-05',
   dateModified: '2026-05-05',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Ireland vs Scotland Golf Trip',
-      item: 'https://fairwaypal.com/blog/ireland-vs-scotland-golf-trip',
+      item: 'https://www.fairwaypal.com/blog/ireland-vs-scotland-golf-trip',
     },
   ],
 }

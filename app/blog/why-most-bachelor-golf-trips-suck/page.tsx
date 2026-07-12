@@ -10,7 +10,7 @@ const LAST_UPDATED = 'May 6, 2026'
 export const metadata: Metadata = {
   title: 'Why Most Bachelor Golf Trips Suck (And How to Fix Yours) | FairwayPal',
   description: 'An honest look at why most bachelor party golf trips end up underwhelming. The five real reasons, and the fixes that turn a forgettable weekend into a trip the groom actually remembers.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/why-most-bachelor-golf-trips-suck' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/why-most-bachelor-golf-trips-suck' },
   openGraph: { title: 'Why Most Bachelor Golf Trips Suck', description: 'The honest reasons most bachelor golf trips fall flat, and the fixes that work.' },
 }
 
@@ -18,18 +18,18 @@ const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: 'Why Most Bachelor Golf Trips Suck (And How to Fix Yours)',
   description: 'An honest analysis of why most bachelor party golf trips disappoint. Bad destination picks, the strangers problem, the over-formatted weekend, the money confusion, and the morning-after exhaustion. With practical fixes.',
-  url: 'https://fairwaypal.com/blog/why-most-bachelor-golf-trips-suck',
+  url: 'https://www.fairwaypal.com/blog/why-most-bachelor-golf-trips-suck',
   datePublished: '2026-05-06', dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Why Most Bachelor Golf Trips Suck', item: 'https://fairwaypal.com/blog/why-most-bachelor-golf-trips-suck' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Why Most Bachelor Golf Trips Suck', item: 'https://www.fairwaypal.com/blog/why-most-bachelor-golf-trips-suck' },
   ],
 }
 

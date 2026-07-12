@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: 'Kiawah Island Golf Trip Planning Guide — FairwayPal',
   description:
     'How to plan a Kiawah Island golf trip: the Ocean Course and 4 resort alternatives, real costs ($300–600/round), the Charleston day trip partner plan, and a full 4-day itinerary.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/kiawah-island-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/kiawah-island-golf-trip' },
   openGraph: {
     title: 'Kiawah Island Golf Trip Planning Guide',
     description:
@@ -27,24 +27,24 @@ const articleSchema = {
   headline: 'Kiawah Island Golf Trip Planning Guide',
   description:
     'How to plan a Kiawah Island golf trip: the Ocean Course, 4 resort alternatives, real costs, and the Charleston partner plan.',
-  url: 'https://fairwaypal.com/blog/kiawah-island-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/kiawah-island-golf-trip',
   datePublished: '2026-05-05',
   dateModified: '2026-05-05',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Kiawah Island Golf Trip',
-      item: 'https://fairwaypal.com/blog/kiawah-island-golf-trip',
+      item: 'https://www.fairwaypal.com/blog/kiawah-island-golf-trip',
     },
   ],
 }

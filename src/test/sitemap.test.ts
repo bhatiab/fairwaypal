@@ -6,7 +6,7 @@ describe('sitemap', () => {
 
   it('includes all required pages', () => {
     const urls = entries.map((e) => e.url)
-    expect(urls).toContain('https://fairwaypal.com')
+    expect(urls).toContain('https://www.fairwaypal.com')
     expect(urls.some((u) => u.includes('/plan'))).toBe(true)
     expect(urls.some((u) => u.includes('/about'))).toBe(true)
     expect(urls.some((u) => u.includes('/status'))).toBe(true)
@@ -17,7 +17,7 @@ describe('sitemap', () => {
   })
 
   it('homepage has highest priority', () => {
-    const home = entries.find((e) => e.url === 'https://fairwaypal.com')
+    const home = entries.find((e) => e.url === 'https://www.fairwaypal.com')
     expect(home?.priority).toBe(1)
   })
 

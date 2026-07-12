@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Pinehurst Golf Trip Guide — FairwayPal',
   description:
     'Everything you need for a Pinehurst golf trip: best courses, partner activities, hotels near the courses, and a packing guide. Plan it in 5 minutes with FairwayPal.',
-  alternates: { canonical: 'https://fairwaypal.com/destinations/pinehurst' },
+  alternates: { canonical: 'https://www.fairwaypal.com/destinations/pinehurst' },
   openGraph: {
     title: 'Pinehurst Golf Trip Guide — FairwayPal',
     description: 'Best courses, partner activities, hotels, and packing guide for your Pinehurst golf weekend.',
@@ -21,9 +21,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://fairwaypal.com/destinations/pinehurst' },
-    { '@type': 'ListItem', position: 3, name: 'Pinehurst', item: 'https://fairwaypal.com/destinations/pinehurst' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/pinehurst' },
+    { '@type': 'ListItem', position: 3, name: 'Pinehurst', item: 'https://www.fairwaypal.com/destinations/pinehurst' },
   ],
 }
 
@@ -33,7 +33,7 @@ const destinationSchema = {
   name: 'Pinehurst, North Carolina',
   description:
     'The cradle of American golf. Historic resort courses, a walkable village, and a partner scene built around Southern hospitality.',
-  url: 'https://fairwaypal.com/destinations/pinehurst',
+  url: 'https://www.fairwaypal.com/destinations/pinehurst',
   touristType: ['Golf', 'Couples', 'Groups'],
 }
 

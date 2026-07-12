@@ -10,7 +10,7 @@ const LAST_UPDATED = 'May 6, 2026'
 export const metadata: Metadata = {
   title: 'Myrtle Beach vs Kiawah Island for a Golf Trip: Which Should You Pick? | FairwayPal',
   description: 'Two South Carolina coast destinations, very different trips. Volume and value at Myrtle Beach versus the Ocean Course and Charleston at Kiawah Island. Honest comparison with a verdict by group type.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/myrtle-beach-vs-kiawah-island-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/myrtle-beach-vs-kiawah-island-golf-trip' },
   openGraph: { title: 'Myrtle Beach vs Kiawah Island: Which Should You Pick?', description: 'SC neighbours, very different trips. Volume and value versus the Ocean Course and Charleston.' },
 }
 
@@ -19,20 +19,20 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'Myrtle Beach vs Kiawah Island for a Golf Trip: Which Should You Pick?',
   description: 'Head-to-head comparison of Myrtle Beach and Kiawah Island for a group golf trip. Courses, costs, weather, partner activities, logistics, and a verdict by group type.',
-  url: 'https://fairwaypal.com/blog/myrtle-beach-vs-kiawah-island-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/myrtle-beach-vs-kiawah-island-golf-trip',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Myrtle Beach vs Kiawah Island', item: 'https://fairwaypal.com/blog/myrtle-beach-vs-kiawah-island-golf-trip' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Myrtle Beach vs Kiawah Island', item: 'https://www.fairwaypal.com/blog/myrtle-beach-vs-kiawah-island-golf-trip' },
   ],
 }
 

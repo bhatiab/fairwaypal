@@ -5,11 +5,11 @@ import Footer from '@/components/Footer'
 export const metadata: Metadata = {
   title: 'About FairwayPal',
   description: 'How FairwayPal approaches golf-trip planning for organisers, golfers, and partners.',
-  alternates: { canonical: 'https://fairwaypal.com/about' },
+  alternates: { canonical: 'https://www.fairwaypal.com/about' },
   openGraph: {
     title: 'About FairwayPal',
     description: 'How FairwayPal approaches golf-trip planning for organisers, golfers, and partners.',
-    url: 'https://fairwaypal.com/about',
+    url: 'https://www.fairwaypal.com/about',
     type: 'website',
   },
   twitter: {
@@ -23,8 +23,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://fairwaypal.com/" },
-    { "@type": "ListItem", "position": 2, "name": "About", "item": "https://fairwaypal.com/about" }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fairwaypal.com/" },
+    { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.fairwaypal.com/about" }
   ]
 }
 

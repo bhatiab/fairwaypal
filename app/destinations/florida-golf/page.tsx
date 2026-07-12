@@ -11,10 +11,10 @@ export const metadata: Metadata = {
   description:
     'The best golf trip destinations in Florida: Streamsong Resort, TPC Sawgrass, Innisbrook, and World Woods. Real costs, partner activities, and where to stay.',
   alternates: {
-    canonical: 'https://fairwaypal.com/destinations/florida-golf',
+    canonical: 'https://www.fairwaypal.com/destinations/florida-golf',
     languages: {
-      'en-US': 'https://fairwaypal.com/destinations/florida-golf',
-      'x-default': 'https://fairwaypal.com/destinations/florida-golf',
+      'en-US': 'https://www.fairwaypal.com/destinations/florida-golf',
+      'x-default': 'https://www.fairwaypal.com/destinations/florida-golf',
     },
   },
   openGraph: {
@@ -27,9 +27,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://fairwaypal.com/destinations/florida-golf' },
-    { '@type': 'ListItem', position: 3, name: 'Florida Golf', item: 'https://fairwaypal.com/destinations/florida-golf' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/florida-golf' },
+    { '@type': 'ListItem', position: 3, name: 'Florida Golf', item: 'https://www.fairwaypal.com/destinations/florida-golf' },
   ],
 }
 
@@ -39,7 +39,7 @@ const destinationSchema = {
   name: 'Florida, United States',
   description:
     'Florida is the closest thing the US has to a year-round golf destination. Streamsong Resort delivers world-class courses in the middle of phosphate country. TPC Sawgrass is an hour from Jacksonville and home to The Players Championship.',
-  url: 'https://fairwaypal.com/destinations/florida-golf',
+  url: 'https://www.fairwaypal.com/destinations/florida-golf',
   touristType: ['Golf', 'Groups', 'Winter Escape'],
 }
 

@@ -10,7 +10,7 @@ const LAST_UPDATED = 'May 6, 2026'
 export const metadata: Metadata = {
   title: 'Golf Trip Formats: Ryder Cup, Stableford, Skins, Nassau (And When to Use Each) | FairwayPal',
   description: 'A friendly guide to the golf trip formats that actually work for groups. Ryder Cup, Nassau, Stableford, skins, Wolf, scrambles. The rules, the strategy, and which format fits which kind of group.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/golf-trip-formats' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-formats' },
   openGraph: { title: 'Golf Trip Formats: Ryder Cup, Stableford, Skins, Nassau', description: 'The rules, strategy, and which format fits which group.' },
 }
 
@@ -19,20 +19,20 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'Golf Trip Formats: Ryder Cup, Stableford, Skins, Nassau (And When to Use Each)',
   description: 'A practical guide to popular golf trip formats. Ryder Cup, Nassau, Stableford, skins, Wolf, scrambles. Rules, scoring, strategy, and which format fits which group.',
-  url: 'https://fairwaypal.com/blog/golf-trip-formats',
+  url: 'https://www.fairwaypal.com/blog/golf-trip-formats',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Golf Trip Formats', item: 'https://fairwaypal.com/blog/golf-trip-formats' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Golf Trip Formats', item: 'https://www.fairwaypal.com/blog/golf-trip-formats' },
   ],
 }
 

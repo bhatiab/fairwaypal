@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Golf Trip Planning Blog — FairwayPal',
   description:
     'Golf trip guides, destination breakdowns, packing lists, and budget breakdowns. Everything you need to plan a trip the group actually agrees on.',
-  alternates: { canonical: 'https://fairwaypal.com/blog' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog' },
   openGraph: {
     title: 'Golf Trip Planning Blog — FairwayPal',
     description: 'Golf trip guides, destination breakdowns, packing lists, and budget breakdowns.',
@@ -18,8 +18,8 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
   ],
 }
 

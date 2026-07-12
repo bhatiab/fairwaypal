@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Bandon Dunes for Non-Golfers: A Partner\'s Guide | FairwayPal',
   description:
     'A friendly, honest guide to Bandon Dunes for the partner who is not playing. The beaches, the state parks, the spa, Old Town Bandon, and the daily rhythm that makes a remote Oregon trip work for everyone.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/bandon-dunes-for-non-golfers' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/bandon-dunes-for-non-golfers' },
   openGraph: {
     title: 'Bandon Dunes for Non-Golfers: A Partner\'s Guide',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'Bandon Dunes for Non-Golfers: A Partner\'s Guide',
   description:
     'A practical guide to Bandon Dunes for non-golfing partners. Beaches, coastal state parks, the resort spa, Old Town Bandon, what to pack, and a daily rhythm that mirrors 36-hole golf days.',
-  url: 'https://fairwaypal.com/blog/bandon-dunes-for-non-golfers',
+  url: 'https://www.fairwaypal.com/blog/bandon-dunes-for-non-golfers',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Bandon Dunes for Non-Golfers',
-      item: 'https://fairwaypal.com/blog/bandon-dunes-for-non-golfers',
+      item: 'https://www.fairwaypal.com/blog/bandon-dunes-for-non-golfers',
     },
   ],
 }

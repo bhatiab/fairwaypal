@@ -30,7 +30,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'trip_not_found' }, { status: 404 })
     }
 
-    const tripUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://fairwaypal.com'}/trip/${tripId}`
+    const tripUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.fairwaypal.com'}/trip/${tripId}`
 
     if (nudgeType === 'individual' && participantId) {
       const { data: participant } = await supabase

@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://fairwaypal.com/sitemap.xml',
+    sitemap: 'https://www.fairwaypal.com/sitemap.xml',
   }
 }

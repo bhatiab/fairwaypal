@@ -10,7 +10,7 @@ const LAST_UPDATED = 'May 6, 2026'
 export const metadata: Metadata = {
   title: 'Myrtle Beach vs Pinehurst for a Golf Trip: Which Should You Pick? | FairwayPal',
   description: 'Carolina value versus Carolina prestige. Two of the great Southeast US golf trips compared honestly: courses, costs, weather, partner experience, and a verdict by group type.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/myrtle-beach-vs-pinehurst-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/myrtle-beach-vs-pinehurst-golf-trip' },
   openGraph: { title: 'Myrtle Beach vs Pinehurst: Which Should You Pick?', description: 'Carolina value versus Carolina prestige. Volume and beach versus heritage and walkable village.' },
 }
 
@@ -19,20 +19,20 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'Myrtle Beach vs Pinehurst for a Golf Trip: Which Should You Pick?',
   description: 'Head-to-head comparison of Myrtle Beach and Pinehurst for a group golf trip. Courses, costs, weather, partner activities, logistics, and a verdict by group type.',
-  url: 'https://fairwaypal.com/blog/myrtle-beach-vs-pinehurst-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/myrtle-beach-vs-pinehurst-golf-trip',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Myrtle Beach vs Pinehurst', item: 'https://fairwaypal.com/blog/myrtle-beach-vs-pinehurst-golf-trip' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Myrtle Beach vs Pinehurst', item: 'https://www.fairwaypal.com/blog/myrtle-beach-vs-pinehurst-golf-trip' },
   ],
 }
 

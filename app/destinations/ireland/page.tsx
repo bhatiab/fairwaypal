@@ -11,11 +11,11 @@ export const metadata: Metadata = {
   description:
     'Everything you need for an Ireland golf trip: best links courses, partner activities, hotels near the courses, and a packing guide. Plan it in 5 minutes with FairwayPal.',
   alternates: {
-    canonical: 'https://fairwaypal.com/destinations/ireland',
+    canonical: 'https://www.fairwaypal.com/destinations/ireland',
     languages: {
-      'en-IE': 'https://fairwaypal.com/destinations/ireland',
-      'en-US': 'https://fairwaypal.com/destinations/ireland',
-      'x-default': 'https://fairwaypal.com/destinations/ireland',
+      'en-IE': 'https://www.fairwaypal.com/destinations/ireland',
+      'en-US': 'https://www.fairwaypal.com/destinations/ireland',
+      'x-default': 'https://www.fairwaypal.com/destinations/ireland',
     },
   },
   openGraph: {
@@ -28,9 +28,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://fairwaypal.com/destinations/ireland' },
-    { '@type': 'ListItem', position: 3, name: 'Ireland', item: 'https://fairwaypal.com/destinations/ireland' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/ireland' },
+    { '@type': 'ListItem', position: 3, name: 'Ireland', item: 'https://www.fairwaypal.com/destinations/ireland' },
   ],
 }
 
@@ -40,7 +40,7 @@ const destinationSchema = {
   name: 'Ireland',
   description:
     'Wild links courses on dramatic coastlines, pubs with live music, and some of the friendliest people in golf. Ireland is the group trip that bonds a crew for life.',
-  url: 'https://fairwaypal.com/destinations/ireland',
+  url: 'https://www.fairwaypal.com/destinations/ireland',
   touristType: ['Golf', 'Couples', 'Groups'],
 }
 

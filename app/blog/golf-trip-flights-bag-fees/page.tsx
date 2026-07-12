@@ -10,7 +10,7 @@ const LAST_UPDATED = 'May 6, 2026'
 export const metadata: Metadata = {
   title: 'Golf Trip Flights: Bag Fees and What Saves Real Money (2026 Guide) | FairwayPal',
   description: 'A friendly, honest guide to golf trip flights in 2026. Airline bag fees, the United pre-approval gotcha, when status saves money, the credit card cheat code, and what saves $200+ per player.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/golf-trip-flights-bag-fees' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-flights-bag-fees' },
   openGraph: { title: 'Golf Trip Flights: Bag Fees and What Saves Real Money', description: 'Honest 2026 guide to airline bag fees and what actually saves money on golf trip flights.' },
 }
 
@@ -18,18 +18,18 @@ const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: 'Golf Trip Flights: Bag Fees and What Saves Real Money (2026 Guide)',
   description: 'Practical 2026 guide to golf trip flights. Airline-by-airline bag fees, status benefits, credit card co-branded perks, oversize fee thresholds, and what actually saves money.',
-  url: 'https://fairwaypal.com/blog/golf-trip-flights-bag-fees',
+  url: 'https://www.fairwaypal.com/blog/golf-trip-flights-bag-fees',
   datePublished: '2026-05-06', dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Golf Trip Flights', item: 'https://fairwaypal.com/blog/golf-trip-flights-bag-fees' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Golf Trip Flights', item: 'https://www.fairwaypal.com/blog/golf-trip-flights-bag-fees' },
   ],
 }
 

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Pinehurst vs Bandon Dunes for a Golf Trip: Which Should You Pick? | FairwayPal',
   description:
     'East Coast tradition versus West Coast links. Two of the great American group-golf trips compared honestly: courses, costs, weather, partner experience, logistics, and a verdict by group type.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/pinehurst-vs-bandon-dunes-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/pinehurst-vs-bandon-dunes-golf-trip' },
   openGraph: {
     title: 'Pinehurst vs Bandon Dunes: Which Should You Pick?',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'Pinehurst vs Bandon Dunes for a Golf Trip: Which Should You Pick?',
   description:
     'Head-to-head comparison of Pinehurst and Bandon Dunes for a group golf trip. Courses, costs, weather, partner activities, logistics, and a verdict by group type.',
-  url: 'https://fairwaypal.com/blog/pinehurst-vs-bandon-dunes-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/pinehurst-vs-bandon-dunes-golf-trip',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Pinehurst vs Bandon Dunes',
-      item: 'https://fairwaypal.com/blog/pinehurst-vs-bandon-dunes-golf-trip',
+      item: 'https://www.fairwaypal.com/blog/pinehurst-vs-bandon-dunes-golf-trip',
     },
   ],
 }

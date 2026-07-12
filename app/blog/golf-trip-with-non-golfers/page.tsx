@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: 'Golf Trip With Non-Golfers: How to Plan It Without Killing the Vibe — FairwayPal',
   description:
     "One person wants tee times. The other wants a spa. Here's how to plan a golf trip that actually works for both — without hours of negotiation.",
-  alternates: { canonical: 'https://fairwaypal.com/blog/golf-trip-with-non-golfers' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-with-non-golfers' },
   openGraph: {
     title: 'Golf Trip With Non-Golfers: How to Plan It Without Killing the Vibe',
     description:
@@ -26,24 +26,24 @@ const articleSchema = {
   headline: 'Golf Trip With Non-Golfers: How to Plan It Without Killing the Vibe',
   description:
     "One person wants tee times. The other wants a spa. Here's how to plan a golf trip that actually works for both — without hours of negotiation.",
-  url: 'https://fairwaypal.com/blog/golf-trip-with-non-golfers',
+  url: 'https://www.fairwaypal.com/blog/golf-trip-with-non-golfers',
   datePublished: '2025-04-17',
   dateModified: '2026-05-05',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Golf Trip With Non-Golfers',
-      item: 'https://fairwaypal.com/blog/golf-trip-with-non-golfers',
+      item: 'https://www.fairwaypal.com/blog/golf-trip-with-non-golfers',
     },
   ],
 }

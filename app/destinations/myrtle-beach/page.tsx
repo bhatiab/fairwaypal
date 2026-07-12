@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Myrtle Beach Golf Trip Guide — FairwayPal',
   description:
     'Everything you need for a Myrtle Beach golf trip: best courses, partner activities, hotels near the courses, and a packing guide. Plan it in 5 minutes with FairwayPal.',
-  alternates: { canonical: 'https://fairwaypal.com/destinations/myrtle-beach' },
+  alternates: { canonical: 'https://www.fairwaypal.com/destinations/myrtle-beach' },
   openGraph: {
     title: 'Myrtle Beach Golf Trip Guide — FairwayPal',
     description: 'Best courses, partner activities, hotels, and packing guide for your Myrtle Beach golf weekend.',
@@ -21,9 +21,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://fairwaypal.com/destinations/myrtle-beach' },
-    { '@type': 'ListItem', position: 3, name: 'Myrtle Beach', item: 'https://fairwaypal.com/destinations/myrtle-beach' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/myrtle-beach' },
+    { '@type': 'ListItem', position: 3, name: 'Myrtle Beach', item: 'https://www.fairwaypal.com/destinations/myrtle-beach' },
   ],
 }
 
@@ -33,7 +33,7 @@ const destinationSchema = {
   name: 'Myrtle Beach, South Carolina',
   description:
     'The Grand Strand offers 100+ courses, budget-friendly group packages, and a boardwalk scene for partners.',
-  url: 'https://fairwaypal.com/destinations/myrtle-beach',
+  url: 'https://www.fairwaypal.com/destinations/myrtle-beach',
   touristType: ['Golf', 'Couples', 'Groups'],
 }
 

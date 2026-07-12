@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar'
 export const metadata: Metadata = {
   title: 'Affiliate Disclosure',
   description: 'How FairwayPal may use affiliate links in future booking and activity recommendations.',
-  alternates: { canonical: 'https://fairwaypal.com/affiliate-disclosure' },
+  alternates: { canonical: 'https://www.fairwaypal.com/affiliate-disclosure' },
 }
 
 export default function AffiliateDisclosurePage() {

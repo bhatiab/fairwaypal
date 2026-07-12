@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'The 6 Best Bachelor Party Golf Destinations in the US (Ranked Honestly) — FairwayPal',
   description:
     'Not a listicle. An actual ranking — with real prices, honest trade-offs, and a verdict on which destination is right for your group.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/best-bachelor-party-golf-destinations' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/best-bachelor-party-golf-destinations' },
   openGraph: {
     title: 'The 6 Best Bachelor Party Golf Destinations in the US (Ranked Honestly)',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'The 6 Best Bachelor Party Golf Destinations in the US (Ranked Honestly)',
   description:
     'Not a listicle. An actual ranking — with real prices, honest trade-offs, and a verdict on which destination is right for your group.',
-  url: 'https://fairwaypal.com/blog/best-bachelor-party-golf-destinations',
+  url: 'https://www.fairwaypal.com/blog/best-bachelor-party-golf-destinations',
   datePublished: '2025-04-17',
   dateModified: '2026-05-05',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Best Bachelor Party Golf Destinations',
-      item: 'https://fairwaypal.com/blog/best-bachelor-party-golf-destinations',
+      item: 'https://www.fairwaypal.com/blog/best-bachelor-party-golf-destinations',
     },
   ],
 }

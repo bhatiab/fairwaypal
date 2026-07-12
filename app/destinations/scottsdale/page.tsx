@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Scottsdale Golf Trip Guide — FairwayPal',
   description:
     'Everything you need for a Scottsdale golf trip: best courses, partner activities, hotels near the courses, and a packing guide. Plan it in 5 minutes with FairwayPal.',
-  alternates: { canonical: 'https://fairwaypal.com/destinations/scottsdale' },
+  alternates: { canonical: 'https://www.fairwaypal.com/destinations/scottsdale' },
   openGraph: {
     title: 'Scottsdale Golf Trip Guide — FairwayPal',
     description: 'Best courses, partner activities, hotels, and packing guide for your Scottsdale golf weekend.',
@@ -21,9 +21,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://fairwaypal.com/destinations/scottsdale' },
-    { '@type': 'ListItem', position: 3, name: 'Scottsdale', item: 'https://fairwaypal.com/destinations/scottsdale' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/scottsdale' },
+    { '@type': 'ListItem', position: 3, name: 'Scottsdale', item: 'https://www.fairwaypal.com/destinations/scottsdale' },
   ],
 }
 
@@ -33,7 +33,7 @@ const destinationSchema = {
   name: 'Scottsdale, Arizona',
   description:
     '200+ courses within an hour, year-round sun, and a partner scene that goes well beyond sitting at the bar. Scottsdale is the default bachelor golf weekend for a reason.',
-  url: 'https://fairwaypal.com/destinations/scottsdale',
+  url: 'https://www.fairwaypal.com/destinations/scottsdale',
   touristType: ['Golf', 'Couples', 'Groups'],
 }
 

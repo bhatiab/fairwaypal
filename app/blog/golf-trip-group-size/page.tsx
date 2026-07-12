@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Golf Trip Group Size Guide: 4 vs 8 vs 12 Players — FairwayPal',
   description:
     'How group size affects tee times, accommodation, costs, and social dynamics on a golf trip. Why 8 is the sweet spot — and what to do if you have 4 or 12.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/golf-trip-group-size' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-group-size' },
   openGraph: {
     title: 'Golf Trip Group Size: 4 vs 8 vs 12 Players',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'Golf Trip Group Size Guide: 4 vs 8 vs 12 Players',
   description:
     'How group size affects tee times, accommodation, costs, and social dynamics. Why 8 is the sweet spot and what to do if you have 4 or 12.',
-  url: 'https://fairwaypal.com/blog/golf-trip-group-size',
+  url: 'https://www.fairwaypal.com/blog/golf-trip-group-size',
   datePublished: '2026-05-05',
   dateModified: '2026-05-05',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Golf Trip Group Size Guide',
-      item: 'https://fairwaypal.com/blog/golf-trip-group-size',
+      item: 'https://www.fairwaypal.com/blog/golf-trip-group-size',
     },
   ],
 }

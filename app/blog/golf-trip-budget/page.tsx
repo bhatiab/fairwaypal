@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'How Much Does a Golf Trip Cost? A Brutally Honest Budget Breakdown — FairwayPal',
   description:
     "Green fees, hotels, flights, food, beer. We break down the real cost of a golf trip — by destination and group size — so there are no surprises on the credit card statement.",
-  alternates: { canonical: 'https://fairwaypal.com/blog/golf-trip-budget' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-budget' },
   openGraph: {
     title: 'How Much Does a Golf Trip Cost? A Brutally Honest Budget Breakdown',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'How Much Does a Golf Trip Cost? A Brutally Honest Budget Breakdown',
   description:
     "Green fees, hotels, flights, food, beer. We break down the real cost of a golf trip — by destination and group size — so there are no surprises.",
-  url: 'https://fairwaypal.com/blog/golf-trip-budget',
+  url: 'https://www.fairwaypal.com/blog/golf-trip-budget',
   datePublished: '2025-04-17',
   dateModified: '2026-05-05',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Golf Trip Budget Breakdown',
-      item: 'https://fairwaypal.com/blog/golf-trip-budget',
+      item: 'https://www.fairwaypal.com/blog/golf-trip-budget',
     },
   ],
 }

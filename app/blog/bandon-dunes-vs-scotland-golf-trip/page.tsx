@@ -10,7 +10,7 @@ const LAST_UPDATED = 'May 6, 2026'
 export const metadata: Metadata = {
   title: 'Bandon Dunes vs Scotland for a Golf Trip: Which Should You Pick? | FairwayPal',
   description: 'The "should we go links?" question, settled. Oregon coast versus the home of the game. Courses, costs, weather, partner experience, logistics, and a verdict by group type.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/bandon-dunes-vs-scotland-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/bandon-dunes-vs-scotland-golf-trip' },
   openGraph: { title: 'Bandon Dunes vs Scotland: Which Should You Pick?', description: 'Oregon coast pilgrimage vs the home of the game.' },
 }
 
@@ -18,18 +18,18 @@ const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: 'Bandon Dunes vs Scotland for a Golf Trip: Which Should You Pick?',
   description: 'Head-to-head comparison of Bandon Dunes and Scotland. Courses, costs, weather, partner activities, logistics, verdict by group type.',
-  url: 'https://fairwaypal.com/blog/bandon-dunes-vs-scotland-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/bandon-dunes-vs-scotland-golf-trip',
   datePublished: '2026-05-06', dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Bandon Dunes vs Scotland', item: 'https://fairwaypal.com/blog/bandon-dunes-vs-scotland-golf-trip' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Bandon Dunes vs Scotland', item: 'https://www.fairwaypal.com/blog/bandon-dunes-vs-scotland-golf-trip' },
   ],
 }
 
