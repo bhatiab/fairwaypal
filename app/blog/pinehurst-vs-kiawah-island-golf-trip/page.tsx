@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Pinehurst vs Kiawah Island for a Golf Trip: Which Should You Pick? | FairwayPal',
   description:
     'Two of the best golf resorts on the East Coast. We compare Pinehurst and Kiawah Island honestly across courses, cost, weather, partner activities, and logistics, with a clear verdict by group type.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/pinehurst-vs-kiawah-island-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/pinehurst-vs-kiawah-island-golf-trip' },
   openGraph: {
     title: 'Pinehurst vs Kiawah Island for a Golf Trip: Which Should You Pick?',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'Pinehurst vs Kiawah Island for a Golf Trip: Which Should You Pick?',
   description:
     'A head-to-head comparison of Pinehurst and Kiawah Island for a group golf trip. Courses, costs, weather, partner activities, logistics, and a verdict by group type.',
-  url: 'https://fairwaypal.com/blog/pinehurst-vs-kiawah-island-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/pinehurst-vs-kiawah-island-golf-trip',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Pinehurst vs Kiawah Island',
-      item: 'https://fairwaypal.com/blog/pinehurst-vs-kiawah-island-golf-trip',
+      item: 'https://www.fairwaypal.com/blog/pinehurst-vs-kiawah-island-golf-trip',
     },
   ],
 }

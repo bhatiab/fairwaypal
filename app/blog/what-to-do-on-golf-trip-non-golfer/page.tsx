@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "What to Do on a Golf Trip If You Don't Golf (Actually Good Options) — FairwayPal",
   description:
     "You're on a golf trip and you don't golf. Here's what to actually do — by destination — so you're not watching Netflix in the hotel room.",
-  alternates: { canonical: 'https://fairwaypal.com/blog/what-to-do-on-golf-trip-non-golfer' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/what-to-do-on-golf-trip-non-golfer' },
   openGraph: {
     title: "What to Do on a Golf Trip If You Don't Golf (Actually Good Options)",
     description:
@@ -26,24 +26,24 @@ const articleSchema = {
   headline: "What to Do on a Golf Trip If You Don't Golf (Actually Good Options)",
   description:
     "You're on a golf trip and you don't golf. Here's what to actually do — by destination — so you're not watching Netflix in the hotel room.",
-  url: 'https://fairwaypal.com/blog/what-to-do-on-golf-trip-non-golfer',
+  url: 'https://www.fairwaypal.com/blog/what-to-do-on-golf-trip-non-golfer',
   datePublished: '2025-04-17',
   dateModified: '2026-05-05',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: "What to Do on a Golf Trip If You Don't Golf",
-      item: 'https://fairwaypal.com/blog/what-to-do-on-golf-trip-non-golfer',
+      item: 'https://www.fairwaypal.com/blog/what-to-do-on-golf-trip-non-golfer',
     },
   ],
 }

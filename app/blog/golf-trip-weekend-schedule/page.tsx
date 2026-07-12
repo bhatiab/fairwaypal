@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Golf Weekend Itinerary Template: 3-Night Schedule — FairwayPal',
   description:
     'A complete 3-night golf weekend schedule — tee times, meals, partner activities, and a day-by-day template you can use for any destination. Golfer and partner columns side by side.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/golf-trip-weekend-schedule' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-weekend-schedule' },
   openGraph: {
     title: 'Golf Weekend Itinerary Template: 3-Night Schedule',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'Golf Weekend Itinerary Template: 3-Night Schedule',
   description:
     'A complete 3-night golf weekend schedule with golfer and partner activities side by side. Use it as a template for any destination.',
-  url: 'https://fairwaypal.com/blog/golf-trip-weekend-schedule',
+  url: 'https://www.fairwaypal.com/blog/golf-trip-weekend-schedule',
   datePublished: '2026-05-05',
   dateModified: '2026-05-05',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Golf Weekend Schedule',
-      item: 'https://fairwaypal.com/blog/golf-trip-weekend-schedule',
+      item: 'https://www.fairwaypal.com/blog/golf-trip-weekend-schedule',
     },
   ],
 }

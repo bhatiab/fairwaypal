@@ -10,7 +10,7 @@ const LAST_UPDATED = 'May 6, 2026'
 export const metadata: Metadata = {
   title: 'The Hidden Costs of a Golf Trip Nobody Warns You About | FairwayPal',
   description: 'A friendly, honest catalogue of the golf trip costs that surprise organisers and groups every year. Resort fees, oversize bag charges, caddie tips, halfway house bills, forecaddie fees, the upgrade trap, and how to budget for them.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/hidden-costs-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/hidden-costs-golf-trip' },
   openGraph: { title: 'The Hidden Costs of a Golf Trip Nobody Warns You About', description: 'The line items that surprise every golf trip organiser. Plan for them.' },
 }
 
@@ -18,18 +18,18 @@ const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: 'The Hidden Costs of a Golf Trip Nobody Warns You About',
   description: 'A practical guide to the unexpected costs that show up on golf trips. Resort fees, oversize bag charges, caddie and forecaddie fees, halfway house spend, the upgrade trap, and how to plan for them.',
-  url: 'https://fairwaypal.com/blog/hidden-costs-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/hidden-costs-golf-trip',
   datePublished: '2026-05-06', dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Hidden Costs of a Golf Trip', item: 'https://fairwaypal.com/blog/hidden-costs-golf-trip' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Hidden Costs of a Golf Trip', item: 'https://www.fairwaypal.com/blog/hidden-costs-golf-trip' },
   ],
 }
 

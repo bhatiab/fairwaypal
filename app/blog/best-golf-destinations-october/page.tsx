@@ -10,7 +10,7 @@ const LAST_UPDATED = 'May 6, 2026'
 export const metadata: Metadata = {
   title: 'The Best Golf Destinations in October (2026 Honest Guide) | FairwayPal',
   description: 'A friendly, honest ranking of the best golf trip destinations for October. Pinehurst, Pebble Beach, Algarve, Kiawah, Scottsdale, Bandon Dunes, plus the destinations to avoid in October.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/best-golf-destinations-october' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/best-golf-destinations-october' },
   openGraph: { title: 'The Best Golf Destinations in October', description: 'Honest ranking of where to go for a golf trip this October.' },
 }
 
@@ -19,20 +19,20 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'The Best Golf Destinations in October (2026 Honest Guide)',
   description: 'Practical ranking of the best golf trip destinations for October. Climate, conditions, prices, partner experience, and verdict by trip type.',
-  url: 'https://fairwaypal.com/blog/best-golf-destinations-october',
+  url: 'https://www.fairwaypal.com/blog/best-golf-destinations-october',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Best Golf Destinations in October', item: 'https://fairwaypal.com/blog/best-golf-destinations-october' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Best Golf Destinations in October', item: 'https://www.fairwaypal.com/blog/best-golf-destinations-october' },
   ],
 }
 

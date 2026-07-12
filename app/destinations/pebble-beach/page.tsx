@@ -11,10 +11,10 @@ export const metadata: Metadata = {
   description:
     'Everything you need for a Pebble Beach golf trip: how to get tee times, real costs, the best Monterey Peninsula courses, partner activities in Carmel, and where to stay.',
   alternates: {
-    canonical: 'https://fairwaypal.com/destinations/pebble-beach',
+    canonical: 'https://www.fairwaypal.com/destinations/pebble-beach',
     languages: {
-      'en-US': 'https://fairwaypal.com/destinations/pebble-beach',
-      'x-default': 'https://fairwaypal.com/destinations/pebble-beach',
+      'en-US': 'https://www.fairwaypal.com/destinations/pebble-beach',
+      'x-default': 'https://www.fairwaypal.com/destinations/pebble-beach',
     },
   },
   openGraph: {
@@ -27,9 +27,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://fairwaypal.com/destinations/pebble-beach' },
-    { '@type': 'ListItem', position: 3, name: 'Pebble Beach', item: 'https://fairwaypal.com/destinations/pebble-beach' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/pebble-beach' },
+    { '@type': 'ListItem', position: 3, name: 'Pebble Beach', item: 'https://www.fairwaypal.com/destinations/pebble-beach' },
   ],
 }
 
@@ -39,7 +39,7 @@ const destinationSchema = {
   name: 'Pebble Beach, California',
   description:
     'The most famous golf course in the United States, set on the Monterey Peninsula above the Pacific. A bucket-list destination with one of the most dramatic finishing holes in the world.',
-  url: 'https://fairwaypal.com/destinations/pebble-beach',
+  url: 'https://www.fairwaypal.com/destinations/pebble-beach',
   touristType: ['Golf', 'Bucket List', 'Couples'],
 }
 

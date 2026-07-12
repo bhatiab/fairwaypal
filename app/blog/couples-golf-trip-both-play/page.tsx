@@ -10,7 +10,7 @@ const LAST_UPDATED = 'May 6, 2026'
 export const metadata: Metadata = {
   title: 'Planning a Couples Golf Trip Where Both Play (Honest Guide) | FairwayPal',
   description: 'A friendly, honest guide to planning a couples golf trip where both partners play. Pick the right destination by skill spread, the format question, the romance versus competition balance, and the dynamics nobody warns you about.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/couples-golf-trip-both-play' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/couples-golf-trip-both-play' },
   openGraph: { title: 'Planning a Couples Golf Trip Where Both Play', description: 'How to plan a golf trip when you and your partner both play.' },
 }
 
@@ -18,18 +18,18 @@ const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: 'Planning a Couples Golf Trip Where Both Play (Honest Guide)',
   description: 'A practical guide to planning a couples golf trip where both partners play. Destination archetypes, handicap-spread considerations, format options, romance/competition balance.',
-  url: 'https://fairwaypal.com/blog/couples-golf-trip-both-play',
+  url: 'https://www.fairwaypal.com/blog/couples-golf-trip-both-play',
   datePublished: '2026-05-06', dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Couples Golf Trip (Both Play)', item: 'https://fairwaypal.com/blog/couples-golf-trip-both-play' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Couples Golf Trip (Both Play)', item: 'https://www.fairwaypal.com/blog/couples-golf-trip-both-play' },
   ],
 }
 

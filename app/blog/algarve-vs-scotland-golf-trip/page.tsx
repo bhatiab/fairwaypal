@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Algarve vs Scotland for a Golf Trip: Which Should You Pick? | FairwayPal',
   description:
     'Europe\'s two big group-golf destinations, compared honestly. Courses, costs, weather, partner experience, and a verdict by group type. Sun and value in Portugal, or links and heritage in Scotland?',
-  alternates: { canonical: 'https://fairwaypal.com/blog/algarve-vs-scotland-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/algarve-vs-scotland-golf-trip' },
   openGraph: {
     title: 'Algarve vs Scotland for a Golf Trip: Which Should You Pick?',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'Algarve vs Scotland for a Golf Trip: Which Should You Pick?',
   description:
     'Head-to-head comparison of the Algarve and Scotland for a group golf trip. Courses, costs, weather, partner experience, logistics, and a verdict by group type.',
-  url: 'https://fairwaypal.com/blog/algarve-vs-scotland-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/algarve-vs-scotland-golf-trip',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Algarve vs Scotland',
-      item: 'https://fairwaypal.com/blog/algarve-vs-scotland-golf-trip',
+      item: 'https://www.fairwaypal.com/blog/algarve-vs-scotland-golf-trip',
     },
   ],
 }

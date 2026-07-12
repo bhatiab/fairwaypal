@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Shipping Clubs vs Flying with Clubs: The Honest 2026 Numbers | FairwayPal',
   description:
     'A friendly, honest breakdown of shipping golf clubs versus flying with them. Real airline bag fees, Ship Sticks and Luggage Forward pricing, when each option wins, and the gotchas nobody warns you about.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/shipping-clubs-vs-flying-with-clubs' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/shipping-clubs-vs-flying-with-clubs' },
   openGraph: {
     title: 'Shipping Clubs vs Flying with Clubs: The Honest 2026 Numbers',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'Shipping Clubs vs Flying with Clubs: The Honest 2026 Numbers',
   description:
     'Practical comparison of shipping versus flying with golf clubs in 2026. Airline bag fees by carrier, Ship Sticks and Luggage Forward pricing, decision matrix, and the gotchas nobody warns you about.',
-  url: 'https://fairwaypal.com/blog/shipping-clubs-vs-flying-with-clubs',
+  url: 'https://www.fairwaypal.com/blog/shipping-clubs-vs-flying-with-clubs',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Shipping Clubs vs Flying',
-      item: 'https://fairwaypal.com/blog/shipping-clubs-vs-flying-with-clubs',
+      item: 'https://www.fairwaypal.com/blog/shipping-clubs-vs-flying-with-clubs',
     },
   ],
 }

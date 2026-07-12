@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'The Algarve for Non-Golfers: A Partner\'s Guide | FairwayPal',
   description:
     'A friendly, honest guide to the Algarve for the partner who is not playing. Beaches, sea caves, Lagos and Tavira old towns, the Benagil cave kayak tour, Alentejo wine country, and a daily rhythm that turns a golf trip into a holiday.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/algarve-for-non-golfers' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/algarve-for-non-golfers' },
   openGraph: {
     title: 'The Algarve for Non-Golfers: A Partner\'s Guide',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'The Algarve for Non-Golfers: A Partner\'s Guide',
   description:
     'A practical guide to the Algarve for non-golfing partners. Beaches, sea caves, Lagos and Tavira, Benagil cave access rules, Alentejo wine country, spa options, and a sample 4-day itinerary.',
-  url: 'https://fairwaypal.com/blog/algarve-for-non-golfers',
+  url: 'https://www.fairwaypal.com/blog/algarve-for-non-golfers',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'The Algarve for Non-Golfers',
-      item: 'https://fairwaypal.com/blog/algarve-for-non-golfers',
+      item: 'https://www.fairwaypal.com/blog/algarve-for-non-golfers',
     },
   ],
 }

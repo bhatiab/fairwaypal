@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Why Your Group Keeps Cancelling the Golf Trip (and How to Fix It) | FairwayPal',
   description:
     "An honest look at why most group golf trips quietly fall apart in the planning stage. The five real reasons, by a team that has watched dozens of them die in WhatsApp threads, and the simple fixes that actually work.",
-  alternates: { canonical: 'https://fairwaypal.com/blog/why-your-group-keeps-cancelling-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/why-your-group-keeps-cancelling-golf-trip' },
   openGraph: {
     title: 'Why Your Group Keeps Cancelling the Golf Trip',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'Why Your Group Keeps Cancelling the Golf Trip (and How to Fix It)',
   description:
     'An honest analysis of why group golf trips fall apart in the planning stage. Decision fatigue, the partner problem, money silence, the open WhatsApp loop, and the missing organiser. With practical fixes for each.',
-  url: 'https://fairwaypal.com/blog/why-your-group-keeps-cancelling-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/why-your-group-keeps-cancelling-golf-trip',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Why Your Group Keeps Cancelling',
-      item: 'https://fairwaypal.com/blog/why-your-group-keeps-cancelling-golf-trip',
+      item: 'https://www.fairwaypal.com/blog/why-your-group-keeps-cancelling-golf-trip',
     },
   ],
 }

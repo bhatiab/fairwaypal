@@ -11,11 +11,11 @@ export const metadata: Metadata = {
   description:
     'Everything you need for a Scotland golf trip: best links courses, partner activities, hotels near St Andrews, and a packing guide. Plan it in 5 minutes with FairwayPal.',
   alternates: {
-    canonical: 'https://fairwaypal.com/destinations/scotland',
+    canonical: 'https://www.fairwaypal.com/destinations/scotland',
     languages: {
-      'en-GB': 'https://fairwaypal.com/destinations/scotland',
-      'en-US': 'https://fairwaypal.com/destinations/scotland',
-      'x-default': 'https://fairwaypal.com/destinations/scotland',
+      'en-GB': 'https://www.fairwaypal.com/destinations/scotland',
+      'en-US': 'https://www.fairwaypal.com/destinations/scotland',
+      'x-default': 'https://www.fairwaypal.com/destinations/scotland',
     },
   },
   openGraph: {
@@ -28,9 +28,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://fairwaypal.com/destinations/scotland' },
-    { '@type': 'ListItem', position: 3, name: 'Scotland', item: 'https://fairwaypal.com/destinations/scotland' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/scotland' },
+    { '@type': 'ListItem', position: 3, name: 'Scotland', item: 'https://www.fairwaypal.com/destinations/scotland' },
   ],
 }
 
@@ -40,7 +40,7 @@ const destinationSchema = {
   name: 'Scotland',
   description:
     'The birthplace of golf. St Andrews, links courses along the coast, whisky distilleries, and castles. Scotland is the bucket-list golf trip.',
-  url: 'https://fairwaypal.com/destinations/scotland',
+  url: 'https://www.fairwaypal.com/destinations/scotland',
   touristType: ['Golf', 'Couples', 'Groups'],
 }
 

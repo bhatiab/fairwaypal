@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Pinehurst for Non-Golfers: A Partner\'s Guide | FairwayPal',
   description:
     'A friendly, honest guide to Pinehurst for the partner who is not playing. The walkable village, the Tufts Archives, the spa at The Carolina, Southern Pines, Seagrove pottery, and a daily rhythm that works.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/pinehurst-for-non-golfers' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/pinehurst-for-non-golfers' },
   openGraph: {
     title: 'Pinehurst for Non-Golfers: A Partner\'s Guide',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'Pinehurst for Non-Golfers: A Partner\'s Guide',
   description:
     'A practical guide to Pinehurst for non-golfing partners. Pinehurst Village walking, Tufts Archives, spa at The Carolina, Southern Pines day, Seagrove pottery, and a sample 3-day itinerary.',
-  url: 'https://fairwaypal.com/blog/pinehurst-for-non-golfers',
+  url: 'https://www.fairwaypal.com/blog/pinehurst-for-non-golfers',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Pinehurst for Non-Golfers',
-      item: 'https://fairwaypal.com/blog/pinehurst-for-non-golfers',
+      item: 'https://www.fairwaypal.com/blog/pinehurst-for-non-golfers',
     },
   ],
 }

@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     'Answer 5 questions. Get a dual itinerary — golf on the left, partner activities on the right. Share one link. Everyone votes. Trip locked.',
   alternates: {
-    canonical: 'https://fairwaypal.com/',
+    canonical: 'https://www.fairwaypal.com/',
   },
   openGraph: {
     title: 'FairwayPal — Golf trip sorted. Partners happy.',
     description:
       'Answer 5 questions. Get a dual itinerary. Share one link. Everyone votes. Done.',
-    url: 'https://fairwaypal.com/',
+    url: 'https://www.fairwaypal.com/',
     type: 'website',
   },
   twitter: {
@@ -28,7 +28,7 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
   ],
 }
 

@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     'Answer five questions to shape a FairwayPal golf trip with a golf itinerary and a partner itinerary.',
   alternates: {
-    canonical: 'https://fairwaypal.com/plan',
+    canonical: 'https://www.fairwaypal.com/plan',
   },
   openGraph: {
     title: 'Plan Your Trip',
     description:
       'Shape a golf trip in five steps — destination, dates, group, budget, vibe.',
-    url: 'https://fairwaypal.com/plan',
+    url: 'https://www.fairwaypal.com/plan',
     type: 'website',
   },
   twitter: {

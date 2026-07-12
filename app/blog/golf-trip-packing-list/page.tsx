@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: 'The Golf Trip Packing List: Everything You (and Your Partner) Actually Need — FairwayPal',
   description:
     "Two packing lists in one — one for golfers, one for non-golfers. Cut the overpacking. Don't forget the one thing that ruins a trip.",
-  alternates: { canonical: 'https://fairwaypal.com/blog/golf-trip-packing-list' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-packing-list' },
   openGraph: {
     title: 'The Golf Trip Packing List: Everything You (and Your Partner) Actually Need',
     description:
@@ -26,24 +26,24 @@ const articleSchema = {
   headline: 'The Golf Trip Packing List: Everything You (and Your Partner) Actually Need',
   description:
     "Two packing lists in one — one for golfers, one for non-golfers. Cut the overpacking. Don't forget the one thing that ruins a trip.",
-  url: 'https://fairwaypal.com/blog/golf-trip-packing-list',
+  url: 'https://www.fairwaypal.com/blog/golf-trip-packing-list',
   datePublished: '2025-04-17',
   dateModified: '2026-05-05',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Golf Trip Packing List',
-      item: 'https://fairwaypal.com/blog/golf-trip-packing-list',
+      item: 'https://www.fairwaypal.com/blog/golf-trip-packing-list',
     },
   ],
 }

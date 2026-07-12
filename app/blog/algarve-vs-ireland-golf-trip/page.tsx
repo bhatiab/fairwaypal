@@ -10,7 +10,7 @@ const LAST_UPDATED = 'May 6, 2026'
 export const metadata: Metadata = {
   title: 'Algarve vs Ireland for a Golf Trip: Which Should You Pick? | FairwayPal',
   description: 'Sun and value versus craic and links. Two of the great affordable European golf trips compared honestly. Courses, costs, weather, partner experience, and a verdict by group type.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/algarve-vs-ireland-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/algarve-vs-ireland-golf-trip' },
   openGraph: { title: 'Algarve vs Ireland: Which Should You Pick?', description: 'Sun and value versus craic and links. Two affordable European golf trips compared.' },
 }
 
@@ -18,18 +18,18 @@ const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: 'Algarve vs Ireland for a Golf Trip: Which Should You Pick?',
   description: 'Head-to-head comparison of the Algarve and Ireland for a group golf trip. Courses, costs, weather, partner activities, logistics, verdict by group type.',
-  url: 'https://fairwaypal.com/blog/algarve-vs-ireland-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/algarve-vs-ireland-golf-trip',
   datePublished: '2026-05-06', dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Algarve vs Ireland', item: 'https://fairwaypal.com/blog/algarve-vs-ireland-golf-trip' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Algarve vs Ireland', item: 'https://www.fairwaypal.com/blog/algarve-vs-ireland-golf-trip' },
   ],
 }
 

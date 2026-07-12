@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Pebble Beach for Non-Golfers: A Partner\'s Guide | FairwayPal',
   description:
     'A friendly, honest guide to Pebble Beach for the partner who is not playing. Carmel-by-the-Sea, the Monterey Bay Aquarium, the 17-Mile Drive, Big Sur, Carmel Valley wine country, and a daily rhythm that makes the whole trip work.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/pebble-beach-for-non-golfers' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/pebble-beach-for-non-golfers' },
   openGraph: {
     title: 'Pebble Beach for Non-Golfers: A Partner\'s Guide',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'Pebble Beach for Non-Golfers: A Partner\'s Guide',
   description:
     'A practical guide to Pebble Beach for non-golfing partners. Carmel-by-the-Sea, the Monterey Bay Aquarium, the 17-Mile Drive, Big Sur, Carmel Valley, the spa, and a daily rhythm that mirrors a golf trip schedule.',
-  url: 'https://fairwaypal.com/blog/pebble-beach-for-non-golfers',
+  url: 'https://www.fairwaypal.com/blog/pebble-beach-for-non-golfers',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Pebble Beach for Non-Golfers',
-      item: 'https://fairwaypal.com/blog/pebble-beach-for-non-golfers',
+      item: 'https://www.fairwaypal.com/blog/pebble-beach-for-non-golfers',
     },
   ],
 }

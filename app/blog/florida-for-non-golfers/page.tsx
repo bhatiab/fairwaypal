@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Florida for Non-Golfers: A Partner\'s Guide | FairwayPal',
   description:
     'A friendly, honest guide to Florida for the partner who is not playing. Different golf bases give different partner experiences: Streamsong (rural), TPC Sawgrass (St. Augustine + beaches), Innisbrook (Tampa + Gulf), Orlando (theme parks).',
-  alternates: { canonical: 'https://fairwaypal.com/blog/florida-for-non-golfers' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/florida-for-non-golfers' },
   openGraph: { title: 'Florida for Non-Golfers: A Partner\'s Guide', description: 'How a Florida golf trip works for the partner. Different bases, very different partner experiences.' },
 }
 
@@ -20,20 +20,20 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'Florida for Non-Golfers: A Partner\'s Guide',
   description: 'A practical guide to Florida for non-golfing partners. The four golf bases (Streamsong, TPC Sawgrass/St. Augustine, Innisbrook/Tampa, Orlando) and what each offers for partners.',
-  url: 'https://fairwaypal.com/blog/florida-for-non-golfers',
+  url: 'https://www.fairwaypal.com/blog/florida-for-non-golfers',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Florida for Non-Golfers', item: 'https://fairwaypal.com/blog/florida-for-non-golfers' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Florida for Non-Golfers', item: 'https://www.fairwaypal.com/blog/florida-for-non-golfers' },
   ],
 }
 

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Ireland for Non-Golfers: A Partner\'s Guide | FairwayPal',
   description:
     'A friendly, honest guide to Ireland for the partner who is not playing. The Cliffs of Moher, the Ring of Kerry, Killarney National Park, Galway pubs, the Dingle Peninsula, Dublin, and whiskey distilleries.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/ireland-for-non-golfers' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/ireland-for-non-golfers' },
   openGraph: { title: 'Ireland for Non-Golfers: A Partner\'s Guide', description: 'How an Ireland golf trip works for the partner who is not teeing off. Cliffs, castles, pubs, music, distilleries.' },
 }
 
@@ -20,20 +20,20 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'Ireland for Non-Golfers: A Partner\'s Guide',
   description: 'A practical guide to Ireland for non-golfing partners. Cliffs of Moher, Ring of Kerry, Killarney, Galway, Dingle, Dublin, distilleries, and a sample 5-day partner itinerary.',
-  url: 'https://fairwaypal.com/blog/ireland-for-non-golfers',
+  url: 'https://www.fairwaypal.com/blog/ireland-for-non-golfers',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Ireland for Non-Golfers', item: 'https://fairwaypal.com/blog/ireland-for-non-golfers' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Ireland for Non-Golfers', item: 'https://www.fairwaypal.com/blog/ireland-for-non-golfers' },
   ],
 }
 

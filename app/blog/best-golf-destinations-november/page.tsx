@@ -10,7 +10,7 @@ const LAST_UPDATED = 'May 6, 2026'
 export const metadata: Metadata = {
   title: 'The Best Golf Destinations in November (2026 Honest Guide) | FairwayPal',
   description: 'A friendly, honest ranking of the best golf trip destinations for November. Scottsdale, Pinehurst, the Algarve, Florida, Kiawah, plus where to skip in November.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/best-golf-destinations-november' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/best-golf-destinations-november' },
   openGraph: { title: 'The Best Golf Destinations in November', description: 'Honest ranking of where to go for a golf trip in November.' },
 }
 
@@ -18,18 +18,18 @@ const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: 'The Best Golf Destinations in November (2026 Honest Guide)',
   description: 'Practical ranking of the best golf trip destinations for November. Climate, conditions, prices, partner experience.',
-  url: 'https://fairwaypal.com/blog/best-golf-destinations-november',
+  url: 'https://www.fairwaypal.com/blog/best-golf-destinations-november',
   datePublished: '2026-05-06', dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Best Golf Destinations in November', item: 'https://fairwaypal.com/blog/best-golf-destinations-november' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Best Golf Destinations in November', item: 'https://www.fairwaypal.com/blog/best-golf-destinations-november' },
   ],
 }
 

@@ -11,11 +11,11 @@ export const metadata: Metadata = {
   description:
     'Everything you need for an Algarve golf trip: Monte Rei, Quinta do Lago, Vale do Lobo, real costs, partner activities, and where to stay in southern Portugal.',
   alternates: {
-    canonical: 'https://fairwaypal.com/destinations/algarve',
+    canonical: 'https://www.fairwaypal.com/destinations/algarve',
     languages: {
-      'en-GB': 'https://fairwaypal.com/destinations/algarve',
-      'en-US': 'https://fairwaypal.com/destinations/algarve',
-      'x-default': 'https://fairwaypal.com/destinations/algarve',
+      'en-GB': 'https://www.fairwaypal.com/destinations/algarve',
+      'en-US': 'https://www.fairwaypal.com/destinations/algarve',
+      'x-default': 'https://www.fairwaypal.com/destinations/algarve',
     },
   },
   openGraph: {
@@ -28,9 +28,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://fairwaypal.com/destinations/algarve' },
-    { '@type': 'ListItem', position: 3, name: 'Algarve, Portugal', item: 'https://fairwaypal.com/destinations/algarve' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/algarve' },
+    { '@type': 'ListItem', position: 3, name: 'Algarve, Portugal', item: 'https://www.fairwaypal.com/destinations/algarve' },
   ],
 }
 
@@ -40,7 +40,7 @@ const destinationSchema = {
   name: 'Algarve, Portugal',
   description:
     'Europe\'s premier golf destination. 300 days of sunshine per year, world-class courses from Monte Rei to Quinta do Lago, and a partner scene built around sea caves, seafood, and Atlantic beaches.',
-  url: 'https://fairwaypal.com/destinations/algarve',
+  url: 'https://www.fairwaypal.com/destinations/algarve',
   touristType: ['Golf', 'Couples', 'International', 'Groups'],
 }
 

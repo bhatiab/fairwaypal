@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'The Best Golf Trip Apps and Tools (2026 Honest Guide) | FairwayPal',
   description:
     'A friendly, honest guide to the apps and tools worth installing before a golf trip. Planning, group chat, cost-splitting, GPS, weather, booking, and shot tracking. What is free, what is worth paying for, and what to skip.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/best-golf-trip-apps' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/best-golf-trip-apps' },
   openGraph: {
     title: 'The Best Golf Trip Apps and Tools (2026 Honest Guide)',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'The Best Golf Trip Apps and Tools (2026 Honest Guide)',
   description:
     'A practical guide to the apps and tools worth using on a golf trip. Planning, group coordination, cost splitting, on-course GPS, weather, booking, and post-round stats. What is free, what is worth paying for.',
-  url: 'https://fairwaypal.com/blog/best-golf-trip-apps',
+  url: 'https://www.fairwaypal.com/blog/best-golf-trip-apps',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Best Golf Trip Apps',
-      item: 'https://fairwaypal.com/blog/best-golf-trip-apps',
+      item: 'https://www.fairwaypal.com/blog/best-golf-trip-apps',
     },
   ],
 }

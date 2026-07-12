@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'How to Split Costs on a Golf Trip Without Resentment | FairwayPal',
   description:
     'Money is the most common reason golf trips blow up. A friendly, practical guide to splitting costs fairly: when to share, when to itemise, the apps that help, and the conversation that prevents 80% of fights.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/how-to-split-costs-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/how-to-split-costs-golf-trip' },
   openGraph: {
     title: 'How to Split Costs on a Golf Trip Without Resentment',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'How to Split Costs on a Golf Trip Without Resentment',
   description:
     'A practical guide to splitting golf trip costs fairly across a group. Methods, apps, and the conversations that prevent disputes.',
-  url: 'https://fairwaypal.com/blog/how-to-split-costs-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/how-to-split-costs-golf-trip',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'How to Split Costs on a Golf Trip',
-      item: 'https://fairwaypal.com/blog/how-to-split-costs-golf-trip',
+      item: 'https://www.fairwaypal.com/blog/how-to-split-costs-golf-trip',
     },
   ],
 }

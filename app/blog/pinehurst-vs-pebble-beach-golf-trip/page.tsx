@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Pinehurst vs Pebble Beach for a Golf Trip: Which Should You Pick? | FairwayPal',
   description:
     'Two of the great American bucket-list golf trips, compared honestly. Courses, costs, weather, partner experience, logistics, and a verdict by group type. Heritage and walkability versus iconic Pacific scenery.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/pinehurst-vs-pebble-beach-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/pinehurst-vs-pebble-beach-golf-trip' },
   openGraph: {
     title: 'Pinehurst vs Pebble Beach for a Golf Trip: Which Should You Pick?',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'Pinehurst vs Pebble Beach for a Golf Trip: Which Should You Pick?',
   description:
     'Head-to-head comparison of Pinehurst and Pebble Beach for a group golf trip. Courses, costs, weather, partner activities, logistics, and a verdict by group type.',
-  url: 'https://fairwaypal.com/blog/pinehurst-vs-pebble-beach-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/pinehurst-vs-pebble-beach-golf-trip',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Pinehurst vs Pebble Beach',
-      item: 'https://fairwaypal.com/blog/pinehurst-vs-pebble-beach-golf-trip',
+      item: 'https://www.fairwaypal.com/blog/pinehurst-vs-pebble-beach-golf-trip',
     },
   ],
 }

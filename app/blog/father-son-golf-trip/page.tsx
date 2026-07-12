@@ -10,7 +10,7 @@ const LAST_UPDATED = 'May 6, 2026'
 export const metadata: Metadata = {
   title: 'Father-Son Golf Trip Planning: The Honest Guide | FairwayPal',
   description: 'A friendly, honest guide to planning a father-son golf trip. Picking the right destination by skill level and age, the four destination archetypes, the conversations worth having, and what nobody tells you about the trip dynamic.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/father-son-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/father-son-golf-trip' },
   openGraph: { title: 'Father-Son Golf Trip Planning: The Honest Guide', description: 'How to plan a father-son golf trip that lives up to the expectations on both sides.' },
 }
 
@@ -19,20 +19,20 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'Father-Son Golf Trip Planning: The Honest Guide',
   description: 'A practical guide to planning a father-son golf trip. Destination archetypes by skill and age, conversations worth having, and dynamics nobody warns you about.',
-  url: 'https://fairwaypal.com/blog/father-son-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/father-son-golf-trip',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Father-Son Golf Trip', item: 'https://fairwaypal.com/blog/father-son-golf-trip' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Father-Son Golf Trip', item: 'https://www.fairwaypal.com/blog/father-son-golf-trip' },
   ],
 }
 

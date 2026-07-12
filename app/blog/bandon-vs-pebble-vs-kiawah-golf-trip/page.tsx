@@ -10,7 +10,7 @@ const LAST_UPDATED = 'May 6, 2026'
 export const metadata: Metadata = {
   title: 'Bandon Dunes vs Pebble Beach vs Kiawah Island: The Premium Triple Compared | FairwayPal',
   description: 'Three of the most expensive golf trips in the United States, compared honestly. Pacific links pilgrimage versus iconic Pacific bucket-list versus East Coast Ocean Course. Verdict by group type.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/bandon-vs-pebble-vs-kiawah-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/bandon-vs-pebble-vs-kiawah-golf-trip' },
   openGraph: { title: 'Bandon vs Pebble vs Kiawah: The Premium Triple', description: 'Three of the great American bucket-list golf trips compared.' },
 }
 
@@ -18,18 +18,18 @@ const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: 'Bandon Dunes vs Pebble Beach vs Kiawah Island: The Premium Triple Compared',
   description: 'Three-way comparison of the great US bucket-list golf resorts. Courses, costs, weather, partner experience, logistics, verdict by group type.',
-  url: 'https://fairwaypal.com/blog/bandon-vs-pebble-vs-kiawah-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/bandon-vs-pebble-vs-kiawah-golf-trip',
   datePublished: '2026-05-06', dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: 'Bandon vs Pebble vs Kiawah', item: 'https://fairwaypal.com/blog/bandon-vs-pebble-vs-kiawah-golf-trip' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: 'Bandon vs Pebble vs Kiawah', item: 'https://www.fairwaypal.com/blog/bandon-vs-pebble-vs-kiawah-golf-trip' },
   ],
 }
 

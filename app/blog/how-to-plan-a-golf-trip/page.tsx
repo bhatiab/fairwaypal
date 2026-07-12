@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'How to Plan a Golf Trip (Without Losing Your Mind or Your Friends) — FairwayPal',
   description:
     'The complete organiser\'s guide: pick a destination, set a budget, book tee times, handle partners, share the plan, and get everyone to actually commit. Step by step.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/how-to-plan-a-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/how-to-plan-a-golf-trip' },
   openGraph: {
     title: 'How to Plan a Golf Trip (Without Losing Your Mind or Your Friends)',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'How to Plan a Golf Trip (Without Losing Your Mind or Your Friends)',
   description:
     'The complete organiser\'s guide: pick a destination, set a budget, book tee times, handle partners, share the plan, and get everyone to actually commit.',
-  url: 'https://fairwaypal.com/blog/how-to-plan-a-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/how-to-plan-a-golf-trip',
   datePublished: '2026-05-05',
   dateModified: '2026-05-05',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'How to Plan a Golf Trip',
-      item: 'https://fairwaypal.com/blog/how-to-plan-a-golf-trip',
+      item: 'https://www.fairwaypal.com/blog/how-to-plan-a-golf-trip',
     },
   ],
 }

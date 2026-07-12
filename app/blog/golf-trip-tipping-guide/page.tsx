@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Tipping on a Golf Trip: The Complete Guide | FairwayPal',
   description:
     'A friendly, honest guide to tipping on a golf trip. Caddies, bag drops, halfway-house attendants, valet, and dinner servers, with country-by-country guidelines for the US, Scotland, Ireland, and Portugal.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/golf-trip-tipping-guide' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-tipping-guide' },
   openGraph: {
     title: 'Tipping on a Golf Trip: The Complete Guide',
     description:
@@ -25,24 +25,24 @@ const articleSchema = {
   headline: 'Tipping on a Golf Trip: The Complete Guide',
   description:
     'A practical country-by-country guide to tipping on a golf trip. Caddies, bag drops, halfway-house staff, valet, restaurants, and the etiquette that prevents awkwardness.',
-  url: 'https://fairwaypal.com/blog/golf-trip-tipping-guide',
+  url: 'https://www.fairwaypal.com/blog/golf-trip-tipping-guide',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Tipping on a Golf Trip',
-      item: 'https://fairwaypal.com/blog/golf-trip-tipping-guide',
+      item: 'https://www.fairwaypal.com/blog/golf-trip-tipping-guide',
     },
   ],
 }

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Bandon Dunes Golf Trip Guide — FairwayPal',
   description:
     'Everything you need for a Bandon Dunes golf trip: best courses, partner activities, hotels near the courses, and a packing guide. Plan it in 5 minutes with FairwayPal.',
-  alternates: { canonical: 'https://fairwaypal.com/destinations/bandon-dunes' },
+  alternates: { canonical: 'https://www.fairwaypal.com/destinations/bandon-dunes' },
   openGraph: {
     title: 'Bandon Dunes Golf Trip Guide — FairwayPal',
     description: 'Best courses, partner activities, hotels, and packing guide for your Bandon Dunes golf weekend.',
@@ -21,9 +21,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://fairwaypal.com/destinations/bandon-dunes' },
-    { '@type': 'ListItem', position: 3, name: 'Bandon Dunes', item: 'https://fairwaypal.com/destinations/bandon-dunes' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/bandon-dunes' },
+    { '@type': 'ListItem', position: 3, name: 'Bandon Dunes', item: 'https://www.fairwaypal.com/destinations/bandon-dunes' },
   ],
 }
 
@@ -33,7 +33,7 @@ const destinationSchema = {
   name: 'Bandon Dunes, Oregon',
   description:
     'A true links golf pilgrimage on the rugged Oregon coast. World-class courses, no carts, pure golf.',
-  url: 'https://fairwaypal.com/destinations/bandon-dunes',
+  url: 'https://www.fairwaypal.com/destinations/bandon-dunes',
   touristType: ['Golf', 'Groups'],
 }
 

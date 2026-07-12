@@ -10,7 +10,7 @@ const LAST_UPDATED = 'May 6, 2026'
 export const metadata: Metadata = {
   title: 'The 40th and 50th Birthday Golf Trip: An Honest Planning Guide | FairwayPal',
   description: 'A friendly guide to planning a milestone-birthday golf trip for a 40th or 50th. Picking the right destination, group size, format, and the touches that make it feel like a real celebration.',
-  alternates: { canonical: 'https://fairwaypal.com/blog/40th-50th-birthday-golf-trip' },
+  alternates: { canonical: 'https://www.fairwaypal.com/blog/40th-50th-birthday-golf-trip' },
   openGraph: { title: 'The 40th and 50th Birthday Golf Trip', description: 'A planning guide for the milestone-birthday golf trip that will stand out.' },
 }
 
@@ -19,20 +19,20 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'The 40th and 50th Birthday Golf Trip: An Honest Planning Guide',
   description: 'A practical guide to planning a milestone-birthday golf trip. Destination archetypes, group size, format options, and the touches that make it a celebration.',
-  url: 'https://fairwaypal.com/blog/40th-50th-birthday-golf-trip',
+  url: 'https://www.fairwaypal.com/blog/40th-50th-birthday-golf-trip',
   datePublished: '2026-05-06',
   dateModified: '2026-05-06',
-  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
-  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://fairwaypal.com' },
+  author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
+  publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://fairwaypal.com/blog' },
-    { '@type': 'ListItem', position: 3, name: '40th and 50th Birthday Golf Trip', item: 'https://fairwaypal.com/blog/40th-50th-birthday-golf-trip' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.fairwaypal.com/blog' },
+    { '@type': 'ListItem', position: 3, name: '40th and 50th Birthday Golf Trip', item: 'https://www.fairwaypal.com/blog/40th-50th-birthday-golf-trip' },
   ],
 }
 

@@ -20,7 +20,7 @@ const outfit = Outfit({
 })
 
 export const metadata: import('next').Metadata = {
-  metadataBase: new URL('https://fairwaypal.com'),
+  metadataBase: new URL('https://www.fairwaypal.com'),
   title: {
     default: 'FairwayPal',
     template: '%s | FairwayPal',
@@ -55,8 +55,8 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'FairwayPal',
-  url: 'https://fairwaypal.com',
-  logo: 'https://fairwaypal.com/icon.png',
+  url: 'https://www.fairwaypal.com',
+  logo: 'https://www.fairwaypal.com/icon.png',
   description:
     'AI-powered golf trip planner that generates dual itineraries for golfers and partners. Plan, vote, and lock your group golf trip in under 5 minutes.',
   sameAs: [],
@@ -66,12 +66,12 @@ const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'FairwayPal',
-  url: 'https://fairwaypal.com',
+  url: 'https://www.fairwaypal.com',
   description:
     'Golf trip sorted. Partners happy. Answer 5 questions, get a dual itinerary, share one link, everyone votes.',
   potentialAction: {
     '@type': 'SearchAction',
-    target: 'https://fairwaypal.com/destinations/{search_term_string}',
+    target: 'https://www.fairwaypal.com/destinations/{search_term_string}',
     'query-input': 'required name=search_term_string',
   },
 }

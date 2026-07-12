@@ -11,10 +11,10 @@ export const metadata: Metadata = {
   description:
     'Everything you need for a Kiawah Island golf trip: the Ocean Course, 4 resort alternatives, real costs, the Charleston partner plan, and where to stay.',
   alternates: {
-    canonical: 'https://fairwaypal.com/destinations/kiawah-island',
+    canonical: 'https://www.fairwaypal.com/destinations/kiawah-island',
     languages: {
-      'en-US': 'https://fairwaypal.com/destinations/kiawah-island',
-      'x-default': 'https://fairwaypal.com/destinations/kiawah-island',
+      'en-US': 'https://www.fairwaypal.com/destinations/kiawah-island',
+      'x-default': 'https://www.fairwaypal.com/destinations/kiawah-island',
     },
   },
   openGraph: {
@@ -27,9 +27,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://fairwaypal.com/destinations/kiawah-island' },
-    { '@type': 'ListItem', position: 3, name: 'Kiawah Island', item: 'https://fairwaypal.com/destinations/kiawah-island' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/kiawah-island' },
+    { '@type': 'ListItem', position: 3, name: 'Kiawah Island', item: 'https://www.fairwaypal.com/destinations/kiawah-island' },
   ],
 }
 
@@ -39,7 +39,7 @@ const destinationSchema = {
   name: 'Kiawah Island, South Carolina',
   description:
     'The best golf resort on the East Coast. The Ocean Course is one of the most demanding and spectacular layouts in North America — with Charleston 25 miles away for partners.',
-  url: 'https://fairwaypal.com/destinations/kiawah-island',
+  url: 'https://www.fairwaypal.com/destinations/kiawah-island',
   touristType: ['Golf', 'Couples', 'Groups', 'Bucket List'],
 }
 
