@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Suspense } from 'react'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import PlanClient from '../../plan/_client'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
@@ -81,7 +83,49 @@ const faqSchema = {
         text: 'Scottsdale is the most popular bachelor golf destination in the US. The combination of 200+ courses, Old Town nightlife, pool scene at hotels like Hotel Valley Ho, and year-round sunshine makes it ideal for groups of 4–12. Book courses and restaurants well in advance during peak season.',
       },
     },
+    {
+      '@type': 'Question',
+      name: 'How far apart are the golf courses and partner activities in this itinerary?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'North Scottsdale courses like Troon North and TPC Scottsdale sit noticeably farther from Old Town than the walking-distance partner activities there, so plan on a drive between rounds and the Old Town scene. Papago Golf Course, closer to central Scottsdale, pairs more easily with a low-key final day.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does this 3-day schedule leave partners with a full free day?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. While golfers play morning rounds each day, partners have the full afternoon free for spa time, Old Town, or the Desert Botanical Garden, with everyone reconnecting for group dinners in the evening.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can this itinerary work with fewer golfers or more nights?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. The 3-day structure scales down easily to a 2-day weekend by dropping the twilight round, or extends to 4-5 nights by adding a second premium course. Use the planner above to generate a version sized to your actual group and dates.',
+      },
+    },
   ],
+}
+
+const touristTripSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristTrip',
+  name: 'Sample 3-Day Scottsdale Golf Trip Itinerary',
+  description:
+    'A 3-day Scottsdale golf trip itinerary pairing morning rounds at Troon North, TPC Scottsdale, and Papago Golf Course with partner activities like Old Town, the Desert Botanical Garden, and Camelback Mountain.',
+  url: 'https://www.fairwaypal.com/destinations/scottsdale',
+  touristType: ['Golf', 'Couples', 'Groups'],
+  itinerary: {
+    '@type': 'ItemList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Day 1: Troon North (Monument) + Old Town or Joya Spa' },
+      { '@type': 'ListItem', position: 2, name: 'Day 2: TPC Scottsdale (Stadium) + Desert Botanical Garden or Wine Trail' },
+      { '@type': 'ListItem', position: 3, name: 'Day 3: Papago Golf Course twilight + Camelback Mountain hike' },
+    ],
+  },
 }
 
 const OTHER_DESTINATIONS = [
@@ -95,7 +139,7 @@ export default function ScottsdalePage() {
     <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema, touristTripSchema]) }}
       />
       <Navbar />
       <main className="page-shell pt-28 pb-20">
@@ -271,6 +315,54 @@ export default function ScottsdalePage() {
           </section>
 
           {/* -------------------------------------------------------- */}
+          {/*  Sample Itinerary + Planner                               */}
+          {/* -------------------------------------------------------- */}
+          <section>
+            <p className="eyebrow text-gold">Sample Itinerary</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              Sample 3-Day Scottsdale Itinerary
+            </h2>
+            <p className="mt-3 max-w-2xl text-base leading-8 text-muted-foreground">
+              Here&apos;s how the courses and partner activities above actually fit into a weekend. Answer 5 questions below and get a version built around your own group, dates, and budget.
+            </p>
+
+            <div className="relative mx-auto mt-8 max-h-[85vh] max-w-3xl overflow-y-auto rounded-2xl border border-border bg-card/40">
+              <Suspense>
+                <PlanClient defaultDestination="Scottsdale" />
+              </Suspense>
+            </div>
+
+            <div className="mt-8 overflow-x-auto">
+              <table className="w-full min-w-[560px] overflow-hidden rounded-xl border border-border text-left text-sm">
+                <thead>
+                  <tr className="border-b border-border bg-card/60 text-xs uppercase tracking-[0.1em] text-ink-muted">
+                    <th className="px-5 py-3 font-semibold">Day</th>
+                    <th className="px-5 py-3 font-semibold text-fairway-text">Golf</th>
+                    <th className="px-5 py-3 font-semibold text-partner-text">Partner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border">
+                    <td className="px-5 py-4 align-top font-medium text-foreground">Day 1</td>
+                    <td className="px-5 py-4 align-top text-muted-foreground">AM round — Troon North (Monument)</td>
+                    <td className="px-5 py-4 align-top text-muted-foreground">Old Town Scottsdale Walking Tour or Joya Spa</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="px-5 py-4 align-top font-medium text-foreground">Day 2</td>
+                    <td className="px-5 py-4 align-top text-muted-foreground">AM round — TPC Scottsdale (Stadium)</td>
+                    <td className="px-5 py-4 align-top text-muted-foreground">Desert Botanical Garden or Scottsdale Wine Trail</td>
+                  </tr>
+                  <tr>
+                    <td className="px-5 py-4 align-top font-medium text-foreground">Day 3</td>
+                    <td className="px-5 py-4 align-top text-muted-foreground">Optional twilight round — Papago Golf Course</td>
+                    <td className="px-5 py-4 align-top text-muted-foreground">Camelback Mountain hike (go early)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* -------------------------------------------------------- */}
           {/*  FAQ                                                      */}
           {/* -------------------------------------------------------- */}
           <section>
@@ -298,6 +390,18 @@ export default function ScottsdalePage() {
               <FaqItem
                 question="Is Scottsdale good for a bachelor golf trip?"
                 answer="Scottsdale is the most popular bachelor golf destination in the US. The combination of 200+ courses, Old Town nightlife, pool scene at hotels like Hotel Valley Ho, and year-round sunshine makes it ideal for groups of 4–12. Book courses and restaurants well in advance during peak season."
+              />
+              <FaqItem
+                question="How far apart are the golf courses and partner activities in this itinerary?"
+                answer="North Scottsdale courses like Troon North and TPC Scottsdale sit noticeably farther from Old Town than the walking-distance partner activities there, so plan on a drive between rounds and the Old Town scene. Papago Golf Course, closer to central Scottsdale, pairs more easily with a low-key final day."
+              />
+              <FaqItem
+                question="Does this 3-day schedule leave partners with a full free day?"
+                answer="Yes. While golfers play morning rounds each day, partners have the full afternoon free for spa time, Old Town, or the Desert Botanical Garden, with everyone reconnecting for group dinners in the evening."
+              />
+              <FaqItem
+                question="Can this itinerary work with fewer golfers or more nights?"
+                answer="Yes. The 3-day structure scales down easily to a 2-day weekend by dropping the twilight round, or extends to 4-5 nights by adding a second premium course. Use the planner above to generate a version sized to your actual group and dates."
               />
             </div>
           </section>
