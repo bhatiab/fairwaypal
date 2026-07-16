@@ -1,0 +1,674 @@
+{
+  "version": 1,
+  "generated_at": "2026-07-16T12:36:48Z",
+  "site": "fairwaypal",
+  "routes": [
+    {
+      "route": "/about",
+      "file": "app/about/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/affiliate-disclosure",
+      "file": "app/affiliate-disclosure/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/api/comments",
+      "file": "app/api/comments/route.ts",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/api/generate-alternatives",
+      "file": "app/api/generate-alternatives/route.ts",
+      "status": "audited",
+      "findings": [
+        {
+          "metric": [
+            "Fast Origin Transfer"
+          ],
+          "severity": "info",
+          "location": "line 78, anthropic.messages.create(...)",
+          "description": "Uses the non-streaming Claude call instead of anthropic.messages.stream(), against the CLAUDE.md hard rule ('Always use anthropic.messages.stream()'). Holds the serverless function open for the full generation instead of streaming/closing early.",
+          "impact": "Small (3 short alternatives per call) but inconsistent with the rest of the codebase's streaming convention and slightly increases function duration per invocation.",
+          "fix": "Switch to anthropic.messages.stream() and accumulate server-side before responding, or return an SSE stream to the SwapPanel."
+        }
+      ]
+    },
+    {
+      "route": "/api/generate",
+      "file": "app/api/generate/route.ts",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/api/indexnow",
+      "file": "app/api/indexnow/route.ts",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/api/nudge",
+      "file": "app/api/nudge/route.ts",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/api/push/send",
+      "file": "app/api/push/send/route.ts",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/api/push/subscribe",
+      "file": "app/api/push/subscribe/route.ts",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/api/trip/[id]/activities",
+      "file": "app/api/trip/[id]/activities/route.ts",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/api/trip/[id]/calendar",
+      "file": "app/api/trip/[id]/calendar/route.ts",
+      "status": "audited",
+      "findings": [
+        {
+          "metric": [
+            "ISR Reads",
+            "Fast Origin Transfer"
+          ],
+          "severity": "warning",
+          "location": "GET handler, line 39 onward",
+          "description": "Same pattern: no dynamic API referenced, so the ICS-generation GET could be cached by Route Handler default caching.",
+          "impact": "Lower severity than participants/votes since this is a manually-triggered 'Add to calendar' download and trip data is usually stable/locked by the time it's used, but still worth forcing dynamic for correctness if activities are edited after a calendar link has been shared.",
+          "fix": "Add `export const dynamic = 'force-dynamic'` for consistency with the other trip-scoped GET routes."
+        }
+      ]
+    },
+    {
+      "route": "/api/trip/[id]/email",
+      "file": "app/api/trip/[id]/email/route.ts",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/api/trip/[id]/lock",
+      "file": "app/api/trip/[id]/lock/route.ts",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/api/trip/[id]/participants",
+      "file": "app/api/trip/[id]/participants/route.ts",
+      "status": "audited",
+      "findings": [
+        {
+          "metric": [
+            "ISR Reads",
+            "Fast Origin Transfer"
+          ],
+          "severity": "critical",
+          "location": "GET handler, lines 12-30",
+          "description": "GET Route Handler never reads request.url, searchParams, cookies(), or headers() \u2014 the only input is the resolved `params.id`. Next 14 Route Handlers cache GET responses by default (Full Route Cache) unless a dynamic API or explicit `dynamic = 'force-dynamic'` opts out. This endpoint is polled on every trip-page mount to show has_voted/opened_link/last_seen for each participant \u2014 if cached, new joins and updated voting status stop showing up for anyone hitting a previously-warmed URL.",
+          "impact": "High: this is the organiser dashboard's core signal (who has/hasn't voted). A cached response defeats the entire nudge/conflict-tracking feature.",
+          "fix": "Add `export const dynamic = 'force-dynamic'` to this route file."
+        },
+        {
+          "metric": [
+            "Fast Origin Transfer"
+          ],
+          "severity": "info",
+          "location": "line 22 .select('*')",
+          "description": "Selects all participant columns including push_subscription jsonb blob for a list endpoint that only needs name/initial/color/role/has_voted/opened_link.",
+          "impact": "Minor extra payload, larger with more participants.",
+          "fix": "Project needed columns; fetch push_subscription only where used (push send route)."
+        }
+      ]
+    },
+    {
+      "route": "/api/trip/[id]/regenerate",
+      "file": "app/api/trip/[id]/regenerate/route.ts",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/api/trip/[id]/votes",
+      "file": "app/api/trip/[id]/votes/route.ts",
+      "status": "audited",
+      "findings": [
+        {
+          "metric": [
+            "ISR Reads",
+            "Fast Origin Transfer"
+          ],
+          "severity": "critical",
+          "location": "GET handler, lines 5-22",
+          "description": "Identical Route Handler caching gap as participants: no dynamic API used, so the GET response for a given tripId risks being cached and served stale, freezing vote tallies for every participant. Separately (correctness, not cost): the handler ignores the `activityIds` query param the client sends (`/api/trip/${tripId}/votes?activityIds=...`) and always returns all votes for the trip \u2014 dead filter, not itself a cost problem but worth cleaning up alongside the cache fix.",
+          "impact": "High: vote counts are the product's core mechanic; a cached/stale response makes the UI look broken.",
+          "fix": "Add `export const dynamic = 'force-dynamic'`."
+        }
+      ]
+    },
+    {
+      "route": "/api/vote",
+      "file": "app/api/vote/route.ts",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/40th-50th-birthday-golf-trip",
+      "file": "app/blog/40th-50th-birthday-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/algarve-for-non-golfers",
+      "file": "app/blog/algarve-for-non-golfers/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/algarve-vs-ireland-golf-trip",
+      "file": "app/blog/algarve-vs-ireland-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/algarve-vs-scotland-golf-trip",
+      "file": "app/blog/algarve-vs-scotland-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/bandon-dunes-for-non-golfers",
+      "file": "app/blog/bandon-dunes-for-non-golfers/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/bandon-dunes-vs-pebble-beach-golf-trip",
+      "file": "app/blog/bandon-dunes-vs-pebble-beach-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/bandon-dunes-vs-scotland-golf-trip",
+      "file": "app/blog/bandon-dunes-vs-scotland-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/bandon-vs-pebble-vs-kiawah-golf-trip",
+      "file": "app/blog/bandon-vs-pebble-vs-kiawah-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/best-bachelor-party-golf-destinations",
+      "file": "app/blog/best-bachelor-party-golf-destinations/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/best-golf-destinations-march",
+      "file": "app/blog/best-golf-destinations-march/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/best-golf-destinations-november",
+      "file": "app/blog/best-golf-destinations-november/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/best-golf-destinations-october",
+      "file": "app/blog/best-golf-destinations-october/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/best-golf-trip-apps",
+      "file": "app/blog/best-golf-trip-apps/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/couples-golf-trip-both-play",
+      "file": "app/blog/couples-golf-trip-both-play/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/father-son-golf-trip",
+      "file": "app/blog/father-son-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/first-ever-golf-trip",
+      "file": "app/blog/first-ever-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/florida-for-non-golfers",
+      "file": "app/blog/florida-for-non-golfers/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/golf-trip-budget",
+      "file": "app/blog/golf-trip-budget/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/golf-trip-flights-bag-fees",
+      "file": "app/blog/golf-trip-flights-bag-fees/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/golf-trip-formats",
+      "file": "app/blog/golf-trip-formats/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/golf-trip-group-size",
+      "file": "app/blog/golf-trip-group-size/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/golf-trip-packing-list",
+      "file": "app/blog/golf-trip-packing-list/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/golf-trip-tipping-guide",
+      "file": "app/blog/golf-trip-tipping-guide/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/golf-trip-weekend-schedule",
+      "file": "app/blog/golf-trip-weekend-schedule/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/golf-trip-with-non-golfers",
+      "file": "app/blog/golf-trip-with-non-golfers/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/hidden-costs-golf-trip",
+      "file": "app/blog/hidden-costs-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/how-to-plan-a-golf-trip",
+      "file": "app/blog/how-to-plan-a-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/how-to-split-costs-golf-trip",
+      "file": "app/blog/how-to-split-costs-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/ireland-for-non-golfers",
+      "file": "app/blog/ireland-for-non-golfers/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/ireland-vs-scotland-golf-trip",
+      "file": "app/blog/ireland-vs-scotland-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/kiawah-island-for-non-golfers",
+      "file": "app/blog/kiawah-island-for-non-golfers/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/kiawah-island-golf-trip",
+      "file": "app/blog/kiawah-island-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/myrtle-beach-for-non-golfers",
+      "file": "app/blog/myrtle-beach-for-non-golfers/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/myrtle-beach-vs-kiawah-island-golf-trip",
+      "file": "app/blog/myrtle-beach-vs-kiawah-island-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/myrtle-beach-vs-pinehurst-golf-trip",
+      "file": "app/blog/myrtle-beach-vs-pinehurst-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog",
+      "file": "app/blog/page.tsx",
+      "status": "audited",
+      "findings": [
+        {
+          "metric": [
+            "Edge Requests"
+          ],
+          "severity": "warning",
+          "location": "lines 24-472 (POSTS array, 49 entries), lines 496-499 (POSTS.map -> <Link>)",
+          "description": "49 posts rendered as next/link with default prefetch behavior (prefetch=true). Next will prefetch the RSC payload for every card as it enters the viewport while scrolling a 3-column grid, so a single visit to /blog can trigger dozens of background prefetch requests for posts the user never opens.",
+          "impact": "Edge Requests scale with grid size (49 links); grows every time a new post is added per the content backlog in CLAUDE.md.",
+          "fix": "Set prefetch={false} on the post links (keep default/true only on primary nav CTAs), or prefetch={null} to fall back to hover-intent-only prefetching."
+        }
+      ]
+    },
+    {
+      "route": "/blog/pebble-beach-for-non-golfers",
+      "file": "app/blog/pebble-beach-for-non-golfers/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/pebble-beach-golf-trip",
+      "file": "app/blog/pebble-beach-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/pinehurst-for-non-golfers",
+      "file": "app/blog/pinehurst-for-non-golfers/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/pinehurst-vs-bandon-dunes-golf-trip",
+      "file": "app/blog/pinehurst-vs-bandon-dunes-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/pinehurst-vs-kiawah-island-golf-trip",
+      "file": "app/blog/pinehurst-vs-kiawah-island-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/pinehurst-vs-pebble-beach-golf-trip",
+      "file": "app/blog/pinehurst-vs-pebble-beach-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/scotland-for-non-golfers",
+      "file": "app/blog/scotland-for-non-golfers/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/scottsdale-for-non-golfers",
+      "file": "app/blog/scottsdale-for-non-golfers/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/scottsdale-vs-myrtle-beach-golf-trip",
+      "file": "app/blog/scottsdale-vs-myrtle-beach-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/scottsdale-vs-pinehurst-golf-trip",
+      "file": "app/blog/scottsdale-vs-pinehurst-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/shipping-clubs-vs-flying-with-clubs",
+      "file": "app/blog/shipping-clubs-vs-flying-with-clubs/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/what-to-do-on-golf-trip-non-golfer",
+      "file": "app/blog/what-to-do-on-golf-trip-non-golfer/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/why-most-bachelor-golf-trips-suck",
+      "file": "app/blog/why-most-bachelor-golf-trips-suck/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/blog/why-your-group-keeps-cancelling-golf-trip",
+      "file": "app/blog/why-your-group-keeps-cancelling-golf-trip/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/destinations/algarve",
+      "file": "app/destinations/algarve/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/destinations/bandon-dunes",
+      "file": "app/destinations/bandon-dunes/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/destinations/florida-golf",
+      "file": "app/destinations/florida-golf/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/destinations/ireland",
+      "file": "app/destinations/ireland/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/destinations/kiawah-island",
+      "file": "app/destinations/kiawah-island/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/destinations/myrtle-beach",
+      "file": "app/destinations/myrtle-beach/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/destinations/pebble-beach",
+      "file": "app/destinations/pebble-beach/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/destinations/pinehurst",
+      "file": "app/destinations/pinehurst/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/destinations/scotland",
+      "file": "app/destinations/scotland/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/destinations/scottsdale",
+      "file": "app/destinations/scottsdale/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/",
+      "file": "app/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/plan",
+      "file": "app/plan/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/status",
+      "file": "app/status/page.tsx",
+      "status": "audited-clean",
+      "findings": []
+    },
+    {
+      "route": "/trip/[id]/confirmed",
+      "file": "app/trip/[id]/confirmed/page.tsx",
+      "status": "audited",
+      "findings": [
+        {
+          "metric": [
+            "ISR Reads",
+            "Fast Origin Transfer"
+          ],
+          "severity": "critical",
+          "location": "lines 9-16, 18-27 (getTrip/getActivities), line 61 (status redirect)",
+          "description": "Same missing dynamic/revalidate config as /trip/[id]. Additionally, the redirect() at line 61 branches on `trip.status !== 'locked'` \u2014 if the page's data is cached from before the organiser locked the trip, participants could be bounced back to the voting view (or vice versa) based on stale status.",
+          "impact": "Same stale-data risk, compounded by a status-dependent redirect that becomes incorrect once cached.",
+          "fix": "Add `export const dynamic = 'force-dynamic'`."
+        },
+        {
+          "metric": [
+            "Fast Origin Transfer"
+          ],
+          "severity": "warning",
+          "location": "lines 9-16, 18-27",
+          "description": ".select('*') on both trips and activities tables, same over-fetch pattern as /trip/[id].",
+          "impact": "Extra payload per request.",
+          "fix": "Project only rendered columns."
+        }
+      ]
+    },
+    {
+      "route": "/trip/[id]",
+      "file": "app/trip/[id]/page.tsx",
+      "status": "audited",
+      "findings": [
+        {
+          "metric": [
+            "ISR Reads",
+            "Fast Origin Transfer"
+          ],
+          "severity": "critical",
+          "location": "lines 12-19, 21-29 (getTrip/getActivities cached Supabase queries)",
+          "description": "Server component queries Supabase via the standard supabase-js client (which runs on global fetch, patched by Next's Data Cache). No `dynamic`/`revalidate` export exists and no dynamic API (cookies/headers/searchParams) is called anywhere in the tree (NameGate reads localStorage client-side only), so Next may apply its default static/force-cache behavior to these fetches and cache the rendered trip page indefinitely per trip id after first visit. For a page whose entire purpose is showing live vote counts/activity edits, this can silently freeze the page at whatever state it was in on first request.",
+          "impact": "Correctness risk (stale votes/activities shown) plus mis-attributed ISR Reads; fix is nearly free (one line) and prevents a support-ticket-generating bug.",
+          "fix": "Add `export const dynamic = 'force-dynamic'` to app/trip/[id]/page.tsx (mirrors the swap/regenerate routes which already force-dynamic)."
+        },
+        {
+          "metric": [
+            "Fast Origin Transfer"
+          ],
+          "severity": "warning",
+          "location": "lines 12-19 (trips .select('*')), 21-29 (activities .select('*'))",
+          "description": "Both queries pull every column, including trips.intake_data (jsonb, only needed by the regenerate endpoint) and activities.ai_rationale/tags/booking_ref which aren't all needed for first paint.",
+          "impact": "Extra bytes moved origin\u2192function on every trip view; compounds once the caching bug above is fixed and every view becomes a real DB roundtrip.",
+          "fix": "Project only the columns TripClient/ConfirmedClient actually render, e.g. .select('id,name,destination,dates_start,dates_end,nights,golfers_count,partners_count,status,organiser_uuid')."
+        }
+      ]
+    }
+  ],
+  "config_findings": [
+    {
+      "file": "next.config.js",
+      "metric": [
+        "Fast Data Transfer"
+      ],
+      "severity": "info",
+      "description": "No images config block, and repo-wide there is zero next/image usage, zero raw <img> tags, and no public/ assets over ~20KB (favicon.ico, placeholder.svg, two verification .txt files, sw.js). No .mp4/.gif files exist in public/.",
+      "impact": "Currently a non-issue \u2014 no image-driven Fast Data Transfer cost at all. Flagged as info so the convention (next/image + sizes + explicit quality, avif/webp formats) is applied from the start once hero/OG imagery is added (CLAUDE.md backlog item: 'Implement next/image for all images across the site').",
+      "fix": "No action needed now; adopt next/image with images.formats: ['image/avif','image/webp'] when real images are introduced."
+    },
+    {
+      "file": "middleware.ts",
+      "metric": [
+        "Edge Requests"
+      ],
+      "severity": "info",
+      "description": "No middleware.ts exists in the repo.",
+      "impact": "N/A \u2014 nothing to flag; noted explicitly so this isn't mistaken for an unchecked item.",
+      "fix": "None required."
+    },
+    {
+      "file": "app/destinations/**, app/blog/**",
+      "metric": [
+        "ISR Reads"
+      ],
+      "severity": "info",
+      "description": "All destination and blog routes are literal folders (app/destinations/scottsdale/page.tsx etc.), not [slug] dynamic segments, so the 'dynamic route with no generateStaticParams' check does not apply \u2014 these pages are already fully static at build time (best-case ISR posture).",
+      "impact": "None \u2014 informational, confirms this portion of the audit's ISR checklist is already satisfied by the current architecture.",
+      "fix": "None required. Keep new destination/blog pages as literal static routes rather than introducing a [slug] pattern unless a real CMS pipeline is added."
+    },
+    {
+      "file": "repo-wide",
+      "metric": [
+        "ISR Reads"
+      ],
+      "severity": "info",
+      "description": "No revalidateTag/revalidatePath usage anywhere. CLAUDE.md references a hypothetical scheduled content-generation GitHub Actions pipeline, but .github/workflows/build.yml is CI-only (lint/typecheck/test/build on push) \u2014 there is no content pipeline currently writing blog/destination pages at runtime.",
+      "impact": "None currently; on-demand revalidation isn't needed while content ships as committed static route files. Worth revisiting only if a real CMS/content-automation pipeline is added later.",
+      "fix": "No action needed now."
+    },
+    {
+      "file": "app/api/generate/route.ts, app/api/trip/[id]/regenerate/route.ts",
+      "metric": [
+        "Fast Origin Transfer"
+      ],
+      "severity": "info",
+      "description": "Both export `dynamic = 'force-dynamic'` and correctly use anthropic.messages.stream(). Given these are POST-only, personalized, streaming AI-generation endpoints, force-dynamic is appropriate here, not a bug.",
+      "impact": "None \u2014 included for completeness per the audit's instruction to note context rather than assume force-dynamic is always wrong.",
+      "fix": "No action needed."
+    },
+    {
+      "file": "app/trip/[id]/components/TripContext.tsx",
+      "metric": [
+        "Edge Requests",
+        "Fast Origin Transfer"
+      ],
+      "severity": "warning",
+      "description": "TripProvider's init() (lines ~70-101) awaits the participants GET, then conditionally POSTs a join, then awaits the votes GET \u2014 all sequentially \u2014 even though the votes fetch only depends on `initialActivities` (a prop) and does not depend on the participants response.",
+      "impact": "Adds one full round-trip of latency to every trip page load and is a textbook fetch waterfall; doesn't change total request count but increases time-to-interactive and, combined with the Route Handler caching bugs above, is one more variable making the voting UI feel unreliable.",
+      "fix": "Fire the participants fetch and the votes fetch concurrently (Promise.all), joining conditionally afterward based on the participants result."
+    }
+  ]
+}
