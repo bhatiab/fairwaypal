@@ -27,10 +27,12 @@ const defaultState: WizardState = {
   vibe: 'mixed',
 }
 
-export default function PlanClient() {
+export default function PlanClient({
+  defaultDestination,
+}: { defaultDestination?: string } = {}) {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const prefillDestination = searchParams.get('destination') ?? ''
+  const prefillDestination = searchParams.get('destination') ?? defaultDestination ?? ''
 
   const [step, setStep] = useState(0)
   const [isGenerating, setIsGenerating] = useState(false)
