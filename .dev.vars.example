@@ -1,0 +1,20 @@
+# Copy to .dev.vars for local `wrangler`/OpenNext preview.
+# In production, set these as Worker secrets instead (`wrangler secret put <NAME>`)
+# or as environment variables in the Cloudflare dashboard.
+
+ANTHROPIC_API_KEY=
+NEXT_PUBLIC_SITE_URL=https://fairwaypal.com
+
+DATABASE_URL=
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+
+RESEND_API_KEY=
+
+NEXT_PUBLIC_GYG_PARTNER_ID=9GLTCAY
+NEXT_PUBLIC_GOLFNOW_AFFILIATE_ID=
+NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG=fairwaypal-20
+GENIUSLINK_API_KEY=
+
+CRON_SECRET=

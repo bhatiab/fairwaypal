@@ -12,6 +12,9 @@ export default defineConfig([
     'dist/**',
     '.claude/**',
     'next-env.d.ts',
+    '.open-next/**',
+    '.wrangler/**',
+    'cloudflare-env.d.ts',
   ]),
   {
     rules: {

@@ -29,6 +29,7 @@ export default function CommentThread({ activityId }: { activityId: string }) {
 
   useEffect(() => {
     if (open && !loaded) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- fetches on open, not a render-loop setState
       loadComments()
     }
   }, [open, loaded, loadComments])
