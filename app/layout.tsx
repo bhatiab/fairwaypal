@@ -32,7 +32,7 @@ export const metadata: import('next').Metadata = {
     type: 'website',
     images: [
       {
-        url: '/opengraph-image',
+        url: '/opengraph-image.png',
         width: 1200,
         height: 630,
         alt: 'FairwayPal golf trip planner',
@@ -41,7 +41,7 @@ export const metadata: import('next').Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['/twitter-image'],
+    images: ['/twitter-image.png'],
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GSC_VERIFY ?? '',
