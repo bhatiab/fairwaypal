@@ -1,6 +1,4 @@
 import '../src/index.css'
-import { Analytics } from '@vercel/analytics/next'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Toaster } from 'sonner'
 import { PHProvider } from './providers'
@@ -94,8 +92,6 @@ export default function RootLayout({
       <body className="bg-bg font-body text-ink antialiased">
         <PHProvider>{children}</PHProvider>
         <Toaster theme="dark" position="top-center" />
-        <Analytics />
-        <SpeedInsights />
         {process.env.NEXT_PUBLIC_GA4_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID} />
         )}
