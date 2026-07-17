@@ -21,6 +21,7 @@ export default function PushOptIn() {
   const [supported, setSupported] = useState(false)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- browser feature detection, unavailable during SSR
     setSupported(isSupported())
 
     // Check if already subscribed

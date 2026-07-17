@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "fairwaypal",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-07-17",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  // Enables the Worker to fetch itself, which OpenNext relies on for
+  // internal routing (e.g. serving Next.js's image optimization).
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "fairwaypal"
+    }
+  ]
+}
