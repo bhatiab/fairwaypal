@@ -1,0 +1,77 @@
+name: IndexNow
+
+# Submits URLs to IndexNow (Bing, Yandex, Seznam, Naver) so they learn about
+# changed pages without waiting to recrawl.
+#
+# The IndexNow key is public by design — the protocol requires it to be readable
+# at https://www.fairwaypal.com/<key>.txt — so none of this needs a secret.
+#
+# Three triggers, because this repo deploys through Cloudflare's Git
+# integration rather than from CI, so there is no deploy step here to hang a
+# post-deploy hook off:
+#
+#   deployment_status : the real post-deploy hook. Fires only if Cloudflare
+#                       reports deployments back to GitHub. Submits just the
+#                       pages that changed in the deployed commit.
+#   schedule          : daily safety net covering the full URL list, so
+#                       coverage does not depend on the hook above firing.
+#   workflow_dispatch : manual run.
+
+on:
+  deployment_status:
+  schedule:
+    # 03:17 UTC daily. Off the hour on purpose: scheduled runs queued exactly on
+    # the hour are the ones GitHub delays most under load.
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Which URLs to submit'
+        required: true
+        default: all
+        type: choice
+        options: [all, changed]
+
+permissions:
+  contents: read
+
+# Never let two submissions overlap.
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    # For deployment_status, only act on a successful production deploy.
+    # Other events have no deployment_status payload, so the guard passes.
+    if: >-
+      github.event_name != 'deployment_status' ||
+      github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # --changed diffs the deployed commit against its parent, so one
+          # commit of history is not enough.
+          fetch-depth: 2
+          ref: ${{ github.event_name == 'deployment_status' && github.event.deployment.sha || github.ref }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # No npm install: the script only uses Node builtins and global fetch.
+      - name: Submit changed pages
+        if: github.event_name == 'deployment_status'
+        run: node scripts/ping-indexnow.mjs --changed HEAD~1..HEAD
+
+      - name: Submit all pages
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'all')
+        run: node scripts/ping-indexnow.mjs --all
+
+      - name: Submit changed pages (manual)
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'changed'
+        run: node scripts/ping-indexnow.mjs --changed HEAD~1..HEAD

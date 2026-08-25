@@ -7,6 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "content:dates": "node scripts/generate-content-dates.mjs",
+    "indexnow": "node scripts/ping-indexnow.mjs",
+    "indexnow:all": "node scripts/ping-indexnow.mjs --all",
     "start": "next start",
     "lint": "eslint .",
     "test": "vitest run",
@@ -15,7 +17,7 @@
     "typecheck": "tsc --project tsconfig.next.json --noEmit",
     "build:worker": "opennextjs-cloudflare build",
     "preview:worker": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy:worker": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "deploy:worker": "opennextjs-cloudflare build && opennextjs-cloudflare deploy && npm run indexnow:all",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
