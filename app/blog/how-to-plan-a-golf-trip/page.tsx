@@ -331,6 +331,9 @@ export default function HowToPlanAGolfTripPage() {
                 { href: '/blog/golf-trip-with-non-golfers', title: 'Golf Trip With Non-Golfers', desc: 'How to plan the partner itinerary alongside the golf.' },
                 { href: '/blog/golf-trip-packing-list', title: 'The Golf Trip Packing List', desc: 'Golfer and partner lists — what to bring, what to leave.' },
                 { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations', desc: 'The six best destinations ranked with honest trade-offs.' },
+                { href: '/blog/first-ever-golf-trip', title: 'Your First-Ever Golf Trip', desc: 'What to expect and what to skip if nobody in the group has done this before.' },
+                { href: '/blog/couples-golf-trip-both-play', title: 'Planning a Couples Golf Trip Where Both Play', desc: 'A different dynamic from the usual organiser-and-partner split.' },
+                { href: '/blog/golf-trip-flights-bag-fees', title: 'Golf Trip Flights and Bag Fees', desc: 'Airline bag fees, status, and what actually saves the group money.' },
               ].map(({ href, title, desc }) => (
                 <Link key={href} href={href} className="block rounded-xl border border-border bg-card/60 p-5 transition-colors hover:border-gold/30">
                   <p className="text-base font-semibold text-foreground">{title}</p>

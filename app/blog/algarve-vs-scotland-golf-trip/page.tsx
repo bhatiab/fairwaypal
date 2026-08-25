@@ -389,6 +389,16 @@ export default function AlgarveVsScotlandPage() {
                 title="Golf Trip Packing List"
                 description="What golfers and partners actually need to bring."
               />
+              <RelatedPost
+                href="/blog/algarve-vs-ireland-golf-trip"
+                title="Algarve vs Ireland"
+                description="Sun against craic, both cheaper than Scotland."
+              />
+              <RelatedPost
+                href="/blog/bandon-dunes-vs-scotland-golf-trip"
+                title="Bandon Dunes vs Scotland"
+                description="Whether Oregon gets you close enough without the Atlantic crossing."
+              />
             </div>
           </section>
 

@@ -343,6 +343,7 @@ export default function PebbleBeachPage() {
                 { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Real cost breakdown by destination and group size — including Pebble Beach.' },
                 { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations', desc: 'How Pebble Beach compares to the other top US golf destinations.' },
                 { href: '/blog/golf-trip-packing-list', title: 'The Golf Trip Packing List', desc: 'What to bring for a coastal California golf trip — the windproof layer is non-negotiable.' },
+                { href: '/blog/bandon-vs-pebble-vs-kiawah-golf-trip', title: 'Bandon vs Pebble vs Kiawah', desc: 'Add the East Coast option and compare all three premium trips.' },
               ].map(({ href, title, desc }) => (
                 <Link key={href} href={href} className="block rounded-xl border border-border bg-card/60 p-5 transition-colors hover:border-gold/30">
                   <p className="text-base font-semibold text-foreground">{title}</p>

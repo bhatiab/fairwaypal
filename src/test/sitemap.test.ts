@@ -26,9 +26,36 @@ describe('sitemap', () => {
     expect(plan?.priority).toBe(0.9)
   })
 
+  it('includes the destinations index', () => {
+    const urls = entries.map((e) => e.url)
+    expect(urls).toContain('https://www.fairwaypal.com/destinations')
+  })
+
   it('all entries have lastModified', () => {
     for (const entry of entries) {
       expect(entry.lastModified).toBeDefined()
+    }
+  })
+
+  // Regression guards for the "Discovered - currently not indexed" bug: the
+  // sitemap used to stamp every URL with a module-scope `new Date()`, so all 65
+  // lastmods were identical and the whole site re-dated itself on every deploy.
+  // Google ignores lastmod entirely when a sitemap behaves that way.
+  it('does not give every URL the same lastModified', () => {
+    const stamps = new Set(entries.map((e) => String(e.lastModified)))
+    expect(stamps.size).toBeGreaterThan(1)
+  })
+
+  it('does not derive lastModified from build time', () => {
+    const today = new Date().toISOString().slice(0, 10)
+    const stampedToday = entries.filter((e) => String(e.lastModified).startsWith(today))
+    // A page genuinely edited today is fine; the whole sitemap sharing today is the bug.
+    expect(stampedToday.length).toBeLessThan(entries.length)
+  })
+
+  it('uses stable date-only stamps, not timestamps', () => {
+    for (const entry of entries) {
+      expect(String(entry.lastModified)).toMatch(/^\d{4}-\d{2}-\d{2}$/)
     }
   })
 })

@@ -414,6 +414,11 @@ export default function ShippingClubsVsFlyingPage() {
                 title="How to Plan a Golf Trip"
                 description="The complete step-by-step planning guide."
               />
+              <RelatedPost
+                href="/blog/golf-trip-flights-bag-fees"
+                title="Golf Trip Flights and Bag Fees"
+                description="The airline-by-airline bag fee numbers behind this decision."
+              />
             </div>
           </section>
 

@@ -176,6 +176,16 @@ export default function GolfTripFormatsPage() {
               <RelatedPost href="/blog/golf-trip-weekend-schedule" title="3-Night Golf Weekend Schedule" description="Where to fit the matches into the schedule." />
               <RelatedPost href="/blog/how-to-plan-a-golf-trip" title="How to Plan a Golf Trip" description="The full planning guide; format is one part." />
               <RelatedPost href="/blog/best-bachelor-party-golf-destinations" title="Best Bachelor Golf Destinations" description="Six destinations and the formats that suit each." />
+              <RelatedPost
+                href="/blog/first-ever-golf-trip"
+                title="Your First-Ever Golf Trip"
+                description="Which formats actually work when half the group is new to this."
+              />
+              <RelatedPost
+                href="/blog/couples-golf-trip-both-play"
+                title="Couples Golf Trip Where Both Play"
+                description="Formats that work when the pairing is a couple, not a fourball."
+              />
             </div>
           </section>
         </div>

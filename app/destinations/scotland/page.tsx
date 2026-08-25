@@ -343,6 +343,8 @@ export default function ScotlandPage() {
                 { href: '/blog/golf-trip-with-non-golfers', title: 'Golf Trip With Non-Golfers: How to Plan It', desc: 'Scotland is excellent for partners — castles, whisky, coastal villages. Here\'s why.' },
                 { href: '/blog/golf-trip-packing-list', title: 'The Golf Trip Packing List', desc: 'Scotland requires waterproofs regardless of season. Full packing guide for links golf.' },
                 { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Scotland cost breakdown — what flights, accommodation, and green fees really add up to.' },
+                { href: '/blog/bandon-dunes-vs-scotland-golf-trip', title: 'Bandon Dunes vs Scotland', desc: 'Whether Oregon gets you close enough without crossing the Atlantic.' },
+                { href: '/blog/algarve-vs-ireland-golf-trip', title: 'Algarve vs Ireland Golf Trip', desc: 'The two cheaper European alternatives, compared against each other.' },
               ].map(({ href, title, desc }) => (
                 <Link key={href} href={href} className="block rounded-xl border border-border bg-card/60 p-5 transition-colors hover:border-gold/30">
                   <p className="text-base font-semibold text-foreground">{title}</p>

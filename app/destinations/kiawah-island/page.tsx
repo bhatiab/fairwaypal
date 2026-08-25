@@ -341,6 +341,8 @@ export default function KiawahIslandPage() {
                 { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'How a Kiawah Island trip compares to other premium US destinations in total cost.' },
                 { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations', desc: 'Is Kiawah the right pick for a bachelor trip? Honest answer by group type.' },
                 { href: '/blog/golf-trip-with-non-golfers', title: 'Planning a Golf Trip With Non-Golfers', desc: 'Why Kiawah Island is one of the best partner-friendly destinations in the US.' },
+                { href: '/blog/bandon-vs-pebble-vs-kiawah-golf-trip', title: 'Bandon vs Pebble vs Kiawah', desc: 'How Kiawah stacks up against the two big West Coast trips.' },
+                { href: '/blog/myrtle-beach-vs-kiawah-island-golf-trip', title: 'Myrtle Beach vs Kiawah Island', desc: 'Two South Carolina neighbours with very different trips.' },
               ].map(({ href, title, desc }) => (
                 <Link key={href} href={href} className="block rounded-xl border border-border bg-card/60 p-5 transition-colors hover:border-gold/30">
                   <p className="text-base font-semibold text-foreground">{title}</p>

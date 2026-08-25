@@ -354,6 +354,16 @@ export default function WhyYourGroupKeepsCancellingPage() {
                 title="Best Bachelor Golf Destinations"
                 description="The top six US destinations ranked honestly."
               />
+              <RelatedPost
+                href="/blog/why-most-bachelor-golf-trips-suck"
+                title="Why Most Bachelor Golf Trips Suck"
+                description="The trips that do happen, and why they still disappoint."
+              />
+              <RelatedPost
+                href="/blog/first-ever-golf-trip"
+                title="Your First-Ever Golf Trip"
+                description="Getting the first one off the ground is the hardest part."
+              />
             </div>
           </section>
 
