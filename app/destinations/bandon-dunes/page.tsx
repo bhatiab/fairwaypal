@@ -336,6 +336,8 @@ export default function BandonDunesPage() {
                 { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Bandon Dunes cost breakdown compared to other destinations.' },
                 { href: '/blog/golf-trip-packing-list', title: 'The Golf Trip Packing List', desc: 'Oregon coast weather calls for specific gear. Full packing guide here.' },
                 { href: '/blog/golf-trip-with-non-golfers', title: 'Golf Trip With Non-Golfers: How to Plan It', desc: 'Bandon is remote — understand what partners are in for before booking.' },
+                { href: '/blog/bandon-vs-pebble-vs-kiawah-golf-trip', title: 'Bandon vs Pebble vs Kiawah', desc: 'The three premium US options compared side by side.' },
+                { href: '/blog/bandon-dunes-vs-scotland-golf-trip', title: 'Bandon Dunes vs Scotland', desc: 'If you want links golf, is Oregon close enough to the real thing?' },
               ].map(({ href, title, desc }) => (
                 <Link key={href} href={href} className="block rounded-xl border border-border bg-card/60 p-5 transition-colors hover:border-gold/30">
                   <p className="text-base font-semibold text-foreground">{title}</p>

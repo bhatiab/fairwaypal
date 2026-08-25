@@ -162,6 +162,21 @@ export default function BestGolfDestinationsOctoberPage() {
               <RelatedPost href="/blog/pinehurst-vs-pebble-beach-golf-trip" title="Pinehurst vs Pebble Beach" description="Two of the top October picks compared." />
               <RelatedPost href="/blog/algarve-vs-scotland-golf-trip" title="Algarve vs Scotland" description="The European October decision: Algarve over Scotland after the first week." />
               <RelatedPost href="/blog/golf-trip-with-non-golfers" title="Golf Trips With Non-Golfers" description="October is the best partner month at most destinations." />
+              <RelatedPost
+                href="/blog/best-golf-destinations-november"
+                title="Best Golf Destinations in November"
+                description="Where the golf is still good once October closes out."
+              />
+              <RelatedPost
+                href="/blog/best-golf-destinations-march"
+                title="Best Golf Destinations in March"
+                description="The spring counterpart, with a different set of winners."
+              />
+              <RelatedPost
+                href="/blog/bandon-vs-pebble-vs-kiawah-golf-trip"
+                title="Bandon vs Pebble vs Kiawah"
+                description="Three premium options that all peak around October."
+              />
             </div>
           </section>
         </div>

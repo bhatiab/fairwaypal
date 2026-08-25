@@ -9,6 +9,7 @@ const footerLinks = [
 ]
 
 const destinationLinks = [
+  { label: 'All Destinations', href: '/destinations' },
   { label: 'Scottsdale', href: '/destinations/scottsdale' },
   { label: 'Myrtle Beach', href: '/destinations/myrtle-beach' },
   { label: 'Bandon Dunes', href: '/destinations/bandon-dunes' },

@@ -381,6 +381,11 @@ export default function GolfTripWithNonGolfersPage() {
                 title="Best Bachelor Golf Destinations"
                 description="Six destinations ranked honestly, with partner options noted."
               />
+              <RelatedPost
+                href="/blog/couples-golf-trip-both-play"
+                title="Couples Golf Trip Where Both Play"
+                description="A different dynamic entirely when the partner plays too."
+              />
             </div>
           </section>
 

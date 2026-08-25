@@ -162,6 +162,21 @@ export default function HiddenCostsPage() {
               <RelatedPost href="/blog/shipping-clubs-vs-flying-with-clubs" title="Shipping Clubs vs Flying" description="The bag-fee math, including oversize charges." />
               <RelatedPost href="/blog/best-golf-trip-apps" title="Best Golf Trip Apps and Tools" description="Splitwise and Tricount track the trip's real costs in real time." />
               <RelatedPost href="/blog/why-your-group-keeps-cancelling-golf-trip" title="Why Your Group Keeps Cancelling" description="Money silence is one of the five reasons trips fall apart." />
+              <RelatedPost
+                href="/blog/golf-trip-flights-bag-fees"
+                title="Golf Trip Flights and Bag Fees"
+                description="Oversize bag charges are the hidden cost that catches most groups."
+              />
+              <RelatedPost
+                href="/blog/first-ever-golf-trip"
+                title="Your First-Ever Golf Trip"
+                description="First-timers get surprised by every cost on this list."
+              />
+              <RelatedPost
+                href="/blog/why-most-bachelor-golf-trips-suck"
+                title="Why Most Bachelor Golf Trips Suck"
+                description="Cost surprises are one of the five reasons these trips disappoint."
+              />
             </div>
           </section>
         </div>

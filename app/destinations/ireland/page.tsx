@@ -342,6 +342,7 @@ export default function IrelandPage() {
                 { href: '/blog/golf-trip-with-non-golfers', title: 'Golf Trip With Non-Golfers: How to Plan It', desc: 'Ireland is excellent for partners. Galway, the Cliffs of Moher, pubs. Here\'s the full guide.' },
                 { href: '/blog/golf-trip-packing-list', title: 'The Golf Trip Packing List', desc: 'What to pack for Ireland — waterproofs, layers, and the gear links courses demand.' },
                 { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'Ireland vs Scotland cost comparison — and how Ireland often comes in cheaper.' },
+                { href: '/blog/algarve-vs-ireland-golf-trip', title: 'Algarve vs Ireland Golf Trip', desc: 'How Ireland compares to the cheapest reliable-sun option in Europe.' },
               ].map(({ href, title, desc }) => (
                 <Link key={href} href={href} className="block rounded-xl border border-border bg-card/60 p-5 transition-colors hover:border-gold/30">
                   <p className="text-base font-semibold text-foreground">{title}</p>

@@ -392,6 +392,16 @@ export default function BandonVsPebblePage() {
                 title="Golf Trip Packing List"
                 description="What golfers and partners actually need to bring."
               />
+              <RelatedPost
+                href="/blog/bandon-vs-pebble-vs-kiawah-golf-trip"
+                title="Bandon vs Pebble vs Kiawah"
+                description="Add the East Coast option and compare all three."
+              />
+              <RelatedPost
+                href="/blog/bandon-dunes-vs-scotland-golf-trip"
+                title="Bandon Dunes vs Scotland"
+                description="If Bandon appeals, the real links question is whether to fly further."
+              />
             </div>
           </section>
 

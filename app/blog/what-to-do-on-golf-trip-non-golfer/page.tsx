@@ -384,6 +384,11 @@ export default function WhatToDoNonGolferPage() {
                 title="Golf Trip Packing List"
                 description="A separate list for non-golfers — what to actually bring."
               />
+              <RelatedPost
+                href="/blog/couples-golf-trip-both-play"
+                title="Couples Golf Trip Where Both Play"
+                description="What changes when the non-golfing partner takes up the game."
+              />
             </div>
           </section>
 
