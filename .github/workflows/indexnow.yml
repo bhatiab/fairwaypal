@@ -1,0 +1,97 @@
+name: IndexNow
+
+# Submits URLs to IndexNow (Bing, Yandex, Seznam, Naver) so they learn about
+# changed pages without waiting to recrawl.
+#
+# The IndexNow key is public by design — the protocol requires it to be readable
+# at https://www.fairwaypal.com/<key>.txt — so none of this needs a secret.
+#
+# This repo deploys through Cloudflare's Git integration rather than from CI, so
+# there is no deploy step here to hang a post-deploy hook off. Four triggers:
+#
+#   check_run         : the post-deploy hook that actually fires. Cloudflare
+#                       Workers Builds reports back as a check run named
+#                       "Workers Builds: fairwaypal", observed on this repo.
+#                       Submits only the pages changed in the deployed commit.
+#   deployment_status : the same hook via the GitHub Deployments API, kept in
+#                       case Cloudflare reports that way too. Harmless if it
+#                       never fires; a duplicate submission is a no-op, since
+#                       IndexNow only records "this URL changed".
+#   schedule          : daily safety net covering the full URL list, so
+#                       coverage never depends on either hook above.
+#   workflow_dispatch : manual run.
+#
+# Both deploy hooks are restricted to the default branch. Workers Builds also
+# runs on pull requests, and a preview build must never submit production URLs
+# for content that is not live yet.
+
+on:
+  check_run:
+    types: [completed]
+  deployment_status:
+  schedule:
+    # 03:17 UTC daily. Off the hour on purpose: runs queued exactly on the hour
+    # are the ones GitHub delays most under load.
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Which URLs to submit'
+        required: true
+        default: all
+        type: choice
+        options: [all, changed]
+
+permissions:
+  contents: read
+
+# Never let two submissions overlap. Not cancel-in-progress: a submission
+# already in flight is worth finishing.
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    if: >-
+      github.event_name == 'schedule' ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'check_run' &&
+       github.event.check_run.conclusion == 'success' &&
+       startsWith(github.event.check_run.name, 'Workers Builds') &&
+       github.event.check_run.check_suite.head_branch == github.event.repository.default_branch) ||
+      (github.event_name == 'deployment_status' &&
+       github.event.deployment_status.state == 'success' &&
+       github.event.deployment.ref == github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # --changed diffs the deployed commit against its parent, so one
+          # commit of history is not enough.
+          fetch-depth: 2
+          ref: >-
+            ${{ github.event_name == 'check_run' && github.event.check_run.head_sha
+             || github.event_name == 'deployment_status' && github.event.deployment.sha
+             || github.ref }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # No npm install: the script uses only Node builtins and global fetch.
+      - name: Submit changed pages
+        if: >-
+          github.event_name == 'check_run' ||
+          github.event_name == 'deployment_status' ||
+          (github.event_name == 'workflow_dispatch' && inputs.mode == 'changed')
+        run: node scripts/ping-indexnow.mjs --changed HEAD~1..HEAD
+
+      - name: Submit all pages
+        if: >-
+          github.event_name == 'schedule' ||
+          (github.event_name == 'workflow_dispatch' && inputs.mode == 'all')
+        run: node scripts/ping-indexnow.mjs --all
