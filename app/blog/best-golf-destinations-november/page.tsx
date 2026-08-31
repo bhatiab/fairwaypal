@@ -144,6 +144,8 @@ export default function BestGolfDestinationsNovemberPage() {
               <RelatedPost href="/blog/how-to-plan-a-golf-trip" title="How to Plan a Golf Trip" description="The complete planning guide." />
               <RelatedPost href="/blog/golf-trip-budget" title="Golf Trip Budget Breakdown" description="What a golf trip actually costs by destination." />
               <RelatedPost href="/blog/algarve-vs-scotland-golf-trip" title="Algarve vs Scotland" description="The European decision; Algarve is the November answer." />
+              <RelatedPost href="/blog/best-golf-destinations-january" title="Best Golf Destinations in January" description="The month after, when peak pricing arrives." />
+              <RelatedPost href="/blog/best-golf-destinations-february" title="Best Golf Destinations in February" description="Peak winter weather, and the weeks that wreck the budget." />
             </div>
           </section>
         </div>

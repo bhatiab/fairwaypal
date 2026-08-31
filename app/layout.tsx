@@ -41,12 +41,24 @@ export const metadata: import('next').Metadata = {
     card: 'summary_large_image',
     images: ['/twitter-image.png'],
   },
-  verification: {
-    google: process.env.NEXT_PUBLIC_GSC_VERIFY ?? '',
-    other: {
-      'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFY ?? '',
-    },
-  },
+  // Emitted only when the value actually exists. The previous `?? ''` fallback
+  // rendered <meta name="google-site-verification" content=""> whenever the var
+  // was unset, which looks configured in view-source but verifies nothing.
+  // Absent is honest and makes a missing build-time var obvious.
+  // NB: NEXT_PUBLIC_* is inlined at build time, so setting these as Worker
+  // secrets does nothing — they must be build env vars. See .dev.vars.example.
+  ...(process.env.NEXT_PUBLIC_GSC_VERIFY || process.env.NEXT_PUBLIC_BING_VERIFY
+    ? {
+        verification: {
+          ...(process.env.NEXT_PUBLIC_GSC_VERIFY
+            ? { google: process.env.NEXT_PUBLIC_GSC_VERIFY }
+            : {}),
+          ...(process.env.NEXT_PUBLIC_BING_VERIFY
+            ? { other: { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFY } }
+            : {}),
+        },
+      }
+    : {}),
 }
 
 const organizationSchema = {

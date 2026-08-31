@@ -177,6 +177,8 @@ export default function BestGolfDestinationsOctoberPage() {
                 title="Bandon vs Pebble vs Kiawah"
                 description="Three premium options that all peak around October."
               />
+              <RelatedPost href="/blog/best-golf-destinations-september" title="Best Golf Destinations in September" description="The month before, when links golf hits its peak." />
+              <RelatedPost href="/blog/best-golf-destinations-april" title="Best Golf Destinations in April" description="The spring counterpart, and the other great Pinehurst month." />
             </div>
           </section>
         </div>
