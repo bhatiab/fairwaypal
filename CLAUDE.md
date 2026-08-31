@@ -740,9 +740,14 @@ Technical SEO
 [x] Add cross-links between destination pages ("Not sure? Try Pinehurst →")
 [ ] Implement next/image for all images across the site
 [ ] Add alt text to all images
-[ ] Set up Google Analytics 4 (GA4)
-[ ] Register and configure Google Search Console
-[ ] Submit sitemap to Google Search Console
+[ ] Set up Google Analytics 4 (GA4)              set NEXT_PUBLIC_GA4_ID at build time
+[ ] Register and configure Google Search Console  <- see docs/search-console-setup.md
+[ ] Submit sitemap to Google Search Console       Google left IndexNow out and
+                                                  retired sitemap ping, so GSC is
+                                                  the ONLY way to submit to Google.
+                                                  Bing gets a full feed every
+                                                  deploy; Google gets nothing until
+                                                  this is done.
 [ ] Monitor Core Web Vitals via Vercel Speed Insights
 [ ] Add hreflang tags when international destination pages are built
 [ ] Code-split large client components (trip/_client.tsx at 685 lines)
@@ -850,13 +855,20 @@ Money / logistics / how-to (high-volume evergreen)
 [ ] Golf trip insurance                  Do you actually need it?
 
 Seasonal / when-to-go (recurring traffic)
-[ ] Best golf destinations in [Jan]     Programmatic: 7 month-by-month posts
-[ ] Best golf destinations in [Feb]     (Jan, Feb, Mar, Apr, Sep, Oct, Nov)
+[x] Best golf destinations in [Jan]     Programmatic: 7 month-by-month posts
+[x] Best golf destinations in [Feb]     (Jan, Feb, Mar, Apr, Sep, Oct, Nov)
 [x] Best golf destinations in [Mar]
-[ ] Best golf destinations in [Apr]
-[ ] Best golf destinations in [Sep]
+[x] Best golf destinations in [Apr]
+[x] Best golf destinations in [Sep]
 [x] Best golf destinations in [Oct]
 [x] Best golf destinations in [Nov]
+[ ] REFRESH ~Nov 2026: best-golf-destinations-april   Published Aug 2026, well
+                                                      ahead of its Jan/Feb 2027
+                                                      booking window. Refresh the
+                                                      content, bump dateModified,
+                                                      re-run content:dates, deploy.
+[ ] REFRESH ~Apr 2027: best-golf-destinations-september  Same reason; its window
+                                                      is Jun/Jul 2027.
 [ ] Shoulder-season golf                Apr-May & Sep-Oct for half the price
 [ ] When to book a 2027 golf trip       Month-by-month booking calendar
 
@@ -1003,6 +1015,15 @@ NEXT_PUBLIC_GYG_PARTNER_ID=9GLTCAY
 NEXT_PUBLIC_GOLFNOW_AFFILIATE_ID=
 NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG=fairwaypal-20
 GENIUSLINK_API_KEY=
+
+# Search engine verification + analytics
+# Read in app/layout.tsx. NEXT_PUBLIC_* is inlined by `next build`, NOT read at
+# runtime, so setting these as Cloudflare Worker secrets does nothing: they must
+# be build-time env vars followed by a rebuild. Prefer DNS TXT verification in
+# Cloudflare over the meta tag entirely. See docs/search-console-setup.md.
+NEXT_PUBLIC_GSC_VERIFY=
+NEXT_PUBLIC_BING_VERIFY=
+NEXT_PUBLIC_GA4_ID=
 
 # Cron (Vercel)
 CRON_SECRET=

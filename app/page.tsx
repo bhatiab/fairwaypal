@@ -8,7 +8,11 @@ export const metadata: Metadata = {
   description:
     'Answer 5 questions. Get a dual itinerary — golf on the left, partner activities on the right. Share one link. Everyone votes. Trip locked.',
   alternates: {
-    canonical: 'https://www.fairwaypal.com/',
+    // No trailing slash, matching absoluteUrl('/') in lib/routes.ts so the
+    // sitemap, the IndexNow payload and this tag all spell the homepage the
+    // same way. Google normalises the two at the root, but agreeing costs
+    // nothing and the alternative is a claim in lib/routes.ts that is not true.
+    canonical: 'https://www.fairwaypal.com',
   },
   openGraph: {
     title: 'FairwayPal — Golf trip sorted. Partners happy.',

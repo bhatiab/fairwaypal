@@ -168,6 +168,8 @@ export default function BestGolfDestinationsMarchPage() {
                 title="Why Most Bachelor Golf Trips Suck"
                 description="March is peak bachelor season. Here is how to avoid the usual mistakes."
               />
+              <RelatedPost href="/blog/best-golf-destinations-february" title="Best Golf Destinations in February" description="The month before, with the Phoenix Open complication." />
+              <RelatedPost href="/blog/best-golf-destinations-april" title="Best Golf Destinations in April" description="The month after, when Pinehurst takes the crown." />
             </div>
           </section>
         </div>

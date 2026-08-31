@@ -1,9 +1,20 @@
 # Copy to .dev.vars for local `wrangler`/OpenNext preview.
 # In production, set these as Worker secrets instead (`wrangler secret put <NAME>`)
 # or as environment variables in the Cloudflare dashboard.
+#
+# IMPORTANT — anything prefixed NEXT_PUBLIC_ is inlined into the bundle by
+# `next build`, NOT read at runtime. A Worker secret set with `wrangler secret
+# put NEXT_PUBLIC_...` will NOT appear in the served HTML. Those vars must be set
+# as build-time environment variables in the Cloudflare dashboard (Workers &
+# Pages -> fairwaypal -> Settings -> Variables) and the site rebuilt and
+# redeployed before the change is visible. This is why the site verification tags
+# below can silently render empty.
 
 ANTHROPIC_API_KEY=
-NEXT_PUBLIC_SITE_URL=https://fairwaypal.com
+
+# Canonical host. Must stay on www to match SITE_URL in lib/routes.ts, the
+# canonical tags, the sitemap and the IndexNow payload. Used for trip share links.
+NEXT_PUBLIC_SITE_URL=https://www.fairwaypal.com
 
 DATABASE_URL=
 NEXT_PUBLIC_SUPABASE_URL=
@@ -11,6 +22,24 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
 
 RESEND_API_KEY=
+
+# --- Search engine verification and analytics ---
+# Read in app/layout.tsx. See docs/search-console-setup.md.
+#
+# Prefer DNS TXT verification in Cloudflare over these meta tags: it verifies a
+# GSC *Domain* property (apex + www, http + https at once), survives deploys, and
+# does not depend on a build-time var being set. These are the fallback.
+
+# Google Search Console -> Add property -> URL prefix -> HTML tag.
+# The content="..." value only, not the whole tag.
+NEXT_PUBLIC_GSC_VERIFY=
+
+# Bing Webmaster Tools -> Site verification -> the msvalidate.01 content value.
+# Not needed if you import the site from GSC, which is the easier path.
+NEXT_PUBLIC_BING_VERIFY=
+
+# GA4 measurement ID, format G-XXXXXXXXXX. Analytics is skipped entirely when unset.
+NEXT_PUBLIC_GA4_ID=
 
 NEXT_PUBLIC_GYG_PARTNER_ID=9GLTCAY
 NEXT_PUBLIC_GOLFNOW_AFFILIATE_ID=

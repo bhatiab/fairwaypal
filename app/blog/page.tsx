@@ -97,6 +97,42 @@ const POSTS = [
     tag: 'Destinations',
   },
   {
+    slug: 'best-golf-destinations-january',
+    title: 'The Best Golf Destinations in January (2027 Honest Guide)',
+    description:
+      'Honest ranking of the best golf trip destinations for January. Cabo, Palm Springs, Scottsdale, Florida, the Algarve, plus how to survive peak pricing.',
+    readMinutes: 10,
+    date: 'August 31, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: 'best-golf-destinations-february',
+    title: 'The Best Golf Destinations in February (2027 Honest Guide)',
+    description:
+      'Honest ranking of the best golf trip destinations for February, including the three tournament and holiday weeks that wreck pricing if you book blind.',
+    readMinutes: 10,
+    date: 'August 31, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: 'best-golf-destinations-april',
+    title: 'The Best Golf Destinations in April (2027 Honest Guide)',
+    description:
+      'Honest ranking of the best golf trip destinations for April. Pinehurst at its peak, Scottsdale before the heat, Scotland reopening, plus Masters week.',
+    readMinutes: 10,
+    date: 'August 31, 2026',
+    tag: 'Planning',
+  },
+  {
+    slug: 'best-golf-destinations-september',
+    title: 'The Best Golf Destinations in September (2027 Honest Guide)',
+    description:
+      'Honest ranking of the best golf trip destinations for September. Scotland and Ireland at their peak, Bandon at its driest, plus the hurricane caveat.',
+    readMinutes: 10,
+    date: 'August 31, 2026',
+    tag: 'Planning',
+  },
+  {
     slug: 'best-golf-destinations-november',
     title: 'The Best Golf Destinations in November (2026 Honest Guide)',
     description:
