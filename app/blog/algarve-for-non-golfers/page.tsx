@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'The Algarve for Non-Golfers: A Partner\'s Guide | FairwayPal',
+  title: 'The Algarve for Non-Golfers: A Partner\'s Guide',
   description:
     'A friendly, honest guide to the Algarve for the partner who is not playing. Beaches, sea caves, Lagos and Tavira old towns, the Benagil cave kayak tour, Alentejo wine country, and a daily rhythm that turns a golf trip into a holiday.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/algarve-for-non-golfers' },
@@ -121,7 +119,7 @@ export default function AlgarveForNonGolfersPage() {
           <span>·</span>
           <span>11 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           The Algarve is the rare golf destination where the trip becomes a real holiday for the partners. Limestone cliffs that drop into the Atlantic, sea caves you can kayak into, beaches that Europe rates among its best, charming whitewashed old towns, fresh seafood at every meal, and 300 days of sunshine a year. If you have a non-golfing partner coming on a golf trip, the Algarve is one of the easiest yes votes you will ever ask for. Here is the friendly guide to making the most of it.
         </p>
@@ -341,30 +339,9 @@ export default function AlgarveForNonGolfersPage() {
               The Algarve for non-golfers FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="Is the Algarve a good destination for non-golfing partners?"
-                answer="Yes, comfortably one of the best in international golf. Cliff coastline, beaches, sea caves, charming old towns, fresh seafood, Alentejo wine country, and 300 days of sunshine. Pairs uniquely well with villa accommodation that splits across 8 to 10 people."
-              />
-              <FaqItem
-                question="What is there to do in the Algarve for non-golfers?"
-                answer="Benagil Cave kayak tour, Ponta da Piedade clifftop walks near Lagos, beach days at Praia da Marinha or Falésia, exploring Lagos and Tavira old towns, an Alentejo wine day, long lunches at clifftop seafood restaurants. The variety is genuine and the pace is relaxed."
-              />
-              <FaqItem
-                question="Can you still swim into Benagil Cave?"
-                answer="No, swimming has been banned since August 2024. The only way in is via boat tour or guided kayak tour with a licensed operator. Guided kayak tours are limited to six kayaks per tour leader."
-              />
-              <FaqItem
-                question="When is the best time of year for partners?"
-                answer="March to May and September to November are the sweet spots (18 to 25°C, low humidity, uncrowded). October is particularly lovely. Avoid July and August unless you specifically want hot weather and high prices."
-              />
-              <FaqItem
-                question="How long should partners stay in the Algarve?"
-                answer="Four to seven nights. Four covers Lagos, Benagil, Tavira. Five to seven adds an Alentejo wine day, more beach days, and a slower rhythm. Many groups extend rather than shorten."
-              />
-              <FaqItem
-                question="Do you need a car?"
-                answer="Yes. Courses are 20 to 60 minutes apart along the A22 motorway, and partner activities require driving. The group will already have a rental from Faro Airport. Driving in Portugal is easy outside July and August."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

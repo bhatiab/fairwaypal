@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Pinehurst for Non-Golfers: A Partner\'s Guide | FairwayPal',
+  title: 'Pinehurst for Non-Golfers: A Partner\'s Guide',
   description:
     'A friendly, honest guide to Pinehurst for the partner who is not playing. The walkable village, the Tufts Archives, the spa at The Carolina, Southern Pines, Seagrove pottery, and a daily rhythm that works.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/pinehurst-for-non-golfers' },
@@ -121,7 +119,7 @@ export default function PinehurstForNonGolfersPage() {
           <span>·</span>
           <span>10 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Pinehurst is the cradle of American golf and one of the most pleasant villages in the South. For a partner who is not playing, the question is whether quiet, walkable, traditional Southern hospitality is the holiday they want, or whether they would rather be somewhere with more variety. Pinehurst is brilliant for the first kind of partner. Here is the friendly guide to making the most of it if that is your partner, and a clear-eyed call if it is not.
         </p>
@@ -292,30 +290,9 @@ export default function PinehurstForNonGolfersPage() {
               Pinehurst for non-golfers FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="Is Pinehurst a good destination for non-golfing partners?"
-                answer="It depends on the partner. Pinehurst Village is genuinely charming and walkable, with a full spa, art galleries, restaurants, and the Tufts Archives within five minutes of each other. Partners who love quiet traditional small towns will be happy. Partners who want beaches, big-city variety, or shopping malls will find it quiet."
-              />
-              <FaqItem
-                question="What is there to do in Pinehurst for non-golfers?"
-                answer="Walking Pinehurst Village (boutiques, galleries, the Tufts Archives golf history museum), the spa at The Carolina Hotel, a half-day in Seagrove pottery community (30 miles north), Southern Pines for restaurants and equestrian culture, horseback riding, and Carolina wineries."
-              />
-              <FaqItem
-                question="Is there a spa at Pinehurst?"
-                answer="Yes, the Spa at Pinehurst is attached to The Carolina Hotel. Full-service resort spa with massages, facials, and a half-day package that is excellent value. Booking 1 to 2 weeks ahead is recommended in spring and fall."
-              />
-              <FaqItem
-                question="Is Seagrove pottery worth the drive?"
-                answer="Yes, especially if your partner enjoys handmade ceramics. About 30 miles north, with roughly 100 working studios. The North Carolina Pottery Center gives a museum overview. A half-day route hits 4 or 5 studios with stops for lunch."
-              />
-              <FaqItem
-                question="How long should non-golfing partners stay in Pinehurst?"
-                answer="Three to four nights is the sweet spot. Three covers the village, the spa, the Tufts Archives, and a Seagrove or Southern Pines half-day. Anything over four starts to feel slow unless your partner specifically wants a quiet contemplative trip."
-              />
-              <FaqItem
-                question="When is the best time of year for partners?"
-                answer="March to May and September to November (60 to 80°F, low humidity). Spring brings dogwood and azalea blooms; fall brings warm days and cool evenings. Avoid summer (hot and humid) for outdoor partner activities."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

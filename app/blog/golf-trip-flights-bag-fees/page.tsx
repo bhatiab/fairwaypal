@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Golf Trip Flights: Bag Fees and What Saves Real Money (2026 Guide) | FairwayPal',
+  title: 'Golf Trip Flights: Bag Fees and What Saves Real Money (2026 Guide)',
   description: 'A friendly, honest guide to golf trip flights in 2026. Airline bag fees, the United pre-approval gotcha, when status saves money, the credit card cheat code, and what saves $200+ per player.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-flights-bag-fees' },
   openGraph: { title: 'Golf Trip Flights: Bag Fees and What Saves Real Money', description: 'Honest 2026 guide to airline bag fees and what actually saves money on golf trip flights.' },
@@ -53,7 +51,7 @@ export default function GolfTripFlightsPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">Golf Trip Flights: Bag Fees and What Saves Real Money (2026 Guide)</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>9 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Flights are the most variable cost on a US golf trip. The same trip on Southwest versus Delta can differ by $200 to $400 per player once bag fees are added. There are also a handful of small rules that catch first-time travellers (United pre-approval, the 50-lb threshold trap, the credit card cheat code). Here is the friendly 2026 guide to flying smarter for golf.
         </p>
@@ -136,11 +134,9 @@ export default function GolfTripFlightsPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Golf trip flights FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="What are airline bag fees for golf clubs in 2026?" answer="$35-40 first bag on AA/Delta/United; $100-200 oversize over 50 lbs. Southwest $75 flat or sometimes free. JetBlue/Alaska middle of the road. United requires pre-approval." />
-              <FaqItem question="Which airline has the cheapest golf bag fees?" answer="Southwest by a clear margin. $75 flat or sometimes free. Domestic only." />
-              <FaqItem question="Does elite status save money?" answer="Yes. Mid-tier waives first bag ($35-40 per leg). Top tier waives oversize too ($100-200 per leg)." />
-              <FaqItem question="Do co-branded cards help?" answer="Dramatically. First bag free for cardholder + companions on the booking. $95-99 annual fee pays back in one round trip. The cheat code." />
-              <FaqItem question="What is the United pre-approval gotcha?" answer="United requires advance registration for golf bags. Failing to register can result in denied boarding or doubled fees. Free, takes 5 minutes online at booking." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

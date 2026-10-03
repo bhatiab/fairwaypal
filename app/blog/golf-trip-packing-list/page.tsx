@@ -5,11 +5,10 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 5, 2026'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
 
 export const metadata: Metadata = {
-  title: 'The Golf Trip Packing List: Everything You (and Your Partner) Actually Need — FairwayPal',
+  title: 'The Golf Trip Packing List: Everything You (and Your Partner) Actually Need',
   description:
     "Two packing lists in one — one for golfers, one for non-golfers. Cut the overpacking. Don't forget the one thing that ruins a trip.",
   alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-packing-list' },
@@ -130,7 +129,7 @@ export default function GolfTripPackingListPage() {
           <span>·</span>
           <span>8 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           The thing nobody packs until they wish they had it: comfort insoles. 36 holes in two days is roughly 12–14 miles of walking. Your feet will know. Everything else on this list is optional by comparison.
         </p>
@@ -320,26 +319,9 @@ export default function GolfTripPackingListPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Packing FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="What should I pack for a golf trip?"
-                answer="Essentials: golf shoes (wear on the plane), clubs or plan to rent, balls and tees, golf glove, 3 shirts and 2 trousers/shorts, waterproof jacket, comfort insoles, sunscreen, and a power bank. For 3 nights, that fits in a carry-on plus a golf travel bag."
-              />
-              <FaqItem
-                question="Do I need to bring my own clubs on a golf trip?"
-                answer="No, but it's usually better value. Club rental runs $50–75/day. For 2–3 rounds that's $100–225 vs ~$50–100 each way to ship your clubs. Exception: international trips where the calculation on shipping vs damage risk tips toward rental."
-              />
-              <FaqItem
-                question="What should a non-golfer pack for a golf trip?"
-                answer="Pack for your activities, not for spectating. A crossbody day bag, comfortable walking shoes, a packable jacket for evenings, and layers — regardless of destination. Scotland and Ireland add waterproofs to that list."
-              />
-              <FaqItem
-                question="What's the best bag for a golf trip?"
-                answer="A padded soft golf travel bag handles most trips well. Hard cases offer more protection but are bulkier. For carry-on and clothes: a 40L bag handles 3–4 nights comfortably. Don't pack your clubs and clothes in the same bag — it usually doesn't work out well."
-              />
-              <FaqItem
-                question="Do I need waterproofs for a golf trip to Scotland or Ireland?"
-                answer="Yes, non-negotiable. Even in summer. Waterproof jacket and trousers — not just a rain mac. Good waterproofs (Galvin Green, Footjoy HydroLite) pack small and make the difference between a memorable round and a miserable one."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

@@ -2,12 +2,15 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import CheatSheet from '../../../src/components/CheatSheet'
+import UpdatedDate from '../../../src/components/UpdatedDate'
+import { CONTENT_DATES } from '../../../lib/content-dates'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
 
 export const metadata: Metadata = {
-  title: 'Pebble Beach Golf Trip Guide — FairwayPal',
+  title: 'Pebble Beach Golf Trip Guide',
   description:
     'Everything you need for a Pebble Beach golf trip: how to get tee times, real costs, the best Monterey Peninsula courses, partner activities in Carmel, and where to stay.',
   alternates: {
@@ -28,7 +31,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/pebble-beach' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations' },
     { '@type': 'ListItem', position: 3, name: 'Pebble Beach', item: 'https://www.fairwaypal.com/destinations/pebble-beach' },
   ],
 }
@@ -37,9 +40,9 @@ const destinationSchema = {
   '@context': 'https://schema.org',
   '@type': 'TouristDestination',
   name: 'Pebble Beach, California',
-  description:
-    'The most famous golf course in the United States, set on the Monterey Peninsula above the Pacific. A bucket-list destination with one of the most dramatic finishing holes in the world.',
+  description: "The most famous course in the United States. Eighteen holes along the Pacific, a finishing hole that has ended careers and made others. Pair it with Carmel-by-the-Sea for partners and Spyglass Hill for a second round — this is the Monterey Peninsula golf trip.",
   url: 'https://www.fairwaypal.com/destinations/pebble-beach',
+  geo: { '@type': 'GeoCoordinates', latitude: 36.5725, longitude: -121.9486 },
   touristType: ['Golf', 'Bucket List', 'Couples'],
 }
 
@@ -116,6 +119,15 @@ export default function PebbleBeachPage() {
         <p className="mt-2 text-sm text-ink-2">
           Best time to visit: <span className="text-gold">May — October</span> (driest, warmest; fog burns off by noon)
         </p>
+        <UpdatedDate date={CONTENT_DATES['/destinations/pebble-beach']} />
+        <CheatSheet
+          rows={[
+            { label: "Typical cost", value: "Pebble Beach Golf Links is $595 to $625 per round plus $100 to $150 for a caddie. Spyglass Hill and Spanish Bay run about $280 to $325; Poppy Hills $90 to $130." },
+            { label: "Best time", value: "May to October is driest. Expect cool, foggy mornings (55 to 65°F in July) that usually burn off by midday." },
+            { label: "Top courses", value: "Pebble Beach Golf Links, Spyglass Hill, The Links at Spanish Bay, Poppy Hills." },
+            { label: "For partners", value: "Carmel-by-the-Sea (10 minutes), Monterey Bay Aquarium, the 17-Mile Drive." },
+          ]}
+        />
 
         <div className="mt-12 space-y-16">
           {/* -------------------------------------------------------- */}
@@ -286,26 +298,9 @@ export default function PebbleBeachPage() {
               Pebble Beach golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="How much does a round at Pebble Beach cost?"
-                answer="A round at Pebble Beach Golf Links costs $595–625 per person (green fee + cart). Caddie is an additional $100–150. Spyglass Hill runs $285–325. Spanish Bay runs $280–320. Poppy Hills (off-resort) runs $90–130 and is the most accessible on the Peninsula."
-              />
-              <FaqItem
-                question="How do you get tee times at Pebble Beach?"
-                answer="Pebble Beach tee times are not available on GolfNow. Book directly at pebblebeach.com or by calling 800-654-9300. Resort guests book first (18 months in advance); outside guests book 60 days out. Prime weekend morning times sell out quickly — set a calendar reminder for exactly 60 days before your trip."
-              />
-              <FaqItem
-                question="What is the best time of year to visit?"
-                answer="May through October is the driest period. The Monterey Peninsula is famously cool and foggy — average July temperatures are 55–65°F. Morning fog often burns off by noon. Winter brings rain and the AT&T Pro-Am (January/February), which closes the course to public play."
-              />
-              <FaqItem
-                question="What do non-golfers do near Pebble Beach?"
-                answer="Carmel-by-the-Sea (10 min) is one of California's most charming towns. Monterey Bay Aquarium (20 min) is world-class. The 17-Mile Drive is a scenic self-guided coastal tour. Big Sur is 30 miles south with dramatic scenery. Carmel Valley wine tasting is 15 miles inland."
-              />
-              <FaqItem
-                question="Is Pebble Beach worth the cost?"
-                answer="For serious golfers, yes. Pebble Beach Golf Links is the most scenic and historically significant course most people will ever play. The 18th hole is genuinely unforgettable. Pair it with Poppy Hills ($90–130) and Spyglass Hill ($285–325) rather than playing Pebble every day — that's the right budget approach."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

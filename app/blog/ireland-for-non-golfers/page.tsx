@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Ireland for Non-Golfers: A Partner\'s Guide | FairwayPal',
+  title: 'Ireland for Non-Golfers: A Partner\'s Guide',
   description:
     'A friendly, honest guide to Ireland for the partner who is not playing. The Cliffs of Moher, the Ring of Kerry, Killarney National Park, Galway pubs, the Dingle Peninsula, Dublin, and whiskey distilleries.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/ireland-for-non-golfers' },
@@ -58,7 +56,7 @@ export default function IrelandForNonGolfersPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">Ireland for Non-Golfers: A Partner's Guide</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>11 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           An Ireland golf trip is one of the great group golf experiences in the world: dramatic links courses, friendly people, and pub evenings that go on longer than they should. For a partner who is not teeing off, the question is whether the cool wet weather and the slower rural pace are the holiday they want. For partners who love history, walking, music, and a good pour of stout, Ireland is genuinely magical. Here is the friendly guide to making it a great trip for whoever is not on the first tee.
         </p>
@@ -132,11 +130,9 @@ export default function IrelandForNonGolfersPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Ireland for non-golfers FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="Is Ireland a good destination for non-golfing partners?" answer="Yes, for partners who love history, dramatic coastlines, traditional music, and a slow Irish pace. Cliffs of Moher, Ring of Kerry, Killarney, Galway pubs, Dingle, Dublin, distilleries. Not the right pick for partners who want sun and warmth." />
-              <FaqItem question="What is there to do for non-golfers?" answer="Cliffs of Moher, Ring of Kerry drive, Killarney National Park, Galway pubs and music, Dingle Peninsula, Dublin city, whiskey distilleries (Jameson, Dingle, Teeling)." />
-              <FaqItem question="Should partners visit Dublin?" answer="Depends on the trip's geography. Southwest-based trips: Dublin is 3-4 hours away, consider a 1-2 night extension. Northern Ireland or east coast trips: Dublin is the natural base." />
-              <FaqItem question="How long should partners stay?" answer="Five to seven nights matches most golf trips. Most US groups do 7-10 nights total; partners can add a Dublin or Connemara extension." />
-              <FaqItem question="When is the best time of year for partners?" answer="May to September. June and July have the longest daylight (up to 17 hours). Late May and early September are quieter. Avoid November-March." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

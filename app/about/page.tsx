@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'About FairwayPal',
+  title: { absolute: 'About FairwayPal' },
   description: 'How FairwayPal approaches golf-trip planning for organisers, golfers, and partners.',
   alternates: { canonical: 'https://www.fairwaypal.com/about' },
   openGraph: {

@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Myrtle Beach for Non-Golfers: A Partner\'s Guide | FairwayPal',
+  title: 'Myrtle Beach for Non-Golfers: A Partner\'s Guide',
   description:
     'A friendly, honest guide to Myrtle Beach for the partner who is not playing. 60 miles of Atlantic beach, the boardwalk and SkyWheel, Brookgreen Gardens, the Murrells Inlet Marshwalk, and Tanger Outlets shopping.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/myrtle-beach-for-non-golfers' },
@@ -89,7 +87,7 @@ export default function MyrtleBeachForNonGolfersPage() {
           <span>·</span>
           <span>9 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Myrtle Beach is the most popular golf trip destination in the US for one simple reason: it is great value. That value extends to the partner experience too. 60 miles of Atlantic beach, a famous oceanfront boardwalk, a genuinely lovely sculpture garden, and a string of waterfront restaurants in Murrells Inlet are all in easy reach. Here is the friendly guide to making it a real holiday for whoever is not teeing off.
         </p>
@@ -184,11 +182,9 @@ export default function MyrtleBeachForNonGolfersPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Myrtle Beach for non-golfers FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="Is Myrtle Beach a good destination for non-golfing partners?" answer="Yes, for partners who want a relaxed Atlantic beach holiday with shopping, casual dining, and entertainment nearby. Less precious than bucket-list resorts. Best for accessible, family-friendly partners; not ideal for partners wanting boutique village or high-end resort spa." />
-              <FaqItem question="What is there to do for non-golfers?" answer="60 miles of beach, the Boardwalk and SkyWheel, Brookgreen Gardens, Murrells Inlet Marshwalk, Tanger Outlets, Broadway at the Beach, Pawleys Island, Huntington Beach State Park." />
-              <FaqItem question="Are there good spas in Myrtle Beach?" answer="Modest compared to Pebble or Pinehurst. The Spa at Marina Inn (Grande Dunes) and Sea Crest Resort are well-reviewed. For higher-end, drive 30 min south to Litchfield Beach or Pawleys Island." />
-              <FaqItem question="How long should partners stay?" answer="Three to four nights covers the highlights. Five or more works if you specifically want a beach holiday with downtime." />
-              <FaqItem question="When is the best time of year?" answer="March-May and September-November (65-80°F, low humidity). Avoid major spring break weeks in March." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

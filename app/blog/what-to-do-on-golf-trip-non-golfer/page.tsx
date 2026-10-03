@@ -6,10 +6,9 @@ import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
-const LAST_UPDATED = 'May 5, 2026'
 
 export const metadata: Metadata = {
-  title: "What to Do on a Golf Trip If You Don't Golf (Actually Good Options) — FairwayPal",
+  title: "What to Do on a Golf Trip If You Don't Golf (Actually Good Options)",
   description:
     "You're on a golf trip and you don't golf. Here's what to actually do — by destination — so you're not watching Netflix in the hotel room.",
   alternates: { canonical: 'https://www.fairwaypal.com/blog/what-to-do-on-golf-trip-non-golfer' },
@@ -164,7 +163,7 @@ export default function WhatToDoNonGolferPage() {
           <span>·</span>
           <span>7 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           You've been invited on a golf trip. You don't golf. The instinct is to feel like a tagalong. Here's how to reframe it: you have the morning to yourself while everyone else gets up at 6am to stand in a field, then you have the whole group again by lunch. That's actually a pretty good deal.
         </p>
@@ -306,26 +305,9 @@ export default function WhatToDoNonGolferPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Non-golfer FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="What do non-golfers do on a golf trip?"
-                answer="Golfers are typically off the course by 1pm. That leaves full afternoons and evenings for group activities. Mornings: spa, hiking, cultural activities, or just a slow breakfast and coffee. The best destinations (Scottsdale, Ireland, Scotland) have enough to fill three days without ever needing the golfers."
-              />
-              <FaqItem
-                question="Is it worth going on a golf trip if you don't play?"
-                answer="Yes — with the right destination and some advance planning. Scottsdale, Ireland, and Scotland are genuinely excellent destinations independent of the golf. A non-golfer who approaches the trip as 'a few days in Scottsdale that include some group golf' usually has a better time than expected."
-              />
-              <FaqItem
-                question="Which golf destinations are best for non-golfers?"
-                answer="Scottsdale (Old Town, spas, hiking, wine trail), Ireland (Galway, Cliffs of Moher, coastal villages, pubs), and Scotland (castles, whisky, St Andrews town) are the strongest options. Myrtle Beach works well for beach access. Bandon Dunes is remote — good for outdoors people, difficult for everyone else."
-              />
-              <FaqItem
-                question="How do you keep a non-golfer entertained on a golf weekend?"
-                answer="Plan the non-golf itinerary as thoroughly as the golf one. Book at least one bookable experience in advance — spa, tour, activity. Ensure there's a morning plan for each golf day. Schedule a proper shared dinner every night. Those three things cover most of the risk."
-              />
-              <FaqItem
-                question="Can non-golfers enjoy Scotland or Ireland golf trips?"
-                answer="Often more than the golfers. Ireland's west coast is extraordinary. Scotland's castles, whisky trail, and coastal villages are genuinely compelling. Partners on these trips frequently say they had a better trip than expected."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

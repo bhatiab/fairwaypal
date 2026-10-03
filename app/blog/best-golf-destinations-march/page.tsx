@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'The Best Golf Destinations in March (2026 Honest Guide) | FairwayPal',
+  title: 'The Best Golf Destinations in March (2026 Honest Guide)',
   description: 'A friendly, honest ranking of the best golf trip destinations for March. Scottsdale at peak, Pinehurst at peak, Florida, the Algarve, Kiawah, plus the destinations to skip in March.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/best-golf-destinations-march' },
   openGraph: { title: 'The Best Golf Destinations in March', description: 'Honest ranking of where to go for a golf trip in March.' },
@@ -55,7 +53,7 @@ export default function BestGolfDestinationsMarchPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">The Best Golf Destinations in March (2026 Honest Guide)</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>10 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           March is genuinely one of the great golf travel months for warm-weather destinations. The desert is at peak, the Carolinas have come out of winter, the Algarve is in shoulder of its best, and Florida is at its absolute best. The catch: it is peak season everywhere, which means the right destination at the wrong week can be expensive and crowded. Here is the friendly ranked guide.
         </p>
@@ -136,11 +134,9 @@ export default function BestGolfDestinationsMarchPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">March golf destinations FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="What is the best place to play golf in March?" answer="Scottsdale (peak desert), Pinehurst (peak spring), the Algarve (peak shoulder), Florida, Kiawah, Myrtle Beach. Scottsdale is the single best balanced March pick." />
-              <FaqItem question="Is March a good time for a golf trip?" answer="Yes, exceptional for warm-weather US and Iberian destinations. Avoid spring break week (typically the third week of March)." />
-              <FaqItem question="Should you avoid spring break weeks?" answer="Yes if possible. The third week of March is peak family/college vacation traffic for Scottsdale, Florida, Myrtle Beach, Kiawah. Travel before March 10 or after March 25." />
-              <FaqItem question="Is Scotland or Ireland playable in March?" answer="Marginal. Push to May or June. If you must travel in March, target the last week and accept that 1-2 rounds will be wet." />
-              <FaqItem question="Is March better than April for a golf trip?" answer="Depends. Warm-US (Scottsdale, Florida) is similar in March and April. British Isles is dramatically better in April. The Algarve is excellent in both." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

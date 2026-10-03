@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Bandon Dunes vs Pebble Beach for a Golf Trip: Which Should You Pick? | FairwayPal',
+  title: 'Bandon Dunes vs Pebble Beach for a Golf Trip: Which Should You Pick?',
   description:
     'A friendly, honest comparison of the two great West Coast golf bucket-list trips. Courses, costs, weather, partner experience, and a verdict by group type.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/bandon-dunes-vs-pebble-beach-golf-trip' },
@@ -121,7 +119,7 @@ export default function BandonVsPebblePage() {
           <span>·</span>
           <span>11 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Two trips, two coastlines, one tough decision. Both are bucket-list. Both are expensive. Both are unforgettable. We have organised dozens of trips to each, and the honest answer is that they are very different experiences once you arrive. Here is the friendly comparison so your group can stop debating and start booking.
         </p>
@@ -323,30 +321,9 @@ export default function BandonVsPebblePage() {
               Bandon Dunes vs Pebble Beach FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="Is Bandon Dunes or Pebble Beach better for a golf trip?"
-                answer="It depends on your group. Bandon is the better pure-golf trip with five world-class links courses on one property. Pebble Beach is the better all-rounder, with one bucket-list course and Carmel-by-the-Sea five minutes away for partners. Serious golfers tend to prefer Bandon. Mixed groups tend to prefer Pebble."
-              />
-              <FaqItem
-                question="Is Bandon Dunes cheaper than Pebble Beach?"
-                answer="Yes, meaningfully. Pebble Links runs $595 to $625 per round vs $275 to $375 at any Bandon course. Lodging is also lower at Bandon. A 3 to 4 night trip runs around $2,000 to $3,500 per person at Bandon vs $2,500 to $5,000 at Pebble."
-              />
-              <FaqItem
-                question="How many courses are at Bandon Dunes?"
-                answer="Five full-length courses (Bandon Dunes, Pacific Dunes, Bandon Trails, Old Macdonald, and Sheep Ranch) plus the Bandon Preserve, a 13-hole par-3 course. Most groups play 3 to 4 of the full courses plus the Preserve."
-              />
-              <FaqItem
-                question="How do you get tee times at Pebble Beach?"
-                answer="Book directly at pebblebeach.com or by phone. Resort guests at The Lodge, Casa Palmero, or Inn at Spanish Bay can book up to 18 months in advance. Outside guests can book about 60 days out, but prime weekend mornings sell out fast."
-              />
-              <FaqItem
-                question="Are partners welcome at Bandon Dunes?"
-                answer="Welcome yes, but Bandon is a remote, golf-focused resort. Partners who love beach walks, nature, and rugged Pacific Northwest scenery do well. Partners who want shopping, restaurants, and variety will find it thin. Pebble is the friendlier choice for non-golfers."
-              />
-              <FaqItem
-                question="When is the best time to visit?"
-                answer="Both: May through October. Bandon is driest July through September. Pebble is clearest in September and October. Avoid the AT&T Pro-Am dates at Pebble (late January or early February) when the course closes to public play."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

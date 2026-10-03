@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'Page Not Found | FairwayPal',
+  title: 'Page Not Found',
   description: "The page you're looking for doesn't exist.",
   robots: { index: false },
 }

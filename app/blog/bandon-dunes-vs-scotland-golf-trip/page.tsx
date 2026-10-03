@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Bandon Dunes vs Scotland for a Golf Trip: Which Should You Pick? | FairwayPal',
+  title: 'Bandon Dunes vs Scotland for a Golf Trip: Which Should You Pick?',
   description: 'The "should we go links?" question, settled. Oregon coast versus the home of the game. Courses, costs, weather, partner experience, logistics, and a verdict by group type.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/bandon-dunes-vs-scotland-golf-trip' },
   openGraph: { title: 'Bandon Dunes vs Scotland: Which Should You Pick?', description: 'Oregon coast pilgrimage vs the home of the game.' },
@@ -53,7 +51,7 @@ export default function BandonVsScotlandPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">Bandon Dunes vs Scotland for a Golf Trip: Which Should You Pick?</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>10 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           The "should we go links?" question for serious golfers usually comes down to this: Bandon Dunes or Scotland? Both are pilgrimages. Both are unforgettable. They are also genuinely different trips, and the right answer depends on your group, your time, and your relationship with the history of the game. Here is the friendly comparison.
         </p>
@@ -119,11 +117,9 @@ export default function BandonVsScotlandPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Bandon vs Scotland FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="Is Bandon Dunes or Scotland better for a links trip?" answer="Both great, very different. Bandon: 5 world-class courses on one resort, less travel. Scotland: home of the game, the Old Course, deep heritage. Most golfers say if you can only do one, Scotland." />
-              <FaqItem question="Is Bandon cheaper than Scotland?" answer="Per-night, similar. Total trip differs because Scotland trips are longer. Flights from US East Coast favour Bandon by $400-800 per person; from West Coast, the gap closes." />
-              <FaqItem question="Which has better partner experience?" answer="Scotland decisively. Edinburgh, Fife Coastal Path, distilleries, Highlands. Bandon is partner-thin." />
-              <FaqItem question="Can you play more courses at Bandon or in Scotland?" answer="Bandon on a single trip, because of the resort density. Scotland has more variety overall but more driving between." />
-              <FaqItem question="Which has better weather?" answer="Both are exposed coastal links. Bandon is drier in summer; Scotland has more daylight (up to 18 hours in June-July)." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

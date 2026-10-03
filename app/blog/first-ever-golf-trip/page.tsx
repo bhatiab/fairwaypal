@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Your First-Ever Golf Trip: An Honest Guide for the Group | FairwayPal',
+  title: 'Your First-Ever Golf Trip: An Honest Guide for the Group',
   description: 'A friendly, honest guide for groups taking their first-ever golf trip together. What to expect, what to skip, picking the right destination, and the small mistakes nobody warns first-timers about.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/first-ever-golf-trip' },
   openGraph: { title: 'Your First-Ever Golf Trip: An Honest Guide', description: 'What to expect, what to skip, what nobody warns first-timers about.' },
@@ -53,7 +51,7 @@ export default function FirstEverGolfTripPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">Your First-Ever Golf Trip: An Honest Guide for the Group</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>9 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           The first golf trip your group takes together is special. The hype, the planning, the sense that this is going to become an annual thing. It also has a higher mistake-rate than veteran trips for one specific reason: nobody knows yet what works for your group. Here is the friendly guide to a first trip that actually delivers, plus the small things that catch every first-time group.
         </p>
@@ -122,11 +120,9 @@ export default function FirstEverGolfTripPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">First-ever golf trip FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="What is the best destination for a first-ever golf trip?" answer="Forgiving destinations. Myrtle Beach (best value), Scottsdale (mid-budget urban), Pinehurst (heritage at multiple difficulty levels), Kiawah Island (partners-friendly). Skip Bandon, Pebble, Scotland, Ireland for first trips." />
-              <FaqItem question="How long should the first trip be?" answer="Three nights. Two is too rushed; four amplifies first-trip mistakes." />
-              <FaqItem question="How big should the group be?" answer="Six to eight. Eight is ideal: two foursomes, single house, single dinner reservation. Resist invite creep." />
-              <FaqItem question="What should first-time groups skip?" answer="36-hole days, premium-only rounds, multi-destination trips, aggressive gambling, international trips. Save those for trip 2 or 3." />
-              <FaqItem question="What is the most common first-trip mistake?" answer="Over-formatting. Leave 30-50% of the trip unstructured. Density without exhaustion is the goal." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

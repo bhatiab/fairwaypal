@@ -23,7 +23,8 @@ const destinationLinks = [
 ]
 
 const blogLinks = [
-  { label: 'How to Plan a Golf Trip', href: '/blog/golf-trip-with-non-golfers' },
+  { label: 'How to Plan a Golf Trip', href: '/blog/how-to-plan-a-golf-trip' },
+  { label: 'Golf Trips With Non-Golfers', href: '/blog/golf-trip-with-non-golfers' },
   { label: 'Golf Trip Budget Breakdown', href: '/blog/golf-trip-budget' },
   { label: 'What Partners Do on Golf Trips', href: '/blog/what-to-do-on-golf-trip-non-golfer' },
   { label: 'Best Bachelor Party Golf Destinations', href: '/blog/best-bachelor-party-golf-destinations' },

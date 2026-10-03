@@ -4,10 +4,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 5, 2026'
-
 export const metadata: Metadata = {
-  title: 'Ireland vs Scotland Golf Trip: Which One Should You Book? — FairwayPal',
+  title: 'Ireland vs Scotland Golf Trip: Which One Should You Book?',
   description:
     'You\'ve decided on an international golf trip. Now: Ireland or Scotland? Honest comparison of courses, cost, logistics, partner experience, and a verdict by group type.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/ireland-vs-scotland-golf-trip' },
@@ -150,7 +148,7 @@ export default function IrelandVsScotlandGolfTripPage() {
           <span>·</span>
           <span>9 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
 
         {/* Quick verdict */}
         <div className="mt-8 max-w-3xl rounded-2xl border border-gold/20 bg-gold/5 p-6">

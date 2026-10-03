@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'August 31, 2026'
-
 export const metadata: Metadata = {
-  title: 'The Best Golf Destinations in September (2027 Honest Guide) | FairwayPal',
+  title: 'The Best Golf Destinations in September (2027 Honest Guide)',
   description: 'An honest ranking of the best golf trip destinations for September. Scotland and Ireland at their peak, Bandon at its driest, Pebble at its clearest, plus the hurricane caveat.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/best-golf-destinations-september' },
   openGraph: { title: 'The Best Golf Destinations in September', description: 'Honest ranking of where to go for a golf trip in September, the best links month of the year.' },
@@ -53,7 +51,7 @@ export default function BestGolfDestinationsSeptemberPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">The Best Golf Destinations in September (2027 Honest Guide)</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>August 31, 2026</span><span>·</span><span>10 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           September is the most underrated month in golf travel, and for one specific group of destinations it is simply the best month of the year. The great links courses of Scotland and Ireland peak in September. Bandon Dunes is at its driest. Pebble Beach finally sheds the summer fog. Prices fall the moment Labor Day passes and the crowds go home. The one thing standing between your group and a near-perfect trip is the Atlantic hurricane season, which is why the destination you choose matters more this month than in almost any other.
         </p>
@@ -126,11 +124,9 @@ export default function BestGolfDestinationsSeptemberPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">September golf destinations FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="What is the best place to play golf in September?" answer="Scotland and Ireland, clearly. It is the best links month of the year: firm fast courses, milder and drier than October, crowds gone, shoulder pricing. Bandon and Pebble are the American equivalents." />
-              <FaqItem question="Is September a good time for a golf trip?" answer="One of the best and the most underrated. Peak conditions at the links and coastal courses, prices drop after Labor Day, crowds thin. The caveat is Atlantic hurricane season." />
-              <FaqItem question="Should I worry about hurricanes?" answer="For the Southeast and Caribbean, yes, and plan for it rather than hope. Early to mid September is the statistical peak. Scotland, Ireland, Bandon, Pebble and Scottsdale carry no exposure." />
-              <FaqItem question="Is September better than October for links?" answer="Yes for Scotland and Ireland: milder, drier, meaningfully more daylight. For Bandon the two are close, September marginally drier. Pebble is excellent in both." />
-              <FaqItem question="Does golf get cheaper after Labor Day?" answer="Yes, noticeably. Waiting a week past the holiday weekend routinely takes 20-30% off the same trip, for weather that is usually better once the summer heat breaks." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

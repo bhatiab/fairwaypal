@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'August 31, 2026'
-
 export const metadata: Metadata = {
-  title: 'The Best Golf Destinations in April (2027 Honest Guide) | FairwayPal',
+  title: 'The Best Golf Destinations in April (2027 Honest Guide)',
   description: 'An honest ranking of the best golf trip destinations for April. Pinehurst and the Carolinas at their peak, Scottsdale before the heat, Scotland reopening, plus Masters week.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/best-golf-destinations-april' },
   openGraph: { title: 'The Best Golf Destinations in April', description: 'Honest ranking of where to go for a golf trip in April, the month the map reopens.' },
@@ -53,7 +51,7 @@ export default function BestGolfDestinationsAprilPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">The Best Golf Destinations in April (2027 Honest Guide)</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>August 31, 2026</span><span>·</span><span>10 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           April is the month the golf map reopens. The desert is still good, the Carolinas hit their absolute peak, Scotland and Ireland come back to life, and for a few weeks you have more genuinely excellent options than at any other point in the year. It is also the month with the most moving parts: the Masters distorts one corner of the Southeast, Easter shifts the desert pricing calendar, and Myrtle Beach is at its most expensive. Here is how to read it.
         </p>
@@ -121,11 +119,9 @@ export default function BestGolfDestinationsAprilPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">April golf destinations FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="What is the best place to play golf in April?" answer="Pinehurst, comfortably. April is its best month. Kiawah and Charleston are close behind, Scottsdale is excellent early and great value late, and Scotland reopens at shoulder pricing." />
-              <FaqItem question="Does Masters week affect golf trip prices?" answer="Locally, yes. Accommodation within 90 minutes of Augusta becomes scarce and expensive in the first full week of April. Pinehurst, Myrtle Beach and Kiawah are far enough away to be largely unaffected." />
-              <FaqItem question="Is April good for golf in Scotland or Ireland?" answer="Late April, yes, with realistic expectations. 10-14°C, daylight past 8 PM, shoulder pricing, and tee times you cannot get in summer. Weather is variable, so pack properly." />
-              <FaqItem question="Is Scottsdale too hot in April?" answer="Early April is close to ideal at 80-85°F. Late April climbs past 90°F but peak pricing ends at Easter, so it becomes one of the best value windows of the year with an early tee time." />
-              <FaqItem question="Is April busy at Myrtle Beach?" answer="It is the busiest month, alongside March. Peak conditions, peak green fees, tee sheets full 90 days out. November gives you most of the same experience for roughly half." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

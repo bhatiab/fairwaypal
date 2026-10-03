@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Myrtle Beach vs Kiawah Island for a Golf Trip: Which Should You Pick? | FairwayPal',
+  title: 'Myrtle Beach vs Kiawah Island for a Golf Trip: Which Should You Pick?',
   description: 'Two South Carolina coast destinations, very different trips. Volume and value at Myrtle Beach versus the Ocean Course and Charleston at Kiawah Island. Honest comparison with a verdict by group type.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/myrtle-beach-vs-kiawah-island-golf-trip' },
   openGraph: { title: 'Myrtle Beach vs Kiawah Island: Which Should You Pick?', description: 'SC neighbours, very different trips. Volume and value versus the Ocean Course and Charleston.' },
@@ -57,7 +55,7 @@ export default function MyrtleVsKiawahPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">Myrtle Beach vs Kiawah Island for a Golf Trip: Which Should You Pick?</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>9 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Two destinations on the same Atlantic coast, 130 miles apart, almost no overlap. Myrtle Beach is the most popular value golf trip in America. Kiawah Island is the East Coast bucket-list. If your group is choosing between them, here is the honest comparison.
         </p>
@@ -124,11 +122,9 @@ export default function MyrtleVsKiawahPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Myrtle Beach vs Kiawah Island FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="Is Myrtle Beach or Kiawah Island better for a golf trip?" answer="Different trips on the same coast. Myrtle Beach: volume, value, casual. Kiawah: Ocean Course, refined resort, Charleston nearby." />
-              <FaqItem question="Is Myrtle Beach cheaper?" answer="Yes, dramatically. $900-1,500 per person at Myrtle Beach vs $1,800-3,500 at Kiawah for 3 nights." />
-              <FaqItem question="How far apart are they?" answer="About 130 miles, 2.5-3 hours by car. Some groups combine both, with Charleston as a stopover." />
-              <FaqItem question="Which has better non-golf options?" answer="Kiawah for refined + Charleston culture. Myrtle Beach for casual beach + family-friendly. Pick by partner type." />
-              <FaqItem question="When is the best time to visit?" answer="Both: March-May and September-November (65-80°F, low humidity). Avoid major spring break in March at Myrtle Beach." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

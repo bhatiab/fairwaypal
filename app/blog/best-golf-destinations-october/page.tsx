@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'The Best Golf Destinations in October (2026 Honest Guide) | FairwayPal',
+  title: 'The Best Golf Destinations in October (2026 Honest Guide)',
   description: 'A friendly, honest ranking of the best golf trip destinations for October. Pinehurst, Pebble Beach, Algarve, Kiawah, Scottsdale, Bandon Dunes, plus the destinations to avoid in October.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/best-golf-destinations-october' },
   openGraph: { title: 'The Best Golf Destinations in October', description: 'Honest ranking of where to go for a golf trip this October.' },
@@ -57,7 +55,7 @@ export default function BestGolfDestinationsOctoberPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">The Best Golf Destinations in October (2026 Honest Guide)</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>10 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           October is one of the great golf travel months. The summer heat is gone, schools are back, fairways are firm, and an unusual number of premium destinations are at their absolute peak. If you can travel in October, you have an embarrassment of options. Here is the honest ranked guide to where to go this October, plus the destinations to skip.
         </p>
@@ -145,11 +143,9 @@ export default function BestGolfDestinationsOctoberPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">October golf destinations FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="What is the best place to play golf in October?" answer="Pinehurst (peak conditions, fall colour, 65-75°F). Pebble Beach (warmest, clearest of any month). The Algarve (peak partner experience, 22-25°C, low humidity). Kiawah, Scottsdale (late Oct), and Bandon Dunes (early Oct only) round out the top six." />
-              <FaqItem question="Why is October so good for golf trips?" answer="Three things: summer heat is gone in most North America and Europe, schools are back so resorts and flights are quieter, fairways are firm because of less rain. Peak conditions plus reduced crowds plus shoulder pricing." />
-              <FaqItem question="Is October a good month for Scotland or Ireland?" answer="Early October only (first week or so). Mid-late October has shorter daylight and more weather risk. Push to late September if possible." />
-              <FaqItem question="When is hurricane season for Florida and the Carolinas?" answer="June 1 to November 30, peak August 15 to October 15. By late October, risk drops sharply for the Carolinas. Travel insurance worth it through mid-October; less critical late October." />
-              <FaqItem question="Which destinations should you avoid in October?" answer="Northeast US (too cold), Northern Mexico and Caribbean (hurricane season), Northern Scotland and Ireland after the first week, and the Costa del Sol (rain risk rising)." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

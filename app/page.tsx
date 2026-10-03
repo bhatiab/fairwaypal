@@ -4,7 +4,7 @@ import Navbar from '../src/components/Navbar'
 import Footer from '../src/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'FairwayPal — Golf trip sorted. Partners happy.',
+  title: { absolute: 'FairwayPal — Golf trip sorted. Partners happy.' },
   description:
     'Answer 5 questions. Get a dual itinerary — golf on the left, partner activities on the right. Share one link. Everyone votes. Trip locked.',
   alternates: {

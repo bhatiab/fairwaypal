@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Pinehurst vs Kiawah Island for a Golf Trip: Which Should You Pick? | FairwayPal',
+  title: 'Pinehurst vs Kiawah Island for a Golf Trip: Which Should You Pick?',
   description:
     'Two of the best golf resorts on the East Coast. We compare Pinehurst and Kiawah Island honestly across courses, cost, weather, partner activities, and logistics, with a clear verdict by group type.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/pinehurst-vs-kiawah-island-golf-trip' },
@@ -121,7 +119,7 @@ export default function PinehurstVsKiawahPage() {
           <span>·</span>
           <span>10 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           You have narrowed your group trip to two of the best golf resorts on the East Coast, and the planning thread has gone quiet. We get it. Both are brilliant, both are bucket-list, and both come with a price tag worth getting right. Here is the honest comparison so you can make the call and get back to picking tee times.
         </p>
@@ -320,30 +318,9 @@ export default function PinehurstVsKiawahPage() {
               Pinehurst vs Kiawah Island FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="Is Pinehurst or Kiawah Island better for a golf trip?"
-                answer="Both are excellent. Pinehurst wins for serious-golf groups who want history, walkability, and nine courses on one property. Kiawah wins for groups with partners because the beach, the spa, and Charleston nearby give non-golfers a real holiday."
-              />
-              <FaqItem
-                question="How much does a Pinehurst golf trip cost compared to Kiawah?"
-                answer="Pinehurst typically runs $1,500 to $3,000 per person for 3 nights with 2 to 3 rounds. Kiawah typically runs $1,800 to $3,500 for the same. Kiawah trends pricier because of higher accommodation rates and the forecaddie fee on the Ocean Course."
-              />
-              <FaqItem
-                question="Is the Ocean Course at Kiawah harder than Pinehurst No. 2?"
-                answer="Different kinds of hard. Pinehurst No. 2 punishes you with crowned greens. The Ocean Course punishes you with wind, water, and exposure. Most low handicaps say the Ocean Course is the harder day if it is windy, while No. 2 is the harder pure ball-striking test."
-              />
-              <FaqItem
-                question="Which is better for non-golfers, Pinehurst or Kiawah?"
-                answer="Kiawah, comfortably. Beach, spa, biking, kayaking, plus Charleston about 25 miles away. Pinehurst is charming but quieter and works better for shorter visits or partners who specifically like small-town atmosphere."
-              />
-              <FaqItem
-                question="When is the best time to visit?"
-                answer="March through May and September through November work well at both. April and October are the sweet spots. Avoid mid-summer if you can: heat and humidity are heavy across the Carolinas."
-              />
-              <FaqItem
-                question="What airport do you fly into for each?"
-                answer="Pinehurst is most easily reached via Raleigh-Durham International (RDU), about a 70 mile drive. Kiawah is reached via Charleston International (CHS), about a 30 to 40 mile drive. Kiawah wins on logistics."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

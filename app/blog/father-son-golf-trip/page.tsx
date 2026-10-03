@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Father-Son Golf Trip Planning: The Honest Guide | FairwayPal',
+  title: 'Father-Son Golf Trip Planning: The Honest Guide',
   description: 'A friendly, honest guide to planning a father-son golf trip. Picking the right destination by skill level and age, the four destination archetypes, the conversations worth having, and what nobody tells you about the trip dynamic.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/father-son-golf-trip' },
   openGraph: { title: 'Father-Son Golf Trip Planning: The Honest Guide', description: 'How to plan a father-son golf trip that lives up to the expectations on both sides.' },
@@ -57,7 +55,7 @@ export default function FatherSonGolfTripPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">Father-Son Golf Trip Planning: The Honest Guide</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>9 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           A father-son golf trip is one of the great trips in a man's life on either side. It is also a different kind of trip than a buddies weekend. Smaller group dynamics, different expectations, often different skill levels, and the unique pressure of "we should be doing this more often" hanging over both of you. Here is the friendly guide to planning one that lives up to the hype.
         </p>
@@ -123,11 +121,9 @@ export default function FatherSonGolfTripPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Father-son golf trip FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="What is the best destination for a father-son golf trip?" answer="Depends on skill, age, and budget. Pinehurst is the classic. Bandon Dunes is the pilgrimage. Pebble Beach is the bucket-list. Scottsdale and Myrtle Beach are the flexible options for varied skill levels." />
-              <FaqItem question="How long should a father-son golf trip be?" answer="Three to four nights is the sweet spot for most trips. Five to seven for a Scotland or Ireland pilgrimage." />
-              <FaqItem question="Should you play matches?" answer="Yes, with a format that fits the handicap gap. Better ball or scrambles avoid demoralising the higher-handicap player. Settle small stakes for fun." />
-              <FaqItem question="How to handle big handicap differences?" answer="Pick courses both can enjoy. Use forward tees for higher handicaps. Mix in a paid lesson together at the resort academy to remove the on-course teaching dynamic." />
-              <FaqItem question="When is the best age for a father-son trip?" answer="No perfect age. Two windows tend to be most rewarding: son 16-25 (before life gets busy) and son 35-50 (perspective and capability). Both work." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

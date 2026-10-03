@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Pinehurst vs Bandon Dunes for a Golf Trip: Which Should You Pick? | FairwayPal',
+  title: 'Pinehurst vs Bandon Dunes for a Golf Trip: Which Should You Pick?',
   description:
     'East Coast tradition versus West Coast links. Two of the great American group-golf trips compared honestly: courses, costs, weather, partner experience, logistics, and a verdict by group type.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/pinehurst-vs-bandon-dunes-golf-trip' },
@@ -121,7 +119,7 @@ export default function PinehurstVsBandonPage() {
           <span>·</span>
           <span>10 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           East Coast versus West Coast. Heritage versus links. The cradle of American golf versus the best concentration of links courses in North America. Pinehurst and Bandon Dunes are both bucket-list American golf trips and they offer wildly different experiences. If your group is debating between them, here is the friendly comparison so you can stop arguing and start booking.
         </p>
@@ -326,30 +324,9 @@ export default function PinehurstVsBandonPage() {
               Pinehurst vs Bandon Dunes FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="Is Pinehurst or Bandon Dunes better for a golf trip?"
-                answer="Both are great American trips, very different. Pinehurst gives heritage, walkability, and a partner-friendly village. Bandon gives the best concentration of links golf in North America. Heritage versus links."
-              />
-              <FaqItem
-                question="How much does each trip cost?"
-                answer="Pinehurst: $1,500-$3,000 per person for 3 nights. Bandon: $2,000-$3,500 per person for 3-4 nights. Bandon is slightly more expensive due to caddie fees and longer trip length."
-              />
-              <FaqItem
-                question="Which has better non-golf options?"
-                answer="Pinehurst, by a meaningful margin. Walkable village, Tufts Archives, Spa at Pinehurst, Seagrove pottery 30 miles away. Bandon is remote and outdoor-focused: beach walks, wildlife, but limited variety."
-              />
-              <FaqItem
-                question="How many rounds at each?"
-                answer="Bandon: 4-6 rounds in 3-4 nights including 36-hole days, walking only. Pinehurst: 3-4 rounds in 3 nights, walk or ride."
-              />
-              <FaqItem
-                question="Which is easier to get to?"
-                answer="Pinehurst, by a long way. RDU has direct flights from most US cities and is 70 miles from the resort. Bandon requires either OTH (limited connections) or longer drives from Eugene or Portland."
-              />
-              <FaqItem
-                question="When is the best time to visit?"
-                answer="Pinehurst: March-May and September-November. Bandon: July-September is driest, but wind is constant year-round. Pack waterproofs for Bandon at any time."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

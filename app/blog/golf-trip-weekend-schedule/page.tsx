@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 5, 2026'
-
 export const metadata: Metadata = {
-  title: 'Golf Weekend Itinerary Template: 3-Night Schedule — FairwayPal',
+  title: 'Golf Weekend Itinerary Template: 3-Night Schedule',
   description:
     'A complete 3-night golf weekend schedule — tee times, meals, partner activities, and a day-by-day template you can use for any destination. Golfer and partner columns side by side.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-weekend-schedule' },
@@ -131,7 +129,7 @@ export default function GolfTripWeekendSchedulePage() {
           <span>Planning</span>
         </div>
 
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
 
         <div className="prose-article">
 

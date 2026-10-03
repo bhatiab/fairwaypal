@@ -6,10 +6,9 @@ import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
-const LAST_UPDATED = 'May 5, 2026'
 
 export const metadata: Metadata = {
-  title: 'Pebble Beach Golf Trip Planning Guide — FairwayPal',
+  title: 'Pebble Beach Golf Trip Planning Guide',
   description:
     'How to actually plan a Pebble Beach golf trip: getting tee times (it\'s not on GolfNow), real costs ($500–600/round), the full Monterey Peninsula itinerary, and what partners do in Carmel.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/pebble-beach-golf-trip' },
@@ -121,7 +120,7 @@ export default function PebbleBeachGolfTripPage() {
           <span>·</span>
           <span>8 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Most Pebble Beach guides tell you the 18th hole is beautiful. You know that. What you need to know is how to actually get a tee time, what the real all-in cost is, and how to build the full 3-night Monterey Peninsula itinerary around it.
         </p>

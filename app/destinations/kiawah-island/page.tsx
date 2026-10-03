@@ -2,12 +2,15 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import CheatSheet from '../../../src/components/CheatSheet'
+import UpdatedDate from '../../../src/components/UpdatedDate'
+import { CONTENT_DATES } from '../../../lib/content-dates'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
 
 export const metadata: Metadata = {
-  title: 'Kiawah Island Golf Trip Guide — FairwayPal',
+  title: 'Kiawah Island Golf Trip Guide',
   description:
     'Everything you need for a Kiawah Island golf trip: the Ocean Course, 4 resort alternatives, real costs, the Charleston partner plan, and where to stay.',
   alternates: {
@@ -28,7 +31,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/kiawah-island' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations' },
     { '@type': 'ListItem', position: 3, name: 'Kiawah Island', item: 'https://www.fairwaypal.com/destinations/kiawah-island' },
   ],
 }
@@ -37,9 +40,9 @@ const destinationSchema = {
   '@context': 'https://schema.org',
   '@type': 'TouristDestination',
   name: 'Kiawah Island, South Carolina',
-  description:
-    'The best golf resort on the East Coast. The Ocean Course is one of the most demanding and spectacular layouts in North America — with Charleston 25 miles away for partners.',
+  description: "The best golf resort on the East Coast. Five courses on one island, headlined by the Ocean Course — host of the 2012 and 2021 PGA Championships, with 2031 already awarded. Partners have 10 miles of Atlantic beach, a world-class spa, and Charleston 25 miles away. The whole group comes back happy.",
   url: 'https://www.fairwaypal.com/destinations/kiawah-island',
+  geo: { '@type': 'GeoCoordinates', latitude: 32.6085, longitude: -80.0848 },
   touristType: ['Golf', 'Couples', 'Groups', 'Bucket List'],
 }
 
@@ -116,6 +119,15 @@ export default function KiawahIslandPage() {
         <p className="mt-2 text-sm text-ink-2">
           Best time to visit: <span className="text-gold">March — May, September — November</span> (mild temps, low humidity)
         </p>
+        <UpdatedDate date={CONTENT_DATES['/destinations/kiawah-island']} />
+        <CheatSheet
+          rows={[
+            { label: "Typical cost", value: "About $1,200 to $1,800 per golfer in green fees alone for 3 rounds. The Ocean Course is $400 to $600; the other resort courses $150 to $280." },
+            { label: "Best time", value: "March to May and September to November (65 to 80°F, low humidity, firm fairways)." },
+            { label: "Top courses", value: "The Ocean Course, Osprey Point, Turtle Point, Cougar Point, Oak Point." },
+            { label: "For partners", value: "10 miles of beach, The Sanctuary spa, kayaking and bike paths, and a Charleston day trip (25 miles)." },
+          ]}
+        />
 
         <div className="mt-12 space-y-16">
           {/* -------------------------------------------------------- */}
@@ -286,26 +298,9 @@ export default function KiawahIslandPage() {
               Kiawah Island golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="How much does a round at Kiawah Island cost?"
-                answer="The Ocean Course runs $400–600 per person depending on season and resort guest status. Secondary courses run $150–280. A typical 3-round trip (one Ocean, two secondary) costs $1,200–1,800 per golfer in green fees. Budget additionally for a forecaddie ($50–75/bag) and resort accommodation ($500–800/night)."
-              />
-              <FaqItem
-                question="Do you have to stay at the resort to play?"
-                answer="No, but resort guests get priority tee time access. Non-guests can book the Ocean Course and other resort courses, but availability is more limited. Book 60–90 days out if not staying on-property — especially for the Ocean Course on weekends."
-              />
-              <FaqItem
-                question="What is the best time to visit Kiawah Island?"
-                answer="March through May and September through November. Spring and fall offer mild temperatures (65–80°F), low humidity, and firm fairways. Summer is hot and humid but has lower green fees. Winter is mild but can be windy on the Ocean Course."
-              />
-              <FaqItem
-                question="How far is Kiawah Island from Charleston?"
-                answer="About 25 miles — 35–45 minutes by car. Charleston is an excellent partner day trip: one of the US's best mid-size cities for architecture, food, and history. Most groups do one full Charleston day and one beach/spa day on the island."
-              />
-              <FaqItem
-                question="What do non-golfers do at Kiawah Island?"
-                answer="10 miles of Atlantic beach, The Sanctuary Spa (world-class, book 2 weeks ahead in peak season), kayaking in tidal creeks, biking through maritime forest, and the Charleston day trip (25 miles away). Partners are rarely bored — the harder problem is getting golfers to leave the course."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

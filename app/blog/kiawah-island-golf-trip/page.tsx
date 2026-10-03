@@ -7,10 +7,9 @@ import BlogByline from '../../../src/components/BlogByline'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
-const LAST_UPDATED = 'May 5, 2026'
 
 export const metadata: Metadata = {
-  title: 'Kiawah Island Golf Trip Planning Guide — FairwayPal',
+  title: 'Kiawah Island Golf Trip Planning Guide',
   description:
     'How to plan a Kiawah Island golf trip: the Ocean Course and 4 resort alternatives, real costs ($300–600/round), the Charleston day trip partner plan, and a full 4-day itinerary.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/kiawah-island-golf-trip' },
@@ -133,7 +132,7 @@ export default function KiawahIslandGolfTripPage() {
           <span>Destinations</span>
         </div>
 
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
 
         <div className="prose-article">
 

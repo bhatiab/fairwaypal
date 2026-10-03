@@ -2,12 +2,15 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import CheatSheet from '../../../src/components/CheatSheet'
+import UpdatedDate from '../../../src/components/UpdatedDate'
+import { CONTENT_DATES } from '../../../lib/content-dates'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
 
 export const metadata: Metadata = {
-  title: 'Bandon Dunes Golf Trip Guide — FairwayPal',
+  title: 'Bandon Dunes Golf Trip Guide',
   description:
     'Everything you need for a Bandon Dunes golf trip: best courses, partner activities, hotels near the courses, and a packing guide. Plan it in 5 minutes with FairwayPal.',
   alternates: { canonical: 'https://www.fairwaypal.com/destinations/bandon-dunes' },
@@ -22,7 +25,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/bandon-dunes' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations' },
     { '@type': 'ListItem', position: 3, name: 'Bandon Dunes', item: 'https://www.fairwaypal.com/destinations/bandon-dunes' },
   ],
 }
@@ -31,9 +34,9 @@ const destinationSchema = {
   '@context': 'https://schema.org',
   '@type': 'TouristDestination',
   name: 'Bandon Dunes, Oregon',
-  description:
-    'A true links golf pilgrimage on the rugged Oregon coast. World-class courses, no carts, pure golf.',
+  description: "Five world-class links courses on a remote Oregon coastline. Bandon is a golf pilgrimage, not a party destination — partners need to love the outdoors. If your group is serious about golf, there's nowhere better in America.",
   url: 'https://www.fairwaypal.com/destinations/bandon-dunes',
+  geo: { '@type': 'GeoCoordinates', latitude: 43.1879, longitude: -124.3933 },
   touristType: ['Golf', 'Groups'],
 }
 
@@ -110,6 +113,15 @@ export default function BandonDunesPage() {
         <p className="mt-2 text-sm text-ink-2">
           Best time to visit: <span className="text-gold">May — October</span> (summer links golf)
         </p>
+        <UpdatedDate date={CONTENT_DATES['/destinations/bandon-dunes']} />
+        <CheatSheet
+          rows={[
+            { label: "Typical cost", value: "$2,000 to $3,500 per person for 3 to 4 nights, including resort stay, 3 to 4 rounds, caddies and meals." },
+            { label: "Best time", value: "June to September is driest and warmest (55 to 65°F). May and October are cheaper but wetter." },
+            { label: "Top courses", value: "Bandon Dunes, Pacific Dunes, Bandon Trails, Old Macdonald, Sheep Ranch." },
+            { label: "For partners", value: "Primarily a golf destination. Beach walks, Bandon Marsh refuge, the town of Bandon, the resort spa." },
+          ]}
+        />
 
         <div className="mt-12 space-y-16">
           {/* -------------------------------------------------------- */}
@@ -279,26 +291,9 @@ export default function BandonDunesPage() {
               Bandon Dunes golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="How much does a golf trip to Bandon Dunes cost?"
-                answer="A Bandon Dunes golf trip typically costs $2,000–$3,500 per person for 3–4 nights, including resort accommodation, 3–4 rounds, caddie fees, and meals. Green fees are $125–$375 depending on the course and season. Caddie fees add $100–$130 per round (strongly recommended). Flights to North Bend/Coos Bay plus a shuttle or rental car add $300–$600."
-              />
-              <FaqItem
-                question="What is the best time of year to visit Bandon Dunes?"
-                answer="June through September offers the driest weather and warmest temperatures (55–65°F). July and August are peak season with the longest days. May and October are shoulder season with lower rates but more rain. The resort is open year-round, and winter rounds are possible but expect wind and rain."
-              />
-              <FaqItem
-                question="Do you need a caddie at Bandon Dunes?"
-                answer="Caddies are not required but strongly recommended, especially for first-time visitors. They know the blind shots, wind patterns, and hidden slopes that make links golf challenging. Caddie fees are $100–$130 per bag per round plus tip (typically 20–30%). Walking is required on all courses — no golf carts."
-              />
-              <FaqItem
-                question="What do non-golfers do at Bandon Dunes?"
-                answer="Bandon Dunes is primarily a golf destination, but partners can enjoy beach walks along the Oregon coast, the Bandon Marsh wildlife refuge, exploring the town of Bandon (galleries, shops, cranberry bogs), hiking at Bullards Beach State Park, the resort spa, and excellent dining at the resort restaurants. It is a quieter, nature-focused experience."
-              />
-              <FaqItem
-                question="How many courses are at Bandon Dunes?"
-                answer="Bandon Dunes Resort has six courses: Bandon Dunes (the original), Pacific Dunes (consistently ranked #1), Bandon Trails (woodland links), Old Macdonald (template holes), Sheep Ranch (clifftop, newest), and the Preserve (par-3 course). Most groups play 3–4 of the full courses plus the Preserve. Pacific Dunes and Sheep Ranch are the most requested."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'The Hidden Costs of a Golf Trip Nobody Warns You About | FairwayPal',
+  title: 'The Hidden Costs of a Golf Trip Nobody Warns You About',
   description: 'A friendly, honest catalogue of the golf trip costs that surprise organisers and groups every year. Resort fees, oversize bag charges, caddie tips, halfway house bills, forecaddie fees, the upgrade trap, and how to budget for them.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/hidden-costs-golf-trip' },
   openGraph: { title: 'The Hidden Costs of a Golf Trip Nobody Warns You About', description: 'The line items that surprise every golf trip organiser. Plan for them.' },
@@ -53,7 +51,7 @@ export default function HiddenCostsPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">The Hidden Costs of a Golf Trip Nobody Warns You About</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>9 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Every golf trip organiser eventually learns the same lesson: the sticker price is never the actual price. The headline budget covers green fees, hotels, and flights. The actual budget includes resort fees, oversize bag charges, caddies, forecaddies, halfway house, valet, the inevitable upgraded round, and the upgraded dinner that sounded like a great idea on day two. Across a 3-night premium trip, the gap can run $400 to $800 per person. Here is the friendly catalogue of what gets you, and how to plan around it.
         </p>
@@ -145,11 +143,9 @@ export default function HiddenCostsPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Hidden costs FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="What are the hidden costs of a golf trip?" answer="Resort fees, oversize bag fees, caddie tips, halfway house spend, bag drop tips, valet, forecaddie fees, the upgrade trap, gambling losses, premium dining. Across a 3-night premium trip, hidden costs add $400-800 per player." />
-              <FaqItem question="How much should I add to my budget?" answer="Add 15 to 25% to the headline budget. A $2,000 per person trip realistically costs $2,400 to $2,500." />
-              <FaqItem question="Why are resort fees so high?" answer="They are how hotels keep headline prices low on booking sites. Non-negotiable, non-waivable, $30-60/night at most premium golf resorts." />
-              <FaqItem question="Are caddies worth it?" answer="Yes at the marquee courses (Pebble, Pinehurst No. 2, the Old Course, Bandon). Real value: green reads, club selection, memorable experience." />
-              <FaqItem question="How do you avoid the upgrade trap?" answer="Decide upgrades at the planning stage in writing. Set an on-trip discretionary cap. Anything above the cap comes out of personal pockets, not group split." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

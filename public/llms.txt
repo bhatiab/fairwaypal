@@ -1,0 +1,56 @@
+# FairwayPal
+
+> FairwayPal (https://www.fairwaypal.com) is a free golf trip planner for groups. The organiser answers five questions (destination, dates, group size, budget per round, vibe) and FairwayPal generates a dual itinerary: a golf schedule for the players and a parallel plan for non-golfing partners, scheduled into the gaps when the golfers are on the course. One link goes to the group, everyone votes In or Out on each activity, and the organiser locks the trip. FairwayPal does not take bookings or payments; it links out to GolfNow, Expedia and GetYourGuide (some links are affiliate links). The site also publishes honest, partner-aware destination guides, month-by-month "where to golf" guides, and practical planning guides on budgets, logistics and group dynamics.
+
+## Destination guides
+
+- [Scottsdale, Arizona](https://www.fairwaypal.com/destinations/scottsdale): desert golf, Old Town, spa scene; best October to April
+- [Myrtle Beach, South Carolina](https://www.fairwaypal.com/destinations/myrtle-beach): best-value US beach golf
+- [Pinehurst, North Carolina](https://www.fairwaypal.com/destinations/pinehurst): Pinehurst No. 2 and a walkable village
+- [Bandon Dunes, Oregon](https://www.fairwaypal.com/destinations/bandon-dunes): walking-only links golf on the Pacific coast
+- [Pebble Beach, California](https://www.fairwaypal.com/destinations/pebble-beach): Monterey Peninsula and Carmel-by-the-Sea
+- [Kiawah Island, South Carolina](https://www.fairwaypal.com/destinations/kiawah-island): The Ocean Course plus Charleston
+- [Florida](https://www.fairwaypal.com/destinations/florida-golf): Streamsong, TPC Sawgrass, winter sun
+- [Scotland](https://www.fairwaypal.com/destinations/scotland): St Andrews, Carnoustie, Royal Dornoch
+- [Ireland](https://www.fairwaypal.com/destinations/ireland): Ballybunion, Lahinch, Old Head of Kinsale
+- [Algarve, Portugal](https://www.fairwaypal.com/destinations/algarve): European sun golf and sea caves
+- [All destinations](https://www.fairwaypal.com/destinations)
+
+## Month-by-month guides
+
+- [Best golf destinations in January](https://www.fairwaypal.com/blog/best-golf-destinations-january)
+- [Best golf destinations in February](https://www.fairwaypal.com/blog/best-golf-destinations-february)
+- [Best golf destinations in March](https://www.fairwaypal.com/blog/best-golf-destinations-march)
+- [Best golf destinations in April](https://www.fairwaypal.com/blog/best-golf-destinations-april)
+- [Best golf destinations in September](https://www.fairwaypal.com/blog/best-golf-destinations-september)
+- [Best golf destinations in October](https://www.fairwaypal.com/blog/best-golf-destinations-october)
+- [Best golf destinations in November](https://www.fairwaypal.com/blog/best-golf-destinations-november)
+
+## Planning guides
+
+- [How to plan a golf trip](https://www.fairwaypal.com/blog/how-to-plan-a-golf-trip)
+- [Golf trips with non-golfers](https://www.fairwaypal.com/blog/golf-trip-with-non-golfers)
+- [What to do on a golf trip if you don't golf](https://www.fairwaypal.com/blog/what-to-do-on-golf-trip-non-golfer)
+- [Golf trip budget breakdown](https://www.fairwaypal.com/blog/golf-trip-budget)
+- [Hidden costs of a golf trip](https://www.fairwaypal.com/blog/hidden-costs-golf-trip)
+- [How to split costs on a golf trip](https://www.fairwaypal.com/blog/how-to-split-costs-golf-trip)
+- [Tipping on a golf trip](https://www.fairwaypal.com/blog/golf-trip-tipping-guide)
+- [Golf trip flights and bag fees](https://www.fairwaypal.com/blog/golf-trip-flights-bag-fees)
+- [Shipping clubs vs flying with clubs](https://www.fairwaypal.com/blog/shipping-clubs-vs-flying-with-clubs)
+- [Golf trip packing list](https://www.fairwaypal.com/blog/golf-trip-packing-list)
+- [Golf trip group size: 4 vs 8 vs 12](https://www.fairwaypal.com/blog/golf-trip-group-size)
+- [3-night golf weekend schedule](https://www.fairwaypal.com/blog/golf-trip-weekend-schedule)
+- [Golf trip formats: Ryder Cup, Stableford, skins, Nassau](https://www.fairwaypal.com/blog/golf-trip-formats)
+- [Best golf trip apps and tools](https://www.fairwaypal.com/blog/best-golf-trip-apps)
+- [Why your group keeps cancelling the golf trip](https://www.fairwaypal.com/blog/why-your-group-keeps-cancelling-golf-trip)
+- [Best bachelor party golf destinations](https://www.fairwaypal.com/blog/best-bachelor-party-golf-destinations)
+- [40th and 50th birthday golf trip](https://www.fairwaypal.com/blog/40th-50th-birthday-golf-trip)
+- [Father-son golf trip](https://www.fairwaypal.com/blog/father-son-golf-trip)
+- [Couples golf trip where both play](https://www.fairwaypal.com/blog/couples-golf-trip-both-play)
+- [Your first-ever golf trip](https://www.fairwaypal.com/blog/first-ever-golf-trip)
+
+## Optional
+
+- [All guides (blog index)](https://www.fairwaypal.com/blog): includes destination comparisons (e.g. Scottsdale vs Myrtle Beach, Ireland vs Scotland) and partner guides for each destination
+- [Plan a trip](https://www.fairwaypal.com/plan)
+- [About FairwayPal](https://www.fairwaypal.com/about)

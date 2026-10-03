@@ -2,12 +2,15 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import CheatSheet from '../../../src/components/CheatSheet'
+import UpdatedDate from '../../../src/components/UpdatedDate'
+import { CONTENT_DATES } from '../../../lib/content-dates'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
 
 export const metadata: Metadata = {
-  title: 'Pinehurst Golf Trip Guide — FairwayPal',
+  title: 'Pinehurst Golf Trip Guide',
   description:
     'Everything you need for a Pinehurst golf trip: best courses, partner activities, hotels near the courses, and a packing guide. Plan it in 5 minutes with FairwayPal.',
   alternates: { canonical: 'https://www.fairwaypal.com/destinations/pinehurst' },
@@ -22,7 +25,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/pinehurst' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations' },
     { '@type': 'ListItem', position: 3, name: 'Pinehurst', item: 'https://www.fairwaypal.com/destinations/pinehurst' },
   ],
 }
@@ -31,9 +34,9 @@ const destinationSchema = {
   '@context': 'https://schema.org',
   '@type': 'TouristDestination',
   name: 'Pinehurst, North Carolina',
-  description:
-    'The cradle of American golf. Historic resort courses, a walkable village, and a partner scene built around Southern hospitality.',
+  description: "The cradle of American golf. Nine resort courses on one property, a charming village that's walkable in 20 minutes, and a pace of play that feels like a different era. Pinehurst is bucket-list territory done right.",
   url: 'https://www.fairwaypal.com/destinations/pinehurst',
+  geo: { '@type': 'GeoCoordinates', latitude: 35.1954, longitude: -79.4695 },
   touristType: ['Golf', 'Couples', 'Groups'],
 }
 
@@ -110,6 +113,15 @@ export default function PinehurstPage() {
         <p className="mt-2 text-sm text-ink-2">
           Best time to visit: <span className="text-gold">March — May, September — November</span> (mild temps, ideal conditions)
         </p>
+        <UpdatedDate date={CONTENT_DATES['/destinations/pinehurst']} />
+        <CheatSheet
+          rows={[
+            { label: "Typical cost", value: "$1,500 to $3,000 per person for 3 nights, including resort stay, 2 to 3 rounds and meals." },
+            { label: "Best time", value: "March to May and September to November (60 to 80°F). Summer is hot and humid." },
+            { label: "Top courses", value: "Pinehurst No. 2, Pinehurst No. 4, Pinehurst No. 8, plus Pine Needles, Mid Pines and Tobacco Road nearby." },
+            { label: "For partners", value: "A walkable village, the resort spa, tennis and croquet, the Tufts Archives, Seagrove pottery." },
+          ]}
+        />
 
         <div className="mt-12 space-y-16">
           {/* -------------------------------------------------------- */}
@@ -279,26 +291,9 @@ export default function PinehurstPage() {
               Pinehurst golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="How much does a golf trip to Pinehurst cost?"
-                answer="A Pinehurst golf trip typically costs $1,500–$3,000 per person for 3 nights, including resort accommodation, 2–3 rounds, and meals. Green fees range from $100 at public courses to $500+ for Pinehurst No. 2. Stay-and-play packages through the resort offer the best value and include preferred tee times."
-              />
-              <FaqItem
-                question="What is the best time of year to golf in Pinehurst?"
-                answer="March through May and September through November offer ideal conditions with temperatures between 60–80°F. Spring azalea blooms make the courses stunning. Summer is playable but hot and humid (85–95°F). Winter rounds are possible with temperatures around 45–60°F, and green fees drop significantly."
-              />
-              <FaqItem
-                question="Is Pinehurst No. 2 worth the price?"
-                answer="For serious golfers, absolutely. Pinehurst No. 2 is one of the most historically significant courses in the world, hosting multiple US Opens. The Donald Ross design features famously tricky crowned greens. Green fees are $500+ but include a caddie and a once-in-a-lifetime experience. Book through a resort package for better rates."
-              />
-              <FaqItem
-                question="What do non-golfers do in Pinehurst?"
-                answer="Pinehurst Village is charming and walkable with boutique shops, art galleries, and restaurants. Partners enjoy the resort spa, tennis and pickleball courts, croquet lawns, the Tufts Archives (golf history museum), horseback riding, and nearby Seagrove for pottery shopping. The village has a relaxed Southern hospitality vibe."
-              />
-              <FaqItem
-                question="How many courses does Pinehurst Resort have?"
-                answer="Pinehurst Resort has nine courses numbered 1 through 9, plus The Cradle (a 9-hole short course). No. 2 is the crown jewel and a US Open venue. No. 4 (Gil Hanse redesign) is excellent and more affordable. No. 8 is the newest full course. Most groups play No. 2 plus one or two others. The Cradle is a fun evening round."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

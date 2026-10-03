@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 5, 2026'
-
 export const metadata: Metadata = {
-  title: 'How Much Does a Golf Trip Cost? A Brutally Honest Budget Breakdown — FairwayPal',
+  title: 'How Much Does a Golf Trip Cost? A Brutally Honest Budget Breakdown',
   description:
     "Green fees, hotels, flights, food, beer. We break down the real cost of a golf trip — by destination and group size — so there are no surprises on the credit card statement.",
   alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-budget' },
@@ -121,7 +119,7 @@ export default function GolfTripBudgetPage() {
           <span>·</span>
           <span>8 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Someone in the group chat always asks. Everyone else immediately hedges. Here's the actual answer — broken down by destination, by cost bucket, and by spending tier — so the organiser has something concrete to share when the budget conversation comes up.
         </p>
@@ -362,26 +360,9 @@ export default function GolfTripBudgetPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Golf trip budget FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="How much does a golf trip cost per person?"
-                answer="A domestic US golf trip typically costs $900–2,500 per person for a 3-night trip. Myrtle Beach runs $900–1,500. Scottsdale runs $1,400–2,200. International (Scotland, Ireland) typically runs $2,500–4,000 per person for a 5-night trip including flights."
-              />
-              <FaqItem
-                question="What's a realistic budget for a golf weekend?"
-                answer="$1,000–1,500 is the practical sweet spot for most groups — covers 2 good rounds in Scottsdale or Myrtle Beach, a solid hotel or quality Airbnb, and group dinners out every night. Under $800 means real trade-offs. Over $2,000 means no compromises."
-              />
-              <FaqItem
-                question="Are international golf trips (Scotland, Ireland) worth the extra cost?"
-                answer="For the right group, yes. The experience gap is significant — playing St Andrews or the Old Head of Kinsale is genuinely different. The extra cost is mainly flights. European course fees are often lower than premium US courses. Worth it if the groom has bucket-list courses and the group can absorb the travel logistics."
-              />
-              <FaqItem
-                question="How do you split golf trip costs fairly?"
-                answer="Split shared costs (accommodation, group dinners) equally. Keep individual costs (green fees, optional activities) separate. Use Splitwise to track it. Agree the model before booking — the conversation is only awkward if you have it after the bill arrives."
-              />
-              <FaqItem
-                question="What's the cheapest US destination for a golf trip?"
-                answer="Myrtle Beach. 100+ courses from $40 off-peak. Combined with a shared Airbnb and cooking in for some meals, a 3-night trip for a group of 6 can come in under $900/person."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

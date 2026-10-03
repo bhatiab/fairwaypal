@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Bandon Dunes for Non-Golfers: A Partner\'s Guide | FairwayPal',
+  title: 'Bandon Dunes for Non-Golfers: A Partner\'s Guide',
   description:
     'A friendly, honest guide to Bandon Dunes for the partner who is not playing. The beaches, the state parks, the spa, Old Town Bandon, and the daily rhythm that makes a remote Oregon trip work for everyone.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/bandon-dunes-for-non-golfers' },
@@ -121,7 +119,7 @@ export default function BandonForNonGolfersPage() {
           <span>·</span>
           <span>10 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Bandon Dunes is one of the great pure-golf trips in the world, and it is also remote, weather-exposed, and built around the round. So if your partner is coming along and they do not play, the question is real: how do you turn this into a holiday for them too? The honest answer is that Bandon works beautifully for one specific type of partner, and not for another. Here is the friendly guide to figuring out which one you are travelling with, and if it is the right kind, exactly how to make the trip wonderful.
         </p>
@@ -318,30 +316,9 @@ export default function BandonForNonGolfersPage() {
               Bandon for non-golfers FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="Is Bandon Dunes a good destination for non-golfing partners?"
-                answer="Bandon works beautifully for partners who love wild beaches, hiking, wildlife, photography, and a quiet pace. It is the wrong choice for partners who want shopping, restaurant variety, or a sun-and-spa beach holiday. Be honest about your partner before you book."
-              />
-              <FaqItem
-                question="What is there to do in Bandon Oregon for non-golfers?"
-                answer="Beach walks at Bandon Beach and Coquille Point, Bullards Beach State Park and the Coquille River Lighthouse, the Bandon Marsh National Wildlife Refuge, Old Town Bandon for the Face Rock Creamery and galleries, and a 40 minute drive north to Shore Acres State Park and Cape Arago. Circles in the Sand (April to August) creates beautiful walkable labyrinths on the beach."
-              />
-              <FaqItem
-                question="Is there a spa at Bandon Dunes?"
-                answer="Yes. The Wellness Center at Bandon Dunes Resort offers massages and treatments. Bandon Woods next door operates a Shinrin-Yoku Spa. Booking 1 to 2 weeks ahead is wise in summer."
-              />
-              <FaqItem
-                question="How long should non-golfing partners stay in Bandon?"
-                answer="Three to four nights is the sweet spot. That gives you two beach days, one day at Shore Acres and Cape Arago, and one in Old Town Bandon. Five+ nights starts to feel slow unless you are specifically there for the quiet."
-              />
-              <FaqItem
-                question="Do you need a car at Bandon Dunes?"
-                answer="If your partner is going to leave the resort during the day, yes. The resort runs shuttles between courses but anything off-property requires a car or rideshare."
-              />
-              <FaqItem
-                question="When is the best time of year for partners to visit Bandon?"
-                answer="June through September is the driest and best for outdoor time. Late April and May add Circles in the Sand and bloom season. Avoid winter unless your partner specifically loves storm-watching."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

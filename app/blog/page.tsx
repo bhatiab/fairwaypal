@@ -4,7 +4,7 @@ import Navbar from '../../src/components/Navbar'
 import Footer from '../../src/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Golf Trip Planning Blog — FairwayPal',
+  title: 'Golf Trip Planning Blog',
   description:
     'Golf trip guides, destination breakdowns, packing lists, and budget breakdowns. Everything you need to plan a trip the group actually agrees on.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog' },

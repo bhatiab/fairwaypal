@@ -801,6 +801,12 @@ Content & SEO
 [x] Write blog post: "Bandon vs Pebble vs Kiawah golf trip"
 [x] Add FAQ sections with FAQPage schema to all destination guides
 [x] Fix internal-link orphans (Florida, Algarve, weak destination + blog links)
+[x] AI readability pass: robots.txt names AI crawlers, public/llms.txt, single-brand
+    titles, visible FAQ rendered from FAQPage schema, TouristDestination geo,
+    destination cheat sheets, "Updated" date from dateModified
+    (see docs/seo-ai-audit-2026-10.md)
+[ ] Add answer-first summary box to the 10 posts listed in docs/seo-ai-audit-2026-10.md
+[ ] Publish best-golf-destinations-december (draft in docs/drafts/), then May-Aug
 [ ] Add social proof to landing page (trips planned count, testimonials)
 
 Marketing Channels

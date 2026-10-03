@@ -2,12 +2,15 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import CheatSheet from '../../../src/components/CheatSheet'
+import UpdatedDate from '../../../src/components/UpdatedDate'
+import { CONTENT_DATES } from '../../../lib/content-dates'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
 
 export const metadata: Metadata = {
-  title: 'Florida Golf Trip Guide — Streamsong, TPC Sawgrass & More — FairwayPal',
+  title: 'Florida Golf Trip Guide — Streamsong, TPC Sawgrass & More',
   description:
     'The best golf trip destinations in Florida: Streamsong Resort, TPC Sawgrass, Innisbrook, and World Woods. Real costs, partner activities, and where to stay.',
   alternates: {
@@ -28,7 +31,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/florida-golf' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations' },
     { '@type': 'ListItem', position: 3, name: 'Florida Golf', item: 'https://www.fairwaypal.com/destinations/florida-golf' },
   ],
 }
@@ -37,9 +40,9 @@ const destinationSchema = {
   '@context': 'https://schema.org',
   '@type': 'TouristDestination',
   name: 'Florida, United States',
-  description:
-    'Florida is the closest thing the US has to a year-round golf destination. Streamsong Resort delivers world-class courses in the middle of phosphate country. TPC Sawgrass is an hour from Jacksonville and home to The Players Championship.',
+  description: "Florida is the closest thing the US has to a year-round golf destination. Streamsong Resort delivers three world-class designs in an unlikely setting — former phosphate mining land in central Florida. TPC Sawgrass is home to The Players Championship. Innisbrook has the Copperhead Course. World Woods has two Tom Fazio layouts for less than $130/round.",
   url: 'https://www.fairwaypal.com/destinations/florida-golf',
+  geo: { '@type': 'GeoCoordinates', latitude: 27.6648, longitude: -81.5158 },
   touristType: ['Golf', 'Groups', 'Winter Escape'],
 }
 
@@ -116,6 +119,15 @@ export default function FloridaGolfPage() {
         <p className="mt-2 text-sm text-ink-2">
           Best time to visit: <span className="text-gold">October — April</span> (ideal winter escape from northern cold)
         </p>
+        <UpdatedDate date={CONTENT_DATES['/destinations/florida-golf']} />
+        <CheatSheet
+          rows={[
+            { label: "Typical cost", value: "$900 to $1,800 per person for a 3-night weekend, depending on where you base." },
+            { label: "Best time", value: "October to April (60 to 75°F, low humidity). Summer is hot, humid and stormy." },
+            { label: "Top courses", value: "Streamsong (Black, Red, Blue), TPC Sawgrass Stadium Course, Innisbrook Copperhead, World Woods Pine Barrens." },
+            { label: "For partners", value: "Depends on the base: St. Augustine near Sawgrass, Ybor City and Tampa near Streamsong, theme parks from Orlando." },
+          ]}
+        />
 
         <div className="mt-12 space-y-16">
           {/* -------------------------------------------------------- */}
@@ -285,26 +297,9 @@ export default function FloridaGolfPage() {
               Florida golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="What is the best golf destination in Florida?"
-                answer="Streamsong Resort is the standout for a dedicated golf trip — three world-class courses (Red, Blue, Black) on one property. TPC Sawgrass is the most famous course in Florida. Innisbrook (Copperhead) and World Woods (Pine Barrens) are excellent value options."
-              />
-              <FaqItem
-                question="How much does a Florida golf trip cost?"
-                answer="A Florida golf trip costs $900–1,800 per person for a 3-night weekend. Streamsong runs $175–350 per round; TPC Sawgrass runs $250–400. World Woods is the best value at $80–130 for a Tom Fazio design. Resort accommodation adds $250–450/night at Streamsong."
-              />
-              <FaqItem
-                question="What is the best time of year for a Florida golf trip?"
-                answer="October through April. Florida is warm when the north is frozen — 60–75°F and low humidity. Summer is hot, humid, and has afternoon thunderstorms that frequently stop play. Green fees are lower in summer but the experience is inferior."
-              />
-              <FaqItem
-                question="What do non-golfers do on a Florida golf trip?"
-                answer="Near Streamsong (Tampa area): Gulf Coast beaches (90 min), Ybor City, Busch Gardens. Near TPC Sawgrass: St. Augustine historic district (45 min), Amelia Island beaches, Jacksonville Beach. Florida partner activities vary significantly by location — choose your base carefully."
-              />
-              <FaqItem
-                question="How does Florida compare to Scottsdale and Myrtle Beach?"
-                answer="Florida wins on winter availability and East Coast accessibility. Scottsdale has more course variety and a stronger partner scene. Myrtle Beach beats Florida on pure value — 90+ courses at lower green fees. Florida's advantage is Streamsong specifically — world-class course design without the Pebble Beach price tag."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 
