@@ -181,6 +181,7 @@ const SEASONAL = [
   { href: '/blog/best-golf-destinations-march', title: 'Best golf destinations in March' },
   { href: '/blog/best-golf-destinations-october', title: 'Best golf destinations in October' },
   { href: '/blog/best-golf-destinations-november', title: 'Best golf destinations in November' },
+  { href: '/blog/best-golf-destinations-december', title: 'Best golf destinations in December' },
 ]
 
 export default function DestinationsPage() {

@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Why Most Bachelor Golf Trips Suck (And How to Fix Yours) | FairwayPal',
+  title: 'Why Most Bachelor Golf Trips Suck (And How to Fix Yours)',
   description: 'An honest look at why most bachelor party golf trips end up underwhelming. The five real reasons, and the fixes that turn a forgettable weekend into a trip the groom actually remembers.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/why-most-bachelor-golf-trips-suck' },
   openGraph: { title: 'Why Most Bachelor Golf Trips Suck', description: 'The honest reasons most bachelor golf trips fall flat, and the fixes that work.' },
@@ -53,7 +51,7 @@ export default function WhyBachelorTripsSuckPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">Why Most Bachelor Golf Trips Suck (And How to Fix Yours)</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>9 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Most bachelor golf trips end up forgettable. Not bad, exactly. Just not the trip the groom imagined or the trip the group hyped in the months before. We have helped plan hundreds of these, and the disappointing ones tend to fail at the same five things. The trips that work address all five. Here is the honest breakdown and the fixes that actually move the needle.
         </p>
@@ -117,11 +115,9 @@ export default function WhyBachelorTripsSuckPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Bachelor golf trip FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="Why do most bachelor golf trips disappoint?" answer="Five reasons: wrong destination for the group, the strangers problem, over-formatted weekend, money never discussed, day 3 hangover compounds." />
-              <FaqItem question="What is the best destination for a bachelor golf trip?" answer="Match the destination to the group. Party-focused: Scottsdale or Vegas. Value: Myrtle Beach. Refined: Pinehurst or Kiawah. Skip Bandon for bachelor weekends." />
-              <FaqItem question="How big should a bachelor golf trip be?" answer="Six to ten. Eight is ideal: two foursomes, manageable house, single dinner reservation. Resist invite creep above 10." />
-              <FaqItem question="Should a bachelor golf trip be 3 or 4 nights?" answer="Three nights is the right length for most. Four nights doable but adds hangover risk." />
-              <FaqItem question="How do you handle the strangers problem?" answer="Introduce everyone in the group chat 1-2 weeks before. Pair foursomes with bridges. First dinner at one big table, not split." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

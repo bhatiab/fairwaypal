@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Scotland for Non-Golfers: A Partner\'s Guide | FairwayPal',
+  title: 'Scotland for Non-Golfers: A Partner\'s Guide',
   description:
     'A friendly, honest guide to Scotland for the partner who is not playing. St Andrews, Edinburgh, the Highlands, whisky country, the Fife Coastal Path, castles, and a daily rhythm that genuinely works.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/scotland-for-non-golfers' },
@@ -121,7 +119,7 @@ export default function ScotlandForNonGolfersPage() {
           <span>·</span>
           <span>11 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           A Scotland golf trip with non-golfing partners can be one of the great holidays of a lifetime, or it can be quietly disappointing. The difference is mostly about expectations and a little about logistics. Scotland is unusually rich for non-golfers (Edinburgh, distilleries, castles, Highlands, the Fife Coastal Path) but the weather, the pace, and the cost are very different from a beach holiday. Here is the friendly guide to making it wonderful.
         </p>
@@ -318,30 +316,9 @@ export default function ScotlandForNonGolfersPage() {
               Scotland for non-golfers FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="Is Scotland a good destination for non-golfing partners?"
-                answer="Yes, for partners who love history, castles, walking, whisky, and dramatic scenery. Edinburgh, the Fife Coastal Path, distilleries, castles, and the Highlands are all genuine highlights. The catch is the cool changeable weather and the slower pace."
-              />
-              <FaqItem
-                question="What is there to do for non-golfers?"
-                answer="A day in Edinburgh, Fife Coastal Path walks (Crail to Anstruther), St Andrews itself (cathedral ruins, castle, West Sands), distillery tours (Kingsbarns, Speyside, Islay), Highland day trips (Glencoe, Loch Ness), and castles like Falkland and Glamis."
-              />
-              <FaqItem
-                question="Should partners visit Edinburgh?"
-                answer="Yes, almost always. About 90 minutes south of St Andrews. A full day covers the Castle, Royal Mile, and the National Museum of Scotland. Some partners stay overnight or even base themselves in Edinburgh for the whole trip."
-              />
-              <FaqItem
-                question="Where are the best whisky distilleries?"
-                answer="Close to St Andrews: Kingsbarns (15 min) and Lindores Abbey (40 min). Speyside (2-3 hr drive): Glenfiddich, Macallan, Glenlivet. Islay (ferry from Kennacraig): peated whisky, requires 2-3 night side trip."
-              />
-              <FaqItem
-                question="How long should partners stay?"
-                answer="Five to seven nights is the sweet spot. Five covers St Andrews, an Edinburgh day, a Highland day, and a distillery half-day. Seven adds a longer Highland excursion or Islay side trip."
-              />
-              <FaqItem
-                question="What is the weather like?"
-                answer="Cool and changeable. May to September is the realistic window (12 to 20°C, mid 50s to upper 60s Fahrenheit). Rain is likely. Pack layers, waterproofs, and proper walking shoes."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

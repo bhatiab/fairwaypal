@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Pinehurst vs Pebble Beach for a Golf Trip: Which Should You Pick? | FairwayPal',
+  title: 'Pinehurst vs Pebble Beach for a Golf Trip: Which Should You Pick?',
   description:
     'Two of the great American bucket-list golf trips, compared honestly. Courses, costs, weather, partner experience, logistics, and a verdict by group type. Heritage and walkability versus iconic Pacific scenery.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/pinehurst-vs-pebble-beach-golf-trip' },
@@ -121,7 +119,7 @@ export default function PinehurstVsPebbleBeachPage() {
           <span>·</span>
           <span>10 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Pinehurst and Pebble Beach are both on the bucket list for a reason, and they offer very different American golf trips. One is the cradle of the game in the United States, walkable and traditional. The other is the most photographed finishing hole in golf, with one of the great little villages in California next door. If your group is debating between them, here is the friendly comparison so you can make the call.
         </p>
@@ -323,30 +321,9 @@ export default function PinehurstVsPebbleBeachPage() {
               Pinehurst vs Pebble Beach FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="Is Pinehurst or Pebble Beach better for a golf trip?"
-                answer="Both are great American golf trips, very different experiences. Pinehurst gives depth (nine courses on one walkable resort plus heritage). Pebble gives the iconic round at the most famous course in America with Carmel-by-the-Sea nearby for partners. Depth versus iconic."
-              />
-              <FaqItem
-                question="Is Pebble Beach more expensive than Pinehurst?"
-                answer="Yes, meaningfully. Pebble Links is $595-625 per round vs $350-500 at Pinehurst No. 2. The Lodge at Pebble is $900-1,800/night vs $300-600 at the Carolina Hotel. A 3 night trip lands at $1,500-3,000 per person at Pinehurst and $2,500-5,000 at Pebble."
-              />
-              <FaqItem
-                question="Which has better non-golf options for partners?"
-                answer="Pebble Beach. Carmel-by-the-Sea (galleries, beach, Mission), the Monterey Bay Aquarium, the 17-Mile Drive, Big Sur, and Carmel Valley wine country offer real variety. Pinehurst's village is charming but narrower."
-              />
-              <FaqItem
-                question="How many rounds in 3 nights?"
-                answer="Pinehurst: 3 to 4 rounds comfortable thanks to the on-resort layout. Pebble: 3 rounds comfortable, 4 doable but tighter because of drive times across the Monterey Peninsula."
-              />
-              <FaqItem
-                question="Which is easier to get to from the East Coast?"
-                answer="Pinehurst, by a long way. RDU is about 70 miles away with direct flights from most East Coast cities. Pebble is reached via MRY (small) or SFO/SJC (transcontinental flight + drive)."
-              />
-              <FaqItem
-                question="When is the best time to visit?"
-                answer="Pinehurst: March to May and September to November (60 to 80°F, low humidity). Pebble: May to October, with September and October giving the warmest clearest weather."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

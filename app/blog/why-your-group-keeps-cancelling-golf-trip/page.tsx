@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Why Your Group Keeps Cancelling the Golf Trip (and How to Fix It) | FairwayPal',
+  title: 'Why Your Group Keeps Cancelling the Golf Trip (and How to Fix It)',
   description:
     "An honest look at why most group golf trips quietly fall apart in the planning stage. The five real reasons, by a team that has watched dozens of them die in WhatsApp threads, and the simple fixes that actually work.",
   alternates: { canonical: 'https://www.fairwaypal.com/blog/why-your-group-keeps-cancelling-golf-trip' },
@@ -121,7 +119,7 @@ export default function WhyYourGroupKeepsCancellingPage() {
           <span>·</span>
           <span>9 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Every year, hundreds of group golf trips quietly die in WhatsApp threads. The conversation starts in February. It is enthusiastic. By March it is still going. By April the votes have shifted three times. By May someone's wife has plans that weekend. By June the chat goes quiet. By July someone says "next year for sure." There is no next year. We have watched this play out enough times to know it is not a scheduling problem. It is one of five very specific things going wrong, and they are all fixable. Here is the honest diagnosis and the fix for each.
         </p>
@@ -290,30 +288,9 @@ export default function WhyYourGroupKeepsCancellingPage() {
               Why golf trips fall apart FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="Why do most group golf trips fall apart in the planning stage?"
-                answer="Five reasons: decision fatigue, the partner problem, money silence, the open WhatsApp loop, and the missing organiser. Most cancelled trips have all five at once."
-              />
-              <FaqItem
-                question="How do you stop a golf trip from getting cancelled?"
-                answer="Set a hard deposit deadline 90 days out, have one explicit budget conversation at the start using the lowest stated ceiling, and designate one organiser with authority to make decisions."
-              />
-              <FaqItem
-                question="How long should planning take?"
-                answer="2-4 weeks if the organiser is decisive. 3-6 months if the group plans by committee. Trips that drag past 6 months tend to die."
-              />
-              <FaqItem
-                question="Why is the partner problem so common?"
-                answer="Most golf trip planning treats partners as an afterthought. The trip gets quietly vetoed at home. Plan the partner experience alongside the golf from day one."
-              />
-              <FaqItem
-                question="What is the right way to set a budget?"
-                answer="Each person privately names a per-person ceiling. Use the LOWEST number as the working budget, not the average. People who can spend more do so on optional upgrades."
-              />
-              <FaqItem
-                question="Should the organiser have final decision authority?"
-                answer="Yes, on logistics. The group agrees on the big strokes (destination, rough dates, budget). The organiser locks the smaller details. Trips that need consensus on everything die in the chat."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

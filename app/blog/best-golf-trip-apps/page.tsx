@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'The Best Golf Trip Apps and Tools (2026 Honest Guide) | FairwayPal',
+  title: 'The Best Golf Trip Apps and Tools (2026 Honest Guide)',
   description:
     'A friendly, honest guide to the apps and tools worth installing before a golf trip. Planning, group chat, cost-splitting, GPS, weather, booking, and shot tracking. What is free, what is worth paying for, and what to skip.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/best-golf-trip-apps' },
@@ -121,7 +119,7 @@ export default function BestGolfTripAppsPage() {
           <span>·</span>
           <span>9 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           The right apps make a golf trip dramatically easier; the wrong ones add three notification channels to ignore. Here is the honest 2026 guide to the apps and tools worth installing before you go, broken down by the part of the trip they actually help with. We have tried most of these on real trips, and we are calling out which are free, which are worth paying for, and which can be skipped.
         </p>
@@ -387,30 +385,9 @@ export default function BestGolfTripAppsPage() {
               Golf trip apps FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="What is the best app for planning a group golf trip?"
-                answer="FairwayPal is built specifically for this: 5 questions in, dual itinerary out, shareable link the group can vote on. The alternative is scattering the planning across WhatsApp, Google Docs, and a tee-time site."
-              />
-              <FaqItem
-                question="What is the best free golf GPS app?"
-                answer="Hole19. Free tier includes GPS yardages, scoring, and basic stats. Premium is $29.99/yr. 18Birdies and Golfshot are solid alternatives."
-              />
-              <FaqItem
-                question="How do you split costs on a golf trip?"
-                answer="Splitwise (most polished, $3/mo Pro), Tricount (fully free in 2026), or Settle Up (free, works offline). For US groups, Venmo or Zelle for the actual payment."
-              />
-              <FaqItem
-                question="Do you need a separate weather app?"
-                answer="A wind-and-precipitation app is more useful than the default. Windy is the standout, free with detailed wind forecasts. Worth installing for any links trip."
-              />
-              <FaqItem
-                question="What is Arccos and is it worth it?"
-                answer="Auto shot-tracking via grip sensors plus AI. Around $156/year. Worth it for serious golfers; overkill for once-a-year casual trips."
-              />
-              <FaqItem
-                question="What other tools should you have?"
-                answer="WhatsApp for the group chat, Google Maps with offline maps for remote venues, Apple/Google Wallet for boarding passes, the airline's app for live updates, and a tipping cash plan."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

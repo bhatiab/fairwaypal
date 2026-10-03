@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'The Best Golf Destinations in November (2026 Honest Guide) | FairwayPal',
+  title: 'The Best Golf Destinations in November (2026 Honest Guide)',
   description: 'A friendly, honest ranking of the best golf trip destinations for November. Scottsdale, Pinehurst, the Algarve, Florida, Kiawah, plus where to skip in November.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/best-golf-destinations-november' },
   openGraph: { title: 'The Best Golf Destinations in November', description: 'Honest ranking of where to go for a golf trip in November.' },
@@ -53,7 +51,7 @@ export default function BestGolfDestinationsNovemberPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">The Best Golf Destinations in November (2026 Honest Guide)</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>10 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           November is genuinely one of the most underrated months in golf travel. The summer heat is long gone in the US Sunbelt, the winter peak prices have not arrived, and a surprising number of premium destinations hit their absolute best weather of the year. The catch is Thanksgiving week, which spikes traffic and prices everywhere. Here is the friendly ranked guide to making the most of November.
         </p>
@@ -127,11 +125,9 @@ export default function BestGolfDestinationsNovemberPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">November golf destinations FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="What is the best place to play golf in November?" answer="Scottsdale (peak conditions, pre-winter pricing), Pinehurst (last great month), the Algarve (off-peak value), Florida, Kiawah, Myrtle Beach. Scottsdale is the best balanced pick." />
-              <FaqItem question="Is November a good time for a golf trip?" answer="Yes, underrated. Most destinations are at peak conditions with shoulder pricing. Avoid Thanksgiving week unless family-focused." />
-              <FaqItem question="Should I avoid Thanksgiving week?" answer="Yes for non-family groups. Hotel rates spike 30-50%, restaurants need 4-6 week reservations, courses busier. The week before and after is dramatically cheaper." />
-              <FaqItem question="Is the Algarve worth visiting in November?" answer="Yes, especially for value. 16-22°C, 40% below summer pricing, courses in great condition. Some rain risk; expect ~1 wet day in 5." />
-              <FaqItem question="Is November better than October?" answer="Depends. October wins for Pebble, Pinehurst, Algarve. November wins for Scottsdale and Florida. Both excellent." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>
@@ -144,6 +140,7 @@ export default function BestGolfDestinationsNovemberPage() {
               <RelatedPost href="/blog/how-to-plan-a-golf-trip" title="How to Plan a Golf Trip" description="The complete planning guide." />
               <RelatedPost href="/blog/golf-trip-budget" title="Golf Trip Budget Breakdown" description="What a golf trip actually costs by destination." />
               <RelatedPost href="/blog/algarve-vs-scotland-golf-trip" title="Algarve vs Scotland" description="The European decision; Algarve is the November answer." />
+              <RelatedPost href="/blog/best-golf-destinations-december" title="Best Golf Destinations in December" description="The month after, before January peak pricing lands." />
               <RelatedPost href="/blog/best-golf-destinations-january" title="Best Golf Destinations in January" description="The month after, when peak pricing arrives." />
               <RelatedPost href="/blog/best-golf-destinations-february" title="Best Golf Destinations in February" description="Peak winter weather, and the weeks that wreck the budget." />
             </div>

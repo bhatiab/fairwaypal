@@ -4,7 +4,7 @@ import Navbar from '../../src/components/Navbar'
 import Footer from '../../src/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Status & Navigation — FairwayPal',
+  title: 'Status & Navigation',
   description: 'Application status, feature inventory, and navigation map for FairwayPal.',
   alternates: { canonical: 'https://www.fairwaypal.com/status' },
 }

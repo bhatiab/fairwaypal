@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Scottsdale vs Pinehurst for a Golf Trip: Which Should You Pick? | FairwayPal',
+  title: 'Scottsdale vs Pinehurst for a Golf Trip: Which Should You Pick?',
   description: 'Sun and desert versus heritage and pine forest. Two of the great American golf trips compared honestly: courses, costs, weather, partner experience, logistics.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/scottsdale-vs-pinehurst-golf-trip' },
   openGraph: { title: 'Scottsdale vs Pinehurst: Which Should You Pick?', description: 'Sun and desert versus heritage and pine forest.' },
@@ -57,7 +55,7 @@ export default function ScottsdaleVsPinehurstPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">Scottsdale vs Pinehurst for a Golf Trip: Which Should You Pick?</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>9 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Two of America's most popular group golf trips, with almost no overlap in feel. Scottsdale is desert luxury, year-round sun, and the most polished urban partner scene of any US golf destination. Pinehurst is the cradle of the American game, walkable village charm, and Donald Ross history on tap. Here is the friendly comparison so your group can pick.
         </p>
@@ -121,11 +119,9 @@ export default function ScottsdaleVsPinehurstPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Scottsdale vs Pinehurst FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="Is Scottsdale or Pinehurst better for a golf trip?" answer="Both are great. Scottsdale: desert + urban Old Town + variety. Pinehurst: heritage + walkable village + No. 2." />
-              <FaqItem question="Which is more expensive?" answer="Roughly comparable. Pinehurst has higher marquee peak (No. 2 at $350-500) but value alternatives. Scottsdale is more consistent ($150-250 typical premium)." />
-              <FaqItem question="Which has better non-golf options?" answer="Scottsdale for partner variety (galleries, world-class spas, balloons, hiking, wine trail). Pinehurst for walkable charm." />
-              <FaqItem question="When is the best time to visit each?" answer="Scottsdale: Oct-April (avoid summer). Pinehurst: March-May and Sep-Nov. Both peak in November and March." />
-              <FaqItem question="Which is easier to fly into?" answer="Both very accessible. PHX is a large hub 20 min from Scottsdale. RDU is 70 miles from Pinehurst, with direct flights from most US cities." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

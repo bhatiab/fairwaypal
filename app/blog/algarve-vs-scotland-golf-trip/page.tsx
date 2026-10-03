@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Algarve vs Scotland for a Golf Trip: Which Should You Pick? | FairwayPal',
+  title: 'Algarve vs Scotland for a Golf Trip: Which Should You Pick?',
   description:
     'Europe\'s two big group-golf destinations, compared honestly. Courses, costs, weather, partner experience, and a verdict by group type. Sun and value in Portugal, or links and heritage in Scotland?',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/algarve-vs-scotland-golf-trip' },
@@ -121,7 +119,7 @@ export default function AlgarveVsScotlandPage() {
           <span>·</span>
           <span>11 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Europe gives you two wildly different golf trips, and most groups end up debating between them. The Algarve is sun, value, and a holiday wrapped around the golf. Scotland is the pilgrimage, the heritage, and the most famous links courses on earth. Here is the honest comparison so your group can stop circling and start booking.
         </p>
@@ -320,30 +318,9 @@ export default function AlgarveVsScotlandPage() {
               Algarve vs Scotland FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="Is the Algarve or Scotland better for a golf trip?"
-                answer="Both are wonderful, very different trips. Algarve wins on weather, value, and partner experience. Scotland wins on heritage, course quality, and the bucket-list pilgrimage feel. If your group is mixed and value matters, lean Algarve. If your group lives for links and wants the trip of a lifetime, lean Scotland."
-              />
-              <FaqItem
-                question="Is the Algarve cheaper than Scotland for a golf trip?"
-                answer="Yes, especially for groups of 6 or more. Algarve premium courses run €100 to €350 per round; a 4-night trip lands at €1,800 to €3,500 per person. Scotland is $2,500 to $5,000 per person for 5 to 7 nights from the US. Villa accommodation in the Algarve, splitting 8 to 10 ways, widens the gap further."
-              />
-              <FaqItem
-                question="Can you play the Old Course at St Andrews?"
-                answer="Yes. Most groups get on through the daily Old Course Ballot, run by St Andrews Links Trust. Enter online up to two days before play with names, home clubs, and handicaps. Results post by 4 PM. Handicap limit is 36 for both men and women. Authorised tour operators also hold reserved slots."
-              />
-              <FaqItem
-                question="When is the best time to visit?"
-                answer="Algarve: March to May and September to November (low humidity, uncrowded). Scotland: May to September (June and July offer 18 hours of daylight; late May and early September are quieter sweet spots)."
-              />
-              <FaqItem
-                question="Which is better for partners and non-golfers?"
-                answer="Algarve, comfortably. Beaches, sea-cave tours, Lagos, Tavira, seafood, and wine days give partners a real holiday. Scotland is wonderful for partners who love history, walking, and whisky, but the weather and pace are more demanding."
-              />
-              <FaqItem
-                question="How long should a Scotland or Algarve golf trip be?"
-                answer="Scotland: 5 to 7 nights for a focused St Andrews trip, 7 to 10 if you want to include Edinburgh or the Highlands. Algarve: 4 to 7 nights works well, balancing rounds with beach days."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'How to Split Costs on a Golf Trip Without Resentment | FairwayPal',
+  title: 'How to Split Costs on a Golf Trip Without Resentment',
   description:
     'Money is the most common reason golf trips blow up. A friendly, practical guide to splitting costs fairly: when to share, when to itemise, the apps that help, and the conversation that prevents 80% of fights.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/how-to-split-costs-golf-trip' },
@@ -121,7 +119,7 @@ export default function HowToSplitCostsPage() {
           <span>·</span>
           <span>9 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Money is the most common reason golf trips quietly blow up. Not the rounds, not the weather, not the partner who dropped out. Money. Specifically, the slow build of resentment when one person feels they paid for everyone else's drinks, or when the organiser ends up chasing seven Venmo requests for two months. Here is the friendly, practical playbook for splitting costs so the trip ends with handshakes instead of a group chat that goes silent.
         </p>
@@ -315,30 +313,9 @@ export default function HowToSplitCostsPage() {
               Splitting golf trip costs FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="What is the fairest way to split costs on a golf trip?"
-                answer="Split shared expenses equally (accommodation, the rental car, group dinners). Let everyone pay individually for things only they used (their green fees, their bar tab, their caddie tip). The shared-pot-plus-individual-line-items approach is fair because it stops heavier spenders being subsidised by lighter spenders."
-              />
-              <FaqItem
-                question="Should one person pay for everything and get reimbursed?"
-                answer="Only for small groups of 4 to 6 with predictable costs and a long-weekend trip. For longer trips or larger groups, use a shared expense app or split charges in real time. Chasing reimbursements becomes a part-time job otherwise."
-              />
-              <FaqItem
-                question="What is the best app for splitting golf trip costs?"
-                answer="Splitwise is most polished but the free tier has daily limits (Pro is around $3/month or $30/year). Tricount is fully free as of 2026 and excellent for one-off group trips. Settle Up has a generous free tier and works offline. For US groups, settle final amounts via Venmo or Zelle."
-              />
-              <FaqItem
-                question="How do you handle a group where some drink and gamble more than others?"
-                answer="Keep alcohol and gambling out of the shared pot. Make bar tabs individual at every venue, and run on-course gambling pools as their own settlement. Shared = things everyone benefits from. Individual = things people choose to buy. Mixing them is the most common source of trip resentment."
-              />
-              <FaqItem
-                question="When should you collect money up front?"
-                answer="Whenever you have non-refundable deposits: house rentals, group tee times, group transport, big group dinners. Collect at least the deposit amount before booking anything in your name. Use Venmo or Zelle, give a 7 day deadline, and follow up firmly."
-              />
-              <FaqItem
-                question="What if one person flies first class or stays an extra night?"
-                answer="Personal preferences are personal expenses. The shared pot covers the agreed baseline. Anyone who wants to upgrade pays the difference themselves. Establish the baseline early so this is a non-issue."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

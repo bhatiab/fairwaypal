@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Algarve vs Ireland for a Golf Trip: Which Should You Pick? | FairwayPal',
+  title: 'Algarve vs Ireland for a Golf Trip: Which Should You Pick?',
   description: 'Sun and value versus craic and links. Two of the great affordable European golf trips compared honestly. Courses, costs, weather, partner experience, and a verdict by group type.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/algarve-vs-ireland-golf-trip' },
   openGraph: { title: 'Algarve vs Ireland: Which Should You Pick?', description: 'Sun and value versus craic and links. Two affordable European golf trips compared.' },
@@ -53,7 +51,7 @@ export default function AlgarveVsIrelandPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">Algarve vs Ireland for a Golf Trip: Which Should You Pick?</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>10 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Both are genuinely affordable European golf trips. Both offer something Scotland cannot. But they are wildly different experiences: 300 days of Iberian sunshine versus 18 hours of Irish daylight, modern resort courses versus wild links, villa pool deck versus pub session. Here is the friendly comparison so your group can pick.
         </p>
@@ -125,11 +123,9 @@ export default function AlgarveVsIrelandPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Algarve vs Ireland FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="Is the Algarve or Ireland better for a golf trip?" answer="Both great affordable European trips, very different. Algarve: sun, value, modern resort golf. Ireland: wild links, craic, dramatic coast." />
-              <FaqItem question="Is the Algarve cheaper than Ireland?" answer="Comparable on individual line items. Algarve gets cheaper per-person at larger group sizes via villa rentals." />
-              <FaqItem question="Which has better weather?" answer="Algarve, by a long way. 300 days of sunshine vs Ireland's variable links weather with frequent rain." />
-              <FaqItem question="Which has better partner experience?" answer="Both genuinely partner-friendly. Algarve for sunshine + beach. Ireland for history + culture + walking." />
-              <FaqItem question="Which has better golf?" answer="Different kinds. Algarve has 40 modern resort courses with consistent conditioning. Ireland has wild authentic links with century-plus heritage." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Shipping Clubs vs Flying with Clubs: The Honest 2026 Numbers | FairwayPal',
+  title: 'Shipping Clubs vs Flying with Clubs: The Honest 2026 Numbers',
   description:
     'A friendly, honest breakdown of shipping golf clubs versus flying with them. Real airline bag fees, Ship Sticks and Luggage Forward pricing, when each option wins, and the gotchas nobody warns you about.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/shipping-clubs-vs-flying-with-clubs' },
@@ -121,7 +119,7 @@ export default function ShippingClubsVsFlyingPage() {
           <span>·</span>
           <span>9 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           For a long time the answer was easy: of course you fly with your clubs, that is what golfers do. Then airline bag fees crept up, oversize and overweight surcharges piled on, and Ship Sticks and Luggage Forward got really good at door-to-door delivery. In 2026 the math is genuinely different by carrier and by route, and a lot of groups are still defaulting to the old answer when shipping would be cheaper, faster at the airport, and less stressful. Here are the real numbers.
         </p>
@@ -350,30 +348,9 @@ export default function ShippingClubsVsFlyingPage() {
               Shipping vs flying with clubs FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="Is it cheaper to ship golf clubs or fly with them?"
-                answer="Depends on the airline. On American, Delta, and United, round-trip bag fees often equal or exceed door-to-door shipping ($160-300). Southwest is cheaper to fly with ($75 flat). Most groups end up shipping for the convenience even when costs are similar."
-              />
-              <FaqItem
-                question="How much does Ship Sticks cost?"
-                answer="$80-150 one-way domestic US, including $1,000 club insurance and end-of-day delivery guarantee. Add $200 delay protection at no extra cost."
-              />
-              <FaqItem
-                question="How much does Luggage Forward cost?"
-                answer="Similar to Ship Sticks domestically. International US-to-UK/EU runs $300-600+. Differentiator: double-money-back if late, 99% on-time delivery rate, $500 base insurance."
-              />
-              <FaqItem
-                question="Which airlines have the cheapest golf bag fees?"
-                answer="Southwest ($75 flat or sometimes free). American, Delta, United run $35-40 first bag plus $100-200 oversize fees if over 50 lbs. United requires pre-approval."
-              />
-              <FaqItem
-                question="When should you ship instead of fly?"
-                answer="Ship if: flying AA/Delta/United, bag is over 50 lbs, tight connection, want clubs at the resort on arrival, or going international. Fly if: on Southwest, direct flight you trust, or flying first class with bag included."
-              />
-              <FaqItem
-                question="How early should I ship clubs before a trip?"
-                answer="4-7 business days domestic, 7-10 days international plus 2-3 for customs. Schedule delivery 1-2 days before arrival. Print the return label before you fly."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

@@ -2,12 +2,15 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import CheatSheet from '../../../src/components/CheatSheet'
+import UpdatedDate from '../../../src/components/UpdatedDate'
+import { CONTENT_DATES } from '../../../lib/content-dates'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
 
 export const metadata: Metadata = {
-  title: 'Algarve Golf Trip Guide — Portugal Golf — FairwayPal',
+  title: 'Algarve Golf Trip Guide — Portugal Golf',
   description:
     'Everything you need for an Algarve golf trip: Monte Rei, Quinta do Lago, Vale do Lobo, real costs, partner activities, and where to stay in southern Portugal.',
   alternates: {
@@ -29,7 +32,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/algarve' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations' },
     { '@type': 'ListItem', position: 3, name: 'Algarve, Portugal', item: 'https://www.fairwaypal.com/destinations/algarve' },
   ],
 }
@@ -38,9 +41,9 @@ const destinationSchema = {
   '@context': 'https://schema.org',
   '@type': 'TouristDestination',
   name: 'Algarve, Portugal',
-  description:
-    'Europe\'s premier golf destination. 300 days of sunshine per year, world-class courses from Monte Rei to Quinta do Lago, and a partner scene built around sea caves, seafood, and Atlantic beaches.',
+  description: "Europe&#39;s premier golf destination. 300 days of sunshine per year, Monte Rei and Quinta do Lago among the top 100 European courses, and a partner programme built around sea caves, Atlantic beaches, and some of the best seafood on the continent. The Algarve is what Scottsdale is to the US — the default international group golf trip — for good reason.",
   url: 'https://www.fairwaypal.com/destinations/algarve',
+  geo: { '@type': 'GeoCoordinates', latitude: 37.0179, longitude: -7.9304 },
   touristType: ['Golf', 'Couples', 'International', 'Groups'],
 }
 
@@ -117,6 +120,15 @@ export default function AlgarvePage() {
         <p className="mt-2 text-sm text-ink-2">
           Best time to visit: <span className="text-gold">March — May, September — November</span> (ideal temps, uncrowded courses)
         </p>
+        <UpdatedDate date={CONTENT_DATES['/destinations/algarve']} />
+        <CheatSheet
+          rows={[
+            { label: "Typical cost", value: "€1,800 to €3,500 per person for a 4-night trip, depending on courses and accommodation." },
+            { label: "Best time", value: "March to May and September to November (18 to 25°C, uncrowded). October is a standout. July and August are hot and busy." },
+            { label: "Top courses", value: "Monte Rei, Quinta do Lago (South), San Lorenzo, Vale do Lobo (Royal)." },
+            { label: "For partners", value: "Ponta da Piedade sea cave tours near Lagos, Barlavento beaches, old towns, long seafood lunches." },
+          ]}
+        />
 
         <div className="mt-12 space-y-16">
           {/* -------------------------------------------------------- */}
@@ -286,26 +298,9 @@ export default function AlgarvePage() {
               Algarve golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="How much does an Algarve golf trip cost?"
-                answer="An Algarve golf trip typically costs €1,800–3,500 per person for a 4-night trip. Monte Rei runs €200–350 per round; Quinta do Lago South runs €150–250. Mid-range courses like Quinta da Ria run €50–80. A private villa for 8 costs €500–1,200/night — split cost makes Portugal very competitive versus UK alternatives."
-              />
-              <FaqItem
-                question="What is the best time of year to golf in the Algarve?"
-                answer="March through May and September through November. October is particularly good: warm (20–25°C), quiet, and the courses are in their best post-summer condition. Summer is hot (30–38°C) with crowded courses and peak hotel prices. Winter is mild but the Atlantic can be rough."
-              />
-              <FaqItem
-                question="What is the best golf course in the Algarve?"
-                answer="Monte Rei is the consensus best — Jack Nicklaus design on clifftops, only 27 tee times per day, consistently top 100 in Europe. Quinta do Lago South is the most prestigious resort course. San Lorenzo is the most scenic. Vale do Lobo Royal is the most playable for mixed-ability groups."
-              />
-              <FaqItem
-                question="What do non-golfers do in the Algarve?"
-                answer="The Ponta da Piedade sea cave tours (kayak or boat, near Lagos) are spectacular and unique. Atlantic beaches along the Barlavento coast are among the best in Europe. Lagos old town is charming. The Alentejo wine day trip (90 min north) is excellent. Partners in the Algarve are rarely bored."
-              />
-              <FaqItem
-                question="Is the Algarve better than Scotland or Ireland for golf?"
-                answer="The Algarve wins on weather, partner activities, and villa accommodation value. Scotland and Ireland win on links course quality and golf heritage. Groups where the partner experience matters equally should prefer the Algarve. Groups who want pure links golf should choose Scotland or Ireland. The combined trip — Algarve for sun, Scotland for links — is increasingly popular."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

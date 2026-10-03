@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Bandon Dunes vs Pebble Beach vs Kiawah Island: The Premium Triple Compared | FairwayPal',
+  title: 'Bandon Dunes vs Pebble Beach vs Kiawah Island: The Premium Triple Compared',
   description: 'Three of the most expensive golf trips in the United States, compared honestly. Pacific links pilgrimage versus iconic Pacific bucket-list versus East Coast Ocean Course. Verdict by group type.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/bandon-vs-pebble-vs-kiawah-golf-trip' },
   openGraph: { title: 'Bandon vs Pebble vs Kiawah: The Premium Triple', description: 'Three of the great American bucket-list golf trips compared.' },
@@ -53,7 +51,7 @@ export default function TriplePremiumPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">Bandon Dunes vs Pebble Beach vs Kiawah Island: The Premium Triple Compared</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>10 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Three of the most expensive golf trips in the United States. All three are bucket-list. None of them feel anything like each other. Bandon is a remote Oregon links pilgrimage. Pebble is the iconic Pacific bucket-list. Kiawah is the East Coast resort with the Ocean Course and Charleston nearby. Here is the friendly three-way comparison so your group can pick.
         </p>
@@ -126,11 +124,9 @@ export default function TriplePremiumPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Bandon vs Pebble vs Kiawah FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="Which is the best US bucket-list resort?" answer="Different answers by group. Bandon: pure-golf depth. Pebble: iconic round. Kiawah: best mixed-group bucket-list with Charleston nearby." />
-              <FaqItem question="Which is most expensive?" answer="Pebble ($2,500-5,000 for 3 nights). Kiawah second ($1,800-3,500). Bandon cheapest ($2,000-3,500 for 3-4 nights)." />
-              <FaqItem question="Which has best partner experience?" answer="Pebble (Carmel + Aquarium + Big Sur), close second Kiawah (Charleston + Sanctuary). Bandon is partner-thin." />
-              <FaqItem question="Which has easiest tee time access?" answer="Bandon (resort booking). Kiawah moderate. Pebble Links hardest (book 60 days out for non-guests; resort guests 18 months ahead)." />
-              <FaqItem question="How long should each trip be?" answer="Bandon: 3-4 nights. Pebble: 3 nights. Kiawah: 3-5 nights." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

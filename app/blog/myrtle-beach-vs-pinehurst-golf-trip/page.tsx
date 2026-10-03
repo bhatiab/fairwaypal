@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Myrtle Beach vs Pinehurst for a Golf Trip: Which Should You Pick? | FairwayPal',
+  title: 'Myrtle Beach vs Pinehurst for a Golf Trip: Which Should You Pick?',
   description: 'Carolina value versus Carolina prestige. Two of the great Southeast US golf trips compared honestly: courses, costs, weather, partner experience, and a verdict by group type.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/myrtle-beach-vs-pinehurst-golf-trip' },
   openGraph: { title: 'Myrtle Beach vs Pinehurst: Which Should You Pick?', description: 'Carolina value versus Carolina prestige. Volume and beach versus heritage and walkable village.' },
@@ -57,7 +55,7 @@ export default function MyrtleVsPinehurstPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">Myrtle Beach vs Pinehurst for a Golf Trip: Which Should You Pick?</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>9 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Both in the Carolinas, both great golf trips, almost no overlap in what they offer. Myrtle Beach is volume, beach, and the best value in US golf. Pinehurst is heritage, walkability, and the cradle of the American game. Here is the friendly comparison so your group can stop debating and start booking.
         </p>
@@ -123,11 +121,9 @@ export default function MyrtleVsPinehurstPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Myrtle Beach vs Pinehurst FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="Is Myrtle Beach or Pinehurst better for a golf trip?" answer="Both great Carolina trips, very different. Myrtle Beach gives volume + beach + value. Pinehurst gives heritage + walkable village. Match to group preference." />
-              <FaqItem question="Is Myrtle Beach cheaper than Pinehurst?" answer="Yes, meaningfully. $900-1,500 per person for 3 nights at Myrtle Beach vs $1,500-3,000 at Pinehurst. ~$600 per person gap." />
-              <FaqItem question="Which is better for non-golfers?" answer="Myrtle Beach for beach + casual. Pinehurst for refined village + Tufts Archives + Spa at Pinehurst. Pick by partner preference." />
-              <FaqItem question="Which has more course variety?" answer="Myrtle Beach by volume (100+ courses). Pinehurst by concentration of quality (9 resort courses plus Pine Needles, Mid Pines)." />
-              <FaqItem question="Which is closer to fly into?" answer="Both easy. MYR is 5-15 min from Grand Strand hotels. RDU is 70-75 miles from Pinehurst (~80 min). RDU has more nationwide direct connections; MYR is more direct from many Northeast cities in season." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

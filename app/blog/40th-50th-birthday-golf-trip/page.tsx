@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'The 40th and 50th Birthday Golf Trip: An Honest Planning Guide | FairwayPal',
+  title: 'The 40th and 50th Birthday Golf Trip: An Honest Planning Guide',
   description: 'A friendly guide to planning a milestone-birthday golf trip for a 40th or 50th. Picking the right destination, group size, format, and the touches that make it feel like a real celebration.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/40th-50th-birthday-golf-trip' },
   openGraph: { title: 'The 40th and 50th Birthday Golf Trip', description: 'A planning guide for the milestone-birthday golf trip that will stand out.' },
@@ -57,7 +55,7 @@ export default function MilestoneBirthdayGolfTripPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">The 40th and 50th Birthday Golf Trip: An Honest Planning Guide</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>9 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           A milestone-birthday golf trip is not just a longer weekend. It is a memorable thing for the guest of honour, often the trip they have been imagining for years. The planning is more careful, the destination needs to feel right, and the small touches matter. Here is the friendly guide to making it a celebration that lives up to it.
         </p>
@@ -129,11 +127,9 @@ export default function MilestoneBirthdayGolfTripPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Milestone-birthday golf trip FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="What is a good destination for a milestone-birthday trip?" answer="Pebble Beach, Pinehurst, Bandon Dunes, Scotland, Ireland, or the Algarve depending on the celebrant. Pick something that feels different from a regular weekend." />
-              <FaqItem question="How big should the group be?" answer="Six to twelve. Eight is genuinely ideal. The celebrant invites; not a normal democratic planning process." />
-              <FaqItem question="How long should the trip be?" answer="Three to five nights for US trips. Five to seven for international (Scotland, Ireland)." />
-              <FaqItem question="Should the guest of honour pay for the trip?" answer="Two clean models: group absorbs the celebrant's share (bachelor-party model in reverse), or everyone pays their own way and the group buys one or two specific gift moments. Avoid mixing the two." />
-              <FaqItem question="What touches make it feel like a celebration?" answer="A private dinner with toast and small commemorative gift. One memorable big experience (private clinic, hot air balloon, distillery tasting). A no-phones moment for the celebration photo." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

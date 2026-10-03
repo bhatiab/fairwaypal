@@ -3,13 +3,16 @@ import Link from 'next/link'
 import { Suspense } from 'react'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import CheatSheet from '../../../src/components/CheatSheet'
+import UpdatedDate from '../../../src/components/UpdatedDate'
+import { CONTENT_DATES } from '../../../lib/content-dates'
 import PlanClient from '../../plan/_client'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
 
 export const metadata: Metadata = {
-  title: 'Scottsdale Golf Trip Guide — FairwayPal',
+  title: 'Scottsdale Golf Trip Guide',
   description:
     'Everything you need for a Scottsdale golf trip: best courses, partner activities, hotels near the courses, and a packing guide. Plan it in 5 minutes with FairwayPal.',
   alternates: { canonical: 'https://www.fairwaypal.com/destinations/scottsdale' },
@@ -24,7 +27,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/scottsdale' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations' },
     { '@type': 'ListItem', position: 3, name: 'Scottsdale', item: 'https://www.fairwaypal.com/destinations/scottsdale' },
   ],
 }
@@ -33,9 +36,9 @@ const destinationSchema = {
   '@context': 'https://schema.org',
   '@type': 'TouristDestination',
   name: 'Scottsdale, Arizona',
-  description:
-    '200+ courses within an hour, year-round sun, and a partner scene that goes well beyond sitting at the bar. Scottsdale is the default bachelor golf weekend for a reason.',
+  description: "200+ courses within an hour, year-round sun, and a partner scene that goes well beyond sitting at the bar. Scottsdale is the default bachelor golf weekend for a reason.",
   url: 'https://www.fairwaypal.com/destinations/scottsdale',
+  geo: { '@type': 'GeoCoordinates', latitude: 33.4942, longitude: -111.9261 },
   touristType: ['Golf', 'Couples', 'Groups'],
 }
 
@@ -154,6 +157,15 @@ export default function ScottsdalePage() {
         <p className="mt-2 text-sm text-ink-2">
           Best time to visit: <span className="text-gold">October — April</span> (avoid summer heat)
         </p>
+        <UpdatedDate date={CONTENT_DATES['/destinations/scottsdale']} />
+        <CheatSheet
+          rows={[
+            { label: "Typical cost", value: "$1,200 to $2,500 per person for a 3-night weekend, including flights, hotel, 2 to 3 rounds and meals." },
+            { label: "Best time", value: "October to April. November and March balance weather and price; January and February are busiest and priciest. Avoid June to September." },
+            { label: "Top courses", value: "Troon North (Monument), TPC Scottsdale (Stadium), We-Ko-Pa (Saguaro)." },
+            { label: "For partners", value: "Old Town, resort spas, Desert Botanical Garden, hot air balloon rides, the Scottsdale Wine Trail." },
+          ]}
+        />
 
         <div className="mt-12 space-y-16">
           {/* -------------------------------------------------------- */}
@@ -371,38 +383,9 @@ export default function ScottsdalePage() {
               Scottsdale golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="How much does a golf trip to Scottsdale cost?"
-                answer="A Scottsdale golf trip typically costs $1,200–$2,500 per person for a 3-night weekend, including flights, hotel, 2–3 rounds, and meals. Green fees range from $45 at municipal courses to $350+ at TPC Scottsdale. Group house rentals can cut accommodation costs significantly."
-              />
-              <FaqItem
-                question="What is the best time of year to golf in Scottsdale?"
-                answer="October through April is peak golf season with temperatures between 65–85°F. January and February are the busiest (and most expensive) months due to the Waste Management Open. November and March offer the best balance of weather and pricing. Avoid June through September when temperatures exceed 110°F."
-              />
-              <FaqItem
-                question="What do non-golfers do in Scottsdale?"
-                answer="Scottsdale has a strong partner scene: Old Town shopping and galleries, spa days at world-class resorts (Joya Spa, Well & Being), Desert Botanical Garden, hot air balloon rides over the Sonoran Desert, the Scottsdale Wine Trail (15+ tasting rooms), Camelback Mountain hiking, and excellent dining throughout Old Town."
-              />
-              <FaqItem
-                question="How many rounds can you fit in a Scottsdale weekend?"
-                answer="Most groups play 2–3 rounds in a 3-night trip. A typical schedule: arrive Thursday, play Friday AM and Saturday AM, optional Sunday twilight round before flying home. Desert courses play faster than you expect (4–4.5 hours). Early tee times (7–8 AM) beat the heat and leave afternoons free."
-              />
-              <FaqItem
-                question="Is Scottsdale good for a bachelor golf trip?"
-                answer="Scottsdale is the most popular bachelor golf destination in the US. The combination of 200+ courses, Old Town nightlife, pool scene at hotels like Hotel Valley Ho, and year-round sunshine makes it ideal for groups of 4–12. Book courses and restaurants well in advance during peak season."
-              />
-              <FaqItem
-                question="How far apart are the golf courses and partner activities in this itinerary?"
-                answer="North Scottsdale courses like Troon North and TPC Scottsdale sit noticeably farther from Old Town than the walking-distance partner activities there, so plan on a drive between rounds and the Old Town scene. Papago Golf Course, closer to central Scottsdale, pairs more easily with a low-key final day."
-              />
-              <FaqItem
-                question="Does this 3-day schedule leave partners with a full free day?"
-                answer="Yes. While golfers play morning rounds each day, partners have the full afternoon free for spa time, Old Town, or the Desert Botanical Garden, with everyone reconnecting for group dinners in the evening."
-              />
-              <FaqItem
-                question="Can this itinerary work with fewer golfers or more nights?"
-                answer="Yes. The 3-day structure scales down easily to a 2-day weekend by dropping the twilight round, or extends to 4-5 nights by adding a second premium course. Use the planner above to generate a version sized to your actual group and dates."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

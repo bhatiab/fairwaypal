@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Golf Trip Formats: Ryder Cup, Stableford, Skins, Nassau (And When to Use Each) | FairwayPal',
+  title: 'Golf Trip Formats: Ryder Cup, Stableford, Skins, Nassau (And When to Use Each)',
   description: 'A friendly guide to the golf trip formats that actually work for groups. Ryder Cup, Nassau, Stableford, skins, Wolf, scrambles. The rules, the strategy, and which format fits which kind of group.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-formats' },
   openGraph: { title: 'Golf Trip Formats: Ryder Cup, Stableford, Skins, Nassau', description: 'The rules, strategy, and which format fits which group.' },
@@ -58,7 +56,7 @@ export default function GolfTripFormatsPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">Golf Trip Formats: Ryder Cup, Stableford, Skins, Nassau</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>10 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           The right format turns a group of friends into a competition with stakes; the wrong format turns it into a long week of demoralising stroke play with someone quietly checking out by the third hole. Here is the friendly guide to the formats that actually work for golf trips, when to use each, and how to set them up so the rounds stay fun.
         </p>
@@ -158,12 +156,9 @@ export default function GolfTripFormatsPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Golf trip formats FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="What is the best golf format for a group trip?" answer="Depends on size and skill spread. 8-12 multi-day: Ryder Cup. 4-8 mixed skill: Stableford team. 4 similar skill: Nassau. Mixed-skill foursome: scramble. Casual fun: skins." />
-              <FaqItem question="How do you handicap a Nassau?" answer="Full handicap difference, with strokes given on the hardest-rated holes. For team Nassau (better ball), each player plays their own ball with handicap strokes; team takes lower score per hole." />
-              <FaqItem question="What is Stableford and how does scoring work?" answer="Points-based: bogey 1, par 2, birdie 3, eagle 4, double or worse 0 (with handicap strokes). Most points wins. Modified Stableford rewards aggression: birdie 2, eagle 5, par 0, bogey -1, double or worse -3." />
-              <FaqItem question="How does a skins game work?" answer="Each hole has a pot. Lowest score wins the pot. Ties carry over to the next hole. Carryovers compound dramatically over 18 holes." />
-              <FaqItem question="What is the Ryder Cup format?" answer="Two teams across multiple days: foursomes (alternate shot), four-ball (better ball), singles (head to head). Total points wins. Best for 8-12 player multi-day trips." />
-              <FaqItem question="What format works best for mixed-skill groups?" answer="Stableford with full handicap, better ball, or scramble. Avoid stroke play with big handicap gaps." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

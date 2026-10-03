@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Planning a Couples Golf Trip Where Both Play (Honest Guide) | FairwayPal',
+  title: 'Planning a Couples Golf Trip Where Both Play (Honest Guide)',
   description: 'A friendly, honest guide to planning a couples golf trip where both partners play. Pick the right destination by skill spread, the format question, the romance versus competition balance, and the dynamics nobody warns you about.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/couples-golf-trip-both-play' },
   openGraph: { title: 'Planning a Couples Golf Trip Where Both Play', description: 'How to plan a golf trip when you and your partner both play.' },
@@ -53,7 +51,7 @@ export default function CouplesGolfTripPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">Planning a Couples Golf Trip Where Both Play</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>9 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Two-player golf trips where both partners play are different from buddies trips. The dynamics are smaller, the expectations are higher, and the same planning instincts that make a buddies trip great can quietly make a couples trip worse. Here is the honest guide to planning a trip where both of you play and both of you actually enjoy yourselves.
         </p>
@@ -126,11 +124,9 @@ export default function CouplesGolfTripPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Couples golf trip FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="What is the best destination for a couples golf trip?" answer="Pebble Beach (romantic bucket-list), Pinehurst (walkable village), the Algarve (sun-and-villa value), Kiawah Island (relaxed resort). Avoid Bandon unless both love links." />
-              <FaqItem question="How do you handle a big handicap gap?" answer="Different tees, fair format (scramble or full-handicap better-ball), pick courses that are challenging but not punishing. Both partners need to enjoy the round." />
-              <FaqItem question="Should a couples trip be all golf or mixed?" answer="Mixed. 18 holes per day with afternoon downtime, dinner together, one rest day in the middle. 36-hole days are for buddies trips." />
-              <FaqItem question="How long should a couples golf trip be?" answer="Four to seven nights. Three is too short. Four is sweet spot. Five to seven for international." />
-              <FaqItem question="Should you keep score and play matches?" answer="Depends on the couple. Ask explicitly before round one. Both answers are fine; assuming is the mistake." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

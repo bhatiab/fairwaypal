@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'August 31, 2026'
-
 export const metadata: Metadata = {
-  title: 'The Best Golf Destinations in January (2027 Honest Guide) | FairwayPal',
+  title: 'The Best Golf Destinations in January (2027 Honest Guide)',
   description: 'An honest ranking of the best golf trip destinations for January. Scottsdale, Florida, Palm Springs, Cabo, the Algarve, plus where to skip and how to survive peak pricing.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/best-golf-destinations-january' },
   openGraph: { title: 'The Best Golf Destinations in January', description: 'Honest ranking of where to go for a golf trip in January, and what it will actually cost.' },
@@ -53,7 +51,7 @@ export default function BestGolfDestinationsJanuaryPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">The Best Golf Destinations in January (2027 Honest Guide)</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>August 31, 2026</span><span>·</span><span>10 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           January is the month the golf map shrinks. Most of the northern hemisphere is closed or miserable, which means everyone who still wants to play is competing for the same handful of warm destinations, at the same time, at the highest prices of the year. That is the honest framing. The good news is that the short list is genuinely excellent, and there are two or three specific timing tricks that take a serious bite out of the cost.
         </p>
@@ -121,11 +119,9 @@ export default function BestGolfDestinationsJanuaryPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">January golf destinations FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="What is the best place to play golf in January?" answer="Cabo San Lucas for pure weather, Palm Springs for reliability and volume, Scottsdale for infrastructure, South Florida for East Coast access, the Algarve for value. Cabo is the best conditions pick." />
-              <FaqItem question="Is January an expensive month for a golf trip?" answer="Yes, one of the two most expensive alongside February. Expect 30-50% above November rates at the same courses. Go the second week of January, or go to the Algarve." />
-              <FaqItem question="Is Scottsdale good for golf in January?" answer="Good golf, cold mornings, peak prices. Highs of 65-70°F but lows in the low 40s. Book 9 or 10 AM tee times, not 7 AM. November is much better value for similar golf." />
-              <FaqItem question="Can you play golf in the Algarve in January?" answer="Yes, and it is the best value anywhere this month. 16-17°C and prices at their annual floor, but it is the wettest month. Budget to lose a round to weather." />
-              <FaqItem question="Should I avoid New Year week?" answer="Yes, unless the trip is the celebration. December 28 to January 3 is the most expensive week of the winter with multi-night minimums. The second week is far cheaper for identical weather." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>
@@ -138,6 +134,7 @@ export default function BestGolfDestinationsJanuaryPage() {
               <RelatedPost href="/blog/golf-trip-budget" title="Golf Trip Budget Breakdown" description="What a golf trip actually costs by destination." />
               <RelatedPost href="/blog/hidden-costs-golf-trip" title="Hidden Costs of a Golf Trip" description="The peak-season surcharges nobody prices in." />
               <RelatedPost href="/blog/golf-trip-with-non-golfers" title="Golf Trips With Non-Golfers" description="What partners do in the desert and in Florida." />
+              <RelatedPost href="/blog/best-golf-destinations-december" title="Best Golf Destinations in December" description="The month before, and the cheaper early-winter window." />
             </div>
           </section>
         </div>

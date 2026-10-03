@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'August 31, 2026'
-
 export const metadata: Metadata = {
-  title: 'The Best Golf Destinations in February (2027 Honest Guide) | FairwayPal',
+  title: 'The Best Golf Destinations in February (2027 Honest Guide)',
   description: 'An honest ranking of the best golf trip destinations for February, including the three tournament and holiday weeks that wreck pricing if you book blind.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/best-golf-destinations-february' },
   openGraph: { title: 'The Best Golf Destinations in February', description: 'Honest ranking of where to go for a golf trip in February, and the weeks to avoid.' },
@@ -53,7 +51,7 @@ export default function BestGolfDestinationsFebruaryPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">The Best Golf Destinations in February (2027 Honest Guide)</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>August 31, 2026</span><span>·</span><span>10 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           February is the best golf weather of the winter and one of the worst months to book carelessly. The destinations are largely the same as January but warmer and more settled, especially in the mornings. What changes is the calendar. Three separate weeks in February send prices through the roof for reasons that have nothing to do with the weather, and a group that books blind can end up paying double for an identical trip. Get the week right and February is close to perfect.
         </p>
@@ -131,11 +129,9 @@ export default function BestGolfDestinationsFebruaryPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">February golf destinations FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="What is the best place to play golf in February?" answer="Scottsdale for the best US weather, Palm Springs for value, Cabo for warmth, South Florida for reliability, the Algarve for price. Which week you pick matters more than which destination." />
-              <FaqItem question="Should I avoid Scottsdale during the WM Phoenix Open?" answer="Yes, unless the tournament is the trip. Rates run two to three times normal, restaurants book out, and the Stadium Course is closed to public play. Shift a week either side." />
-              <FaqItem question="Is February better than January?" answer="For weather, yes, almost everywhere: warmer mornings, no frost delays, drier. For price, no. It is the other peak month, and three weeks in it are worse than January." />
-              <FaqItem question="Is Presidents Day weekend bad for a golf trip?" answer="One of the three weeks to plan around. Rates up 30-40%, three-night minimums, full tee sheets. The weekend after is one of the best-value windows of the winter." />
-              <FaqItem question="Where is the cheapest golf trip in February?" answer="The Algarve, and it is better in February than January. 17-18°C, less rain, off-peak rates. A week there can cost less than a long weekend in Scottsdale." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

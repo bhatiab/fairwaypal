@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Kiawah Island for Non-Golfers: A Partner\'s Guide | FairwayPal',
+  title: 'Kiawah Island for Non-Golfers: A Partner\'s Guide',
   description:
     'A friendly, honest guide to Kiawah Island for the partner who is not playing. The Sanctuary spa, 10 miles of Atlantic beach, kayaking the tidal creeks, biking the maritime forest, and a Charleston day trip 25 miles away.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/kiawah-island-for-non-golfers' },
@@ -121,7 +119,7 @@ export default function KiawahForNonGolfersPage() {
           <span>·</span>
           <span>10 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Kiawah Island is, frankly, one of the easier yes votes you will ever ask a non-golfing partner for. It pairs 10 miles of Atlantic beach and a genuinely world-class spa with one of the best mid-sized cities in the United States 25 miles up the road. The combination of beach, spa, nature, and Charleston is unusually generous for a bucket-list golf destination, and it works for nearly every kind of partner. Here is the friendly guide to making the most of it.
         </p>
@@ -321,30 +319,9 @@ export default function KiawahForNonGolfersPage() {
               Kiawah Island for non-golfers FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="Is Kiawah Island a good destination for non-golfing partners?"
-                answer="Yes, very. Beach, spa, kayaking, biking, birding, and Charleston 25 miles away. One of the most partner-friendly bucket-list golf destinations in the US."
-              />
-              <FaqItem
-                question="What is there to do at Kiawah for non-golfers?"
-                answer="The Sanctuary spa, beach days along 10 miles of Atlantic coast, kayaking the tidal creeks, biking 30+ miles of maritime forest paths, birding, and a Charleston day trip for the historic district, harbour tours, and dinner."
-              />
-              <FaqItem
-                question="Is The Sanctuary spa worth booking?"
-                answer="Yes, especially for partners who like a proper resort spa. 10,000 sq ft, 15 treatment rooms, ocean-inspired menu. Book 2-3 weeks ahead in peak season."
-              />
-              <FaqItem
-                question="How far is Charleston from Kiawah?"
-                answer="About 25 miles to downtown, 35-45 minutes by car. Easy drive, parking widely available in the historic district."
-              />
-              <FaqItem
-                question="How long should partners stay?"
-                answer="Three to five nights is the sweet spot. Three covers a beach day, the spa, and one Charleston day. Four to five adds plantation tours, more beach time, and a possible second Charleston day."
-              />
-              <FaqItem
-                question="When is the best time of year for partners?"
-                answer="March-May and September-November (65-80°F, low humidity, firm beaches). Spring brings garden blooms, fall brings warm days and cool evenings."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 
@@ -359,11 +336,6 @@ export default function KiawahForNonGolfersPage() {
                 href="/destinations/kiawah-island"
                 title="Kiawah Island Destination Guide"
                 description="The full golf-side guide: courses, hotels, partner activities, and packing."
-              />
-              <RelatedPost
-                href="/blog/kiawah-island-golf-trip"
-                title="Kiawah Island Golf Trip Guide"
-                description="The Ocean Course, four secondary courses, and a Charleston-paired plan."
               />
               <RelatedPost
                 href="/blog/pinehurst-vs-kiawah-island-golf-trip"

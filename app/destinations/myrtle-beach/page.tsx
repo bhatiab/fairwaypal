@@ -2,12 +2,15 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import CheatSheet from '../../../src/components/CheatSheet'
+import UpdatedDate from '../../../src/components/UpdatedDate'
+import { CONTENT_DATES } from '../../../lib/content-dates'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
 
 export const metadata: Metadata = {
-  title: 'Myrtle Beach Golf Trip Guide — FairwayPal',
+  title: 'Myrtle Beach Golf Trip Guide',
   description:
     'Everything you need for a Myrtle Beach golf trip: best courses, partner activities, hotels near the courses, and a packing guide. Plan it in 5 minutes with FairwayPal.',
   alternates: { canonical: 'https://www.fairwaypal.com/destinations/myrtle-beach' },
@@ -22,7 +25,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/myrtle-beach' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations' },
     { '@type': 'ListItem', position: 3, name: 'Myrtle Beach', item: 'https://www.fairwaypal.com/destinations/myrtle-beach' },
   ],
 }
@@ -31,9 +34,9 @@ const destinationSchema = {
   '@context': 'https://schema.org',
   '@type': 'TouristDestination',
   name: 'Myrtle Beach, South Carolina',
-  description:
-    'The Grand Strand offers 100+ courses, budget-friendly group packages, and a boardwalk scene for partners.',
+  description: "100+ courses within 30 miles, a boardwalk that keeps partners busy all day, and prices that won't kill the group chat. Myrtle Beach is where bachelor golf weekends go to become legends.",
   url: 'https://www.fairwaypal.com/destinations/myrtle-beach',
+  geo: { '@type': 'GeoCoordinates', latitude: 33.6891, longitude: -78.8867 },
   touristType: ['Golf', 'Couples', 'Groups'],
 }
 
@@ -110,6 +113,15 @@ export default function MyrtleBeachPage() {
         <p className="mt-2 text-sm text-ink-2">
           Best time to visit: <span className="text-gold">March — May, September — November</span> (avoid summer humidity)
         </p>
+        <UpdatedDate date={CONTENT_DATES['/destinations/myrtle-beach']} />
+        <CheatSheet
+          rows={[
+            { label: "Typical cost", value: "$800 to $1,800 per person for a 3-night weekend, including flights, hotel, 3 to 4 rounds and meals." },
+            { label: "Best time", value: "March to May and September to November (65 to 80°F). Summer has the lowest green fees but is hot and humid." },
+            { label: "Top courses", value: "Caledonia Golf & Fish Club, TPC Myrtle Beach, Barefoot Resort (Dye Course)." },
+            { label: "For partners", value: "The Boardwalk and SkyWheel, Brookgreen Gardens, Tanger Outlets, 60 miles of beach, the Marshwalk in Murrells Inlet." },
+          ]}
+        />
 
         <div className="mt-12 space-y-16">
           {/* -------------------------------------------------------- */}
@@ -279,26 +291,9 @@ export default function MyrtleBeachPage() {
               Myrtle Beach golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="How much does a golf trip to Myrtle Beach cost?"
-                answer="A Myrtle Beach golf trip typically costs $800–$1,800 per person for a 3-night weekend, including flights, hotel, 3–4 rounds, and meals. Myrtle Beach is one of the most affordable golf destinations in the US with green fees from $30 at public courses to $180 at top clubs like Caledonia. Package deals through golf groups can save 20–30%."
-              />
-              <FaqItem
-                question="What is the best time of year to golf in Myrtle Beach?"
-                answer="March through May and September through November are ideal, with temperatures between 65–80°F. Spring is peak season with the best course conditions. Summer is hot and humid but offers the lowest green fees. Winter rounds are possible but temperatures can dip to 45–55°F."
-              />
-              <FaqItem
-                question="How many golf courses are in Myrtle Beach?"
-                answer="The Grand Strand has over 100 golf courses within a 60-mile stretch, making it the highest concentration of golf courses in the US. Courses range from budget-friendly municipal layouts to championship designs by Fazio, Dye, and Nicklaus. Most are within 30 minutes of each other."
-              />
-              <FaqItem
-                question="What do non-golfers do in Myrtle Beach?"
-                answer="Partners love the Myrtle Beach Boardwalk and SkyWheel, outlet shopping at Tanger Outlets, Brookgreen Gardens (sculpture and wildlife), spa days at resort hotels, beach time (60 miles of coastline), dinner at The Marshwalk in Murrells Inlet, and Barefoot Landing for entertainment and dining."
-              />
-              <FaqItem
-                question="Is Myrtle Beach good for a group golf trip?"
-                answer="Myrtle Beach is arguably the best value group golf destination in the US. Most courses offer group rates for 8+ players. Condo rentals near the courses sleep 4–8 and are cheaper than hotels. The mix of 100+ courses means every budget and skill level is covered. Book package deals through local operators for the best rates."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

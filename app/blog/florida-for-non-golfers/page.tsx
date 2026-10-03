@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Florida for Non-Golfers: A Partner\'s Guide | FairwayPal',
+  title: 'Florida for Non-Golfers: A Partner\'s Guide',
   description:
     'A friendly, honest guide to Florida for the partner who is not playing. Different golf bases give different partner experiences: Streamsong (rural), TPC Sawgrass (St. Augustine + beaches), Innisbrook (Tampa + Gulf), Orlando (theme parks).',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/florida-for-non-golfers' },
@@ -58,7 +56,7 @@ export default function FloridaForNonGolfersPage() {
         <p className="eyebrow">The FairwayPal Blog</p>
         <h1 className="mt-3 text-4xl font-display font-light italic leading-tight text-foreground sm:text-5xl lg:text-6xl">Florida for Non-Golfers: A Partner's Guide</h1>
         <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"><span>May 6, 2026</span><span>·</span><span>10 min read</span></div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Florida is the closest thing the US has to a year-round golf destination. The catch for partners is that Florida is huge, and the four main golf bases give very different partner experiences. Streamsong is a remote phosphate-country resort. TPC Sawgrass sits next to one of the oldest cities in America. Innisbrook is on the Tampa-area Gulf. Orlando is, well, Orlando. The trick to making a Florida golf trip work for partners is picking the right base. Here is the friendly guide.
         </p>
@@ -147,11 +145,9 @@ export default function FloridaForNonGolfersPage() {
             <p className="eyebrow">Common Questions</p>
             <h2 className="mt-2 text-3xl font-display font-light text-foreground">Florida for non-golfers FAQ</h2>
             <div className="mt-6 space-y-4">
-              <FaqItem question="Is Florida a good destination for non-golfing partners?" answer="It depends on the base. TPC Sawgrass / Ponte Vedra is the best (St. Augustine + Atlantic beaches). Innisbrook is second (Tampa + Gulf). Streamsong is partner-thin. Orlando is theme parks." />
-              <FaqItem question="What is there to do for non-golfers?" answer="Depends on base. Near TPC Sawgrass: St. Augustine, Amelia Island. Near Innisbrook: Tarpon Springs, Clearwater, Tampa, St. Pete. Near Streamsong: rural, spa-and-pool. Orlando: theme parks." />
-              <FaqItem question="Which Florida base is best for partners?" answer="TPC Sawgrass / Ponte Vedra Beach. Sits between St. Augustine and Amelia Island, with Jacksonville Beach next door. Best balance of golf and partner experience." />
-              <FaqItem question="Is St. Augustine worth visiting from TPC Sawgrass?" answer="Yes. Oldest US city (founded 1565). Castillo de San Marcos, Flagler College, cobblestone Spanish Quarter. Plan a full day. 45 minutes from TPC Sawgrass." />
-              <FaqItem question="When is the best time of year?" answer="October to April for central and northern Florida (65-80°F, low humidity). Avoid May to September: hot, humid, daily thunderstorms. Hurricane risk peaks August to October." />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
           <section>

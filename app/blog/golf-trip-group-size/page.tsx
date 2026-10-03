@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 5, 2026'
-
 export const metadata: Metadata = {
-  title: 'Golf Trip Group Size Guide: 4 vs 8 vs 12 Players — FairwayPal',
+  title: 'Golf Trip Group Size Guide: 4 vs 8 vs 12 Players',
   description:
     'How group size affects tee times, accommodation, costs, and social dynamics on a golf trip. Why 8 is the sweet spot — and what to do if you have 4 or 12.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-group-size' },
@@ -131,7 +129,7 @@ export default function GolfTripGroupSizePage() {
           <span>Planning</span>
         </div>
 
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
 
         <div className="prose-article">
 

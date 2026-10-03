@@ -2,12 +2,15 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import CheatSheet from '../../../src/components/CheatSheet'
+import UpdatedDate from '../../../src/components/UpdatedDate'
+import { CONTENT_DATES } from '../../../lib/content-dates'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
 
 export const metadata: Metadata = {
-  title: 'Ireland Golf Trip Guide — FairwayPal',
+  title: 'Ireland Golf Trip Guide',
   description:
     'Everything you need for an Ireland golf trip: best links courses, partner activities, hotels near the courses, and a packing guide. Plan it in 5 minutes with FairwayPal.',
   alternates: {
@@ -29,7 +32,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/ireland' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations' },
     { '@type': 'ListItem', position: 3, name: 'Ireland', item: 'https://www.fairwaypal.com/destinations/ireland' },
   ],
 }
@@ -38,9 +41,9 @@ const destinationSchema = {
   '@context': 'https://schema.org',
   '@type': 'TouristDestination',
   name: 'Ireland',
-  description:
-    'Wild links courses on dramatic coastlines, pubs with live music, and some of the friendliest people in golf. Ireland is the group trip that bonds a crew for life.',
+  description: "Wild links courses on dramatic coastlines, pubs with live music, and some of the friendliest people in golf. Ireland is the group trip that bonds a crew for life.",
   url: 'https://www.fairwaypal.com/destinations/ireland',
+  geo: { '@type': 'GeoCoordinates', latitude: 53.4129, longitude: -8.2439 },
   touristType: ['Golf', 'Couples', 'Groups'],
 }
 
@@ -117,6 +120,15 @@ export default function IrelandPage() {
         <p className="mt-2 text-sm text-ink-2">
           Best time to visit: <span className="text-gold">May — September</span> (warmest, longest days)
         </p>
+        <UpdatedDate date={CONTENT_DATES['/destinations/ireland']} />
+        <CheatSheet
+          rows={[
+            { label: "Typical cost", value: "$2,000 to $4,500 per person for 5 to 7 nights, including flights from the US East Coast, 4 to 5 rounds, car hire and meals." },
+            { label: "Best time", value: "May to September. July and August are warmest; May and June have the longest days. Pack waterproofs in any month." },
+            { label: "Top courses", value: "Ballybunion (Old), Lahinch, Old Head of Kinsale, Waterville." },
+            { label: "For partners", value: "Cliffs of Moher, Ring of Kerry, Killarney National Park, Galway and Dublin pubs, Dingle, distillery tours." },
+          ]}
+        />
 
         <div className="mt-12 space-y-16">
           {/* -------------------------------------------------------- */}
@@ -286,26 +298,9 @@ export default function IrelandPage() {
               Ireland golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="How much does a golf trip to Ireland cost?"
-                answer="An Ireland golf trip typically costs $2,000–$4,500 per person for 5–7 nights, including flights from the US East Coast, accommodation, 4–5 rounds, car hire, and meals. Southwest Ireland (Kerry/Clare) tends to be slightly cheaper than the northern routes. Green fees range from $80 at hidden gems to $350+ at top championship links."
-              />
-              <FaqItem
-                question="What is the best time of year to golf in Ireland?"
-                answer="May through September is the best window, with July and August offering the warmest temperatures (55–65°F). May and June have the longest daylight hours. Rain is possible year-round, so waterproofs are essential regardless of when you go. Shoulder months (April and October) offer lower prices but shorter days."
-              />
-              <FaqItem
-                question="Should I rent a car for an Ireland golf trip?"
-                answer="Yes, a rental car is strongly recommended. Many of the best courses (Ballybunion, Lahinch, Waterville) are in rural areas without public transport. Drive on the left side. Book an automatic if you prefer — manuals are the default in Ireland. Budget $40–$60/day for a mid-size car. One designated driver per day keeps things simple."
-              />
-              <FaqItem
-                question="What do non-golfers do in Ireland?"
-                answer="Ireland has plenty for partners: the Cliffs of Moher, Ring of Kerry scenic drive, Killarney National Park, pub crawls in Galway and Dublin, spa days at resort hotels, Dingle Peninsula exploration, traditional music sessions, whiskey distillery tours (Jameson, Midleton), and shopping in Kinsale — Ireland's gourmet capital."
-              />
-              <FaqItem
-                question="What are the must-play courses in Ireland?"
-                answer="The top courses most groups include are: Ballybunion Old Course (wild Kerry links), Lahinch (next to the Cliffs of Moher), Old Head of Kinsale (clifftop drama), Waterville (remote and spectacular), and Tralee (Arnold Palmer design with ocean views). For Northern Ireland, Royal County Down and Royal Portrush are bucket-list courses."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

@@ -4,11 +4,10 @@ import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
-
-const LAST_UPDATED = 'May 5, 2026'
+import CheatSheet from '../../../src/components/CheatSheet'
 
 export const metadata: Metadata = {
-  title: 'Golf Weekend Itinerary Template: 3-Night Schedule — FairwayPal',
+  title: 'Golf Weekend Itinerary Template: 3-Night Schedule',
   description:
     'A complete 3-night golf weekend schedule — tee times, meals, partner activities, and a day-by-day template you can use for any destination. Golfer and partner columns side by side.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-weekend-schedule' },
@@ -131,13 +130,21 @@ export default function GolfTripWeekendSchedulePage() {
           <span>Planning</span>
         </div>
 
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
 
         <div className="prose-article">
 
           <p className="text-lg text-muted-foreground leading-8 mt-0">
             Most golf trip schedules are built backwards — the organiser books tee times, then figures out everything else around them. This template starts with the full picture: golf and partner activities side by side, meals planned, and the logic behind each timing decision explained. Copy it for any destination. Or at the end, let FairwayPal build one for your specific trip in 5 minutes.
           </p>
+          <CheatSheet
+            rows={[
+              { label: "The shape", value: "Arrive Thursday evening, leave Sunday afternoon." },
+              { label: "How much golf", value: "2 to 3 rounds. Three for a serious group, two for a relaxed one." },
+              { label: "Tee times", value: "7:30 to 8:30 AM: cooler, quieter, and done by early afternoon." },
+              { label: "Partners", value: "A full day programme that does not depend on the golfers, booked at the same time as the tee times, plus one shared Saturday dinner." },
+            ]}
+          />
 
           {/* The framework */}
           <h2>The Framework: What Makes a Good Golf Weekend</h2>

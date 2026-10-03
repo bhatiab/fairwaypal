@@ -2,12 +2,15 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
+import CheatSheet from '../../../src/components/CheatSheet'
+import UpdatedDate from '../../../src/components/UpdatedDate'
+import { CONTENT_DATES } from '../../../lib/content-dates'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
 
 export const metadata: Metadata = {
-  title: 'Scotland Golf Trip Guide — FairwayPal',
+  title: 'Scotland Golf Trip Guide',
   description:
     'Everything you need for a Scotland golf trip: best links courses, partner activities, hotels near St Andrews, and a packing guide. Plan it in 5 minutes with FairwayPal.',
   alternates: {
@@ -29,7 +32,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.fairwaypal.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations/scotland' },
+    { '@type': 'ListItem', position: 2, name: 'Destinations', item: 'https://www.fairwaypal.com/destinations' },
     { '@type': 'ListItem', position: 3, name: 'Scotland', item: 'https://www.fairwaypal.com/destinations/scotland' },
   ],
 }
@@ -38,9 +41,9 @@ const destinationSchema = {
   '@context': 'https://schema.org',
   '@type': 'TouristDestination',
   name: 'Scotland',
-  description:
-    'The birthplace of golf. St Andrews, links courses along the coast, whisky distilleries, and castles. Scotland is the bucket-list golf trip.',
+  description: "The birthplace of golf. St Andrews, links courses along the coast, whisky distilleries, and castles. Scotland is the bucket-list golf trip that every group talks about for years.",
   url: 'https://www.fairwaypal.com/destinations/scotland',
+  geo: { '@type': 'GeoCoordinates', latitude: 56.4907, longitude: -4.2026 },
   touristType: ['Golf', 'Couples', 'Groups'],
 }
 
@@ -117,6 +120,15 @@ export default function ScotlandPage() {
         <p className="mt-2 text-sm text-ink-2">
           Best time to visit: <span className="text-gold">May — September</span> (longest days, mildest weather)
         </p>
+        <UpdatedDate date={CONTENT_DATES['/destinations/scotland']} />
+        <CheatSheet
+          rows={[
+            { label: "Typical cost", value: "$2,500 to $5,000 per person for 5 to 7 nights, including flights from the US, 4 to 5 rounds, stay and meals." },
+            { label: "Best time", value: "May to September. June and July have the longest days; late May and early September are a little cheaper. Avoid November to March." },
+            { label: "Top courses", value: "St Andrews Old Course, Kingsbarns, Carnoustie, Royal Dornoch, North Berwick." },
+            { label: "For partners", value: "Whisky distilleries, Edinburgh Castle and the Royal Mile, the Fife Coastal Path, St Andrews town, Highland day trips." },
+          ]}
+        />
 
         <div className="mt-12 space-y-16">
           {/* -------------------------------------------------------- */}
@@ -286,26 +298,9 @@ export default function ScotlandPage() {
               Scotland golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="How much does a golf trip to Scotland cost?"
-                answer="A Scotland golf trip typically costs $2,500–$5,000 per person for 5–7 nights, including flights from the US, accommodation, 4–5 rounds, and meals. Budget trips staying in B&Bs and playing lesser-known links can come in under $2,000. Playing the Old Course at St Andrews adds $250–$300 for the green fee alone."
-              />
-              <FaqItem
-                question="What is the best time of year to golf in Scotland?"
-                answer="May through September offers the best weather, with June and July providing the longest daylight hours (up to 18 hours). Late May and early September offer slightly lower prices with still-good conditions. Avoid November through March when many courses have limited hours and weather is harsh."
-              />
-              <FaqItem
-                question="Can you play the Old Course at St Andrews?"
-                answer="Yes, but access requires planning. You can enter the daily ballot (lottery) the day before, book through an authorised tour operator, or secure a tee time through the St Andrews Links Trust website when they open bookings. Having a handicap certificate is required. The ballot is free to enter and results are posted by 4pm."
-              />
-              <FaqItem
-                question="What do non-golfers do in Scotland?"
-                answer="Scotland offers whisky distillery tours (Speyside and Islay are famous regions), Edinburgh Castle and the Royal Mile, coastal walks along the Fife Coastal Path, spa days at resort hotels, St Andrews town exploration with shops and restaurants, and Highland day trips to see castles and dramatic scenery."
-              />
-              <FaqItem
-                question="How many days do you need for a Scotland golf trip?"
-                answer="Most groups do 5–7 nights. A focused St Andrews trip works in 5 nights with 3–4 rounds. To include Edinburgh, the Highlands, or courses like Turnberry and Royal Dornoch, plan for 7–10 nights. Factor in jet lag recovery on day one if flying from the US."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

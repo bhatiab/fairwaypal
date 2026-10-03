@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Tipping on a Golf Trip: The Complete Guide | FairwayPal',
+  title: 'Tipping on a Golf Trip: The Complete Guide',
   description:
     'A friendly, honest guide to tipping on a golf trip. Caddies, bag drops, halfway-house attendants, valet, and dinner servers, with country-by-country guidelines for the US, Scotland, Ireland, and Portugal.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-tipping-guide' },
@@ -121,7 +119,7 @@ export default function GolfTripTippingGuidePage() {
           <span>·</span>
           <span>9 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Tipping is the awkward part of any golf trip. The caddie has handed back your putter and is waiting; you are pretending to look for something in your bag. Different countries, different venues, different services, and nobody really wants to ask. Here is the friendly, no-awkwardness guide so you arrive knowing exactly what to do, what to carry, and roughly how much to budget.
         </p>
@@ -306,30 +304,9 @@ export default function GolfTripTippingGuidePage() {
               Golf trip tipping FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="How much should you tip a caddie?"
-                answer="US: 30 to 50% of the fee, often $40 to $80 cash. Scotland: 20 to 30%, typically £25 to £50. Ireland: 20 to 30%, €20 to €40. Portugal: smaller, €10 to €25. Always cash, paid directly. Ask the caddie master if unsure."
-              />
-              <FaqItem
-                question="Do you tip in Scotland and the UK?"
-                answer="Yes, but more modestly than the US. Caddies 20-30% on top of fee, bag drop £2-5/bag, restaurants 10-15% if not already a service charge. Bar drinks are not tipped."
-              />
-              <FaqItem
-                question="How much should you tip the bag drop attendant?"
-                answer="$2-5 per bag in the US, more at high-end resorts where the attendant cleans clubs. £2-5 in UK and Ireland. €1-3 in Portugal."
-              />
-              <FaqItem
-                question="What about halfway house and beverage cart?"
-                answer="US: 15-20% of what you order. Scotland and Ireland: small, more like a thank-you (£1-2). Portugal: round up to the nearest €5."
-              />
-              <FaqItem
-                question="Do you tip the valet?"
-                answer="US: $5 per car when the valet retrieves your vehicle. UK and Ireland: £2-5 if offered. Portugal: €2-5."
-              />
-              <FaqItem
-                question="Should you pre-budget for tips?"
-                answer="Yes. Plan $200-400 per person for a 3-4 night US trip with caddies. £150-300 for a Scotland/Ireland trip with caddies. €60-150 for an Algarve trip. Carry small bills."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

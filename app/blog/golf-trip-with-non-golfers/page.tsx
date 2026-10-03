@@ -4,12 +4,12 @@ import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
+import CheatSheet from '../../../src/components/CheatSheet'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
-const LAST_UPDATED = 'May 5, 2026'
 
 export const metadata: Metadata = {
-  title: 'Golf Trip With Non-Golfers: How to Plan It Without Killing the Vibe — FairwayPal',
+  title: 'Golf Trip With Non-Golfers: How to Plan It Without Killing the Vibe',
   description:
     "One person wants tee times. The other wants a spa. Here's how to plan a golf trip that actually works for both — without hours of negotiation.",
   alternates: { canonical: 'https://www.fairwaypal.com/blog/golf-trip-with-non-golfers' },
@@ -114,10 +114,18 @@ export default function GolfTripWithNonGolfersPage() {
           <span>·</span>
           <span>7 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           You've been planning this trip for three months. Six guys, Scottsdale, three rounds. The group chat is alive for the first time in a year. Then someone mentions their partner wants to come. Then another. Now you've got a mixed group, a complicated schedule, and a vibe that could go either way.
         </p>
+        <CheatSheet
+          rows={[
+            { label: "Pick the right place", value: "Scottsdale is the strongest all-rounder. Ireland and Scotland are rich in culture; Myrtle Beach suits beach lovers." },
+            { label: "Schedule", value: "Golf in the mornings only, so afternoons and evenings are shared." },
+            { label: "Book ahead", value: "At least one partner activity (spa, tour, experience) and a shared Saturday dinner for the whole group." },
+            { label: "Partner cost", value: "No green fees, so expect to add about $200 to $400 to the trip per partner versus a solo golfer." },
+          ]}
+        />
         <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
           Here's how to plan it so everyone actually has a good time.
         </p>
@@ -286,26 +294,9 @@ export default function GolfTripWithNonGolfersPage() {
               Mixed golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="What do non-golfers do while golfers are on the course?"
-                answer="Non-golfers have more to do than most people assume. In Scottsdale: spa days, Old Town, hiking. In Myrtle Beach: beach, watersports, Broadway at the Beach. In Scotland: castles, whisky distilleries, coastal walks. The key is booking activities in advance rather than hoping they'll 'figure it out.' Most golf rounds finish by 1pm, leaving the whole afternoon for group activities."
-              />
-              <FaqItem
-                question="How do you plan a golf trip that works for couples?"
-                answer="Pick a destination with genuine non-golf options, not just a clubhouse. Schedule golf in the morning only. Book at least one partner activity in advance — spa, tour, experience. Plan a shared dinner Saturday night. Be transparent about costs upfront. FairwayPal generates both itineraries simultaneously so neither side is an afterthought."
-              />
-              <FaqItem
-                question="Which golf destinations are best for non-golfers?"
-                answer="Scottsdale is the strongest all-round option — spas, Old Town, hiking, wine trail. Ireland and Scotland offer rich cultural experiences. Myrtle Beach works well for the beach crowd. Pinehurst is charming but quieter. Bandon Dunes is remote — spectacular, but partners need to be comfortable off-grid."
-              />
-              <FaqItem
-                question="How much extra does it cost to bring a non-golfing partner?"
-                answer="The partner's costs are actually lower — no green fees. Main costs: shared accommodation (split), food, activities ($50–200/day for spas, tours), and flights. Expect to add $200–400 to the total trip cost per partner compared to a solo golfer in the same room. A Scottsdale spa day runs $150–300 as the biggest variable."
-              />
-              <FaqItem
-                question="Should non-golfers come on a bachelor golf trip?"
-                answer="Depends on the group. Purely golf-focused bachelor trips work fine — no partners, golf morning and afternoon, full-send evenings. But if some partners want to join, a mixed trip is completely viable with proper planning. A well-planned mixed bachelor trip often ends up more memorable than a purely golf-focused one."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

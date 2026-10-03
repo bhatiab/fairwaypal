@@ -4,11 +4,10 @@ import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
-
-const LAST_UPDATED = 'May 5, 2026'
+import CheatSheet from '../../../src/components/CheatSheet'
 
 export const metadata: Metadata = {
-  title: 'How to Plan a Golf Trip (Without Losing Your Mind or Your Friends) — FairwayPal',
+  title: 'How to Plan a Golf Trip (Without Losing Your Mind or Your Friends)',
   description:
     'The complete organiser\'s guide: pick a destination, set a budget, book tee times, handle partners, share the plan, and get everyone to actually commit. Step by step.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/how-to-plan-a-golf-trip' },
@@ -198,10 +197,18 @@ export default function HowToPlanAGolfTripPage() {
           <span>·</span>
           <span>10 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           You've volunteered to organise the trip. You now have six browser tabs open, an unanswered group chat, and no confirmed tee times. Here's the sequence that actually works — seven steps, in the right order, with no wasted motion.
         </p>
+        <CheatSheet
+          rows={[
+            { label: "Lead time", value: "3 to 4 months for a domestic trip, 4 to 6 months in peak season, 6 to 9 months for Scotland or Ireland." },
+            { label: "Budget", value: "3 nights in the US: Myrtle Beach $900 to $1,500, Scottsdale $1,400 to $2,200, Bandon Dunes $1,500 to $2,500. Scotland or Ireland $2,500 to $4,500 for 5 to 7 nights." },
+            { label: "Rounds", value: "Two for a 3-night trip, one morning round per day." },
+            { label: "Getting commitment", value: "Share a specific plan with costs and a commit-by date, not \"who is interested?\"" },
+          ]}
+        />
 
         <div className="mt-12 space-y-14 max-w-3xl">
 

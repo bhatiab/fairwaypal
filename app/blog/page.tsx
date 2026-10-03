@@ -4,7 +4,7 @@ import Navbar from '../../src/components/Navbar'
 import Footer from '../../src/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Golf Trip Planning Blog — FairwayPal',
+  title: 'Golf Trip Planning Blog',
   description:
     'Golf trip guides, destination breakdowns, packing lists, and budget breakdowns. Everything you need to plan a trip the group actually agrees on.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog' },
@@ -24,6 +24,15 @@ const breadcrumbSchema = {
 }
 
 const POSTS = [
+  {
+    slug: 'best-golf-destinations-december',
+    title: 'The Best Golf Destinations in December (2026 Honest Guide)',
+    description:
+      'Honest ranking of the best golf trip destinations for December. Scottsdale, Florida, the Algarve, the Carolinas, and the holiday weeks to avoid.',
+    readMinutes: 8,
+    date: 'October 3, 2026',
+    tag: 'Planning',
+  },
   {
     slug: 'golf-trip-flights-bag-fees',
     title: 'Golf Trip Flights: Bag Fees and What Saves Real Money (2026 Guide)',
@@ -143,7 +152,7 @@ const POSTS = [
   },
   {
     slug: 'best-golf-destinations-march',
-    title: 'The Best Golf Destinations in March (2026 Honest Guide)',
+    title: 'The Best Golf Destinations in March (2027 Honest Guide)',
     description:
       'Honest ranking of the best golf trip destinations for March. Scottsdale at peak, Pinehurst spring, the Algarve, Florida, Kiawah.',
     readMinutes: 10,
@@ -434,24 +443,6 @@ const POSTS = [
     title: 'Ireland vs Scotland Golf Trip: Which One Should You Choose?',
     description:
       'A head-to-head comparison across courses, costs, logistics, partner experience, and weather. Verdict by group type — who should pick which.',
-    readMinutes: 10,
-    date: 'May 5, 2026',
-    tag: 'Destinations',
-  },
-  {
-    slug: 'pebble-beach-golf-trip',
-    title: 'Pebble Beach Golf Trip Planning Guide',
-    description:
-      "How to actually get tee times (it's not on GolfNow), what it really costs ($500–600/round), and the full Monterey Peninsula itinerary.",
-    readMinutes: 10,
-    date: 'May 5, 2026',
-    tag: 'Destinations',
-  },
-  {
-    slug: 'kiawah-island-golf-trip',
-    title: 'Kiawah Island Golf Trip: The Complete Planning Guide',
-    description:
-      'The Ocean Course, 4 resort alternatives, real costs, and the Charleston partner plan. Everything you need for a Kiawah Island golf trip.',
     readMinutes: 10,
     date: 'May 5, 2026',
     tag: 'Destinations',

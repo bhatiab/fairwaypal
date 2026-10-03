@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Scottsdale for Non-Golfers: A Partner\'s Guide | FairwayPal',
+  title: 'Scottsdale for Non-Golfers: A Partner\'s Guide',
   description:
     'A friendly, honest guide to Scottsdale for the partner who is not playing. Old Town walking, the Joya and Well & Being spas, hot air balloon rides, the Desert Botanical Garden, Camelback hiking, and Carmel Valley wine trail.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/scottsdale-for-non-golfers' },
@@ -121,7 +119,7 @@ export default function ScottsdaleForNonGolfersPage() {
           <span>·</span>
           <span>11 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Scottsdale is the default US bachelor and bachelorette weekend for a reason: 200+ golf courses within an hour, year-round sun, and an Old Town that is unusually generous to non-golfing partners. Joya Spa is one of the best resort spas in the country. The Desert Botanical Garden is genuinely world-class. Hot air balloons over the Sonoran Desert are a memory people talk about for years. Here is the friendly guide to making it a real holiday for whoever is not teeing off.
         </p>
@@ -339,30 +337,9 @@ export default function ScottsdaleForNonGolfersPage() {
               Scottsdale for non-golfers FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="Is Scottsdale a good destination for non-golfing partners?"
-                answer="Yes, one of the best in the US. Old Town, world-class spas, hot air balloons, the Desert Botanical Garden, Camelback hiking, and the Wine Trail. Year-round sunshine for most of the partner-friendly season."
-              />
-              <FaqItem
-                question="What is there to do for non-golfers?"
-                answer="Old Town walking, the Joya or Well & Being spa, sunrise hot air balloon, Desert Botanical Garden, Camelback or Pinnacle Peak hike, Scottsdale Wine Trail, Taliesin West, day trips to Sedona or Phoenix museums."
-              />
-              <FaqItem
-                question="Are there good spas in Scottsdale?"
-                answer="Yes, three excellent options: Joya Spa at Montelucia (Moorish setting, hammam, signature olive-oil treatments), Well & Being at the Fairmont Princess (wellness powerhouse), and The Spa at Camelback Inn (traditional Southwestern). Book 1-2 weeks ahead in peak season."
-              />
-              <FaqItem
-                question="Are hot air balloon rides worth it?"
-                answer="Yes. Sunrise rides over the Sonoran Desert, 60-90 min flight, $200-300 per person. Hot Air Expeditions and Aerogelic are well-reviewed operators. Book a week ahead in peak season."
-              />
-              <FaqItem
-                question="How long should partners stay?"
-                answer="Three to five nights. Three covers Old Town, a spa day, and one major outing. Four to five adds wine tasting, a Sedona day trip, or Taliesin West."
-              />
-              <FaqItem
-                question="When is the best time of year for partners?"
-                answer="October through April. Peak is January-March (perfect weather, peak prices). November and March offer the best weather-to-price ratio. Avoid May-September: 100-115°F afternoons make outdoor activities painful."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

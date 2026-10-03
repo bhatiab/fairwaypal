@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 6, 2026'
-
 export const metadata: Metadata = {
-  title: 'Pebble Beach for Non-Golfers: A Partner\'s Guide | FairwayPal',
+  title: 'Pebble Beach for Non-Golfers: A Partner\'s Guide',
   description:
     'A friendly, honest guide to Pebble Beach for the partner who is not playing. Carmel-by-the-Sea, the Monterey Bay Aquarium, the 17-Mile Drive, Big Sur, Carmel Valley wine country, and a daily rhythm that makes the whole trip work.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/pebble-beach-for-non-golfers' },
@@ -121,7 +119,7 @@ export default function PebbleForNonGolfersPage() {
           <span>·</span>
           <span>10 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Of all the bucket-list golf resorts in the United States, Pebble Beach is the kindest to non-golfing partners. Five minutes from the resort sits one of the most charming small towns in California. Twenty minutes north is one of the best aquariums in the world. Thirty miles south is Big Sur. Fifteen miles inland is wine country. The whole Monterey Peninsula is set up so that the partner who is not teeing off can have an actual holiday, not a long week of waiting around. Here is the friendly guide to making the most of it.
         </p>
@@ -323,30 +321,9 @@ export default function PebbleForNonGolfersPage() {
               Pebble Beach for non-golfers FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="Is Pebble Beach a good destination for non-golfing partners?"
-                answer="Yes, possibly the best of the major bucket-list golf resorts in the US. Carmel-by-the-Sea is five minutes away, the Monterey Bay Aquarium is 20 minutes, the 17-Mile Drive is on the doorstep, Big Sur is 30 miles south, and Carmel Valley wine country is 15 miles inland."
-              />
-              <FaqItem
-                question="What is there to do in Pebble Beach for non-golfers?"
-                answer="Walking Carmel-by-the-Sea (Ocean Avenue, Carmel Beach, Mission, galleries), the Monterey Bay Aquarium, the 17-Mile Drive, a Big Sur day trip, Carmel Valley wine tasting, a spa appointment at The Spa at Pebble Beach, and long beach walks at sunset."
-              />
-              <FaqItem
-                question="Is the Monterey Bay Aquarium worth visiting?"
-                answer="Yes. It is one of the top aquariums in the world. Open Sea tank, jellies, and kelp forest are the standouts. Adult tickets $65 in 2026, open 10 AM to 6 PM daily. Book in advance for weekends. Plan 3 to 4 hours."
-              />
-              <FaqItem
-                question="Is there a spa at Pebble Beach?"
-                answer="Yes. The Spa at Pebble Beach is on-property at The Lodge. Carmel Valley Ranch has a quieter spa option 15 miles inland. Independent spas in Carmel and Monterey offer less expensive alternatives."
-              />
-              <FaqItem
-                question="How long should non-golfing partners stay?"
-                answer="Three to five nights is the sweet spot. Three covers Carmel, the Aquarium, and 17-Mile Drive. Four to five adds Big Sur and Carmel Valley wine country comfortably."
-              />
-              <FaqItem
-                question="When is the best time of year for partners?"
-                answer="May through October. September and October are warmest and clearest. Avoid the AT&T Pro-Am dates in late January or early February when Pebble Links closes to public play."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 
@@ -361,11 +338,6 @@ export default function PebbleForNonGolfersPage() {
                 href="/destinations/pebble-beach"
                 title="Pebble Beach Destination Guide"
                 description="The full golf-side guide: courses, hotels, partner activities, and packing."
-              />
-              <RelatedPost
-                href="/blog/pebble-beach-golf-trip"
-                title="Pebble Beach Golf Trip Guide"
-                description="How to actually get tee times, what it costs, and the full itinerary."
               />
               <RelatedPost
                 href="/blog/bandon-dunes-vs-pebble-beach-golf-trip"

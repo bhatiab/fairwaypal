@@ -5,10 +5,8 @@ import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
 
-const LAST_UPDATED = 'May 5, 2026'
-
 export const metadata: Metadata = {
-  title: 'Scottsdale vs Myrtle Beach for a Golf Trip: Which One Actually Wins? — FairwayPal',
+  title: 'Scottsdale vs Myrtle Beach for a Golf Trip: Which One Actually Wins?',
   description:
     "Two of the most popular US golf destinations. One budget. One decision. The honest comparison — courses, costs, weather, partner options, and a verdict.",
   alternates: { canonical: 'https://www.fairwaypal.com/blog/scottsdale-vs-myrtle-beach-golf-trip' },
@@ -113,7 +111,7 @@ export default function ScottsdaleVsMyrtleBeachPage() {
           <span>·</span>
           <span>9 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           The group has two camps. One wants Scottsdale — desert luxury, TPC, the whole thing. The other wants Myrtle Beach — 100 courses, cheap rounds, party atmosphere. Here's the honest comparison so you can stop arguing and start booking.
         </p>
@@ -292,26 +290,9 @@ export default function ScottsdaleVsMyrtleBeachPage() {
               Scottsdale vs Myrtle Beach FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="Is Scottsdale or Myrtle Beach better for a golf trip?"
-                answer="It depends on what you're optimising for. Scottsdale wins on course prestige, weather reliability, and the overall experience — but costs more. Myrtle Beach wins on volume, value, and the beach/party atmosphere. For a serious-golf trip: Scottsdale. For fun per dollar: Myrtle Beach."
-              />
-              <FaqItem
-                question="Which is cheaper — Scottsdale or Myrtle Beach for golf?"
-                answer="Myrtle Beach is significantly cheaper. Premium Scottsdale courses run $150–350/round vs $80–150 in Myrtle Beach. A full weekend per person typically runs $1,400–2,200 in Scottsdale vs $900–1,500 in Myrtle Beach."
-              />
-              <FaqItem
-                question="Is Myrtle Beach good for non-golfers?"
-                answer="Yes — the beach is the main draw, plus watersports, fishing, Broadway at the Beach, and the boardwalk. Not as curated as Scottsdale's Old Town but more than enough for a long weekend."
-              />
-              <FaqItem
-                question="When is the best time to visit Scottsdale for golf?"
-                answer="October through April. November and March offer the best weather-to-price ratio. Avoid May–September when temperatures exceed 110°F."
-              />
-              <FaqItem
-                question="When is the best time to visit Myrtle Beach for golf?"
-                answer="Spring (March–May) and fall (September–November) are the sweet spots — 65–80°F and courses in peak condition. Avoid major spring break weeks in March if you want reasonable prices."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 

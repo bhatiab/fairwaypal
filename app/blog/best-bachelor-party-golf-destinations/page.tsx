@@ -4,11 +4,10 @@ import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
-
-const LAST_UPDATED = 'May 5, 2026'
+import CheatSheet from '../../../src/components/CheatSheet'
 
 export const metadata: Metadata = {
-  title: 'The 6 Best Bachelor Party Golf Destinations in the US (Ranked Honestly) — FairwayPal',
+  title: 'The 6 Best Bachelor Party Golf Destinations in the US (Ranked Honestly)',
   description:
     'Not a listicle. An actual ranking — with real prices, honest trade-offs, and a verdict on which destination is right for your group.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/best-bachelor-party-golf-destinations' },
@@ -187,10 +186,19 @@ export default function BestBachelorGolfDestinationsPage() {
           <span>·</span>
           <span>9 min read</span>
         </div>
-        <BlogByline lastUpdated={LAST_UPDATED} />
+        <BlogByline dateModified={articleSchema.dateModified} />
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           The groom wants golf. The group wants a weekend they'll still be talking about in 10 years. Here's where to go — ranked by what actually matters: course quality, experience, partner options, and honest pricing.
         </p>
+        <CheatSheet
+          rows={[
+            { label: "Default pick", value: "Scottsdale: 200+ courses, consistent weather, strong nightlife and resorts that handle big groups." },
+            { label: "Pick by priority", value: "Bandon Dunes if serious golf is the whole point, Myrtle Beach if budget matters, Scotland or Ireland for the trip people talk about for years." },
+            { label: "Budget", value: "$900 to $2,500 per person for a 3-night US trip. Myrtle Beach about $900 to $1,500, Scottsdale $1,400 to $2,200, Bandon Dunes $1,500 to $2,500." },
+            { label: "Rounds", value: "2 to 3 for a 3-night trip, one round per golf morning." },
+            { label: "Partners coming?", value: "Build the non-golf itinerary before you book, not after." },
+          ]}
+        />
         <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
           Not sponsored by any of them. These are the rankings we'd give if we were planning our own trip.
         </p>
@@ -301,26 +309,9 @@ export default function BestBachelorGolfDestinationsPage() {
               Bachelor golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              <FaqItem
-                question="What's the best US destination for a bachelor golf trip?"
-                answer="Scottsdale is the default for a reason — 200+ courses, consistent weather, strong nightlife, and a resort scene that handles large groups well. But the best destination depends on your group: Bandon Dunes for serious golf only, Myrtle Beach for budget, Scotland or Ireland for a trip people talk about for 20 years."
-              />
-              <FaqItem
-                question="How much does a bachelor golf weekend cost?"
-                answer="Budget $900–2,500 per person for a 3-night domestic US trip. Myrtle Beach is cheapest at ~$900–1,500. Scottsdale runs $1,400–2,200. Bandon Dunes runs $1,500–2,500. International (Scotland, Ireland) typically runs $2,500–4,000 per person for a 5-night trip including flights."
-              />
-              <FaqItem
-                question="Should we go domestic or international for a golf bachelor party?"
-                answer="International trips deliver a completely different experience but are more expensive and logistically complex. If the groom has always wanted to play St Andrews or the Old Head of Kinsale, go international. If budget is tight or scheduling 5–7 days is difficult, domestic is the practical call."
-              />
-              <FaqItem
-                question="How many rounds of golf should you plan for a bachelor golf weekend?"
-                answer="2–3 rounds for a 3-night trip is standard. Two rounds (Friday and Saturday AM) is most common — leaves Sunday flexible. Three rounds is ambitious but doable if the group is committed. Four rounds in 3 nights is exhausting."
-              />
-              <FaqItem
-                question="What if some guys in the group don't golf?"
-                answer="Build the non-golf itinerary before you book. Most bachelor golf destinations have solid non-golf options — Scottsdale's Old Town and spa scene, Myrtle Beach's beach, Ireland's pubs and coastal villages. Book at least one activity for non-golfers in advance. FairwayPal generates both itineraries automatically."
-              />
+              {faqSchema.mainEntity.map((q) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              ))}
             </div>
           </section>
 
@@ -340,12 +331,12 @@ export default function BestBachelorGolfDestinationsPage() {
                 description="How to plan a trip that works for the whole group."
               />
               <RelatedPost
-                href="/blog/kiawah-island-golf-trip"
+                href="/destinations/kiawah-island"
                 title="Kiawah Island Golf Trip Guide"
                 description="The Ocean Course, Charleston, and what a Kiawah weekend really costs."
               />
               <RelatedPost
-                href="/blog/pebble-beach-golf-trip"
+                href="/destinations/pebble-beach"
                 title="Pebble Beach Golf Trip Guide"
                 description="How to actually get tee times at Pebble and what the Monterey weekend costs."
               />
