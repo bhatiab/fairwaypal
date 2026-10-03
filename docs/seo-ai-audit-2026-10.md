@@ -35,8 +35,8 @@ verify" must be run by hand.
 | All 54 blog posts | "Last updated" was a hand-typed string, separate from `dateModified` | Fixed: the byline renders `Updated <time>` from `articleSchema.dateModified` |
 | Footer (every page) | "How to Plan a Golf Trip" linked to `/blog/golf-trip-with-non-golfers` | Fixed: now `/blog/how-to-plan-a-golf-trip`, with the non-golfers guide added as its own link |
 | `/destinations/kiawah-island` ↔ `/blog/kiawah-island-golf-trip`, `/destinations/pebble-beach` ↔ `/blog/pebble-beach-golf-trip` | Two pages target the same "X golf trip" query (cannibalisation risk). The Kiawah pair shares 17% of text | **Decision needed** |
-| `/blog/best-golf-destinations-march`, `-october`, `-november` | Title says "2026". March 2026 has passed, so the title now reads as stale | **Decision needed**: refresh content, then update the title and `dateModified` |
-| `src/components/ui/calendar.tsx` | Not the shadcn calendar. It is an unrelated F1 page with an `href="/new-era"` link (would 404). It is not imported anywhere, so it never renders | **Decision needed**: delete it |
+| `/blog/best-golf-destinations-march` | Title said "2026" after March 2026 had passed | Fixed in follow-up: content refreshed for 2027 (event dates, spring break, prices), then title and `dateModified` updated. October and November left as is |
+| `src/components/ui/calendar.tsx` | Not the shadcn calendar. It was an unrelated F1 page with a dead `/new-era` link and was not imported anywhere | Deleted |
 
 ## Answer-first coverage
 
@@ -44,8 +44,10 @@ Every destination page now has a cheat sheet. Most blog posts already open with
 a gold summary box, under labels like "The cheat sheet", "Quick Verdict", "The
 honest take" or "The simple rule".
 
-**These 10 posts have no summary box** (all from the first May 2026 batch). I
-have not written boxes for them, so no facts are invented:
+**These 10 posts had no summary box** (all from the first May 2026 batch). The
+follow-up added a cheat sheet to 9 of them, using only facts already in each
+post. `golf-trip-group-size` already opens with "The Short Answer", so it was
+left alone:
 
 - /blog/best-bachelor-party-golf-destinations
 - /blog/golf-trip-budget
@@ -65,7 +67,7 @@ have not written boxes for them, so no facts are invented:
 | January, February, March, April | Live |
 | May, June, July, August | **Missing**: outlines in `docs/drafts/monthly-guides-may-to-august.md` |
 | September, October, November | Live |
-| December | **Missing**: full draft in `docs/drafts/best-golf-destinations-december.md` |
+| December | Live (published in the follow-up; sources cited in PR #31) |
 
 ## Still to verify on the live site (could not reach it from the sandbox)
 

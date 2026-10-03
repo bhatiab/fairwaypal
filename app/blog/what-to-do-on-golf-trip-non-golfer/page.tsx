@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
+import CheatSheet from '../../../src/components/CheatSheet'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 
@@ -167,6 +168,14 @@ export default function WhatToDoNonGolferPage() {
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           You've been invited on a golf trip. You don't golf. The instinct is to feel like a tagalong. Here's how to reframe it: you have the morning to yourself while everyone else gets up at 6am to stand in a field, then you have the whole group again by lunch. That's actually a pretty good deal.
         </p>
+        <CheatSheet
+          rows={[
+            { label: "The timing", value: "Golfers are usually off the course by 1pm, so afternoons and evenings are shared. Mornings are yours." },
+            { label: "Best destinations", value: "Scottsdale, Ireland and Scotland. Myrtle Beach if the beach is the priority. Pinehurst is quieter; Bandon Dunes is remote." },
+            { label: "Morning ideas", value: "Scottsdale: spa, hiking, Old Town. Myrtle Beach: beach and watersports. Ireland: coastal walks and towns. Scotland: castles and whisky." },
+            { label: "The plan", value: "Book at least one experience ahead, have a plan for every golf morning, and keep a shared Saturday dinner." },
+          ]}
+        />
         <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
           Here's what to actually do — by destination, broken down by morning, afternoon, and evening.
         </p>

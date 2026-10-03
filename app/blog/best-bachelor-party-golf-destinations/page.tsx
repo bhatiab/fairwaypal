@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
+import CheatSheet from '../../../src/components/CheatSheet'
 
 export const metadata: Metadata = {
   title: 'The 6 Best Bachelor Party Golf Destinations in the US (Ranked Honestly)',
@@ -189,6 +190,15 @@ export default function BestBachelorGolfDestinationsPage() {
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           The groom wants golf. The group wants a weekend they'll still be talking about in 10 years. Here's where to go — ranked by what actually matters: course quality, experience, partner options, and honest pricing.
         </p>
+        <CheatSheet
+          rows={[
+            { label: "Default pick", value: "Scottsdale: 200+ courses, consistent weather, strong nightlife and resorts that handle big groups." },
+            { label: "Pick by priority", value: "Bandon Dunes if serious golf is the whole point, Myrtle Beach if budget matters, Scotland or Ireland for the trip people talk about for years." },
+            { label: "Budget", value: "$900 to $2,500 per person for a 3-night US trip. Myrtle Beach about $900 to $1,500, Scottsdale $1,400 to $2,200, Bandon Dunes $1,500 to $2,500." },
+            { label: "Rounds", value: "2 to 3 for a 3-night trip, one round per golf morning." },
+            { label: "Partners coming?", value: "Build the non-golf itinerary before you book, not after." },
+          ]}
+        />
         <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
           Not sponsored by any of them. These are the rankings we'd give if we were planning our own trip.
         </p>

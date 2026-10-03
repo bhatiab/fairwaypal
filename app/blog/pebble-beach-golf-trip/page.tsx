@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
+import CheatSheet from '../../../src/components/CheatSheet'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 
@@ -124,6 +125,14 @@ export default function PebbleBeachGolfTripPage() {
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Most Pebble Beach guides tell you the 18th hole is beautiful. You know that. What you need to know is how to actually get a tee time, what the real all-in cost is, and how to build the full 3-night Monterey Peninsula itinerary around it.
         </p>
+        <CheatSheet
+          rows={[
+            { label: "Green fees", value: "Pebble Beach Golf Links $595 to $625 plus $100 to $150 for a caddie. Spyglass Hill $285 to $325, Spanish Bay $280 to $320, Poppy Hills $90 to $130." },
+            { label: "Booking", value: "Not on GolfNow. Book direct at pebblebeach.com; resort guests can book tee times with their stay." },
+            { label: "Best time", value: "April to October, with June to August the most reliable." },
+            { label: "Trip length", value: "Three nights for two rounds; four or five nights to add Spyglass Hill and a third course." },
+          ]}
+        />
 
         <div className="mt-12 space-y-14 max-w-3xl">
 

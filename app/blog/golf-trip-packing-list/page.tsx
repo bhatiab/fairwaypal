@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
+import CheatSheet from '../../../src/components/CheatSheet'
 
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
 
@@ -133,6 +134,14 @@ export default function GolfTripPackingListPage() {
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           The thing nobody packs until they wish they had it: comfort insoles. 36 holes in two days is roughly 12–14 miles of walking. Your feet will know. Everything else on this list is optional by comparison.
         </p>
+        <CheatSheet
+          rows={[
+            { label: "Golf essentials", value: "Golf shoes (wear them on the plane), clubs, balls, tees, glove, a waterproof jacket, sunscreen, comfort insoles, a power bank." },
+            { label: "Bring or rent clubs?", value: "Rental runs $50 to $75 a day; shipping is typically $50 to $100 each way. For 2 to 3 rounds, bringing your own is usually better value." },
+            { label: "Scotland and Ireland", value: "Full waterproofs, jacket and trousers. Non-negotiable, even in August." },
+            { label: "For partners", value: "A crossbody bag, comfortable walking shoes, a packable jacket for evenings, and layers." },
+          ]}
+        />
         <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
           Two lists below — one for golfers, one for non-golfers — plus the shared items that travel better as one per couple or group.
         </p>

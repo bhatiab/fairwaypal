@@ -25,6 +25,15 @@ const breadcrumbSchema = {
 
 const POSTS = [
   {
+    slug: 'best-golf-destinations-december',
+    title: 'The Best Golf Destinations in December (2026 Honest Guide)',
+    description:
+      'Honest ranking of the best golf trip destinations for December. Scottsdale, Florida, the Algarve, the Carolinas, and the holiday weeks to avoid.',
+    readMinutes: 8,
+    date: 'October 3, 2026',
+    tag: 'Planning',
+  },
+  {
     slug: 'golf-trip-flights-bag-fees',
     title: 'Golf Trip Flights: Bag Fees and What Saves Real Money (2026 Guide)',
     description:
@@ -143,7 +152,7 @@ const POSTS = [
   },
   {
     slug: 'best-golf-destinations-march',
-    title: 'The Best Golf Destinations in March (2026 Honest Guide)',
+    title: 'The Best Golf Destinations in March (2027 Honest Guide)',
     description:
       'Honest ranking of the best golf trip destinations for March. Scottsdale at peak, Pinehurst spring, the Algarve, Florida, Kiawah.',
     readMinutes: 10,

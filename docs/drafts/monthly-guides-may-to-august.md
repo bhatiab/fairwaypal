@@ -1,7 +1,7 @@
 <!--
 DRAFT OUTLINES FOR REVIEW. Not published.
 These four months complete the series (Jan to Apr and Sep to Nov already exist;
-December is drafted in best-golf-destinations-december.md). Recommended order
+December is live). Recommended order
 by booking window: May (book Feb/Mar), June, July, August.
 The picks below follow the "best time" guidance already published on each
 destination page. Nothing new is asserted. Full copy still to be written.

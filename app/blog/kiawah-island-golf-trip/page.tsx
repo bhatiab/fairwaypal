@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
+import CheatSheet from '../../../src/components/CheatSheet'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
@@ -139,6 +140,14 @@ export default function KiawahIslandGolfTripPage() {
           <p className="text-lg text-muted-foreground leading-8 mt-0">
             Kiawah Island is the best golf resort on the East Coast that most groups either haven't considered or assume is out of reach. It shouldn't be either. The Ocean Course is a genuine bucket-list experience — one of the most difficult and spectacular links-style layouts in North America. And unlike Pebble Beach, you can pair it with four other top-quality resort courses without leaving the island. Your partners have Charleston 25 miles away. This guide covers everything you need to plan it properly.
           </p>
+          <CheatSheet
+            rows={[
+              { label: "Green fees", value: "The Ocean Course is $400 to $600; the other four resort courses $150 to $280. Three rounds run about $1,200 to $1,800 in green fees." },
+              { label: "Best time", value: "March to May and September to November (65 to 80°F, low humidity, firm fairways)." },
+              { label: "Booking", value: "Resort guests get priority tee times. Not staying on property? Book 60 to 90 days out." },
+              { label: "For partners", value: "10 miles of beach, The Sanctuary spa, and Charleston about 35 to 45 minutes away by car." },
+            ]}
+          />
 
           {/* The courses */}
           <h2>The Five Kiawah Island Courses</h2>

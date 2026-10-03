@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
+import CheatSheet from '../../../src/components/CheatSheet'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 
@@ -117,6 +118,14 @@ export default function GolfTripWithNonGolfersPage() {
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           You've been planning this trip for three months. Six guys, Scottsdale, three rounds. The group chat is alive for the first time in a year. Then someone mentions their partner wants to come. Then another. Now you've got a mixed group, a complicated schedule, and a vibe that could go either way.
         </p>
+        <CheatSheet
+          rows={[
+            { label: "Pick the right place", value: "Scottsdale is the strongest all-rounder. Ireland and Scotland are rich in culture; Myrtle Beach suits beach lovers." },
+            { label: "Schedule", value: "Golf in the mornings only, so afternoons and evenings are shared." },
+            { label: "Book ahead", value: "At least one partner activity (spa, tour, experience) and a shared Saturday dinner for the whole group." },
+            { label: "Partner cost", value: "No green fees, so expect to add about $200 to $400 to the trip per partner versus a solo golfer." },
+          ]}
+        />
         <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
           Here's how to plan it so everyone actually has a good time.
         </p>

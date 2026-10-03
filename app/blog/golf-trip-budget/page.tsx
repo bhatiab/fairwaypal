@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '../../../src/components/Navbar'
 import Footer from '../../../src/components/Footer'
 import BlogByline from '../../../src/components/BlogByline'
+import CheatSheet from '../../../src/components/CheatSheet'
 
 export const metadata: Metadata = {
   title: 'How Much Does a Golf Trip Cost? A Brutally Honest Budget Breakdown',
@@ -123,6 +124,14 @@ export default function GolfTripBudgetPage() {
         <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
           Someone in the group chat always asks. Everyone else immediately hedges. Here's the actual answer — broken down by destination, by cost bucket, and by spending tier — so the organiser has something concrete to share when the budget conversation comes up.
         </p>
+        <CheatSheet
+          rows={[
+            { label: "Typical cost", value: "$900 to $2,500 per person for a 3-night US trip, depending on destination and spending style." },
+            { label: "By destination", value: "Myrtle Beach $900 to $1,500, Scottsdale $1,400 to $2,200, Bandon Dunes $1,500 to $2,500. Scotland or Ireland $2,500 to $4,000 for a 5-night trip." },
+            { label: "Budget tiers", value: "$500 is tight, $1,000 to $1,500 is the mid-range sweet spot, $2,000+ means no compromises." },
+            { label: "Splitting", value: "Shared costs (house, group dinners) split equally; green fees and optional activities paid individually. Agree it before anyone books." },
+          ]}
+        />
 
         <div className="mt-12 space-y-14 max-w-3xl">
 

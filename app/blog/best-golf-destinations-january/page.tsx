@@ -134,6 +134,7 @@ export default function BestGolfDestinationsJanuaryPage() {
               <RelatedPost href="/blog/golf-trip-budget" title="Golf Trip Budget Breakdown" description="What a golf trip actually costs by destination." />
               <RelatedPost href="/blog/hidden-costs-golf-trip" title="Hidden Costs of a Golf Trip" description="The peak-season surcharges nobody prices in." />
               <RelatedPost href="/blog/golf-trip-with-non-golfers" title="Golf Trips With Non-Golfers" description="What partners do in the desert and in Florida." />
+              <RelatedPost href="/blog/best-golf-destinations-december" title="Best Golf Destinations in December" description="The month before, and the cheaper early-winter window." />
             </div>
           </section>
         </div>
