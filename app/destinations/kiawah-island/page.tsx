@@ -186,6 +186,232 @@ export default function KiawahIslandPage() {
           </section>
 
           {/* -------------------------------------------------------- */}
+          {/*  Booking, costs and itinerary (merged from the former     */}
+          {/*  /blog/kiawah-island-golf-trip, now a 301 to this page)   */}
+          {/* -------------------------------------------------------- */}
+          <section>
+            <p className="eyebrow text-fairway-text">Booking</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              How to book Kiawah tee times
+            </h2>
+            <p className="mt-4 text-base leading-8 text-muted-foreground">
+              Unlike Pebble Beach, Kiawah courses are available through the resort&rsquo;s own booking system. Resort guests get priority access; non-guests can still book but availability is tighter on the Ocean Course specifically.
+            </p>
+
+            <div className="rounded-xl border border-gold/20 bg-gold/5 p-6 my-8">
+              <h3 className="text-base font-semibold text-gold mt-0 mb-4">Booking Timeline</h3>
+              <div className="space-y-3 text-sm text-muted-foreground">
+                <div className="flex items-start gap-3">
+                  <span className="text-gold font-bold shrink-0 w-28">90+ days out</span>
+                  <span>Book accommodation at The Sanctuary, Villas, or The Cottages. Ocean Course tee times open for resort guests 90 days in advance — set a calendar reminder and book the moment the window opens.</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-gold font-bold shrink-0 w-28">60–89 days out</span>
+                  <span>Book secondary courses — Osprey Point, Cougar Point, Turtle Point. Non-resort guests can book Ocean Course at this window (limited slots available).</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-gold font-bold shrink-0 w-28">30–59 days out</span>
+                  <span>Cancellations open up — check daily. May find Ocean Course spots especially on weekday afternoons. Oak Point availability is usually good at this stage.</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-gold font-bold shrink-0 w-28">Last minute</span>
+                  <span>Call the pro shop directly (843-266-4670). They sometimes have member cancellations not visible online, particularly for the secondary courses.</span>
+                </div>
+              </div>
+            </div>
+
+            <p className="mt-4 text-base leading-8 text-muted-foreground">
+              One practical note: the Ocean Course requires a forecaddie or caddie — no walking the course alone, and push carts are not permitted. Budget $50–75 per bag for a forecaddie, or $100–150 per bag for a full caddie (plus tip). Many groups find the forecaddie invaluable given how different the course plays based on wind direction — local knowledge is genuinely useful here.
+            </p>
+          </section>
+
+          <section>
+            <p className="eyebrow">Budget</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              What a 4-day Kiawah trip costs
+            </h2>
+            <p className="mt-4 text-base leading-8 text-muted-foreground">
+              Kiawah is a premium destination — here&rsquo;s what a 4-day trip realistically costs for a group of 8 golfers with 2–4 partners along.
+            </p>
+
+            <div className="overflow-x-auto my-8">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-3 pr-6 text-foreground font-semibold">Expense</th>
+                    <th className="text-right py-3 px-4 text-foreground font-semibold">Budget</th>
+                    <th className="text-right py-3 pl-4 text-foreground font-semibold">Mid-range</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  <tr>
+                    <td className="py-3 pr-6 text-muted-foreground">Ocean Course (1 round)</td>
+                    <td className="py-3 px-4 text-right text-muted-foreground">$400</td>
+                    <td className="py-3 pl-4 text-right text-muted-foreground">$550</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 pr-6 text-muted-foreground">Secondary course × 2 rounds</td>
+                    <td className="py-3 px-4 text-right text-muted-foreground">$320</td>
+                    <td className="py-3 pl-4 text-right text-muted-foreground">$450</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 pr-6 text-muted-foreground">Caddies/forecaddies (3 rounds)</td>
+                    <td className="py-3 px-4 text-right text-muted-foreground">$200</td>
+                    <td className="py-3 pl-4 text-right text-muted-foreground">$400</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 pr-6 text-muted-foreground">Resort accommodation (3 nights, shared)</td>
+                    <td className="py-3 px-4 text-right text-muted-foreground">$600</td>
+                    <td className="py-3 pl-4 text-right text-muted-foreground">$900</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 pr-6 text-muted-foreground">Flights to Charleston (CHS)</td>
+                    <td className="py-3 px-4 text-right text-muted-foreground">$200</td>
+                    <td className="py-3 pl-4 text-right text-muted-foreground">$350</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 pr-6 text-muted-foreground">Car rental / rideshare</td>
+                    <td className="py-3 px-4 text-right text-muted-foreground">$80</td>
+                    <td className="py-3 pl-4 text-right text-muted-foreground">$120</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 pr-6 text-muted-foreground">Food, beer, 19th hole</td>
+                    <td className="py-3 px-4 text-right text-muted-foreground">$250</td>
+                    <td className="py-3 pl-4 text-right text-muted-foreground">$400</td>
+                  </tr>
+                  <tr className="border-t-2 border-border">
+                    <td className="py-4 pr-6 font-semibold text-foreground">Total per golfer</td>
+                    <td className="py-4 px-4 text-right font-semibold text-gold">~$2,050</td>
+                    <td className="py-4 pl-4 text-right font-semibold text-gold">~$3,170</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p className="text-sm text-muted-foreground">
+              Partners who join for the Charleston day and resort activities add roughly $300–600 each depending on spa usage and Charleston dining. The Sanctuary spa is genuinely world-class and partners will use it — budget accordingly.
+            </p>
+          </section>
+
+          <section>
+            <p className="eyebrow">Sample Itinerary</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              The 4-day Kiawah itinerary
+            </h2>
+            <p className="mt-4 text-base leading-8 text-muted-foreground">
+              This template works for a group of 6–10 with golfers and partners. Adjust the course order based on your tee time availability.
+            </p>
+
+            <div className="space-y-6 my-8">
+              {/* Day 1 */}
+              <div className="rounded-xl border border-border bg-card/60 p-6">
+                <h3 className="text-base font-semibold text-foreground mt-0 mb-4">Day 1 — Thursday: Arrival + Osprey Point</h3>
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-fairway-text mb-2">Golfers</p>
+                    <div className="space-y-2 text-sm text-muted-foreground">
+                      <p><span className="text-foreground font-medium">Noon:</span> Fly into Charleston (CHS). 45-min drive to the island.</p>
+                      <p><span className="text-foreground font-medium">2:30 PM:</span> Check in, drop bags, grab lunch at The Sanctuary Lobby Bar.</p>
+                      <p><span className="text-foreground font-medium">3:30 PM:</span> Osprey Point tee time. 4.5 hours. Good warm-up — Tom Fazio layout, protected from ocean wind, highly walkable.</p>
+                      <p><span className="text-foreground font-medium">8 PM:</span> Dinner at The Ocean Room or Atlantic Room (book ahead).</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-partner-text mb-2">Partners</p>
+                    <div className="space-y-2 text-sm text-muted-foreground">
+                      <p><span className="text-foreground font-medium">Noon–3 PM:</span> Arrive, check in, explore the resort grounds.</p>
+                      <p><span className="text-foreground font-medium">3 PM:</span> Beach time — 10 miles of relatively uncrowded Atlantic beach. Best access from Beachwalker Park (west end) or through the resort.</p>
+                      <p><span className="text-foreground font-medium">5 PM:</span> Spa at The Sanctuary. Book treatments in advance — the 90-min sea salt massage books out 2 weeks ahead in peak season.</p>
+                      <p><span className="text-foreground font-medium">8 PM:</span> Dinner together.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Day 2 */}
+              <div className="rounded-xl border border-border bg-card/60 p-6">
+                <h3 className="text-base font-semibold text-foreground mt-0 mb-4">Day 2 — Friday: The Ocean Course</h3>
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-fairway-text mb-2">Golfers</p>
+                    <div className="space-y-2 text-sm text-muted-foreground">
+                      <p><span className="text-foreground font-medium">7 AM:</span> Breakfast at The Ryder Cup Bar & Grill.</p>
+                      <p><span className="text-foreground font-medium">8 AM:</span> Ocean Course tee time. With caddies. This round takes 5–5.5 hours — the wind adds difficulty and the views make everyone slow down.</p>
+                      <p><span className="text-foreground font-medium">2 PM:</span> Post-round drinks at the Ocean Course Clubhouse. The 19th hole overlooks the 18th green with Atlantic views.</p>
+                      <p><span className="text-foreground font-medium">7 PM:</span> Grill dinner at Night Heron Park or Low Country feast at Cherrywood BBQ.</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-partner-text mb-2">Partners</p>
+                    <div className="space-y-2 text-sm text-muted-foreground">
+                      <p><span className="text-foreground font-medium">8 AM:</span> Kayaking or paddleboarding in the tidal creeks.{' '}
+                        <a href={`https://www.getyourguide.com/kiawah-island-l107748/?partner_id=${GYG_PARTNER}`} target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">GetYourGuide listings</a>
+                      </p>
+                      <p><span className="text-foreground font-medium">10:30 AM:</span> Bike the island. 30+ miles of paths through maritime forest, dunes, and marshes. Rentals available at the resort.</p>
+                      <p><span className="text-foreground font-medium">1 PM:</span> Lunch at Freshfields Village (10 min from the resort entrance).</p>
+                      <p><span className="text-foreground font-medium">3 PM:</span> Beach, pool, or another spa session.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Day 3 */}
+              <div className="rounded-xl border border-border bg-card/60 p-6">
+                <h3 className="text-base font-semibold text-foreground mt-0 mb-4">Day 3 — Saturday: Charleston Day</h3>
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-fairway-text mb-2">Golfers</p>
+                    <div className="space-y-2 text-sm text-muted-foreground">
+                      <p><span className="text-foreground font-medium">9 AM:</span> Drive to Charleston (25 miles, 40 min). Park at the Visitor Center.</p>
+                      <p><span className="text-foreground font-medium">10 AM:</span> Walking tour of the historic district — Rainbow Row, The Battery, White Point Garden.</p>
+                      <p><span className="text-foreground font-medium">12:30 PM:</span> Lunch at Husk, Leon&rsquo;s, or The Ordinary (book ahead — these fill up on Saturdays).</p>
+                      <p><span className="text-foreground font-medium">2 PM:</span> Beer tasting at Edmund&rsquo;s Oast or Holy City Brewing.</p>
+                      <p><span className="text-foreground font-medium">5 PM:</span> Drive back. Group dinner at The Atlantic Room.</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-partner-text mb-2">Partners</p>
+                    <div className="space-y-2 text-sm text-muted-foreground">
+                      <p><span className="text-foreground font-medium">9 AM:</span> Drive to Charleston together (no split today — this is the group day).</p>
+                      <p><span className="text-foreground font-medium">10:30 AM:</span>{' '}
+                        <a href={`https://www.getyourguide.com/charleston-l100034/?partner_id=${GYG_PARTNER}`} target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">Charleston harbor tour</a>{' '}
+                        or Fort Sumter ferry — 1.5 hours, affordable, iconic.
+                      </p>
+                      <p><span className="text-foreground font-medium">12:30 PM:</span> Lunch at Zero George Street or The Obstinate Daughter (quieter than downtown spots).</p>
+                      <p><span className="text-foreground font-medium">2 PM:</span> Antique shopping on King Street or the City Market.</p>
+                      <p><span className="text-foreground font-medium">4:30 PM:</span> Cocktails at The Rooftop at Vendue before the drive back.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Day 4 */}
+              <div className="rounded-xl border border-border bg-card/60 p-6">
+                <h3 className="text-base font-semibold text-foreground mt-0 mb-4">Day 4 — Sunday: Turtle Point + Departure</h3>
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-fairway-text mb-2">Golfers</p>
+                    <div className="space-y-2 text-sm text-muted-foreground">
+                      <p><span className="text-foreground font-medium">7:30 AM:</span> Breakfast. Checkout.</p>
+                      <p><span className="text-foreground font-medium">8:30 AM:</span> Turtle Point tee time. 4.5 hours. Three oceanside holes (15–17) are the highlight. More relaxed pace than the Ocean Course — play it as a farewell round.</p>
+                      <p><span className="text-foreground font-medium">2 PM:</span> Drive to CHS for afternoon flights.</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-partner-text mb-2">Partners</p>
+                    <div className="space-y-2 text-sm text-muted-foreground">
+                      <p><span className="text-foreground font-medium">7:30 AM:</span> Breakfast. Checkout.</p>
+                      <p><span className="text-foreground font-medium">9 AM:</span> Final beach walk or morning yoga on the beach (resort programme).</p>
+                      <p><span className="text-foreground font-medium">10:30 AM:</span> Freshfields Village for last-minute shopping or coffee.</p>
+                      <p><span className="text-foreground font-medium">2 PM:</span> Drive to CHS with the golfers.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* -------------------------------------------------------- */}
           {/*  Partner Activities                                       */}
           {/* -------------------------------------------------------- */}
           <section>
@@ -331,7 +557,6 @@ export default function KiawahIslandPage() {
             </h2>
             <div className="mt-6 space-y-3">
               {[
-                { href: '/blog/kiawah-island-golf-trip', title: 'Kiawah Island Golf Trip Planning Guide', desc: 'Tee time booking, cost breakdown, the 4-day itinerary, and what partners do.' },
                 { href: '/blog/kiawah-island-for-non-golfers', title: 'Kiawah Island for Non-Golfers: A Partner\'s Guide', desc: 'The full partner-side guide. Beach, spa, kayaking, biking, and Charleston.' },
                 { href: '/blog/golf-trip-budget', title: 'Golf Trip Budget Breakdown', desc: 'How a Kiawah Island trip compares to other premium US destinations in total cost.' },
                 { href: '/blog/best-bachelor-party-golf-destinations', title: 'Best Bachelor Party Golf Destinations', desc: 'Is Kiawah the right pick for a bachelor trip? Honest answer by group type.' },

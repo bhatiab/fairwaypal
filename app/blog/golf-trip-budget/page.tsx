@@ -406,12 +406,12 @@ export default function GolfTripBudgetPage() {
                 description="Head-to-head comparison of the two most popular US destinations."
               />
               <RelatedPost
-                href="/blog/pebble-beach-golf-trip"
+                href="/destinations/pebble-beach"
                 title="Pebble Beach Trip Guide"
                 description="The bucket-list spend, broken down round by round."
               />
               <RelatedPost
-                href="/blog/kiawah-island-golf-trip"
+                href="/destinations/kiawah-island"
                 title="Kiawah Island Trip Guide"
                 description="What the Ocean Course and a Charleston weekend really cost."
               />

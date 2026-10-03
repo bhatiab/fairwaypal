@@ -134,7 +134,7 @@ export default function MyrtleVsKiawahPage() {
               <RelatedPost href="/blog/scottsdale-vs-myrtle-beach-golf-trip" title="Scottsdale vs Myrtle Beach" description="Two of the most popular US destinations compared." />
               <RelatedPost href="/blog/myrtle-beach-vs-pinehurst-golf-trip" title="Myrtle Beach vs Pinehurst" description="The other big Myrtle Beach Carolina comparison." />
               <RelatedPost href="/blog/pinehurst-vs-kiawah-island-golf-trip" title="Pinehurst vs Kiawah Island" description="The two best East Coast bucket-list golf resorts." />
-              <RelatedPost href="/blog/kiawah-island-golf-trip" title="Kiawah Island Trip Guide" description="The Ocean Course, four secondary courses, Charleston plan." />
+              <RelatedPost href="/destinations/kiawah-island" title="Kiawah Island Trip Guide" description="The Ocean Course, four secondary courses, Charleston plan." />
               <RelatedPost href="/blog/golf-trip-with-non-golfers" title="Golf Trips With Non-Golfers" description="The general playbook for the whole group." />
               <RelatedPost href="/blog/golf-trip-budget" title="Golf Trip Budget Breakdown" description="What a golf trip actually costs by destination." />
             </div>

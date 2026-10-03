@@ -63,7 +63,7 @@ const faqSchema = {
       name: 'How do you get tee times at Pebble Beach?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Pebble Beach Golf Links tee times are not available on GolfNow. Book directly at pebblebeach.com/golf/reservations, or by calling the resort (800-654-9300). Resort guests can book 18 months in advance; outside guests can book 60 days out. The Lodge and Inn at Spanish Bay guests have full booking priority. Prime weekend morning tee times sell out quickly — set a calendar reminder for exactly 60 days before your trip.',
+        text: 'Pebble Beach Golf Links tee times are not available on GolfNow. Book directly at pebblebeach.com/golf/reservations, or by calling the resort (800-654-9300). Only resort guests can book more than 24 hours ahead: guests of The Lodge and The Inn at Spanish Bay can book up to 18 months out (Casa Palmero up to 12 months), with a minimum 2-night stay required to play Pebble Beach Golf Links. Non-resort guests can book one day in advance.',
       },
     },
     {
@@ -182,6 +182,111 @@ export default function PebbleBeachPage() {
                 tier="Premium"
                 link="https://www.golfnow.com/course/pasatiempo-golf-club-1608"
               />
+            </div>
+          </section>
+
+          {/* Booking (merged from the former /blog/pebble-beach-golf-trip, now a 301 to this page) */}
+          <section>
+            <p className="eyebrow text-fairway-text">Booking</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              How to actually get a Pebble Beach tee time
+            </h2>
+            <p className="mt-4 text-base leading-8 text-muted-foreground">
+              Pebble Beach Golf Links is not on GolfNow or any third-party booking platform. You book directly at pebblebeach.com or by calling the resort.
+            </p>
+            <p className="mt-4 text-base leading-8 text-muted-foreground">
+              Only resort guests can reserve more than 24 hours ahead. Guests of The Lodge at Pebble Beach and The Inn at Spanish Bay can book up to 18 months in advance (Casa Palmero up to 12 months), and a minimum 2-night stay is required to play Pebble Beach Golf Links. Non-resort guests can book just one day in advance.
+            </p>
+            <p className="mt-4 text-base leading-8 text-muted-foreground">
+              So the reliable route is a resort stay. The premium over off-resort hotels is real, but for a once-in-a-career round it removes the booking gamble. If you&rsquo;re not staying on-resort, plan around Spyglass Hill, Spanish Bay or Poppy Hills and treat a Pebble tee time as a bonus.
+            </p>
+          </section>
+
+          {/* Cost breakdown */}
+          <section>
+            <p className="eyebrow">Budget</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              What it actually costs
+            </h2>
+            <p className="mt-4 text-base leading-8 text-muted-foreground">
+              All-in cost for a 3-night trip for 4 golfers playing 2 rounds (Pebble + Spyglass):
+            </p>
+            <div className="mt-6 rounded-xl border border-border bg-card/60 overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="p-4 text-left text-xs uppercase tracking-[0.12em] text-muted-foreground">Cost item</th>
+                    <th className="p-4 text-left text-xs uppercase tracking-[0.12em] text-muted-foreground">Per person</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  {[
+                    { item: 'Pebble Beach green fee + cart', cost: '$595–625' },
+                    { item: 'Spyglass Hill green fee + cart', cost: '$285–325' },
+                    { item: 'Accommodation (3 nights, split 4 ways)', cost: '$400–900' },
+                    { item: 'Flights (varies widely)', cost: '$200–600' },
+                    { item: 'Food and drink (3 days)', cost: '$250–400' },
+                    { item: 'Transport/car hire', cost: '$100–150' },
+                    { item: 'Total estimate', cost: '$1,830–3,000' },
+                  ].map((row) => (
+                    <tr key={row.item} className={row.item === 'Total estimate' ? 'bg-gold/5' : ''}>
+                      <td className={`p-4 ${row.item === 'Total estimate' ? 'font-semibold text-foreground' : 'text-muted-foreground'}`}>{row.item}</td>
+                      <td className={`p-4 ${row.item === 'Total estimate' ? 'font-semibold text-gold' : 'text-gold'}`}>{row.cost}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-4 text-sm text-muted-foreground">
+              The green fee at Pebble is the floor. Caddies ($100–150 each) are optional but recommended for a first visit — they know the breaks. The Lodge at Pebble Beach hotel rooms run $800–1,800/night. Off-resort accommodation in Carmel or Monterey runs $150–400/night and cuts the total significantly.
+            </p>
+          </section>
+
+          {/* Sample itinerary */}
+          <section>
+            <p className="eyebrow">Sample Itinerary</p>
+            <h2 className="mt-2 text-3xl font-display font-light text-foreground">
+              A 3-night Monterey Peninsula itinerary
+            </h2>
+            <div className="mt-6 space-y-6">
+              {[
+                {
+                  day: 'Day 1 (Thursday evening)',
+                  golf: 'Arrive, check in. Dinner at Carmel-by-the-Sea — Casanova or Aubergine for a special occasion.',
+                  partner: 'Same — arrive together, explore Carmel village before dinner.',
+                },
+                {
+                  day: 'Day 2 (Friday)',
+                  golf: '7:30am tee time at Spyglass Hill. Finish by 1pm. Afternoon: 17 Mile Drive in the car, or rest at the resort. Group dinner.',
+                  partner: 'Morning: Carmel shops, galleries, and the beach at Carmel City Beach. Afternoon: 17 Mile Drive together. Evening: group dinner.',
+                },
+                {
+                  day: 'Day 3 (Saturday)',
+                  golf: '7:30am tee time at Pebble Beach Golf Links. Finish by 1:30pm. Afternoon: decompress, optional range session, group drinks at The Tap Room.',
+                  partner: 'Morning: Point Lobos State Reserve (sea otters, coastal walking). Afternoon: Monterey Bay Aquarium or spa. Meet for drinks.',
+                },
+                {
+                  day: 'Day 4 (Sunday)',
+                  golf: 'Optional: early twilight round at Spanish Bay or Poppy Hills. Fly home afternoon/evening.',
+                  partner: 'Optional: Big Sur drive (1 hour south — dramatic coastline). Or brunch and a slow morning before departure.',
+                },
+              ].map((day) => (
+                <div key={day.day} className="rounded-xl border border-border bg-card/60 overflow-hidden">
+                  <div className="border-b border-border bg-bg-3 px-5 py-3">
+                    <p className="text-sm font-semibold text-foreground">{day.day}</p>
+                  </div>
+                  <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border">
+                    <div className="p-4">
+                      <p className="text-xs font-bold uppercase tracking-[0.1em] text-fairway-text mb-2">Golf</p>
+                      <p className="text-sm leading-7 text-muted-foreground">{day.golf}</p>
+                    </div>
+                    <div className="p-4">
+                      <p className="text-xs font-bold uppercase tracking-[0.1em] text-partner-text mb-2">Partners</p>
+                      <p className="text-sm leading-7 text-muted-foreground">{day.partner}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
 
@@ -331,7 +436,6 @@ export default function PebbleBeachPage() {
             </h2>
             <div className="mt-6 space-y-3">
               {[
-                { href: '/blog/pebble-beach-golf-trip', title: 'Pebble Beach Golf Trip Planning Guide', desc: 'How to get tee times, what it really costs, and the full Monterey Peninsula itinerary.' },
                 { href: '/blog/pebble-beach-for-non-golfers', title: 'Pebble Beach for Non-Golfers: A Partner\'s Guide', desc: 'The full partner-side guide. Carmel, the Aquarium, 17-Mile Drive, Big Sur, the spa.' },
                 { href: '/blog/bandon-dunes-vs-pebble-beach-golf-trip', title: 'Bandon Dunes vs Pebble Beach: Which Should You Pick?', desc: 'A friendly head-to-head with the other great West Coast golf trip.' },
                 { href: '/blog/pinehurst-vs-pebble-beach-golf-trip', title: 'Pinehurst vs Pebble Beach: Which Should You Pick?', desc: 'A friendly head-to-head with the great East Coast bucket-list option.' },

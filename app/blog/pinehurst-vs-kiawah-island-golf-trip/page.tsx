@@ -332,7 +332,7 @@ export default function PinehurstVsKiawahPage() {
             </h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <RelatedPost
-                href="/blog/kiawah-island-golf-trip"
+                href="/destinations/kiawah-island"
                 title="Kiawah Island Golf Trip Guide"
                 description="The Ocean Course, the four secondary courses, and a Charleston-paired partner plan."
               />

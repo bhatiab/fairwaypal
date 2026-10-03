@@ -338,11 +338,6 @@ export default function KiawahForNonGolfersPage() {
                 description="The full golf-side guide: courses, hotels, partner activities, and packing."
               />
               <RelatedPost
-                href="/blog/kiawah-island-golf-trip"
-                title="Kiawah Island Golf Trip Guide"
-                description="The Ocean Course, four secondary courses, and a Charleston-paired plan."
-              />
-              <RelatedPost
                 href="/blog/pinehurst-vs-kiawah-island-golf-trip"
                 title="Pinehurst vs Kiawah Island"
                 description="The two best East Coast golf resorts, compared honestly."

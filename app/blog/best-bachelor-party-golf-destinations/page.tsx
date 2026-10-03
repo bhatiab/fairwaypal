@@ -331,12 +331,12 @@ export default function BestBachelorGolfDestinationsPage() {
                 description="How to plan a trip that works for the whole group."
               />
               <RelatedPost
-                href="/blog/kiawah-island-golf-trip"
+                href="/destinations/kiawah-island"
                 title="Kiawah Island Golf Trip Guide"
                 description="The Ocean Course, Charleston, and what a Kiawah weekend really costs."
               />
               <RelatedPost
-                href="/blog/pebble-beach-golf-trip"
+                href="/destinations/pebble-beach"
                 title="Pebble Beach Golf Trip Guide"
                 description="How to actually get tee times at Pebble and what the Monterey weekend costs."
               />

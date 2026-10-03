@@ -34,7 +34,7 @@ verify" must be run by hand.
 | All 10 destinations | No visible "Updated" date | Fixed: driven by `lib/content-dates.ts` (the same value as the sitemap `<lastmod>`) |
 | All 54 blog posts | "Last updated" was a hand-typed string, separate from `dateModified` | Fixed: the byline renders `Updated <time>` from `articleSchema.dateModified` |
 | Footer (every page) | "How to Plan a Golf Trip" linked to `/blog/golf-trip-with-non-golfers` | Fixed: now `/blog/how-to-plan-a-golf-trip`, with the non-golfers guide added as its own link |
-| `/destinations/kiawah-island` ↔ `/blog/kiawah-island-golf-trip`, `/destinations/pebble-beach` ↔ `/blog/pebble-beach-golf-trip` | Two pages target the same "X golf trip" query (cannibalisation risk). The Kiawah pair shares 17% of text | **Decision needed** |
+| `/destinations/kiawah-island` ↔ `/blog/kiawah-island-golf-trip`, `/destinations/pebble-beach` ↔ `/blog/pebble-beach-golf-trip` | Two pages target the same "X golf trip" query (cannibalisation risk). The Kiawah pair shares 17% of text | Fixed in follow-up: kept the destination pages, merged the blogs' booking, cost and itinerary sections into them, and 301'd the blog URLs. PostHog had too little data to choose (0 and 0 views for Kiawah, 1 and 0 for Pebble), so the destination series was kept for consistency |
 | `/blog/best-golf-destinations-march` | Title said "2026" after March 2026 had passed | Fixed in follow-up: content refreshed for 2027 (event dates, spring break, prices), then title and `dateModified` updated. October and November left as is |
 | `src/components/ui/calendar.tsx` | Not the shadcn calendar. It was an unrelated F1 page with a dead `/new-era` link and was not imported anywhere | Deleted |
 
@@ -56,8 +56,8 @@ left alone:
 - /blog/golf-trip-weekend-schedule
 - /blog/golf-trip-with-non-golfers
 - /blog/how-to-plan-a-golf-trip
-- /blog/kiawah-island-golf-trip
-- /blog/pebble-beach-golf-trip
+- /blog/kiawah-island-golf-trip (since merged into /destinations/kiawah-island)
+- /blog/pebble-beach-golf-trip (since merged into /destinations/pebble-beach)
 - /blog/what-to-do-on-golf-trip-non-golfer
 
 ## Monthly "best golf destinations" series

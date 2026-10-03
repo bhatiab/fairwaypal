@@ -448,24 +448,6 @@ const POSTS = [
     tag: 'Destinations',
   },
   {
-    slug: 'pebble-beach-golf-trip',
-    title: 'Pebble Beach Golf Trip Planning Guide',
-    description:
-      "How to actually get tee times (it's not on GolfNow), what it really costs ($500–600/round), and the full Monterey Peninsula itinerary.",
-    readMinutes: 10,
-    date: 'May 5, 2026',
-    tag: 'Destinations',
-  },
-  {
-    slug: 'kiawah-island-golf-trip',
-    title: 'Kiawah Island Golf Trip: The Complete Planning Guide',
-    description:
-      'The Ocean Course, 4 resort alternatives, real costs, and the Charleston partner plan. Everything you need for a Kiawah Island golf trip.',
-    readMinutes: 10,
-    date: 'May 5, 2026',
-    tag: 'Destinations',
-  },
-  {
     slug: 'golf-trip-with-non-golfers',
     title: 'Golf Trip With Non-Golfers: How to Plan It Without Killing the Vibe',
     description:

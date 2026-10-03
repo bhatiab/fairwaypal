@@ -335,7 +335,7 @@ export default function BandonVsPebblePage() {
             </h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <RelatedPost
-                href="/blog/pebble-beach-golf-trip"
+                href="/destinations/pebble-beach"
                 title="Pebble Beach Golf Trip Guide"
                 description="How to actually get tee times, what it costs, and the full Monterey Peninsula itinerary."
               />

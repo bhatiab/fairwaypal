@@ -340,11 +340,6 @@ export default function PebbleForNonGolfersPage() {
                 description="The full golf-side guide: courses, hotels, partner activities, and packing."
               />
               <RelatedPost
-                href="/blog/pebble-beach-golf-trip"
-                title="Pebble Beach Golf Trip Guide"
-                description="How to actually get tee times, what it costs, and the full itinerary."
-              />
-              <RelatedPost
                 href="/blog/bandon-dunes-vs-pebble-beach-golf-trip"
                 title="Bandon Dunes vs Pebble Beach"
                 description="Honest head-to-head between the two great West Coast bucket-list trips."
