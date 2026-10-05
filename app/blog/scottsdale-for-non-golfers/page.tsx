@@ -8,7 +8,7 @@ import BlogByline from '../../../src/components/BlogByline'
 export const metadata: Metadata = {
   title: 'Scottsdale for Non-Golfers: A Partner\'s Guide',
   description:
-    'A friendly, honest guide to Scottsdale for the partner who is not playing. Old Town walking, the Joya and Well & Being spas, hot air balloon rides, the Desert Botanical Garden, Camelback hiking, and Carmel Valley wine trail.',
+    'A friendly, honest guide to Scottsdale for the partner who is not playing. Old Town walking, the Joya and Well & Being spas, hot air balloon rides, the Desert Botanical Garden, Camelback hiking, and the Scottsdale Wine Trail.',
   alternates: { canonical: 'https://www.fairwaypal.com/blog/scottsdale-for-non-golfers' },
   openGraph: {
     title: 'Scottsdale for Non-Golfers: A Partner\'s Guide',

@@ -5,6 +5,7 @@ import Footer from '../../../src/components/Footer'
 import CheatSheet from '../../../src/components/CheatSheet'
 import UpdatedDate from '../../../src/components/UpdatedDate'
 import { CONTENT_DATES } from '../../../lib/content-dates'
+import { destinationPageSchemas, type Course } from '../../../lib/destination-schema'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
@@ -56,7 +57,7 @@ const faqSchema = {
       name: 'How much does a golf trip to Ireland cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'An Ireland golf trip typically costs $2,000–$4,500 per person for 5–7 nights, including flights from the US East Coast, accommodation, 4–5 rounds, car hire, and meals. Southwest Ireland (Kerry/Clare) tends to be slightly cheaper than the northern routes. Green fees range from $80 at hidden gems to $350+ at top championship links.',
+        text: 'An Ireland golf trip typically costs $2,000–$4,500 per person for 5–7 nights, including flights from the US East Coast, accommodation, 4–5 rounds, car hire, and meals. Southwest Ireland (Kerry/Clare) tends to be slightly cheaper than the northern routes. Green fees range from about $60 at hidden gems to $350+ at top championship links.',
       },
     },
     {
@@ -94,6 +95,51 @@ const faqSchema = {
   ],
 }
 
+const COURSES: Course[] = [
+  {
+    name: 'Ballybunion — Old Course',
+    detail: 'Raw, wild, Atlantic links. Towering dunes, blind shots, and the most natural routing in golf. A top-10 course in the world.',
+    price: '$200–280/round',
+    tier: 'Bucket list',
+    link: 'https://www.golfnow.com/course/ballybunion-golf-club-old-course-23930',
+  },
+  {
+    name: 'Lahinch Golf Club',
+    detail: 'Right next to the Cliffs of Moher. Classic links with goats that predict the weather. The Dell hole is unforgettable.',
+    price: '$150–220/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/lahinch-golf-club-23931',
+  },
+  {
+    name: 'Old Head of Kinsale',
+    detail: 'Golf on a rocky headland 300 feet above the Atlantic. Dramatic, photogenic, and unlike anything else.',
+    price: '$250–350/round',
+    tier: 'Bucket list',
+    link: 'https://www.golfnow.com/course/old-head-golf-links-23932',
+  },
+  {
+    name: 'Waterville Golf Links',
+    detail: 'Remote Kerry links that Tiger and Payne Stewart loved. Challenging, beautiful, and wonderfully uncrowded.',
+    price: '$150–220/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/waterville-golf-links-23933',
+  },
+  {
+    name: 'Tralee Golf Club',
+    detail: 'Arnold Palmer design on the Dingle Peninsula. Ocean holes that rival anywhere in the world. Worth the drive.',
+    price: '$130–200/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/tralee-golf-club-23934',
+  },
+  {
+    name: 'Dooks Golf Links',
+    detail: 'Hidden gem on the Ring of Kerry. Traditional links, affordable, and no pretension. Locals play here.',
+    price: '$60–100/round',
+    tier: 'Budget',
+    link: 'https://www.golfnow.com/course/dooks-golf-links-23935',
+  },
+]
+
 const OTHER_DESTINATIONS = [
   { name: 'Scotland', href: '/destinations/scotland', tagline: 'The birthplace of golf' },
   { name: 'Algarve', href: '/destinations/algarve', tagline: 'Sun, links, and half the price of Scotland' },
@@ -105,7 +151,7 @@ export default function IrelandPage() {
     <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema, ...destinationPageSchemas('/destinations/ireland', 'Ireland', COURSES)]) }}
       />
       <Navbar />
       <main className="page-shell pt-28 pb-20">
@@ -140,48 +186,9 @@ export default function IrelandPage() {
               Top picks for groups
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
-              <CourseCard
-                name="Ballybunion — Old Course"
-                detail="Raw, wild, Atlantic links. Towering dunes, blind shots, and the most natural routing in golf. A top-10 course in the world."
-                price="$200–280/round"
-                tier="Bucket list"
-                link="https://www.golfnow.com/course/ballybunion-golf-club-old-course-23930"
-              />
-              <CourseCard
-                name="Lahinch Golf Club"
-                detail="Right next to the Cliffs of Moher. Classic links with goats that predict the weather. The Dell hole is unforgettable."
-                price="$150–220/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/lahinch-golf-club-23931"
-              />
-              <CourseCard
-                name="Old Head of Kinsale"
-                detail="Golf on a rocky headland 300 feet above the Atlantic. Dramatic, photogenic, and unlike anything else."
-                price="$250–350/round"
-                tier="Bucket list"
-                link="https://www.golfnow.com/course/old-head-golf-links-23932"
-              />
-              <CourseCard
-                name="Waterville Golf Links"
-                detail="Remote Kerry links that Tiger and Payne Stewart loved. Challenging, beautiful, and wonderfully uncrowded."
-                price="$150–220/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/waterville-golf-links-23933"
-              />
-              <CourseCard
-                name="Tralee Golf Club"
-                detail="Arnold Palmer design on the Dingle Peninsula. Ocean holes that rival anywhere in the world. Worth the drive."
-                price="$130–200/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/tralee-golf-club-23934"
-              />
-              <CourseCard
-                name="Dooks Golf Links"
-                detail="Hidden gem on the Ring of Kerry. Traditional links, affordable, and no pretension. Locals play here."
-                price="$60–100/round"
-                tier="Budget"
-                link="https://www.golfnow.com/course/dooks-golf-links-23935"
-              />
+              {COURSES.map((course) => (
+                <CourseCard key={course.name} {...course} />
+              ))}
             </div>
           </section>
 
@@ -298,8 +305,8 @@ export default function IrelandPage() {
               Ireland golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              {faqSchema.mainEntity.map((q) => (
-                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              {faqSchema.mainEntity.map((q, i) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} open={i < 2} />
               ))}
             </div>
           </section>
@@ -458,9 +465,9 @@ function PackingItem({ name, tag }: { name: string; tag: string }) {
   )
 }
 
-function FaqItem({ question, answer }: { question: string; answer: string }) {
+function FaqItem({ question, answer, open }: { question: string; answer: string; open?: boolean }) {
   return (
-    <details className="group rounded-xl border border-border bg-card/60">
+    <details open={open} className="group rounded-xl border border-border bg-card/60">
       <summary className="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-foreground">
         {question}
         <span className="ml-2 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">+</span>

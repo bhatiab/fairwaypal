@@ -5,6 +5,7 @@ import Footer from '../../../src/components/Footer'
 import CheatSheet from '../../../src/components/CheatSheet'
 import UpdatedDate from '../../../src/components/UpdatedDate'
 import { CONTENT_DATES } from '../../../lib/content-dates'
+import { destinationPageSchemas, type Course } from '../../../lib/destination-schema'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
@@ -93,6 +94,51 @@ const faqSchema = {
   ],
 }
 
+const COURSES: Course[] = [
+  {
+    name: 'The Ocean Course',
+    detail: 'Pete Dye. Host of the 1991 Ryder Cup, 2012 and 2021 PGA Championships. Eighteen holes along the Atlantic — every hole has an ocean view. The marquee round.',
+    price: '$400–600/round',
+    tier: 'Bucket list',
+    link: 'https://www.kiawahresort.com/golf/ocean-course/',
+  },
+  {
+    name: 'Osprey Point',
+    detail: 'Tom Fazio. The most scenic secondary course — through live oaks and tidal marshes with water features on 14 holes. Best choice for mixed-handicap groups.',
+    price: '$175–250/round',
+    tier: 'Premium',
+    link: 'https://www.kiawahresort.com/golf/osprey-point/',
+  },
+  {
+    name: 'Turtle Point',
+    detail: 'Jack Nicklaus. Three consecutive oceanside holes (15, 16, 17) make this worth playing for views alone. Dramatic 18th finishes in front of a natural amphitheatre.',
+    price: '$160–240/round',
+    tier: 'Premium',
+    link: 'https://www.kiawahresort.com/golf/turtle-point/',
+  },
+  {
+    name: 'Cougar Point',
+    detail: 'Gary Player, renovated 2013. The most accessible course on the island — wide fairways, forgiving rough. Good opener for higher handicaps or a relaxed last morning round.',
+    price: '$150–220/round',
+    tier: 'Mid-range',
+    link: 'https://www.kiawahresort.com/golf/cougar-point/',
+  },
+  {
+    name: 'Oak Point',
+    detail: 'Colleton River, off the island proper. Most affordable of the five. Easier tee time access. Good option if the Ocean Course is sold out or budget is a consideration.',
+    price: '$90–150/round',
+    tier: 'Mid-range',
+    link: 'https://www.kiawahresort.com/golf/oak-point/',
+  },
+  {
+    name: 'Caledonia Golf & Fish Club',
+    detail: 'Hilton Head, 90 min south. If adding a day, one of the most beautiful courses in the Lowcountry — moss-draped live oaks, rice plantation setting.',
+    price: '$140–200/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/caledonia-golf-fish-club-6040',
+  },
+]
+
 const OTHER_DESTINATIONS = [
   { name: 'Pinehurst', href: '/destinations/pinehurst', tagline: 'The home of US golf' },
   { name: 'Florida', href: '/destinations/florida-golf', tagline: 'Year-round Southeast sun' },
@@ -104,7 +150,7 @@ export default function KiawahIslandPage() {
     <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema, ...destinationPageSchemas('/destinations/kiawah-island', 'Kiawah Island', COURSES)]) }}
       />
       <Navbar />
       <main className="page-shell pt-28 pb-20">
@@ -140,48 +186,9 @@ export default function KiawahIslandPage() {
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">Resort guests get priority booking. The Ocean Course requires a forecaddie — budget $50–75 per bag plus tip.</p>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
-              <CourseCard
-                name="The Ocean Course"
-                detail="Pete Dye. Host of the 1991 Ryder Cup, 2012 and 2021 PGA Championships. Eighteen holes along the Atlantic — every hole has an ocean view. The marquee round."
-                price="$400–600/round"
-                tier="Bucket list"
-                link="https://www.kiawahresort.com/golf/ocean-course/"
-              />
-              <CourseCard
-                name="Osprey Point"
-                detail="Tom Fazio. The most scenic secondary course — through live oaks and tidal marshes with water features on 14 holes. Best choice for mixed-handicap groups."
-                price="$175–250/round"
-                tier="Premium"
-                link="https://www.kiawahresort.com/golf/osprey-point/"
-              />
-              <CourseCard
-                name="Turtle Point"
-                detail="Jack Nicklaus. Three consecutive oceanside holes (15, 16, 17) make this worth playing for views alone. Dramatic 18th finishes in front of a natural amphitheatre."
-                price="$160–240/round"
-                tier="Premium"
-                link="https://www.kiawahresort.com/golf/turtle-point/"
-              />
-              <CourseCard
-                name="Cougar Point"
-                detail="Gary Player, renovated 2013. The most accessible course on the island — wide fairways, forgiving rough. Good opener for higher handicaps or a relaxed last morning round."
-                price="$150–220/round"
-                tier="Mid-range"
-                link="https://www.kiawahresort.com/golf/cougar-point/"
-              />
-              <CourseCard
-                name="Oak Point"
-                detail="Colleton River, off the island proper. Most affordable of the five. Easier tee time access. Good option if the Ocean Course is sold out or budget is a consideration."
-                price="$90–150/round"
-                tier="Mid-range"
-                link="https://www.kiawahresort.com/golf/oak-point/"
-              />
-              <CourseCard
-                name="Caledonia Golf & Fish Club"
-                detail="Hilton Head, 90 min south. If adding a day, one of the most beautiful courses in the Lowcountry — moss-draped live oaks, rice plantation setting."
-                price="$140–200/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/caledonia-golf-fish-club-6040"
-              />
+              {COURSES.map((course) => (
+                <CourseCard key={course.name} {...course} />
+              ))}
             </div>
           </section>
 
@@ -524,8 +531,8 @@ export default function KiawahIslandPage() {
               Kiawah Island golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              {faqSchema.mainEntity.map((q) => (
-                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              {faqSchema.mainEntity.map((q, i) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} open={i < 2} />
               ))}
             </div>
           </section>
@@ -683,9 +690,9 @@ function PackingItem({ name, tag }: { name: string; tag: string }) {
   )
 }
 
-function FaqItem({ question, answer }: { question: string; answer: string }) {
+function FaqItem({ question, answer, open }: { question: string; answer: string; open?: boolean }) {
   return (
-    <details className="group rounded-xl border border-border bg-card/60">
+    <details open={open} className="group rounded-xl border border-border bg-card/60">
       <summary className="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-foreground">
         {question}
         <span className="ml-2 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">+</span>

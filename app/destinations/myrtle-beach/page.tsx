@@ -5,6 +5,7 @@ import Footer from '../../../src/components/Footer'
 import CheatSheet from '../../../src/components/CheatSheet'
 import UpdatedDate from '../../../src/components/UpdatedDate'
 import { CONTENT_DATES } from '../../../lib/content-dates'
+import { destinationPageSchemas, type Course } from '../../../lib/destination-schema'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
@@ -34,7 +35,7 @@ const destinationSchema = {
   '@context': 'https://schema.org',
   '@type': 'TouristDestination',
   name: 'Myrtle Beach, South Carolina',
-  description: "100+ courses within 30 miles, a boardwalk that keeps partners busy all day, and prices that won't kill the group chat. Myrtle Beach is where bachelor golf weekends go to become legends.",
+  description: "100+ courses along the 60-mile Grand Strand, a boardwalk that keeps partners busy all day, and prices that won't kill the group chat. Myrtle Beach is where bachelor golf weekends go to become legends.",
   url: 'https://www.fairwaypal.com/destinations/myrtle-beach',
   geo: { '@type': 'GeoCoordinates', latitude: 33.6891, longitude: -78.8867 },
   touristType: ['Golf', 'Couples', 'Groups'],
@@ -49,7 +50,7 @@ const faqSchema = {
       name: 'How much does a golf trip to Myrtle Beach cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'A Myrtle Beach golf trip typically costs $800–$1,800 per person for a 3-night weekend, including flights, hotel, 3–4 rounds, and meals. Myrtle Beach is one of the most affordable golf destinations in the US with green fees from $30 at public courses to $180 at top clubs like Caledonia. Package deals through golf groups can save 20–30%.',
+        text: 'A Myrtle Beach golf trip typically costs $800–$1,800 per person for a 3-night weekend, including flights, hotel, 3–4 rounds, and meals. Myrtle Beach is one of the most affordable golf destinations in the US with green fees from around $40 at budget courses in the off-season, $70 to $110 at good-value picks like Pawleys Plantation, and up to $200 at top clubs like Caledonia. Package deals through golf groups can save 20–30%.',
       },
     },
     {
@@ -87,6 +88,51 @@ const faqSchema = {
   ],
 }
 
+const COURSES: Course[] = [
+  {
+    name: 'Caledonia Golf & Fish Club',
+    detail: 'Lowcountry masterpiece draped in Spanish moss. Consistently ranked among the best public courses in the US.',
+    price: '$150–200/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/caledonia-golf-and-fish-club',
+  },
+  {
+    name: 'TPC Myrtle Beach',
+    detail: 'Tour-calibre conditions and a layout that rewards every skill level. The benchmark mid-range round in the area.',
+    price: '$120–180/round',
+    tier: 'Mid-range',
+    link: 'https://www.golfnow.com/course/tpc-myrtle-beach',
+  },
+  {
+    name: 'Barefoot Resort — Dye Course',
+    detail: 'Pete Dye design with the Grand Strand as a backdrop. Expect forced carries and plenty of post-round debate.',
+    price: '$90–140/round',
+    tier: 'Mid-range',
+    link: 'https://www.golfnow.com/course/barefoot-resort-dye-course',
+  },
+  {
+    name: 'Tidewater Golf Club',
+    detail: 'Elevated peninsula course with views of the Intracoastal Waterway. Best scenery on the Strand.',
+    price: '$100–160/round',
+    tier: 'Mid-range',
+    link: 'https://www.golfnow.com/course/tidewater-golf-club',
+  },
+  {
+    name: 'Pawleys Plantation',
+    detail: 'Jack Nicklaus signature design in the Pawleys Island marshes. Serious golf at a fair price.',
+    price: '$70–110/round',
+    tier: 'Budget',
+    link: 'https://www.golfnow.com/course/pawleys-plantation',
+  },
+  {
+    name: 'The Dunes Golf & Beach Club',
+    detail: 'Robert Trent Jones Sr. classic from 1948. Lakeland holes on the back nine separate it from anything else on the Strand.',
+    price: '$130–200/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/the-dunes-golf-and-beach-club',
+  },
+]
+
 const OTHER_DESTINATIONS = [
   { name: 'Scottsdale', href: '/destinations/scottsdale', tagline: '200+ courses, year-round sun' },
   { name: 'Florida', href: '/destinations/florida-golf', tagline: 'Year-round Southeast sun' },
@@ -98,7 +144,7 @@ export default function MyrtleBeachPage() {
     <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema, ...destinationPageSchemas('/destinations/myrtle-beach', 'Myrtle Beach', COURSES)]) }}
       />
       <Navbar />
       <main className="page-shell pt-28 pb-20">
@@ -108,7 +154,7 @@ export default function MyrtleBeachPage() {
           Myrtle Beach, South Carolina
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
-          100+ courses within 30 miles, a boardwalk that keeps partners busy all day, and prices that won&rsquo;t kill the group chat. Myrtle Beach is where bachelor golf weekends go to become legends.
+          100+ courses along the 60-mile Grand Strand, a boardwalk that keeps partners busy all day, and prices that won&rsquo;t kill the group chat. Myrtle Beach is where bachelor golf weekends go to become legends.
         </p>
         <p className="mt-2 text-sm text-ink-2">
           Best time to visit: <span className="text-gold">March — May, September — November</span> (avoid summer humidity)
@@ -133,48 +179,9 @@ export default function MyrtleBeachPage() {
               Top picks for groups
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
-              <CourseCard
-                name="Caledonia Golf &amp; Fish Club"
-                detail="Lowcountry masterpiece draped in Spanish moss. Consistently ranked among the best public courses in the US."
-                price="$150–200/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/caledonia-golf-and-fish-club"
-              />
-              <CourseCard
-                name="TPC Myrtle Beach"
-                detail="Tour-calibre conditions and a layout that rewards every skill level. The benchmark mid-range round in the area."
-                price="$120–180/round"
-                tier="Mid-range"
-                link="https://www.golfnow.com/course/tpc-myrtle-beach"
-              />
-              <CourseCard
-                name="Barefoot Resort — Dye Course"
-                detail="Pete Dye design with the Grand Strand as a backdrop. Expect forced carries and plenty of post-round debate."
-                price="$90–140/round"
-                tier="Mid-range"
-                link="https://www.golfnow.com/course/barefoot-resort-dye-course"
-              />
-              <CourseCard
-                name="Tidewater Golf Club"
-                detail="Elevated peninsula course with views of the Intracoastal Waterway. Best scenery on the Strand."
-                price="$100–160/round"
-                tier="Mid-range"
-                link="https://www.golfnow.com/course/tidewater-golf-club"
-              />
-              <CourseCard
-                name="Pawleys Plantation"
-                detail="Jack Nicklaus signature design in the Pawleys Island marshes. Serious golf at a fair price."
-                price="$70–110/round"
-                tier="Budget"
-                link="https://www.golfnow.com/course/pawleys-plantation"
-              />
-              <CourseCard
-                name="The Dunes Golf &amp; Beach Club"
-                detail="Robert Trent Jones Sr. classic from 1948. Lakeland holes on the back nine separate it from anything else on the Strand."
-                price="$130–200/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/the-dunes-golf-and-beach-club"
-              />
+              {COURSES.map((course) => (
+                <CourseCard key={course.name} {...course} />
+              ))}
             </div>
           </section>
 
@@ -291,8 +298,8 @@ export default function MyrtleBeachPage() {
               Myrtle Beach golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              {faqSchema.mainEntity.map((q) => (
-                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              {faqSchema.mainEntity.map((q, i) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} open={i < 2} />
               ))}
             </div>
           </section>
@@ -451,9 +458,9 @@ function PackingItem({ name, tag }: { name: string; tag: string }) {
   )
 }
 
-function FaqItem({ question, answer }: { question: string; answer: string }) {
+function FaqItem({ question, answer, open }: { question: string; answer: string; open?: boolean }) {
   return (
-    <details className="group rounded-xl border border-border bg-card/60">
+    <details open={open} className="group rounded-xl border border-border bg-card/60">
       <summary className="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-foreground">
         {question}
         <span className="ml-2 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">+</span>

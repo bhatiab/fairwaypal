@@ -5,6 +5,7 @@ import Footer from '../../../src/components/Footer'
 import CheatSheet from '../../../src/components/CheatSheet'
 import UpdatedDate from '../../../src/components/UpdatedDate'
 import { CONTENT_DATES } from '../../../lib/content-dates'
+import { destinationPageSchemas, type Course } from '../../../lib/destination-schema'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
@@ -87,14 +88,59 @@ const faqSchema = {
       name: 'How does Florida compare to Scottsdale and Myrtle Beach for a golf trip?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Florida wins on winter weather availability and east coast accessibility. Scottsdale has more course variety and a stronger partner scene in its urban setting. Myrtle Beach beats Florida on pure value — 90+ courses with lower green fees. Florida\'s advantage is Streamsong Resort specifically — for a golf-first group that wants world-class course design without the Pebble Beach price tag, there is nothing else quite like it.',
+        text: 'Florida wins on winter weather availability and east coast accessibility. Scottsdale has more course variety and a stronger partner scene in its urban setting. Myrtle Beach beats Florida on pure value — 100+ courses with lower green fees. Florida\'s advantage is Streamsong Resort specifically — for a golf-first group that wants world-class course design without the Pebble Beach price tag, there is nothing else quite like it.',
       },
     },
   ],
 }
 
+const COURSES: Course[] = [
+  {
+    name: 'Streamsong Black',
+    detail: 'Gil Hanse design. The newest and most dramatic of the three Streamsong courses. Links-style on reclaimed phosphate land — rumpled fairways, massive bunkers, no trees.',
+    price: '$225–350/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/streamsong-resort-black-32849',
+  },
+  {
+    name: 'Streamsong Red',
+    detail: "Bill Coore & Ben Crenshaw. The most natural of the three courses — wide fairways, imaginative green complexes, subtle. Many golfers' favourite of the three.",
+    price: '$175–325/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/streamsong-resort-red-32847',
+  },
+  {
+    name: 'TPC Sawgrass — Stadium Course',
+    detail: 'Pete Dye. Home of The Players Championship. The famous island green 17th is the most played par-3 in the world. Ponte Vedra Beach, near Jacksonville.',
+    price: '$250–400/round',
+    tier: 'Bucket list',
+    link: 'https://www.golfnow.com/course/tpc-sawgrass-stadium-course-1808',
+  },
+  {
+    name: 'Innisbrook — Copperhead Course',
+    detail: 'Host of the Valspar Championship PGA Tour event. Demanding, tree-lined, well-conditioned. Palm Harbor, near Tampa and Clearwater.',
+    price: '$150–280/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/innisbrook-resort-copperhead-course-1650',
+  },
+  {
+    name: 'Streamsong Blue',
+    detail: 'Tom Doak. The shortest and quirkiest of the Streamsong trio — imaginative routing, quirky holes, more fun than the other two on a second visit.',
+    price: '$175–300/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/streamsong-resort-blue-32848',
+  },
+  {
+    name: 'World Woods — Pine Barrens',
+    detail: 'Tom Fazio. Best value in Florida — consistently ranked one of the top 100 courses in the US at under $130/round. Brooksville, 45 min north of Tampa.',
+    price: '$80–130/round',
+    tier: 'Mid-range',
+    link: 'https://www.golfnow.com/course/world-woods-golf-club-pine-barrens-1688',
+  },
+]
+
 const OTHER_DESTINATIONS = [
-  { name: 'Myrtle Beach', href: '/destinations/myrtle-beach', tagline: 'Best value, 90+ courses' },
+  { name: 'Myrtle Beach', href: '/destinations/myrtle-beach', tagline: 'Best value, 100+ courses' },
   { name: 'Scottsdale', href: '/destinations/scottsdale', tagline: 'Year-round sun, 200+ courses' },
   { name: 'Pinehurst', href: '/destinations/pinehurst', tagline: 'Cradle of American golf' },
 ]
@@ -104,7 +150,7 @@ export default function FloridaGolfPage() {
     <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema, ...destinationPageSchemas('/destinations/florida-golf', 'Florida', COURSES)]) }}
       />
       <Navbar />
       <main className="page-shell pt-28 pb-20">
@@ -139,48 +185,9 @@ export default function FloridaGolfPage() {
               Top picks across Florida
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
-              <CourseCard
-                name="Streamsong Black"
-                detail="Gil Hanse design. The newest and most dramatic of the three Streamsong courses. Links-style on reclaimed phosphate land — rumpled fairways, massive bunkers, no trees."
-                price="$225–350/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/streamsong-resort-black-32849"
-              />
-              <CourseCard
-                name="Streamsong Red"
-                detail="Bill Coore &amp; Ben Crenshaw. The most natural of the three courses — wide fairways, imaginative green complexes, subtle. Many golfers&apos; favourite of the three."
-                price="$175–325/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/streamsong-resort-red-32847"
-              />
-              <CourseCard
-                name="TPC Sawgrass — Stadium Course"
-                detail="Pete Dye. Home of The Players Championship. The famous island green 17th is the most played par-3 in the world. Ponte Vedra Beach, near Jacksonville."
-                price="$250–400/round"
-                tier="Bucket list"
-                link="https://www.golfnow.com/course/tpc-sawgrass-stadium-course-1808"
-              />
-              <CourseCard
-                name="Innisbrook — Copperhead Course"
-                detail="Host of the Valspar Championship PGA Tour event. Demanding, tree-lined, well-conditioned. Palm Harbor, near Tampa and Clearwater."
-                price="$150–280/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/innisbrook-resort-copperhead-course-1650"
-              />
-              <CourseCard
-                name="Streamsong Blue"
-                detail="Tom Doak. The shortest and quirkiest of the Streamsong trio — imaginative routing, quirky holes, more fun than the other two on a second visit."
-                price="$175–300/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/streamsong-resort-blue-32848"
-              />
-              <CourseCard
-                name="World Woods — Pine Barrens"
-                detail="Tom Fazio. Best value in Florida — consistently ranked one of the top 100 courses in the US at under $130/round. Brooksville, 45 min north of Tampa."
-                price="$80–130/round"
-                tier="Mid-range"
-                link="https://www.golfnow.com/course/world-woods-golf-club-pine-barrens-1688"
-              />
+              {COURSES.map((course) => (
+                <CourseCard key={course.name} {...course} />
+              ))}
             </div>
           </section>
 
@@ -297,8 +304,8 @@ export default function FloridaGolfPage() {
               Florida golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              {faqSchema.mainEntity.map((q) => (
-                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              {faqSchema.mainEntity.map((q, i) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} open={i < 2} />
               ))}
             </div>
           </section>
@@ -455,9 +462,9 @@ function PackingItem({ name, tag }: { name: string; tag: string }) {
   )
 }
 
-function FaqItem({ question, answer }: { question: string; answer: string }) {
+function FaqItem({ question, answer, open }: { question: string; answer: string; open?: boolean }) {
   return (
-    <details className="group rounded-xl border border-border bg-card/60">
+    <details open={open} className="group rounded-xl border border-border bg-card/60">
       <summary className="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-foreground">
         {question}
         <span className="ml-2 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">+</span>

@@ -47,7 +47,7 @@ const US_DESTINATIONS: Destination[] = [
     href: '/destinations/myrtle-beach',
     name: 'Myrtle Beach',
     region: 'South Carolina',
-    tagline: 'Best value, 90+ courses',
+    tagline: 'Best value, 100+ courses',
     description:
       'The value play. More golf per dollar than anywhere else on this list, with beach and boardwalk built in for anyone not playing.',
     partnerGuide: { href: '/blog/myrtle-beach-for-non-golfers', label: 'Myrtle Beach for non-golfers' },

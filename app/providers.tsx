@@ -17,6 +17,40 @@ export function isPreviewHost(hostname: string): boolean {
   return hostname.endsWith('.vercel.app') || hostname.endsWith('.workers.dev')
 }
 
+// AI assistants that send visitors here. Matched on the referrer host, or on
+// utm_source because ChatGPT often strips the referrer but appends
+// ?utm_source=chatgpt.com to the links it cites.
+const AI_SOURCES: Record<string, string> = {
+  'chatgpt.com': 'chatgpt',
+  'chat.openai.com': 'chatgpt',
+  'perplexity.ai': 'perplexity',
+  'copilot.microsoft.com': 'copilot',
+  'gemini.google.com': 'gemini',
+  'claude.ai': 'claude',
+}
+
+function matchAiSource(value: string): string | null {
+  const host = value.toLowerCase().replace(/^www\./, '')
+  for (const [domain, source] of Object.entries(AI_SOURCES)) {
+    if (host === domain || host.endsWith(`.${domain}`)) return source
+  }
+  return null
+}
+
+/** Which AI assistant (if any) sent this visit, from the referrer or utm_source. */
+export function detectAiSource(referrer: string, search: string): string | null {
+  const utm = new URLSearchParams(search).get('utm_source')
+  if (utm) {
+    const fromUtm = matchAiSource(utm)
+    if (fromUtm) return fromUtm
+  }
+  try {
+    return referrer ? matchAiSource(new URL(referrer).hostname) : null
+  } catch {
+    return null
+  }
+}
+
 export function PHProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (isPreviewHost(window.location.hostname)) return
@@ -27,6 +61,10 @@ export function PHProvider({ children }: { children: React.ReactNode }) {
       capture_pageview: 'history_change',
       capture_pageleave: true,
     })
+    // Tag AI-assistant traffic so it can be broken out as its own channel.
+    // register_once keeps the first source for the whole session's events.
+    const aiSource = detectAiSource(document.referrer, window.location.search)
+    if (aiSource) posthog.register_once({ channel: 'ai', ai_source: aiSource })
   }, [])
 
   return <PostHogProvider client={posthog}>{children}</PostHogProvider>

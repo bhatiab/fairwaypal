@@ -806,6 +806,14 @@ Content & SEO
     destination cheat sheets, "Updated" date from dateModified
     (see docs/seo-ai-audit-2026-10.md)
 [x] Add answer-first summary box to the 10 posts listed in docs/seo-ai-audit-2026-10.md
+[x] AI-search pass 2: /llms.txt generated from lib/llms.ts (test fails if a page
+    is missing), GolfCourse ItemList + dated WebPage JSON-LD on destinations,
+    Claude-SearchBot + Applebot-Extended in robots, PostHog `channel=ai` /
+    `ai_source` for ChatGPT, Perplexity, Copilot, Gemini, Claude referrals
+[ ] Fix Cloudflare apex redirect: fairwaypal.com/* must keep the path when it
+    301s to www (today every path lands on the www homepage)
+[ ] E-E-A-T: named author + bio, Person author in Article schema, real About
+    page, cited sources on destination and money posts
 [x] Publish best-golf-destinations-december
 [ ] Publish May-Aug monthly guides (outlines in docs/drafts/)
 [ ] Add social proof to landing page (trips planned count, testimonials)

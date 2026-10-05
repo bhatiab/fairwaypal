@@ -5,6 +5,7 @@ import Footer from '../../../src/components/Footer'
 import CheatSheet from '../../../src/components/CheatSheet'
 import UpdatedDate from '../../../src/components/UpdatedDate'
 import { CONTENT_DATES } from '../../../lib/content-dates'
+import { destinationPageSchemas, type Course } from '../../../lib/destination-schema'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
@@ -87,6 +88,51 @@ const faqSchema = {
   ],
 }
 
+const COURSES: Course[] = [
+  {
+    name: 'Bandon Dunes',
+    detail: 'The original. Pure links golf above the Pacific with dramatic cliff-top holes. Wind makes every round different.',
+    price: '$275–375/round',
+    tier: 'Bucket list',
+    link: 'https://www.golfnow.com/course/bandon-dunes',
+  },
+  {
+    name: 'Pacific Dunes',
+    detail: 'Tom Doak’s masterpiece. Consistently ranked top-5 in the US. Tight, natural routing along the bluffs.',
+    price: '$275–375/round',
+    tier: 'Bucket list',
+    link: 'https://www.golfnow.com/course/pacific-dunes',
+  },
+  {
+    name: 'Bandon Trails',
+    detail: 'Coore & Crenshaw design through forest, meadow, and dunes. The most varied landscape on the property.',
+    price: '$275–375/round',
+    tier: 'Bucket list',
+    link: 'https://www.golfnow.com/course/bandon-trails',
+  },
+  {
+    name: 'Old Macdonald',
+    detail: 'Wide fairways and massive greens inspired by the golden age of design. Forgiving but endlessly strategic.',
+    price: '$275–375/round',
+    tier: 'Bucket list',
+    link: 'https://www.golfnow.com/course/old-macdonald',
+  },
+  {
+    name: 'Sheep Ranch',
+    detail: 'The newest and most dramatic course. Every hole has ocean views. Reserve well in advance.',
+    price: '$275–375/round',
+    tier: 'Bucket list',
+    link: 'https://www.golfnow.com/course/sheep-ranch',
+  },
+  {
+    name: 'Bandon Preserve',
+    detail: 'A 13-hole par-3 course on the headland. Perfect warm-up round or twilight game. Proceeds support conservation.',
+    price: '$100/round',
+    tier: 'Mid-range',
+    link: 'https://www.golfnow.com/course/bandon-preserve',
+  },
+]
+
 const OTHER_DESTINATIONS = [
   { name: 'Pebble Beach', href: '/destinations/pebble-beach', tagline: 'The West Coast bucket list' },
   { name: 'Scotland', href: '/destinations/scotland', tagline: 'The birthplace of golf' },
@@ -98,7 +144,7 @@ export default function BandonDunesPage() {
     <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema, ...destinationPageSchemas('/destinations/bandon-dunes', 'Bandon Dunes', COURSES)]) }}
       />
       <Navbar />
       <main className="page-shell pt-28 pb-20">
@@ -133,48 +179,9 @@ export default function BandonDunesPage() {
               Top picks for groups
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
-              <CourseCard
-                name="Bandon Dunes"
-                detail="The original. Pure links golf above the Pacific with dramatic cliff-top holes. Wind makes every round different."
-                price="$275–375/round"
-                tier="Bucket list"
-                link="https://www.golfnow.com/course/bandon-dunes"
-              />
-              <CourseCard
-                name="Pacific Dunes"
-                detail="Tom Doak&rsquo;s masterpiece. Consistently ranked top-5 in the US. Tight, natural routing along the bluffs."
-                price="$275–375/round"
-                tier="Bucket list"
-                link="https://www.golfnow.com/course/pacific-dunes"
-              />
-              <CourseCard
-                name="Bandon Trails"
-                detail="Coore &amp; Crenshaw design through forest, meadow, and dunes. The most varied landscape on the property."
-                price="$275–375/round"
-                tier="Bucket list"
-                link="https://www.golfnow.com/course/bandon-trails"
-              />
-              <CourseCard
-                name="Old Macdonald"
-                detail="Wide fairways and massive greens inspired by the golden age of design. Forgiving but endlessly strategic."
-                price="$275–375/round"
-                tier="Bucket list"
-                link="https://www.golfnow.com/course/old-macdonald"
-              />
-              <CourseCard
-                name="Sheep Ranch"
-                detail="The newest and most dramatic course. Every hole has ocean views. Reserve well in advance."
-                price="$275–375/round"
-                tier="Bucket list"
-                link="https://www.golfnow.com/course/sheep-ranch"
-              />
-              <CourseCard
-                name="Bandon Preserve"
-                detail="A 13-hole par-3 course on the headland. Perfect warm-up round or twilight game. Proceeds support conservation."
-                price="$100/round"
-                tier="Mid-range"
-                link="https://www.golfnow.com/course/bandon-preserve"
-              />
+              {COURSES.map((course) => (
+                <CourseCard key={course.name} {...course} />
+              ))}
             </div>
           </section>
 
@@ -291,8 +298,8 @@ export default function BandonDunesPage() {
               Bandon Dunes golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              {faqSchema.mainEntity.map((q) => (
-                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              {faqSchema.mainEntity.map((q, i) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} open={i < 2} />
               ))}
             </div>
           </section>
@@ -453,9 +460,9 @@ function PackingItem({ name, tag }: { name: string; tag: string }) {
   )
 }
 
-function FaqItem({ question, answer }: { question: string; answer: string }) {
+function FaqItem({ question, answer, open }: { question: string; answer: string; open?: boolean }) {
   return (
-    <details className="group rounded-xl border border-border bg-card/60">
+    <details open={open} className="group rounded-xl border border-border bg-card/60">
       <summary className="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-foreground">
         {question}
         <span className="ml-2 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">+</span>

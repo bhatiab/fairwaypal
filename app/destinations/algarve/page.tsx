@@ -5,6 +5,7 @@ import Footer from '../../../src/components/Footer'
 import CheatSheet from '../../../src/components/CheatSheet'
 import UpdatedDate from '../../../src/components/UpdatedDate'
 import { CONTENT_DATES } from '../../../lib/content-dates'
+import { destinationPageSchemas, type Course } from '../../../lib/destination-schema'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
@@ -94,6 +95,51 @@ const faqSchema = {
   ],
 }
 
+const COURSES: Course[] = [
+  {
+    name: 'Monte Rei Golf & Country Club',
+    detail: 'Jack Nicklaus. Consistently rated the best course in Portugal. Clifftop above the Guadiana River in eastern Algarve. Impeccably maintained. Only 27 tee times per day — book well ahead.',
+    price: '€200–350/round',
+    tier: 'Bucket list',
+    link: 'https://www.golfnow.com/course/monte-rei-golf-country-club-27830',
+  },
+  {
+    name: 'Quinta do Lago — South Course',
+    detail: 'The most prestigious resort course in the Algarve. Consistently in the top 100 European courses. Umbrella pines and ocean glimpses. Host of the European Tour. Book 60 days ahead.',
+    price: '€150–250/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/quinta-do-lago-south-course-8213',
+  },
+  {
+    name: 'San Lorenzo Golf Course',
+    detail: 'Positioned between Ria Formosa lagoon and Atlantic dunes — the most scenic course in the Algarve. Limited public access (Dona Filipa hotel guests get priority). Spectacular finishing holes.',
+    price: '€120–200/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/san-lorenzo-golf-course-8222',
+  },
+  {
+    name: 'Vale do Lobo — Royal Course',
+    detail: 'Two par-3 holes over Atlantic cliffs (16th and 17th) are among the most photographed in Europe. Challenging but playable for mixed-ability groups. Excellent practice facilities.',
+    price: '€100–175/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/vale-do-lobo-royal-course-8237',
+  },
+  {
+    name: 'Palmares Ocean Living & Golf',
+    detail: 'Links-style on the Alvor estuary. Ben Hogan design with Atlantic views on the back nine. One of the most underrated courses in Portugal — less famous than Monte Rei but exceptional.',
+    price: '€80–150/round',
+    tier: 'Mid-range',
+    link: 'https://www.golfnow.com/course/palmares-ocean-living-golf-8217',
+  },
+  {
+    name: 'Quinta da Ria',
+    detail: 'Eastern Algarve, near Tavira. Tom Mackenzie design with views over the Ria Formosa nature reserve. Good value compared to the golden triangle courses. Quieter, more relaxed atmosphere.',
+    price: '€50–80/round',
+    tier: 'Mid-range',
+    link: 'https://www.golfnow.com/course/quinta-da-ria-8226',
+  },
+]
+
 const OTHER_DESTINATIONS = [
   { name: 'Ireland', href: '/destinations/ireland', tagline: 'Links golf and craic' },
   { name: 'Scotland', href: '/destinations/scotland', tagline: 'The birthplace of golf' },
@@ -105,7 +151,7 @@ export default function AlgarvePage() {
     <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema, ...destinationPageSchemas('/destinations/algarve', 'Algarve, Portugal', COURSES)]) }}
       />
       <Navbar />
       <main className="page-shell pt-28 pb-20">
@@ -140,48 +186,9 @@ export default function AlgarvePage() {
               Top picks in the Algarve
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
-              <CourseCard
-                name="Monte Rei Golf &amp; Country Club"
-                detail="Jack Nicklaus. Consistently rated the best course in Portugal. Clifftop above the Guadiana River in eastern Algarve. Impeccably maintained. Only 27 tee times per day — book well ahead."
-                price="€200–350/round"
-                tier="Bucket list"
-                link="https://www.golfnow.com/course/monte-rei-golf-country-club-27830"
-              />
-              <CourseCard
-                name="Quinta do Lago — South Course"
-                detail="The most prestigious resort course in the Algarve. Consistently in the top 100 European courses. Umbrella pines and ocean glimpses. Host of the European Tour. Book 60 days ahead."
-                price="€150–250/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/quinta-do-lago-south-course-8213"
-              />
-              <CourseCard
-                name="San Lorenzo Golf Course"
-                detail="Positioned between Ria Formosa lagoon and Atlantic dunes — the most scenic course in the Algarve. Limited public access (Dona Filipa hotel guests get priority). Spectacular finishing holes."
-                price="€120–200/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/san-lorenzo-golf-course-8222"
-              />
-              <CourseCard
-                name="Vale do Lobo — Royal Course"
-                detail="Two par-3 holes over Atlantic cliffs (16th and 17th) are among the most photographed in Europe. Challenging but playable for mixed-ability groups. Excellent practice facilities."
-                price="€100–175/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/vale-do-lobo-royal-course-8237"
-              />
-              <CourseCard
-                name="Palmares Ocean Living &amp; Golf"
-                detail="Links-style on the Alvor estuary. Ben Hogan design with Atlantic views on the back nine. One of the most underrated courses in Portugal — less famous than Monte Rei but exceptional."
-                price="€80–150/round"
-                tier="Mid-range"
-                link="https://www.golfnow.com/course/palmares-ocean-living-golf-8217"
-              />
-              <CourseCard
-                name="Quinta da Ria"
-                detail="Eastern Algarve, near Tavira. Tom Mackenzie design with views over the Ria Formosa nature reserve. Good value compared to the golden triangle courses. Quieter, more relaxed atmosphere."
-                price="€50–80/round"
-                tier="Mid-range"
-                link="https://www.golfnow.com/course/quinta-da-ria-8226"
-              />
+              {COURSES.map((course) => (
+                <CourseCard key={course.name} {...course} />
+              ))}
             </div>
           </section>
 
@@ -298,8 +305,8 @@ export default function AlgarvePage() {
               Algarve golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              {faqSchema.mainEntity.map((q) => (
-                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              {faqSchema.mainEntity.map((q, i) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} open={i < 2} />
               ))}
             </div>
           </section>
@@ -458,9 +465,9 @@ function PackingItem({ name, tag }: { name: string; tag: string }) {
   )
 }
 
-function FaqItem({ question, answer }: { question: string; answer: string }) {
+function FaqItem({ question, answer, open }: { question: string; answer: string; open?: boolean }) {
   return (
-    <details className="group rounded-xl border border-border bg-card/60">
+    <details open={open} className="group rounded-xl border border-border bg-card/60">
       <summary className="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-foreground">
         {question}
         <span className="ml-2 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">+</span>
