@@ -19,9 +19,11 @@ const ALLOWED_CRAWLERS = [
   'PerplexityBot',
   'Perplexity-User',
   'ClaudeBot',
+  'Claude-SearchBot',
   'Claude-User',
   'Google-Extended',
   'Applebot',
+  'Applebot-Extended',
 ]
 
 export default function robots(): MetadataRoute.Robots {

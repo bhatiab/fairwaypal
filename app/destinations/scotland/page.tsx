@@ -5,6 +5,7 @@ import Footer from '../../../src/components/Footer'
 import CheatSheet from '../../../src/components/CheatSheet'
 import UpdatedDate from '../../../src/components/UpdatedDate'
 import { CONTENT_DATES } from '../../../lib/content-dates'
+import { destinationPageSchemas, type Course } from '../../../lib/destination-schema'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
@@ -94,6 +95,51 @@ const faqSchema = {
   ],
 }
 
+const COURSES: Course[] = [
+  {
+    name: 'St Andrews — Old Course',
+    detail: 'The home of golf. The Swilcan Bridge, the Road Hole, the Valley of Sin. Apply for the daily ballot or book through a tour operator.',
+    price: '$250–300/round',
+    tier: 'Bucket list',
+    link: 'https://www.golfnow.com/course/st-andrews-links-old-course-23916',
+  },
+  {
+    name: 'Kingsbarns Golf Links',
+    detail: 'Modern links masterpiece just south of St Andrews. Ocean views on nearly every hole. Walking only.',
+    price: '$200–280/round',
+    tier: 'Bucket list',
+    link: 'https://www.golfnow.com/course/kingsbarns-golf-links-23917',
+  },
+  {
+    name: 'Carnoustie Golf Links — Championship',
+    detail: 'Host of The Open. Arguably the toughest links in Scotland. The closing stretch is legendary.',
+    price: '$180–230/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/carnoustie-golf-links-championship-23918',
+  },
+  {
+    name: 'Royal Dornoch — Championship',
+    detail: 'Tom Watson called it the most fun he ever had on a golf course. Remote, stunning, world-class.',
+    price: '$150–200/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/royal-dornoch-golf-club-championship-23919',
+  },
+  {
+    name: 'North Berwick — West Links',
+    detail: 'Quirky, historic, and endlessly fun. The Redan hole (par-3 15th) inspired courses worldwide.',
+    price: '$80–130/round',
+    tier: 'Mid-range',
+    link: 'https://www.golfnow.com/course/north-berwick-golf-club-west-links-23920',
+  },
+  {
+    name: 'Castle Course — St Andrews',
+    detail: 'Modern links with dramatic clifftop views. More accessible than the Old Course, equally memorable.',
+    price: '$100–160/round',
+    tier: 'Mid-range',
+    link: 'https://www.golfnow.com/course/st-andrews-links-castle-course-23921',
+  },
+]
+
 const OTHER_DESTINATIONS = [
   { name: 'Ireland', href: '/destinations/ireland', tagline: 'Links golf and craic' },
   { name: 'Algarve', href: '/destinations/algarve', tagline: 'Sun, links, and half the price' },
@@ -105,7 +151,7 @@ export default function ScotlandPage() {
     <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema, ...destinationPageSchemas('/destinations/scotland', 'Scotland', COURSES)]) }}
       />
       <Navbar />
       <main className="page-shell pt-28 pb-20">
@@ -140,48 +186,9 @@ export default function ScotlandPage() {
               Top picks for groups
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
-              <CourseCard
-                name="St Andrews — Old Course"
-                detail="The home of golf. The Swilcan Bridge, the Road Hole, the Valley of Sin. Apply for the daily ballot or book through a tour operator."
-                price="$250–300/round"
-                tier="Bucket list"
-                link="https://www.golfnow.com/course/st-andrews-links-old-course-23916"
-              />
-              <CourseCard
-                name="Kingsbarns Golf Links"
-                detail="Modern links masterpiece just south of St Andrews. Ocean views on nearly every hole. Walking only."
-                price="$200–280/round"
-                tier="Bucket list"
-                link="https://www.golfnow.com/course/kingsbarns-golf-links-23917"
-              />
-              <CourseCard
-                name="Carnoustie Golf Links — Championship"
-                detail="Host of The Open. Arguably the toughest links in Scotland. The closing stretch is legendary."
-                price="$180–230/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/carnoustie-golf-links-championship-23918"
-              />
-              <CourseCard
-                name="Royal Dornoch — Championship"
-                detail="Tom Watson called it the most fun he ever had on a golf course. Remote, stunning, world-class."
-                price="$150–200/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/royal-dornoch-golf-club-championship-23919"
-              />
-              <CourseCard
-                name="North Berwick — West Links"
-                detail="Quirky, historic, and endlessly fun. The Redan hole (par-3 15th) inspired courses worldwide."
-                price="$80–130/round"
-                tier="Mid-range"
-                link="https://www.golfnow.com/course/north-berwick-golf-club-west-links-23920"
-              />
-              <CourseCard
-                name="Castle Course — St Andrews"
-                detail="Modern links with dramatic clifftop views. More accessible than the Old Course, equally memorable."
-                price="$100–160/round"
-                tier="Mid-range"
-                link="https://www.golfnow.com/course/st-andrews-links-castle-course-23921"
-              />
+              {COURSES.map((course) => (
+                <CourseCard key={course.name} {...course} />
+              ))}
             </div>
           </section>
 
@@ -298,8 +305,8 @@ export default function ScotlandPage() {
               Scotland golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              {faqSchema.mainEntity.map((q) => (
-                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              {faqSchema.mainEntity.map((q, i) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} open={i < 2} />
               ))}
             </div>
           </section>
@@ -460,9 +467,9 @@ function PackingItem({ name, tag }: { name: string; tag: string }) {
   )
 }
 
-function FaqItem({ question, answer }: { question: string; answer: string }) {
+function FaqItem({ question, answer, open }: { question: string; answer: string; open?: boolean }) {
   return (
-    <details className="group rounded-xl border border-border bg-card/60">
+    <details open={open} className="group rounded-xl border border-border bg-card/60">
       <summary className="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-foreground">
         {question}
         <span className="ml-2 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">+</span>

@@ -7,7 +7,8 @@ describe('robots', () => {
 
   it.each([
     'Googlebot', 'Bingbot', 'GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'PerplexityBot',
-    'Perplexity-User', 'ClaudeBot', 'Claude-User', 'Google-Extended', 'Applebot', '*',
+    'Perplexity-User', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'Google-Extended', 'Applebot',
+    'Applebot-Extended', '*',
   ])('explicitly allows %s with no disallow', (agent) => {
     const rule = rules.find((r) => r.userAgent === agent)
     expect(rule?.allow).toBe('/')

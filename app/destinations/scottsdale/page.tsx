@@ -6,6 +6,7 @@ import Footer from '../../../src/components/Footer'
 import CheatSheet from '../../../src/components/CheatSheet'
 import UpdatedDate from '../../../src/components/UpdatedDate'
 import { CONTENT_DATES } from '../../../lib/content-dates'
+import { destinationPageSchemas, type Course } from '../../../lib/destination-schema'
 import PlanClient from '../../plan/_client'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
@@ -131,6 +132,51 @@ const touristTripSchema = {
   },
 }
 
+const COURSES: Course[] = [
+  {
+    name: 'Troon North — Monument',
+    detail: 'Desert target golf at its best. Dramatic elevation, pristine conditions.',
+    price: '$185–250/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/troon-north-golf-club-monument-1478',
+  },
+  {
+    name: 'TPC Scottsdale — Stadium',
+    detail: 'Home of the Waste Management Open. The famous 16th hole par-3.',
+    price: '$200–350/round',
+    tier: 'Bucket list',
+    link: 'https://www.golfnow.com/course/tpc-scottsdale-stadium-course-12850',
+  },
+  {
+    name: 'We-Ko-Pa — Saguaro',
+    detail: 'Coore & Crenshaw design on Salt River Pima-Maricopa land. Wide fairways, stunning views.',
+    price: '$150–220/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/we-ko-pa-golf-club-saguaro-12865',
+  },
+  {
+    name: 'Grayhawk — Raptor',
+    detail: "Tournament-quality with a great 19th hole scene. Ideal for the 'Full Send' vibe.",
+    price: '$130–200/round',
+    tier: 'Mid-range',
+    link: 'https://www.golfnow.com/course/grayhawk-golf-club-raptor-1430',
+  },
+  {
+    name: 'Papago Golf Course',
+    detail: 'Best municipal in the valley. Real challenge, budget-friendly, central location.',
+    price: '$45–65/round',
+    tier: 'Budget',
+    link: 'https://www.golfnow.com/course/papago-golf-course-1492',
+  },
+  {
+    name: 'Quintero Golf Club',
+    detail: 'Rees Jones design in the Hieroglyphic Mountains. Worth the 45-min drive.',
+    price: '$100–180/round',
+    tier: 'Mid-range',
+    link: 'https://www.golfnow.com/course/quintero-golf-club-7618',
+  },
+]
+
 const OTHER_DESTINATIONS = [
   { name: 'Myrtle Beach', href: '/destinations/myrtle-beach', tagline: '100+ courses, boardwalk vibes' },
   { name: 'Scotland', href: '/destinations/scotland', tagline: 'The birthplace of golf' },
@@ -142,7 +188,7 @@ export default function ScottsdalePage() {
     <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema, touristTripSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema, ...destinationPageSchemas('/destinations/scottsdale', 'Scottsdale', COURSES), touristTripSchema]) }}
       />
       <Navbar />
       <main className="page-shell pt-28 pb-20">
@@ -177,48 +223,9 @@ export default function ScottsdalePage() {
               Top picks for groups
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
-              <CourseCard
-                name="Troon North — Monument"
-                detail="Desert target golf at its best. Dramatic elevation, pristine conditions."
-                price="$185–250/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/troon-north-golf-club-monument-1478"
-              />
-              <CourseCard
-                name="TPC Scottsdale — Stadium"
-                detail="Home of the Waste Management Open. The famous 16th hole par-3."
-                price="$200–350/round"
-                tier="Bucket list"
-                link="https://www.golfnow.com/course/tpc-scottsdale-stadium-course-12850"
-              />
-              <CourseCard
-                name="We-Ko-Pa — Saguaro"
-                detail="Coore & Crenshaw design on Salt River Pima-Maricopa land. Wide fairways, stunning views."
-                price="$150–220/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/we-ko-pa-golf-club-saguaro-12865"
-              />
-              <CourseCard
-                name="Grayhawk — Raptor"
-                detail="Tournament-quality with a great 19th hole scene. Ideal for the 'Full Send' vibe."
-                price="$130–200/round"
-                tier="Mid-range"
-                link="https://www.golfnow.com/course/grayhawk-golf-club-raptor-1430"
-              />
-              <CourseCard
-                name="Papago Golf Course"
-                detail="Best municipal in the valley. Real challenge, budget-friendly, central location."
-                price="$45–65/round"
-                tier="Budget"
-                link="https://www.golfnow.com/course/papago-golf-course-1492"
-              />
-              <CourseCard
-                name="Quintero Golf Club"
-                detail="Rees Jones design in the Hieroglyphic Mountains. Worth the 45-min drive."
-                price="$100–180/round"
-                tier="Mid-range"
-                link="https://www.golfnow.com/course/quintero-golf-club-7618"
-              />
+              {COURSES.map((course) => (
+                <CourseCard key={course.name} {...course} />
+              ))}
             </div>
           </section>
 
@@ -383,8 +390,8 @@ export default function ScottsdalePage() {
               Scottsdale golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              {faqSchema.mainEntity.map((q) => (
-                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              {faqSchema.mainEntity.map((q, i) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} open={i < 2} />
               ))}
             </div>
           </section>
@@ -541,9 +548,9 @@ function PackingItem({ name, tag }: { name: string; tag: string }) {
   )
 }
 
-function FaqItem({ question, answer }: { question: string; answer: string }) {
+function FaqItem({ question, answer, open }: { question: string; answer: string; open?: boolean }) {
   return (
-    <details className="group rounded-xl border border-border bg-card/60">
+    <details open={open} className="group rounded-xl border border-border bg-card/60">
       <summary className="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-foreground">
         {question}
         <span className="ml-2 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">+</span>

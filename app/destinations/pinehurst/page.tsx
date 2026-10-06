@@ -5,6 +5,7 @@ import Footer from '../../../src/components/Footer'
 import CheatSheet from '../../../src/components/CheatSheet'
 import UpdatedDate from '../../../src/components/UpdatedDate'
 import { CONTENT_DATES } from '../../../lib/content-dates'
+import { destinationPageSchemas, type Course } from '../../../lib/destination-schema'
 
 const GYG_PARTNER = process.env.NEXT_PUBLIC_GYG_PARTNER_ID || '9GLTCAY'
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || 'fairwaypal-20'
@@ -49,7 +50,7 @@ const faqSchema = {
       name: 'How much does a golf trip to Pinehurst cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'A Pinehurst golf trip typically costs $1,500–$3,000 per person for 3 nights, including resort accommodation, 2–3 rounds, and meals. Green fees range from $100 at public courses to $500+ for Pinehurst No. 2. Stay-and-play packages through the resort offer the best value and include preferred tee times.',
+        text: 'A Pinehurst golf trip typically costs $1,500–$3,000 per person for 3 nights, including resort accommodation, 2–3 rounds, and meals. Green fees range from about $70 at nearby public courses to $500+ for Pinehurst No. 2. Stay-and-play packages through the resort offer the best value and include preferred tee times.',
       },
     },
     {
@@ -87,6 +88,51 @@ const faqSchema = {
   ],
 }
 
+const COURSES: Course[] = [
+  {
+    name: 'Pinehurst No. 2',
+    detail: 'Donald Ross’s masterpiece. Two US Opens and counting. The turtleback greens will humble your best putter.',
+    price: '$350–500/round',
+    tier: 'Bucket list',
+    link: 'https://www.golfnow.com/course/pinehurst-no-2',
+  },
+  {
+    name: 'Pinehurst No. 4',
+    detail: 'Gil Hanse redesign opened 2018. Fast, firm, and unforgiving — a modern counterpart to No. 2.',
+    price: '$200–350/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/pinehurst-no-4',
+  },
+  {
+    name: 'Pinehurst No. 8',
+    detail: 'Tom Fazio design with dramatic elevation changes. Wide landing areas reward the bold.',
+    price: '$150–250/round',
+    tier: 'Premium',
+    link: 'https://www.golfnow.com/course/pinehurst-no-8',
+  },
+  {
+    name: 'Pine Needles Lodge & Golf Club',
+    detail: 'Donald Ross gem next door. Host of three US Women’s Opens. Friendlier than No. 2, equally memorable.',
+    price: '$100–200/round',
+    tier: 'Mid-range',
+    link: 'https://www.golfnow.com/course/pine-needles-lodge-golf-club',
+  },
+  {
+    name: 'Mid Pines Inn & Golf Club',
+    detail: 'Sister course to Pine Needles. Classic Ross layout, outstanding value, throwback atmosphere.',
+    price: '$80–150/round',
+    tier: 'Mid-range',
+    link: 'https://www.golfnow.com/course/mid-pines-inn-golf-club',
+  },
+  {
+    name: 'Tobacco Road Golf Club',
+    detail: 'Mike Strantz’s wildest design. Blind shots, massive waste areas, and zero forgettable holes.',
+    price: '$70–120/round',
+    tier: 'Budget',
+    link: 'https://www.golfnow.com/course/tobacco-road-golf-club',
+  },
+]
+
 const OTHER_DESTINATIONS = [
   { name: 'Kiawah Island', href: '/destinations/kiawah-island', tagline: 'The Ocean Course and Charleston' },
   { name: 'Florida', href: '/destinations/florida-golf', tagline: 'Year-round Southeast sun' },
@@ -98,7 +144,7 @@ export default function PinehurstPage() {
     <div className="min-h-screen bg-background text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, destinationSchema, faqSchema, ...destinationPageSchemas('/destinations/pinehurst', 'Pinehurst', COURSES)]) }}
       />
       <Navbar />
       <main className="page-shell pt-28 pb-20">
@@ -133,48 +179,9 @@ export default function PinehurstPage() {
               Top picks for groups
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
-              <CourseCard
-                name="Pinehurst No. 2"
-                detail="Donald Ross&rsquo;s masterpiece. Two US Opens and counting. The turtleback greens will humble your best putter."
-                price="$350–500/round"
-                tier="Bucket list"
-                link="https://www.golfnow.com/course/pinehurst-no-2"
-              />
-              <CourseCard
-                name="Pinehurst No. 4"
-                detail="Gil Hanse redesign opened 2018. Fast, firm, and unforgiving — a modern counterpart to No. 2."
-                price="$200–350/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/pinehurst-no-4"
-              />
-              <CourseCard
-                name="Pinehurst No. 8"
-                detail="Tom Fazio design with dramatic elevation changes. Wide landing areas reward the bold."
-                price="$150–250/round"
-                tier="Premium"
-                link="https://www.golfnow.com/course/pinehurst-no-8"
-              />
-              <CourseCard
-                name="Pine Needles Lodge &amp; Golf Club"
-                detail="Donald Ross gem next door. Host of three US Women&rsquo;s Opens. Friendlier than No. 2, equally memorable."
-                price="$100–200/round"
-                tier="Mid-range"
-                link="https://www.golfnow.com/course/pine-needles-lodge-golf-club"
-              />
-              <CourseCard
-                name="Mid Pines Inn &amp; Golf Club"
-                detail="Sister course to Pine Needles. Classic Ross layout, outstanding value, throwback atmosphere."
-                price="$80–150/round"
-                tier="Mid-range"
-                link="https://www.golfnow.com/course/mid-pines-inn-golf-club"
-              />
-              <CourseCard
-                name="Tobacco Road Golf Club"
-                detail="Mike Strantz&rsquo;s wildest design. Blind shots, massive waste areas, and zero forgettable holes."
-                price="$70–120/round"
-                tier="Budget"
-                link="https://www.golfnow.com/course/tobacco-road-golf-club"
-              />
+              {COURSES.map((course) => (
+                <CourseCard key={course.name} {...course} />
+              ))}
             </div>
           </section>
 
@@ -291,8 +298,8 @@ export default function PinehurstPage() {
               Pinehurst golf trip FAQ
             </h2>
             <div className="mt-6 space-y-4">
-              {faqSchema.mainEntity.map((q) => (
-                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} />
+              {faqSchema.mainEntity.map((q, i) => (
+                <FaqItem key={q.name} question={q.name} answer={q.acceptedAnswer.text} open={i < 2} />
               ))}
             </div>
           </section>
@@ -451,9 +458,9 @@ function PackingItem({ name, tag }: { name: string; tag: string }) {
   )
 }
 
-function FaqItem({ question, answer }: { question: string; answer: string }) {
+function FaqItem({ question, answer, open }: { question: string; answer: string; open?: boolean }) {
   return (
-    <details className="group rounded-xl border border-border bg-card/60">
+    <details open={open} className="group rounded-xl border border-border bg-card/60">
       <summary className="flex cursor-pointer items-center justify-between p-5 text-base font-semibold text-foreground">
         {question}
         <span className="ml-2 shrink-0 text-muted-foreground transition-transform group-open:rotate-45">+</span>

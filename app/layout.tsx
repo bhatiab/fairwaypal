@@ -79,11 +79,6 @@ const websiteSchema = {
   url: 'https://www.fairwaypal.com',
   description:
     'Golf trip sorted. Partners happy. Answer 5 questions, get a dual itinerary, share one link, everyone votes.',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: 'https://www.fairwaypal.com/destinations/{search_term_string}',
-    'query-input': 'required name=search_term_string',
-  },
 }
 
 export default function RootLayout({

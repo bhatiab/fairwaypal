@@ -25,7 +25,7 @@ const articleSchema = {
     'How group size affects tee times, accommodation, costs, and social dynamics. Why 8 is the sweet spot and what to do if you have 4 or 12.',
   url: 'https://www.fairwaypal.com/blog/golf-trip-group-size',
   datePublished: '2026-05-05',
-  dateModified: '2026-05-05',
+  dateModified: '2026-10-05',
   author: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
   publisher: { '@type': 'Organization', name: 'FairwayPal', url: 'https://www.fairwaypal.com' },
 }
@@ -78,7 +78,7 @@ const faqSchema = {
       name: 'What are the best golf destinations for large groups (10–16 players)?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Myrtle Beach is the best large-group golf destination in the US — 90+ courses within 30 miles, most offering group rates for 12+ players, and a wide range of accommodation from condos to large rental homes. Scottsdale works well for groups up to 12. Pinehurst can accommodate larger groups through its multiple resort courses. For truly large groups (20+), a shotgun-start private booking at a resort course is the most reliable approach.',
+        text: 'Myrtle Beach is the best large-group golf destination in the US — 100+ courses along the 60-mile Grand Strand, most offering group rates for 12+ players, and a wide range of accommodation from condos to large rental homes. Scottsdale works well for groups up to 12. Pinehurst can accommodate larger groups through its multiple resort courses. For truly large groups (20+), a shotgun-start private booking at a resort course is the most reliable approach.',
       },
     },
     {
@@ -265,7 +265,7 @@ export default function GolfTripGroupSizePage() {
           </p>
 
           <p className="text-sm text-muted-foreground border-l-2 border-gold/40 pl-4">
-            <strong className="text-foreground">Best for:</strong> <Link href="/destinations/myrtle-beach" className="text-gold hover:underline">Myrtle Beach</Link> (cheapest for large groups — 90+ courses, condos built for this), <Link href="/destinations/scottsdale" className="text-gold hover:underline">Scottsdale</Link> (resort infrastructure handles large groups well), Pinehurst (multiple resort courses, groups coordinator on staff). Avoid premium bucket-list courses for groups of 12 — tee time access becomes very difficult.
+            <strong className="text-foreground">Best for:</strong> <Link href="/destinations/myrtle-beach" className="text-gold hover:underline">Myrtle Beach</Link> (cheapest for large groups — 100+ courses, condos built for this), <Link href="/destinations/scottsdale" className="text-gold hover:underline">Scottsdale</Link> (resort infrastructure handles large groups well), Pinehurst (multiple resort courses, groups coordinator on staff). Avoid premium bucket-list courses for groups of 12 — tee time access becomes very difficult.
           </p>
 
           {/* Comparison table */}
@@ -439,7 +439,7 @@ export default function GolfTripGroupSizePage() {
             <div>
               <h3 className="text-base font-semibold text-foreground mt-0">What are the best destinations for large groups?</h3>
               <p className="text-sm text-muted-foreground mt-1">
-                <Link href="/destinations/myrtle-beach" className="text-gold hover:underline">Myrtle Beach</Link> is the best for 12+ — 90+ courses, condos built for groups, lowest per-round costs. <Link href="/destinations/scottsdale" className="text-gold hover:underline">Scottsdale</Link> handles groups up to 12 well. Avoid premium bucket-list courses (Pebble Beach, Kiawah Ocean Course) for groups larger than 8 — tee time access becomes very difficult.
+                <Link href="/destinations/myrtle-beach" className="text-gold hover:underline">Myrtle Beach</Link> is the best for 12+ — 100+ courses, condos built for groups, lowest per-round costs. <Link href="/destinations/scottsdale" className="text-gold hover:underline">Scottsdale</Link> handles groups up to 12 well. Avoid premium bucket-list courses (Pebble Beach, Kiawah Ocean Course) for groups larger than 8 — tee time access becomes very difficult.
               </p>
             </div>
             <div>
